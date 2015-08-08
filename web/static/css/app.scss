@@ -26,6 +26,7 @@ form.link, form.button {
 }
 .logo {
   display: inline-block;
+  a:hover { text-decoration: none; }
   .icon {
 	  font-size: 6em;
 	  color: green;

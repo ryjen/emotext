@@ -19,6 +19,19 @@ config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
 
+config :joken, config_module: Guardian.JWT
+
+config :guardian, Guardian,
+      issuer: "Emotext",
+      ttl: { 100_000, :days },
+      verify_issuer: true,
+      secret_key: "EPROIUELKJSDOIUEWORIJWLEKJFSODIojwoeirjsldkfjwoerijowkjflsef",
+      serializer: Emotext.GuardianSerializer,
+      hooks: Emotext.GuardianHooks,
+      permissions: %{
+        default: [:read_profile, :write_profile]
+      }
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env}.exs"

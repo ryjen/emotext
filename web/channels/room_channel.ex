@@ -8,9 +8,9 @@ defmodule Emotext.RoomChannel do
     {:error, %{reason: "unauthorized"}}
   end
 
-  def handle_in("new_msg", %{"body" => body}, socket) do
+  def handle_in("new_msg", %{"body" => body, "user" => user}, socket) do
   	#Todo: lookup commands
-    broadcast! socket, "new_msg", %{body: body}
+    broadcast! socket, "new_msg", %{body: body, user: user}
     {:noreply, socket}
   end
 

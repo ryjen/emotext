@@ -6,18 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+    <meta name='csrf_token' content='<%= Plug.CSRFProtection.get_csrf_token %>'>
+    <%= if Guardian.Plug.current_token(@conn) do %>
+      <meta name='guardian_token' content="<%= Guardian.Plug.current_token(@conn) %>">
+    <% end %>
 
-    <title>Hello Phoenix!</title>
+    <title>Emotext</title>
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
   </head>
 
   <body>
     <div class="container" role="main">
       <div class="header">
-        <div class="logo"><span class="icon">ツ</span> <span class="title">emotext</span></div>
         <ul class="nav nav-pills pull-right">
-          <li><a href="http://www.phoenixframework.org/docs">login</a></li>
+          <%= if Guardian.Plug.current_resource(@conn) do %>
+            <li><%= Guardian.Plug.current_resource(@conn).username %></li>
+            <li><%= link("Logout", to: logout_path(@conn, :delete), method: :delete) %></li>
+          <% else %>
+            <li><%= link("Signup", to: user_path(@conn, :new)) %></li>
+            <li><%= link("Login", to: login_path(@conn, :create)) %></li>
+          <% end %>
         </ul>
+        <span class="logo">
+        <a href="/">
+          <span class="icon">ツ</span> <span class="title">Emotext</span>
+          </a>
+        </span>
       </div>
 
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
@@ -26,9 +40,10 @@
       <%= @inner %>
 
     </div> <!-- /container -->
-    <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+
+    <script src='https://code.jquery.com/jquery-2.1.4.min.js'></script>
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
     <script>require("web/static/js/app")</script>
-    
+
   </body>
 </html>
