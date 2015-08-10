@@ -1,0 +1,80 @@
+#!/usr/bin/env perl
+
+sub print_line {
+	my ($fh, $ofh) = @_;
+
+	my $line = <$fh>;
+
+	$line =~ s/^\s+|\s+$//g;
+
+	if (length($line) == 0 or substr($line, 0, 1) eq "#") {
+		return 1;
+	}
+
+	$line =~ s/"/\\"/;
+
+	print "Found $line\n";
+
+	if ($line eq "$$") {
+		print $ofh ", NULL";
+	} else {
+		print $ofh ", \"$line\"";
+	}
+
+	return 0;
+}
+
+sub usage
+{
+	print("$0 <input file> [output file]\n");
+}
+
+sub main
+{
+	my $line;
+	my $i;
+
+	if (scalar @ARGV == 0) {
+		usage();
+		return 1;
+	}
+	
+	open(my $fh, "<", $ARGV[0]) or die "cannot open < $ARGV[0]: $!";
+
+	open(my $ofh, ">", $ARGV[1] || "socials2sql.out") or die "cannot open > $ARGV[1]: $!";
+
+	print $ofh "INSERT INTO actions(name, self_no_arg, others_no_arg, self_vict_found, others_vict_found, vict_found, self_auto, others_auto)\n";
+
+	while($line = <$fh>) {
+
+		$line =~ s/^\s+|\s+$//g;
+
+		if (length($line) == 0 or substr($line, 0, 1) eq "#") {
+			print "skipping line $line\n";
+			next;
+		}
+
+		print "Found $line\n";
+
+		# must have a name
+		$line =~ s/^([A-Za-z0-9]+)\s[0-9]+\s[0-9]+/$1/;
+
+		print $ofh "($line";
+
+		$i = 0;
+
+		while(!print_line($fh, $ofh)) {
+			$i++;
+		}
+		
+		while($i++ < 7) {
+			print $ofh ", NULL";
+		}
+
+		print $ofh "),\n";
+	}
+
+	return 0;
+}
+
+exit(&main);
