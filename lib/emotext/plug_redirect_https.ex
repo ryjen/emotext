@@ -70,7 +70,7 @@ defmodule PlugRedirectHttps do
   end
 
   defp rewrite_url_as_https(conn = %Plug.Conn{query_string: query_string}) do
-    https_url_with_path(get_forwarded_host(conn), Plug.Conn.full_path(conn), query_string)
+    https_url_with_path(get_forwarded_host(conn), conn.request_path, query_string)
   end
 
   defp https_url_with_path(host, path, ""), do: "https://#{host}#{path}"
