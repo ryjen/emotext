@@ -20,6 +20,11 @@ defmodule Emotext.User do
     Repo.one(User, email: email)
   end
 
+  def from_username(nil), do: { :error, :not_found }
+  def from_username(username) do
+    Repo.one(User, username: username)
+  end
+
   def create_changeset(model, params \\ :empty) do
     model
     |> cast(params, ~w(username email password))

@@ -11,14 +11,14 @@ sub print_line {
 		return 1;
 	}
 
-	$line =~ s/"/\\"/;
+	$line =~ s/'/''/g;
 
 	print "Found $line\n";
 
 	if ($line eq "$$") {
 		print $ofh ", NULL";
 	} else {
-		print $ofh ", \"$line\"";
+		print $ofh ", '$line'";
 	}
 
 	return 0;
@@ -33,6 +33,7 @@ sub main
 {
 	my $line;
 	my $i;
+	my $first;
 
 	if (scalar @ARGV == 0) {
 		usage();
@@ -43,7 +44,7 @@ sub main
 
 	open(my $ofh, ">", $ARGV[1] || "socials2sql.out") or die "cannot open > $ARGV[1]: $!";
 
-	print $ofh "INSERT INTO actions(name, self_no_arg, others_no_arg, self_vict_found, others_vict_found, vict_found, self_auto, others_auto)\n";
+	print $ofh "INSERT INTO actions(name, self_no_arg, others_no_arg, self_vict_found, others_vict_found, vict_found, vict_not_found, self_auto, others_auto, inserted_at, updated_at) VALUES\n";
 
 	while($line = <$fh>) {
 
@@ -59,7 +60,13 @@ sub main
 		# must have a name
 		$line =~ s/^([A-Za-z0-9]+)\s[0-9]+\s[0-9]+/$1/;
 
-		print $ofh "($line";
+		if ($first == 1) {
+			print $ofh ",\n(";
+		} else {
+			print $ofh "(";
+			$first = 1;
+		}
+		print $ofh "'$line'";
 
 		$i = 0;
 
@@ -67,12 +74,16 @@ sub main
 			$i++;
 		}
 		
-		while($i++ < 7) {
+		while($i++ < 8) {
 			print $ofh ", NULL";
 		}
 
-		print $ofh "),\n";
+		print $ofh ", current_timestamp, current_timestamp";
+
+		print $ofh ")";
 	}
+
+	print $ofh ";\n";
 
 	return 0;
 }
