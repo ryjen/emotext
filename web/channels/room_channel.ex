@@ -4,6 +4,7 @@ defmodule Emotext.RoomChannel do
 
   alias Emotext.ActionQuery
   alias Emotext.UserQuery
+  alias Emotext.Action
   alias Emotext.Repo
 
   intercept ["self_action", "others_action", "new_msg"]
@@ -11,19 +12,49 @@ defmodule Emotext.RoomChannel do
   def join("rooms:lobby", auth_msg, socket) do
     {:ok, socket}
   end
+
   def join("rooms:" <> _private_room_id, _auth_msg, socket) do
     {:error, %{reason: "unauthorized"}}
   end
 
+  def action_gender(str, user) do
+    cond do
+      user.gender == GenderEnum.unknown ->
+        str = String.replace(str, "$s", "its");
+        str = String.replace(str, "$m", "it");
+      user.gender == GenderEnum.male ->
+        str = String.replace(str, "$s", "his");
+        str = String.replace(str, "$m", "him");
+      user.gender == GenderEnum.female ->
+        str = String.replace(str, "$s", "her");
+        str = String.replace(str, "$m", "her");
+    end
+  end
+
   def action_str(str, user) do
     str = String.replace(str, "$n", user.username);
+    str = action_gender(str, user)
   end
 
   def action_str(str, user, vict) do
     str = action_str(str, user)
-    if vict != nil do
-      str = String.replace(str, "$N", vict.username);
-    end
+    str = String.replace(str, "$N", vict.username);
+    str = action_gender(str, vict)
+  end
+
+  def sys_msg(socket, msg) do
+    user = Guardian.Channel.current_resource(socket)
+    push socket, "sys_msg", %{ body: msg, user: user.id }
+  end
+
+  def action_msg(socket, type, msg) do
+    user = Guardian.Channel.current_resource(socket)
+    broadcast! socket, type, %{ action: action_str(msg, user), user: user.id }
+  end
+
+  def action_msg(socket, type, msg, vict) do
+    user = Guardian.Channel.current_resource(socket)
+    broadcast! socket, type, %{action: action_str(msg, user, vict), user: user.id, vict: vict.id}
   end
 
   def handle_in("new_msg", %{"body" => body}, socket) do
@@ -31,32 +62,39 @@ defmodule Emotext.RoomChannel do
   	if String.at(body, 0) == "/" do
 
         if body == "/?" do
+          actions = Repo.all(Action)
+          Enum.each(Enum.chunk(actions, 5), fn(a) ->
+            sys_msg socket, Enum.reduce(a, "", fn(x, acc) -> 
+              acc <> String.ljust(x.name, 15)
+            end)
+          end)
+          sys_msg socket, "\nExample: <b>/smile</b> will issue: <i>#{user.username} smiles happily.</i>"
         else
-        parts = String.split(body, ~r{\s});
-        command = Enum.at(parts, 0);
-        command = String.slice(command, 1, String.length(command))
-        action = Repo.one(ActionQuery.by_name(command))
-        cond do
-          action == nil ->
-            broadcast! socket, "self_action", %{action: "No such command.", user: user.id}
-          Enum.count(parts) == 1 ->
-            broadcast! socket, "self_action", %{ action: action_str(action.self_no_arg, user), user: user.id }
-            broadcast! socket, "others_action", %{ action: action_str(action.others_no_arg, user), user: user.id }
-          true ->
-            vict = Repo.one(UserQuery.by_username(Enum.at(parts, 1)))
-            if vict != nil do
-                if vict == user do
-                    broadcast! socket, "self_action", %{action: action_str(action.self_auto, user), user: user.id}
-                    broadcast! socket, "others_action", %{action: action.to_str(:others_auto, user), user: user.id }
-                else
-                    broadcast! socket, "self_action", %{action: action_str(action.self_found, user, vict), user: user.id, vict: vict.id}
-                    broadcast! socket, "others_action", %{action: action_str(action.others_found, user, vict), user: user.id, vict: vict.id}
-                    broadcast! socket, "self_action", %{action: action_str(action.vict_found, user, vict), user: vict.id}
-                end
-            else
-                broadcast! socket, "self_action", %{action: action_str(action.self_not_found, user), user: user.id }
+          parts = String.split(body, ~r{\s});
+          command = Enum.at(parts, 0);
+          command = String.slice(command, 1, String.length(command))
+          action = Repo.one(ActionQuery.by_name(command))
+          cond do
+            action == nil ->
+              sys_msg socket, "No such command."
+            Enum.count(parts) == 1 ->
+              action_msg socket, "self_action", action.self_no_arg
+              action_msg socket, "others_action", action.others_no_arg
+            true ->
+              vict = Repo.one(UserQuery.by_username(Enum.at(parts, 1)))
+              if vict != nil do
+                  if vict == user do
+                      action_msg socket, "self_action", action.self_auto
+                      action_msg socket, "others_action", action.others_auto
+                  else
+                      action_msg socket, "self_action", action.self_found, vict
+                      action_msg socket, "others_action", action.others_found, vict
+                      action_msg socket, "self_action", action.vict_found, vict
+                  end
+              else
+                  sys_msg socket, action_str(action.self_not_found, user)
+              end
             end
-          end
         end
     else
         broadcast! socket, "new_msg", %{body: body, user: user.id, username: user.username}

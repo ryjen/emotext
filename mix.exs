@@ -37,6 +37,7 @@ defmodule Emotext.Mixfile do
      {:guardian, "~> 0.4.0"},
      {:cowboy, "~> 1.0"},
      {:oauth2, "~> 0.1.1"},
+     {:ecto_enum, "~> 0.2.3"},
      {:comeonin, "~> 1.1"}]
   end
 end

@@ -8,7 +8,7 @@ defmodule Emotext.User do
     field :email, :string
     field :encrypted_password, :string
     field :password, :string, virtual: true
-
+    field :gender, GenderEnum
     timestamps
   end
 
@@ -27,12 +27,12 @@ defmodule Emotext.User do
 
   def create_changeset(model, params \\ :empty) do
     model
-    |> cast(params, ~w(username email password))
+    |> cast(params, ~w(username email password gender))
   end
 
   def update_changeset(model, params \\ :empty) do
     model
-    |> cast(params, ~w(), ~w(username email password))
+    |> cast(params, ~w(), ~w(username email password gender))
   end
 
   def login_changeset(model), do: model |> cast(%{}, ~w(), ~w(email password))

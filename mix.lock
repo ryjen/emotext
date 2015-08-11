@@ -5,6 +5,7 @@
   "decimal": {:hex, :decimal, "1.1.0"},
   "earmark": {:hex, :earmark, "0.1.17"},
   "ecto": {:hex, :ecto, "0.14.3"},
+  "ecto_enum": {:hex, :ecto_enum, "0.2.3"},
   "ex_doc": {:hex, :ex_doc, "0.7.3"},
   "fs": {:hex, :fs, "0.9.2"},
   "guardian": {:hex, :guardian, "0.4.1"},

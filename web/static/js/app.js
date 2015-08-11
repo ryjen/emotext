@@ -34,6 +34,10 @@ class App {
 		messagesContainer.append(`[${curTime}] ${payload.action}\n`)
 	})
 
+	chan.on("sys_msg", payload => {
+		messagesContainer.append(`${payload.body}\n`);
+	})
+
 	chan.join().receive("ok", chan => {
 		messagesContainer.append(`Welcome to emotext! Type '/?' for a list of commands\n`)
 	})

@@ -12,6 +12,11 @@
     <%= @user.username %>
   </li>
 
+  <li>
+  	<strong>Gender:</strong>
+  	<%= gender_name(@user) %>
+  </li>
+
 </ul>
 
 
