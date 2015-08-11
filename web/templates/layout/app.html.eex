@@ -29,7 +29,9 @@
         </ul>
         <span class="logo">
         <a href="/">
-          <span class="icon">ツ</span> <span class="title">Emotext</span>
+          <span class="icon">ツ</span> 
+          <span class="title">Emotext</span> 
+          <span class="subtitle">Emote: [ih-moht] verb. To show or pretend emotion.</span>
           </a>
         </span>
       </div>
