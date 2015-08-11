@@ -3,8 +3,10 @@ defmodule Emotext.PageController do
 
   alias Emotext.SessionController
 
+  plug PlugRedirectHttps
+
   plug Guardian.Plug.EnsureSession, %{ on_failure: { SessionController, :new } } when not action in [:new, :create]
-  
+  	
   def index(conn, _params) do
     render(conn, "index.html")
   end
@@ -12,4 +14,5 @@ defmodule Emotext.PageController do
   def import(conn, _params) do
   	render(conn, "import.html")
   end
+
 end
