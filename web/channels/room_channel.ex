@@ -19,13 +19,13 @@ defmodule Emotext.RoomChannel do
 
   def action_gender(str, user) do
     cond do
-      user.gender == GenderEnum.unknown ->
+      user.gender == :unknown ->
         str = String.replace(str, "$s", "its");
         str = String.replace(str, "$m", "it");
-      user.gender == GenderEnum.male ->
+      user.gender == :male ->
         str = String.replace(str, "$s", "his");
         str = String.replace(str, "$m", "him");
-      user.gender == GenderEnum.female ->
+      user.gender == :female ->
         str = String.replace(str, "$s", "her");
         str = String.replace(str, "$m", "her");
     end
