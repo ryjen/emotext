@@ -55,7 +55,7 @@ defmodule PlugRedirectHttps do
     |> List.first
   end
 
-  defp redirect_to_https?("http"), do: System.System.get_env("MIX_ENV") == "prod"
+  defp redirect_to_https?("http"), do: System.get_env("MIX_ENV") == "prod"
   defp redirect_to_https?(_proto), do: false
   
   defp redirect_to_https(conn) do
