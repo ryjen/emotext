@@ -10,6 +10,10 @@ defmodule Emotext.UserQuery do
   	from u in User, where: (u.email == ^info or u.username == ^info)
   end
 
+  def by_username(name) do
+  	from u in User, where: u.username == ^name
+  end
+
 end
 
 defmodule Emotext.ActionQuery do
