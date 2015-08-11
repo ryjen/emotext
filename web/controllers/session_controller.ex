@@ -5,7 +5,6 @@ defmodule Emotext.SessionController do
   alias Emotext.UserQuery
 
   plug :scrub_params, "user" when action in [:create]
-  plug :action
 
   def new(conn, params) do
     changeset = User.login_changeset(%User{})
@@ -13,7 +12,7 @@ defmodule Emotext.SessionController do
   end
 
   def create(conn, params = %{}) do
-    user = Repo.one(UserQuery.by_email(params["user"]["email"] || ""))
+    user = Repo.one(UserQuery.by_login_or_email(params["user"]["email"] || ""))
     if user do
       changeset = User.login_changeset(user, params["user"])
       if changeset.valid? do

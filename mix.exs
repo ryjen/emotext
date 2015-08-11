@@ -18,7 +18,7 @@ defmodule Emotext.Mixfile do
   def application do
     [mod: {Emotext, []},
      applications: [:phoenix, :phoenix_html, :cowboy, :logger,
-                    :phoenix_ecto, :postgrex, :comeonin]]
+                    :phoenix_ecto, :postgrex, :comeonin, :oauth2]]
   end
 
   # Specifies which paths to compile per environment
@@ -36,6 +36,7 @@ defmodule Emotext.Mixfile do
      {:phoenix_live_reload, "~> 0.5", only: :dev},
      {:guardian, "~> 0.4.0"},
      {:cowboy, "~> 1.0"},
+     {:oauth2, "~> 0.1.1"},
      {:comeonin, "~> 1.1"}]
   end
 end

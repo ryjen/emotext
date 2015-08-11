@@ -1,0 +1,14 @@
+
+<form action="/import" method="post">
+
+  <div class="form-group">
+    <label>File</label>
+    <input type="file" name="file" class="form-control" />
+  </div>
+
+
+  <div class="form-group">
+    <%= submit "Submit", class: "btn btn-primary" %>
+  </div>
+
+</form>

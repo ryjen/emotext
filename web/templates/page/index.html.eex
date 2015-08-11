@@ -1,6 +1,3 @@
 <div id="messages"></div>
 
 <input id="chat-input" type="text" />
-
-<input id="chat-user" type="hidden" value="<%= @current_user.username %>" />
-

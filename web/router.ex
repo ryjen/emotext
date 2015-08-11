@@ -29,6 +29,18 @@ defmodule Emotext.Router do
 
     resources "/users", UserController
 
+    get "/actions/import", ActionController, :import, as: :import
+    post "/actions/import", ActionController, :import_file, as: :import_file
+    
+    resources "/actions", ActionController
+
+  end
+
+  scope "/auth", alias: Emotext do
+    pipe_through :browser
+    get "/github", AuthController, :github
+    get "/facebook", AuthController, :facebook
+    get "/callback/:provider", AuthController, :callback
   end
 
   # Other scopes may use custom stacks.

@@ -1,4 +1,5 @@
-<%= form_for @changeset, @action, [method: :post], fn f -> %>
+
+<%= form_for @conn, "/actions/import", [name: :import, multipart: true], fn f -> %>
   <%= if f.errors != [] do %>
     <div class="alert alert-danger">
       <p>Oops, something went wrong! Please check the errors below:</p>
@@ -11,11 +12,8 @@
   <% end %>
 
   <div class="form-group">
-    <%= email_input f, :email, class: "form-control", placeholder: "Email or Username" %>
-  </div>
-
-  <div class="form-group">
-    <%= password_input :user, :password, class: "form-control", placeholder: "Password" %>
+    <label>File</label>
+    <%= file_input f, :file, class: "form-control" %>
   </div>
 
   <div class="form-group">

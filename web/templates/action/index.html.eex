@@ -1,0 +1,42 @@
+<h2>Listing actions</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Self no arg</th>
+      <th>Others no arg</th>
+      <th>Self found</th>
+      <th>Others found</th>
+      <th>Vict found</th>
+      <th>Self not found</th>
+      <th>Self auto</th>
+      <th>Others auto</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for action <- @actions do %>
+    <tr>
+      <td><%= action.name %></td>
+      <td><%= action.self_no_arg %></td>
+      <td><%= action.others_no_arg %></td>
+      <td><%= action.self_found %></td>
+      <td><%= action.others_found %></td>
+      <td><%= action.vict_found %></td>
+      <td><%= action.self_not_found %></td>
+      <td><%= action.self_auto %></td>
+      <td><%= action.others_auto %></td>
+
+      <td class="text-right">
+        <%= link "Show", to: action_path(@conn, :show, action), class: "btn btn-default btn-xs" %>
+        <%= link "Edit", to: action_path(@conn, :edit, action), class: "btn btn-default btn-xs" %>
+        <%= link "Delete", to: action_path(@conn, :delete, action), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<%= link "New action", to: action_path(@conn, :new) %>

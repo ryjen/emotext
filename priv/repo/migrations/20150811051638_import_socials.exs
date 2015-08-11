@@ -1,4 +1,8 @@
-INSERT INTO actions(name, self_no_arg, others_no_arg, self_found, others_found, vict_found, self_not_found, self_auto, others_auto, inserted_at, updated_at) VALUES
+defmodule Emotext.Repo.Migrations.ImportSocials do
+  use Ecto.Migration
+
+  def change do
+  "INSERT INTO actions(name, self_no_arg, others_no_arg, self_found, others_found, vict_found, vict_not_found, self_auto, others_auto, inserted_at, updated_at) VALUES
 ('gack', 'Gaaack!', '$n gacks with dismay!', 'Appalled, you gack at $N.', '$n gacks expressively, shooting $N a dismayed look.', '$n gacks, and looks your way, dismayed.', 'That person isn''t here.', '*GACK!*', 'Appalled, $n gacks at $mself!', current_timestamp, current_timestamp),
 ('kiss', 'Isn''t there someone you want to kiss?', '$', 'You kiss $M.', '$n kisses $N.', '$n kisses you.', 'Never around when required.', 'All the lonely people :(', NULL, current_timestamp, current_timestamp),
 ('bounce', 'BOIINNNNNNGG!', '$n bounces around with a happy smile.', 'You bounce onto $S lap and wiggle about.', '$n bounces onto $N''s lap and wiggles about.', '$n bounces onto your lap and wiggles about.', 'You don''t see your plaything.', 'You bounce your head like a basketball.', '$n plays basketball with $s head.', current_timestamp, current_timestamp),
@@ -243,3 +247,6 @@ INSERT INTO actions(name, self_no_arg, others_no_arg, self_found, others_found, 
 ('fatality', '$', '$', 'You intone, ''$N wins.  Fatality.''', '$n intones, ''$N wins.  Fatality.''', '$n intones, ''$N wins.  Fatality.''', NULL, NULL, NULL, current_timestamp, current_timestamp),
 ('yowl', 'You yowl in frustration.', '$n yowls in frustration!', NULL, NULL, NULL, NULL, NULL, NULL, current_timestamp, current_timestamp),
 ('silly', 'You do the silly walk all around the room.', '$n does the silly walk all around the room.  $e *is* silly.', NULL, NULL, NULL, NULL, NULL, NULL, current_timestamp, current_timestamp);
+"
+  end
+end

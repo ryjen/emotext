@@ -12,8 +12,7 @@ sub print_line {
 	}
 
 	$line =~ s/'/''/g;
-
-	print "Found $line\n";
+	$line =~ s/"/\\"/g;
 
 	if ($line eq "$$") {
 		print $ofh ", NULL";
@@ -51,11 +50,8 @@ sub main
 		$line =~ s/^\s+|\s+$//g;
 
 		if (length($line) == 0 or substr($line, 0, 1) eq "#") {
-			print "skipping line $line\n";
 			next;
 		}
-
-		print "Found $line\n";
 
 		# must have a name
 		$line =~ s/^([A-Za-z0-9]+)\s[0-9]+\s[0-9]+/$1/;
@@ -84,6 +80,8 @@ sub main
 	}
 
 	print $ofh ";\n";
+
+	print "Ok.\n";
 
 	return 0;
 }
