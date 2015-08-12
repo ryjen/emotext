@@ -2,14 +2,16 @@
   "repository": {
   },
   "license": "MIT",
+  "private": true,
+  "description": "an emotional chat app",
   "dependencies": {
     "brunch": "^1.8.5",
+    "bower":  "^1.4.1",
     "babel-brunch": "^5.1.1",
     "clean-css-brunch": ">= 1.0 < 1.8",
     "css-brunch": ">= 1.0 < 1.8",
     "javascript-brunch": ">= 1.0 < 1.8",
     "sass-brunch": "^1.8.10",
-    "uglify-js-brunch": ">= 1.0 < 1.8",
-    "bower":  "^1.4.1"
+    "uglify-js-brunch": ">= 1.0 < 1.8"
   }
 }
