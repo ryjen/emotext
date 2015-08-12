@@ -17,7 +17,6 @@ defmodule Emotext.SessionController do
       changeset = User.login_changeset(user, params["user"])
       if changeset.valid? do
         conn
-        |> put_flash(:info, "Logged in.")
         |> Guardian.Plug.sign_in(user, :token, perms: %{ default: Guardian.Permissions.max })
         |> redirect(to: "/")
       else

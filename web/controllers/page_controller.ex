@@ -15,4 +15,8 @@ defmodule Emotext.PageController do
   	render(conn, "import.html")
   end
 
+  def help(conn, _params) do
+    render(conn, "help.html")
+  end
+
 end
