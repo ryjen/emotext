@@ -29,10 +29,10 @@ defmodule Emotext.Mixfile do
   #
   # Type `mix help deps` for examples and options
   defp deps do
-    [{:phoenix, "~> 0.15"},
+    [{:phoenix, "~> 0.16.1"},
      {:phoenix_ecto, "~> 0.8"},
      {:postgrex, ">= 0.0.0"},
-     {:phoenix_html, "~> 2.0", [optional: true, hex: :phoenix_html]},
+     {:phoenix_html, "~> 2.0"},
      {:phoenix_live_reload, "~> 0.5", only: :dev},
      {:guardian, "~> 0.4.0"},
      {:cowboy, "~> 1.0"},

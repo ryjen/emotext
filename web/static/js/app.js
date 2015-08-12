@@ -1,4 +1,5 @@
-import {Socket} from "phoenix"
+import {Socket} from "deps/phoenix/web/static/js/phoenix"
+import "deps/phoenix_html/web/static/js/phoenix_html"
 
 class App {
 
@@ -10,8 +11,8 @@ class App {
 	let socket = new Socket("/socket")
 	socket.connect()
 
-	let guardianToken = jQuery('meta[name="guardian_token"]').attr('content');
-	let chan = socket.chan("rooms:lobby", {guardian_token: guardianToken})
+	let guardianToken = $('meta[name="guardian_token"]').attr('content');
+	let chan = socket.channel("rooms:lobby", {guardian_token: guardianToken})
 
 	let curTime = new Date().format("d/m/y h:i:s")
 
@@ -22,24 +23,44 @@ class App {
 	  }
 	})
 
+	var appendMessage = function(x) {
+
+  		var str = messagesContainer.html();
+
+  		var lines = str.split("\n")
+
+  		if (lines.length > 500) {
+  			lines.shift()
+  		}
+
+  		lines.push(x);
+
+	  	messagesContainer.html(lines.join("\n"))
+
+	  	var height = messagesContainer[0].scrollHeight;
+
+  		messagesContainer.scrollTop(height);
+
+	}
+
 	chan.on("self_msg", payload => {
-	  messagesContainer.append(`[${curTime}] You say: ${payload.body}\n`)
+	  appendMessage(`[${curTime}] You say: ${payload.body}`)
 	})
 
 	chan.on("new_msg", payload => {
-		messagesContainer.append(`[${curTime}] ${payload.username} says: ${payload.body}\n`)
+		appendMessage(`[${curTime}] ${payload.username} says: ${payload.body}`)
 	});
 
 	chan.on("new_action", payload => {
-		messagesContainer.append(`[${curTime}] ${payload.action}\n`)
+		appendMessage(`[${curTime}] ${payload.action}`)
 	})
 
 	chan.on("sys_msg", payload => {
-		messagesContainer.append(`${payload.body}\n`);
+		appendMessage(`${payload.body}`);
 	})
 
 	chan.join().receive("ok", chan => {
-		messagesContainer.append(`Welcome to emotext! Type '/?' for a list of commands\n`)
+		appendMessage(`Welcome to emotext! Type '/?' for a list of commands.`)
 	})
   }
 }

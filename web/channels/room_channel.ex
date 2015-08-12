@@ -29,17 +29,20 @@ defmodule Emotext.RoomChannel do
         str = String.replace(str, "$s", "her");
         str = String.replace(str, "$m", "her");
     end
+    str
   end
 
   def action_str(str, user) do
     str = String.replace(str, "$n", user.username);
     str = action_gender(str, user)
+    str
   end
 
   def action_str(str, user, vict) do
     str = action_str(str, user)
     str = String.replace(str, "$N", vict.username);
     str = action_gender(str, vict)
+    str
   end
 
   def sys_msg(socket, msg) do

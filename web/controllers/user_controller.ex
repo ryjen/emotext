@@ -28,7 +28,7 @@ defmodule Emotext.UserController do
       conn
       |> put_flash(:info, "User created successfully.")
       |> Guardian.Plug.sign_in(user, :token, perms: %{ default: Guardian.Permissions.max })
-      |> redirect(to: user_path(conn, :index))
+      |> redirect(to: "/")
     else
       render(conn, "new.html", changeset: changeset)
     end
@@ -54,7 +54,7 @@ defmodule Emotext.UserController do
 
       conn
       |> put_flash(:info, "User updated successfully.")
-      |> redirect(to: user_path(conn, :index))
+      |> redirect(to: user_path(conn, :show, user))
     else
       render(conn, "edit.html", user: user, changeset: changeset)
     end
@@ -66,12 +66,12 @@ defmodule Emotext.UserController do
 
     conn
     |> put_flash(:info, "User deleted successfully.")
-    |> redirect(to: user_path(conn, :index))
+    |> redirect(to: "/")
   end
 
   def forbidden(conn, _) do
     conn
     |> put_flash(:error, "Forbidden")
-    |> redirect(to: user_path(conn, :index))
+    |> redirect(to: "/")
   end
 end

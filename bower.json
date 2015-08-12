@@ -1,0 +1,36 @@
+{
+  "name": "emotext",
+  "version": "0.0.1",
+  "authors": [
+    "Ryan Jennings <c0der78@gmail.com>"
+  ],
+  "description": "an emotional chat app",
+  "keywords": [
+    "chat",
+    "emoticon",
+    "emoji",
+    "text",
+    "texting",
+    "social"
+  ],
+  "license": "MIT",
+  "homepage": "http://emotext.arg3.com",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.5"
+  },
+  "overrides": {
+    "bootstrap": {
+      "main": [
+        "dist/css/bootstrap.css",
+        "dist/js/bootstrap.js"
+      ]
+    }
+  }
+}

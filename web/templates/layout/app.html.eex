@@ -13,6 +13,7 @@
 
     <title>Emotext</title>
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
   </head>
 
   <body>
@@ -20,8 +21,8 @@
       <div class="header">
         <ul class="nav nav-pills pull-right">
           <%= if Guardian.Plug.current_resource(@conn) do %>
-            <li><%= Guardian.Plug.current_resource(@conn).username %></li>
-            <li><%= link("Logout", to: logout_path(@conn, :delete), method: :delete) %></li>
+            <li><%= link(Guardian.Plug.current_resource(@conn).username, to: user_path(@conn, :edit, Guardian.Plug.current_resource(@conn))) %></li>
+            <li><%= link("Logout", to: logout_path(@conn, :delete)) %></li>
           <% else %>
             <li><%= link("Signup", to: user_path(@conn, :new)) %></li>
             <li><%= link("Login", to: login_path(@conn, :create)) %></li>
@@ -30,22 +31,38 @@
         <span class="logo">
         <a href="/">
           <span class="icon">ツ</span> 
-          <span class="title">Emotext</span> 
-          <span class="subtitle">Emote: [ih-moht] verb. To show or pretend emotion.</span>
+          <span class="title">emotext</span> 
+          <span class="subtitle"><u>emote</u>: verb. To show or pretend emotion.</span>
           </a>
         </span>
       </div>
 
-      <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
-      <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+      <% if (flash = get_flash(@conn, :info)) != nil do %>
+      <div class="alert alert-info alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <%= flash %>
+      </div>
+      <% end %>
+
+      <% if (flash = get_flash(@conn, :warn)) != nil do %>
+      <div class="alert alert-warning alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <%= flash %>
+      </div>
+      <% end %>
+
+      <% if (flash = get_flash(@conn, :error)) != nil do %>
+      <div class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <%= flash %>
+      </div>
+      <% end %>
 
       <%= @inner %>
 
     </div> <!-- /container -->
 
-    <script src='https://code.jquery.com/jquery-2.1.4.min.js'></script>
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
-    <script>require("web/static/js/app")</script>
 
   </body>
 </html>

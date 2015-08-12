@@ -7,7 +7,7 @@ use Mix.Config
 # watchers to your application. For example, we use it
 # with brunch.io to recompile .js and .css sources.
 config :emotext, Emotext.Endpoint,
-  http: [port: 4000],
+  http: [port: 1337],
   debug_errors: true,
   code_reloader: true,
   cache_static_lookup: false,
@@ -17,7 +17,7 @@ config :emotext, Emotext.Endpoint,
 config :emotext, Emotext.Endpoint,
   live_reload: [
     patterns: [
-      ~r{priv/static/.*(js|css|scss|png|jpeg|jpg|gif)$},
+      ~r{priv/static/.*(js|css|png|jpeg|jpg|gif)$},
       ~r{web/views/.*(ex)$},
       ~r{web/templates/.*(eex)$}
     ]
@@ -32,4 +32,4 @@ config :emotext, Emotext.Repo,
   username: "postgres",
   password: "postgres",
   database: "emotext_dev",
-  size: 10 # The amount of database connections in the pool
+  pool_size: 10 # The amount of database connections in the pool
