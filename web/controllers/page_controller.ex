@@ -8,7 +8,7 @@ defmodule Emotext.PageController do
   plug Guardian.Plug.EnsureSession, %{ on_failure: { SessionController, :new } } when not action in [:new, :create]
   	
   def index(conn, _params) do
-    render(conn, "index.html")
+    render(conn, "index.html", current_user: Guardian.Plug.current_resource(conn))
   end
 
   def import(conn, _params) do

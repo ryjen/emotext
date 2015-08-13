@@ -6,7 +6,8 @@ class App {
   static init() {
     let chatInput         = $("#chat-input")
 	let messagesContainer = $("#messages")
-	let chatUser		  = $("#chat-user")
+	let chatUsers		  = $("#chat-users")
+	let chatRoom		  = $("#chat-room")
 
 	let socket = new Socket("/socket")
 	socket.connect()
@@ -18,7 +19,7 @@ class App {
 
 	chatInput.on("keypress", event => {
 	  if(event.keyCode === 13){
-	    chan.push("new_msg", {body: chatInput.val(), user_id: chatUser.val() })
+	    chan.push("msg:input", { body: chatInput.val() })
 	    chatInput.val("")
 	  }
 	})
@@ -43,24 +44,33 @@ class App {
 
 	}
 
-	chan.on("self_msg", payload => {
+	chan.on("msg:self", payload => {
 	  appendMessage(`[${curTime}] You say: ${payload.body}`)
 	})
 
-	chan.on("new_msg", payload => {
+	chan.on("msg:new", payload => {
 		appendMessage(`[${curTime}] ${payload.username} says: ${payload.body}`)
 	});
 
-	chan.on("new_action", payload => {
+	chan.on("msg:action", payload => {
 		appendMessage(`[${curTime}] ${payload.action}`)
 	})
 
-	chan.on("sys_msg", payload => {
+	chan.on("msg:sys", payload => {
 		appendMessage(`${payload.body}`);
 	})
 
-	chan.join().receive("ok", chan => {
+	chan.on("info:user", payload => {
+		if ($("#" + payload.username).length) {
+			return;
+		}
+		chatUsers.children("ul").append($("<li id=\"" + payload.username + "\">" + payload.username + "</li>"))
+		chatRoom.html(payload.room)
+	})
+
+	chan.join().receive("ok", channel => {
 		appendMessage(`Welcome to emotext! Type '/?' for a list of commands.`)
+		chan.push("info:ping" )
 	})
   }
 }

@@ -1,3 +1,20 @@
-<div id="messages" class="well"></div>
+<div class="row">
 
-<input id="chat-input" type="text" />
+<div class="col-md-2">
+	<div id="chat-users" class="well">
+		<div id="chat-room"></div>
+		<hr>
+		<ul >
+			<li id="<%= @current_user.username %>"><%= @current_user.username %></li>
+		</ul>
+	</div>
+</div>
+
+<div class="col-md-10">
+	<div id="messages" class="well"></div>
+
+	<input id="chat-input" type="text" />
+</div>
+
+</div>
+

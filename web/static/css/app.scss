@@ -59,7 +59,7 @@ div[role="main"] > div.header > ul.nav {
 /* Customize container */
 @media (min-width: 768px) {
   .container {
-    max-width: 730px;
+    max-width: 768px;
   }
 }
 .container-narrow > hr {
@@ -105,4 +105,21 @@ div[role="main"] > div.header > ul.nav {
 	height: 400px;
 	white-space: pre-wrap;
 	overflow-y:auto;
+}
+
+#chat-users {
+  height: 448px;
+  overflow-y:auto;
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
+  hr {
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+  #chat-room {
+    font-weight: bold;
+  }
 }
