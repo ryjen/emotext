@@ -65,6 +65,9 @@ class App {
 			return;
 		}
 		chatUsers.children("ul").append($("<li id=\"" + payload.username + "\">" + payload.username + "</li>"))
+	})
+
+	chan.on("info:room", payload => {
 		chatRoom.html(payload.room)
 	})
 

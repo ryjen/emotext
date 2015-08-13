@@ -78,7 +78,8 @@ defmodule Emotext.RoomChannel do
   end
 
   def handle_in("info:ping", %{}, socket) do
-    broadcast! socket, "info:pong", %{ user: get_user(socket).id, room: String.slice(socket.topic, 6, String.length(socket.topic)) }
+    broadcast! socket, "info:pong", %{ user: get_user(socket).id }
+    push socket, "info:room", %{room: String.slice(socket.topic, 6, String.length(socket.topic))}
     {:noreply, socket}
   end
 
@@ -128,7 +129,7 @@ defmodule Emotext.RoomChannel do
 
   def handle_out("info:pong", msg, socket) do
     user = Repo.get(User, msg.user)
-    push socket, "info:user", %{ username: user.username, room: msg.room }
+    push socket, "info:user", %{ username: user.username }
     {:noreply, socket}
   end
 
