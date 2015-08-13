@@ -100,7 +100,7 @@ defmodule Emotext.RoomChannel do
           action = Repo.one(ActionQuery.by_name(command))
           cond do
             action == nil ->
-              sys_msg socket, "No such command."
+              sys_msg socket, "Huh? I don't understand."
             Enum.count(parts) == 1 ->
               action_user socket, action.self_no_arg, user
               action_others socket, action.others_no_arg, user

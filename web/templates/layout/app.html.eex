@@ -11,7 +11,7 @@
       <meta name='guardian_token' content="<%= Guardian.Plug.current_token(@conn) %>">
     <% end %>
 
-    <title>Emotext</title>
+    <title>emotext</title>
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
     <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
   </head>
@@ -20,13 +20,13 @@
     <div class="container" role="main">
       <div class="header">
         <ul class="nav nav-pills pull-right">
-          <li><%= link("Help", to: "/help") %></li>
+          <li><%= link("help", to: "/help") %></li>
           <%= if Guardian.Plug.current_resource(@conn) do %>
             <li><%= link(Guardian.Plug.current_resource(@conn).username, to: user_path(@conn, :edit, Guardian.Plug.current_resource(@conn))) %></li>
-            <li><%= link("Logout", to: logout_path(@conn, :delete)) %></li>
+            <li><%= link("logout", to: logout_path(@conn, :delete)) %></li>
           <% else %>
-            <li><%= link("Signup", to: user_path(@conn, :new)) %></li>
-            <li><%= link("Login", to: login_path(@conn, :create)) %></li>
+            <li><%= link("signup", to: user_path(@conn, :new)) %></li>
+            <li><%= link("login", to: login_path(@conn, :create)) %></li>
           <% end %>
         </ul>
         <span class="logo">

@@ -69,7 +69,7 @@ class App {
 	})
 
 	chan.join().receive("ok", channel => {
-		appendMessage(`Welcome to emotext! Type '/?' for a list of commands.`)
+		appendMessage(`Welcome to emotext! Type '/?' for a list of actions.`)
 		chan.push("info:ping" )
 	})
   }
