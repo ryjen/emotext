@@ -38,7 +38,7 @@ defmodule Emotext.RoomChannel do
   def action_str(str, user, vict) do
     str = action_str(str, user)
     if (str != nil) do
-      str = String.replace(str, "$N", vict.username);
+        str = String.replace(str, "$N", vict.username);
       cond do
         true ->
           str = String.replace(str, "$S", "its");
@@ -115,7 +115,7 @@ defmodule Emotext.RoomChannel do
               if vict != nil do
                   if vict.id == user.id do
                       action_user socket, action.self_auto, user
-                      action_others socket, "action:others", action.others_auto, user
+                      action_others socket, action.others_auto, user
                   else
                       action_user socket, action.self_found, user, vict
                       action_vict socket, action.vict_found, user, vict
