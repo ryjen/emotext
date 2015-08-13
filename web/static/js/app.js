@@ -26,8 +26,11 @@ class App {
     })
 
 	$("#enter-addon").click(function() {
-		chan.push("msg:input", { body: chatInput.val() })
-		chatInput.val("")
+		var data = chatInput.val().trim()
+		if (data.length) {
+			chan.push("msg:input", { body: data })
+			chatInput.val("")
+		}
 	})
 
 	$("div[data-input-action]").click(function() {
