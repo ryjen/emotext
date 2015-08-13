@@ -1,12 +1,14 @@
-@font-face {
-  font-family: 'Roboto Slab';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Roboto Slab Regular'), local('RobotoSlab-Regular'), url(https://fonts.gstatic.com/s/robotoslab/v6/y7lebkjgREBJK96VQi37ZrrIa-7acMAeDBVuclsi6Gc.woff) format('woff');
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,200,200italic,400italic,700italic);
+
+@import url(https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700,200);
+
+html, body, .container {
+  height: 100%;
 }
 
 body {
-  font-family: 'Roboto Slab', serif;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 16px;
 }
 
 /* Space out content a bit */
@@ -64,9 +66,7 @@ div[role="main"] > div.header > ul.nav {
 
 /* Customize container */
 @media (min-width: 768px) {
-  .container {
-    max-width: 768px;
-  }
+
 }
 .container-narrow > hr {
   margin: 30px 0;
@@ -105,16 +105,24 @@ div[role="main"] > div.header > ul.nav {
 	width: 100%;
 }
 
+#chat-window {
+  height: 450px;
+}
+
+#chat-window > div {
+    height: 100%;
+}
+
 #messages {
 	text-align: left;
-	font-family: monospace;
-	height: 400px;
+  font-family: 'Source Code Pro', monospace;
+	height: 100%;
 	white-space: pre-wrap;
 	overflow-y:auto;
 }
 
 #chat-users {
-  height: 448px;
+  height: 100%;
   overflow-y:auto;
   ul {
     margin: 0;
@@ -127,5 +135,18 @@ div[role="main"] > div.header > ul.nav {
   }
   #chat-room {
     font-weight: bold;
+  }
+}
+
+div[data-input-action], li[data-input-user] {
+  cursor: pointer;
+}
+
+#chat-actions {
+  height: 100%;
+  overflow-y:auto;
+  hr {
+    margin-top: 5px;
+    margin-bottom: 5px;
   }
 }

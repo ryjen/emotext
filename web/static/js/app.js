@@ -15,13 +15,25 @@ class App {
 	let guardianToken = $('meta[name="guardian_token"]').attr('content');
 	let chan = socket.channel("rooms:lobby", {guardian_token: guardianToken})
 
-	let curTime = new Date().format("d/m/y h:i:s")
-
 	chatInput.on("keypress", event => {
 	  if(event.keyCode === 13){
 	    chan.push("msg:input", { body: chatInput.val() })
 	    chatInput.val("")
 	  }
+	})
+
+	$("#enter-addon").click(function() {
+		chan.push("msg:input", { body: chatInput.val() })
+		chatInput.val("")
+	})
+
+	$("div[data-input-action]").click(function() {
+		chatInput.val("/" + $(this).text() + " ")
+	})
+
+	$("li[data-input-user]").click(function() {
+		var data = chatInput.val()
+		chatInput.val(data + " " + $(this).text())
 	})
 
 	var appendMessage = function(x) {
@@ -45,15 +57,15 @@ class App {
 	}
 
 	chan.on("msg:self", payload => {
-	  appendMessage(`[${curTime}] You say: ${payload.body}`)
+	  appendMessage(`You say: ${payload.body}`)
 	})
 
 	chan.on("msg:new", payload => {
-		appendMessage(`[${curTime}] ${payload.username} says: ${payload.body}`)
+		appendMessage(`${payload.username} says: ${payload.body}`)
 	});
 
 	chan.on("msg:action", payload => {
-		appendMessage(`[${curTime}] ${payload.action}`)
+		appendMessage(`${payload.action}`)
 	})
 
 	chan.on("msg:sys", payload => {
@@ -64,7 +76,7 @@ class App {
 		if ($("#" + payload.username).length) {
 			return;
 		}
-		chatUsers.children("ul").append($("<li id=\"" + payload.username + "\">" + payload.username + "</li>"))
+		chatUsers.children("ul").append($("<li id=\"" + payload.username + "\" data-input-user=\"" + payload.user + "\">" + payload.username + "</li>"))
 	})
 
 	chan.on("info:room", payload => {
@@ -72,7 +84,7 @@ class App {
 	})
 
 	chan.join().receive("ok", channel => {
-		appendMessage(`Welcome to emotext! Type '/?' for a list of actions.`)
+		appendMessage(`Welcome to <a href="/help">emotext</a>!`)
 		chan.push("info:ping" )
 	})
   }

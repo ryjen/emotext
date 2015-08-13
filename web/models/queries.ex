@@ -24,4 +24,8 @@ defmodule Emotext.ActionQuery do
     from a in Action, where: a.name == ^name
   end
 
+  def sorted() do
+    from a in Action, order_by: a.name
+  end
+
 end

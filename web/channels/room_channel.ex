@@ -19,6 +19,9 @@ defmodule Emotext.RoomChannel do
   end
 
   def action_str(str, user) do
+    if user == nil do
+        raise ArgumentException, message: "no user parameter"
+    end
     str = String.replace(str, "$n", user.username);
    cond do
       true ->
@@ -33,8 +36,8 @@ defmodule Emotext.RoomChannel do
     end
   end
 
-  def action_str(str, socket, vict) do
-    str = action_str(str, socket)
+  def action_str(str, user, vict) do
+    str = action_str(str, user)
     str = String.replace(str, "$N", vict.username);
     cond do
       true ->
@@ -117,7 +120,7 @@ defmodule Emotext.RoomChannel do
                       action_others socket, action.others_found, user, vict
                   end
               else
-                  sys_msg socket, action_str(action.self_not_found, socket)
+                  sys_msg socket, action_str(action.self_not_found, user)
               end
             end
         end

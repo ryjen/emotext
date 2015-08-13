@@ -1,19 +1,31 @@
-<div class="row">
+<div id="chat-window" class="row">
 
 <div class="col-md-2">
 	<div id="chat-users" class="well">
 		<div id="chat-room"></div>
 		<hr>
 		<ul >
-			<li id="<%= @current_user.username %>"><%= @current_user.username %></li>
+			<li id="<%= @current_user.username %>" data-input-user="<%= @current_user.id %>"><%= @current_user.username %></li>
 		</ul>
 	</div>
 </div>
 
-<div class="col-md-10">
+<div class="col-md-8">
 	<div id="messages" class="well"></div>
+	<div class="input-group">
+		<input id="chat-input" type="text" class="form-control" placeholder="Enter a message or an action" aria-describedby="enter-addon" />
+  		<span class="input-group-addon" id="enter-addon">⏎</span>
+	</div>
+</div>
 
-	<input id="chat-input" type="text" />
+<div class="col-md-2">
+	<div id="chat-actions" class="well">
+	<strong>actions</strong>
+	<hr>
+	<%= for action <- @actions do %>
+		<div data-input-action="<%= action.id %>"><%= action.name %></div>
+	<% end %>
+	</div>
 </div>
 
 </div>
