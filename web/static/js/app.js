@@ -15,12 +15,15 @@ class App {
 	let guardianToken = $('meta[name="guardian_token"]').attr('content');
 	let chan = socket.channel("rooms:lobby", {guardian_token: guardianToken})
 
-	chatInput.on("keypress", event => {
-	  if(event.keyCode === 13){
-	    chan.push("msg:input", { body: chatInput.val() })
-	    chatInput.val("")
-	  }
-	})
+ 	$(document).keydown(function(event){
+        if(event.keyCode == 13){  
+        	var data = chatInput.val()
+        	if (data.length) {
+		    	chan.push("msg:input", { body: data })
+		    	chatInput.val("")
+	    	}
+        }
+    })
 
 	$("#enter-addon").click(function() {
 		chan.push("msg:input", { body: chatInput.val() })
