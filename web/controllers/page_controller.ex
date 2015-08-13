@@ -23,7 +23,7 @@ defmodule Emotext.PageController do
     #     total_pages: paginator.total_pages
 
     render conn, :index, current_user: Guardian.Plug.current_resource(conn),
-          actions: Repo.all(Action)
+          actions: Repo.all(ActionQuery.sorted())
   end
 
   def import(conn, _params) do

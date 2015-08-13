@@ -20,3 +20,4 @@ TODO
 - aliases for standard emoticons/emojis
 	- :) = /smile
 	- <3 = /love
+- i18n

@@ -58,39 +58,43 @@ defmodule Emotext.RoomChannel do
   end
 
   def sys_msg(socket, msg) do
-    push socket, "msg:sys", %{ body: msg, user: get_user(socket).id }
+    if msg do
+      push socket, "msg:sys", %{ body: msg, user: get_user(socket).id }
+    end
   end
 
   def action_user(socket, msg, user) do
-    broadcast! socket, "action:user", %{action: action_str(msg, user), user: user.id}
+    if msg do
+      broadcast! socket, "action:user", %{action: action_str(msg, user), user: user.id}
+    end
   end
 
   def action_user(socket, msg, user, vict) do
-    broadcast! socket, "action:user", %{action: action_str(msg, user, vict), user: user.id, ignore: [vict.id]}
+    if msg do
+      broadcast! socket, "action:user", %{action: action_str(msg, user, vict), user: user.id, ignore: [vict.id]}
+    end
   end
 
   def action_vict(socket, msg, user, vict) do
-    broadcast! socket, "action:user", %{action: action_str(msg, user, vict), user: vict.id, ignore: [user.id]}
+    if msg do
+      broadcast! socket, "action:user", %{action: action_str(msg, user, vict), user: vict.id, ignore: [user.id]}
+    end
   end
 
   def action_others(socket, msg, user, vict) do
-    broadcast! socket, "action:others", %{action: action_str(msg, user, vict), ignore: [user.id, vict.id] }
+    if msg do
+      broadcast! socket, "action:others", %{action: action_str(msg, user, vict), ignore: [user.id, vict.id] }
+    end
   end
 
   def action_others(socket, msg, user) do
-    broadcast! socket, "action:others", %{action: action_str(msg, user), ignore: [user.id] }
+    if msg do
+      broadcast! socket, "action:others", %{action: action_str(msg, user), ignore: [user.id] }
+    end
   end
 
-  def handle_in("info:ping", %{}, socket) do
-    broadcast! socket, "info:pong", %{ user: get_user(socket).id }
-    push socket, "info:room", %{room: String.slice(socket.topic, 6, String.length(socket.topic))}
-    {:noreply, socket}
-  end
-
-  def handle_in("msg:input", %{"body" => body}, socket) do
-    user = get_user(socket)
-  	if String.at(body, 0) == "/" do
-        if body == "/?" do
+  def handle_command(socket, body, user) do
+    if body == "/?" do
           actions = Repo.all(Action)
           Enum.each(Enum.chunk(actions, 5), fn(a) ->
             sys_msg socket, Enum.reduce(a, "", fn(x, acc) -> 
@@ -129,6 +133,18 @@ defmodule Emotext.RoomChannel do
               end
             end
         end
+  end
+
+  def handle_in("info:ping", %{}, socket) do
+    broadcast! socket, "info:pong", %{ user: get_user(socket).id }
+    push socket, "info:room", %{room: String.slice(socket.topic, 6, String.length(socket.topic))}
+    {:noreply, socket}
+  end
+
+  def handle_in("msg:input", %{"body" => body}, socket) do
+    user = get_user(socket)
+  	if String.at(body, 0) == "/" do
+        handle_command(socket, body, user)
     else
         broadcast! socket, "msg:output", %{body: body, user: user.id, username: user.username }
     end

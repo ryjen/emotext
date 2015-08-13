@@ -9,12 +9,12 @@
 
 <h3><a name="about">About</a></h3>
 
-<p>Emotext is a chat app that uses commands for textual representation of feelings or emotions.  It is build on a high performance erlang/elixir/phoenix/postgres stack.</p>
+<p>Emotext is a chat app that uses commands for textual representation of feelings or emotions.  Built on a high performance erlang/elixir/phoenix/postgres stack.</p>
 
 
 <h3><a name="commands">Actions</a></h3>
 
-<p>Actions can be entered using a slash character (<b>/</b>).  So to perform a smile action, you would type <b>/smile</b>.  For a full list of actions you would type <b>/?</b>.</p>
+<p>Actions can be entered using a slash character (<b>/</b>).  So to perform a smile action, you would type <b>/smile</b>.  For a full list of actions you can type <b>/?</b></p>
 
 <p>Actions can be used with other people in the app.  For example if you want to smile at a user named 'Fred' you would type <b>/smile fred</b>.</p>
 
@@ -25,4 +25,6 @@
 		<li>Anyone else in the app would see <b>Bob smiles happily at Fred.</b></li>
 	</ul>
 </p>
+
+<p>You can also click to performan an action (and optionally a user name) in the sidebars.</p>
 
