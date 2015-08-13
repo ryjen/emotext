@@ -14,7 +14,7 @@ sub print_line {
 	$line =~ s/'/''/g;
 	$line =~ s/"/\\"/g;
 
-	if ($line eq "$$") {
+	if ($line =~ /^\s*\$\s*$/) {
 		print $ofh ", NULL";
 	} else {
 		print $ofh ", '$line'";
@@ -43,7 +43,7 @@ sub main
 
 	open(my $ofh, ">", $ARGV[1] || "socials2sql.out") or die "cannot open > $ARGV[1]: $!";
 
-	print $ofh "INSERT INTO actions(name, self_no_arg, others_no_arg, self_vict_found, others_vict_found, vict_found, vict_not_found, self_auto, others_auto, inserted_at, updated_at) VALUES\n";
+	print $ofh "INSERT INTO actions(name, self_no_arg, others_no_arg, self_found, others_found, vict_found, vict_not_found, self_auto, others_auto, inserted_at, updated_at) VALUES\n";
 
 	while($line = <$fh>) {
 

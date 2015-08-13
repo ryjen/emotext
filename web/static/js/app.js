@@ -17,7 +17,7 @@ class App {
 
  	$(document).keydown(function(event){
         if(event.keyCode == 13){  
-        	var data = chatInput.val()
+        	var data = chatInput.val().trim()
         	if (data.length) {
 		    	chan.push("msg:input", { body: data })
 		    	chatInput.val("")

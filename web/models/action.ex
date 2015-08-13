@@ -20,6 +20,11 @@ defmodule Emotext.Action do
     |> cast(params, ~w(:name, :self_no_arg, :others_no_arg, :self_found, :others_found, :vict_found, :self_not_found, :self_auto, :others_auto))
   end
 
+  def order_by_name(query) do
+    from a in query,
+    order_by: [asc: a.name]
+  end
+
   @required_fields ~w(name self_no_arg others_no_arg self_found others_found vict_found self_not_found self_auto others_auto)
   @optional_fields ~w()
 

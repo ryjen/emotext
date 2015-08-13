@@ -19,36 +19,37 @@ defmodule Emotext.RoomChannel do
   end
 
   def action_str(str, user) do
-    if user == nil do
-        raise ArgumentException, message: "no user parameter"
-    end
-    str = String.replace(str, "$n", user.username);
-   cond do
-      true ->
-        str = String.replace(str, "$s", "its");
-        str = String.replace(str, "$m", "it");
-      user.gender == :male ->
-        str = String.replace(str, "$s", "his");
-        str = String.replace(str, "$m", "him");
-      user.gender == :female ->
-        str = String.replace(str, "$s", "her");
-        str = String.replace(str, "$m", "her");
+    if (str != nil) do
+      str = String.replace(str, "$n", user.username);
+     cond do
+        true ->
+          str = String.replace(str, "$s", "its");
+          str = String.replace(str, "$m", "it");
+        user.gender == :male ->
+          str = String.replace(str, "$s", "his");
+          str = String.replace(str, "$m", "him");
+        user.gender == :female ->
+          str = String.replace(str, "$s", "her");
+          str = String.replace(str, "$m", "her");
+      end
     end
   end
 
   def action_str(str, user, vict) do
     str = action_str(str, user)
-    str = String.replace(str, "$N", vict.username);
-    cond do
-      true ->
-        str = String.replace(str, "$S", "its");
-        str = String.replace(str, "$M", "it");
-      vict.gender == :male ->
-        str = String.replace(str, "$S", "his");
-        str = String.replace(str, "$M", "him");
-      vict.gender == :female ->
-        str = String.replace(str, "$S", "her");
-        str = String.replace(str, "$M", "her");
+    if (str != nil) do
+      str = String.replace(str, "$N", vict.username);
+      cond do
+        true ->
+          str = String.replace(str, "$S", "its");
+          str = String.replace(str, "$M", "it");
+        vict.gender == :male ->
+          str = String.replace(str, "$S", "his");
+          str = String.replace(str, "$M", "him");
+        vict.gender == :female ->
+          str = String.replace(str, "$S", "her");
+          str = String.replace(str, "$M", "her");
+      end
     end
   end
 
@@ -98,7 +99,7 @@ defmodule Emotext.RoomChannel do
           end)
           sys_msg socket, "\nExample: <b>/smile</b> will issue: <i>#{user.username} smiles happily.</i>"
         else
-          parts = String.split(body, ~r{\s});
+          parts = String.split(body, ~r{\s+});
           command = Enum.at(parts, 0);
           command = String.slice(command, 1, String.length(command))
           action = Repo.one(ActionQuery.by_name(command))
@@ -109,7 +110,8 @@ defmodule Emotext.RoomChannel do
               action_user socket, action.self_no_arg, user
               action_others socket, action.others_no_arg, user
             true ->
-              vict = Repo.one(UserQuery.by_username(Enum.at(parts, 1)))
+              vict_name = Enum.at(parts, 1)
+              vict = Repo.one(UserQuery.by_username(vict_name))
               if vict != nil do
                   if vict.id == user.id do
                       action_user socket, action.self_auto, user
@@ -119,8 +121,11 @@ defmodule Emotext.RoomChannel do
                       action_vict socket, action.vict_found, user, vict
                       action_others socket, action.others_found, user, vict
                   end
-              else
+              else if action.self_not_found do
                   sys_msg socket, action_str(action.self_not_found, user)
+                else
+                  IO.puts("Wierd input #{vict_name}")
+                end
               end
             end
         end
