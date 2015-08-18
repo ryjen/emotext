@@ -121,7 +121,7 @@ class App {
 		if ($("#" + payload.username).length) {
 			return;
 		}
-		chatUsers.children("ul").append($("<li id=\"" + payload.username + "\" data-input-user=\"" + payload.user + "\">" + payload.username + "</li>"))
+		chatUsers.children("ul").append($("<li id=\"" + payload.username + "\" data-input-user=\"" + payload.username + "\">" + payload.username + "</li>"))
 	})
 
 	chan.on("info:room", payload => {
