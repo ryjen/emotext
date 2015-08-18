@@ -4,10 +4,10 @@ import "deps/phoenix_html/web/static/js/phoenix_html"
 class App {
 
   static init() {
-    let chatInput         = $("#chat-input")
-	let messagesContainer = $("#messages")
-	let chatUsers		  = $("#chat-users")
-	let chatRoom		  = $("#chat-room")
+    let chatInput       = $("#chat-input")
+	let messages 		= $("#messages")
+	let chatUsers		= $("#chat-users")
+	let chatActions		= $("#chat-actions")
 
 	let socket = new Socket("/socket")
 	socket.connect()
@@ -33,6 +33,12 @@ class App {
 		}
 	})
 
+	$('#chat-window').resizable({
+		handles: {
+			"se": '#segrip'
+		}
+	});
+
 	$("div[data-input-action]").click(function() {
 		chatInput.val("/" + $(this).text() + " ")
 	})
@@ -42,9 +48,42 @@ class App {
 		chatInput.val(data + " " + $(this).text())
 	})
 
+	var collapser = function(a, b, c) {
+		a.click(function(){
+			a.text() == "⇥" ? a.text("⇤") : a.text("⇥")
+		    if(b.hasClass('open'))	
+		    {
+		    	b.parent().switchClass('col-md-2', 'col-md-1', 300)
+		        a.addClass(b == chatUsers ? "blue-well" : "orange-well", 300)
+		        b.switchClass('open', 'hidden', 300)
+		        if (c.hasClass('open')) {
+		        	messages.parent().switchClass('col-md-8', 'col-md-9', 300)
+		    	} else {
+		    		messages.parent().switchClass('col-md-9', 'col-md-10', 300)
+		    	}
+		    }
+		    else
+		    {
+		        if (c.hasClass('open')) {
+		        	messages.parent().switchClass('col-md-9', 'col-md-8', 300)
+		   		} else {
+		   			messages.parent().switchClass('col-md-10', 'col-md-9', 300)
+		   		}
+
+		        b.switchClass('hidden', 'open', 300)
+		        b.parent().switchClass('col-md-1', 'col-md-2', 300)
+		    	a.removeClass(b == chatUsers ? "blue-well" : "orange-well", 300)
+		    }
+		})
+	}
+	
+	collapser($('#action-collapser'), chatActions, chatUsers)
+
+	collapser($('#users-collapser'), chatUsers, chatActions)
+
 	var appendMessage = function(x) {
 
-  		var str = messagesContainer.html();
+  		var str = messages.html();
 
   		var lines = str.split("\n")
 
@@ -54,11 +93,11 @@ class App {
 
   		lines.push(x);
 
-	  	messagesContainer.html(lines.join("\n"))
+	  	messages.html(lines.join("\n"))
 
-	  	var height = messagesContainer[0].scrollHeight;
+	  	var height = messages[0].scrollHeight;
 
-  		messagesContainer.scrollTop(height);
+  		messages.scrollTop(height);
 
 	}
 
@@ -86,7 +125,7 @@ class App {
 	})
 
 	chan.on("info:room", payload => {
-		chatRoom.html(payload.room)
+		$('#chat-room').html(payload.room)
 	})
 
 	chan.join().receive("ok", channel => {

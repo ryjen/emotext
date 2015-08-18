@@ -2,29 +2,29 @@
 <h2>Help</h2>
 
 <ol>
-	<li><a href="#about">About</a></li>
-	<li><a href="#actions">Actions</a></li>
+	<li><a href="#about">about</a></li>
+	<li><a href="#actions">emotes</a></li>
 </ol>
 
 
-<h3><a name="about">About</a></h3>
+<h3><a name="about">about</a></h3>
 
-<p>Emotext is a chat app that uses commands for textual representation of feelings or emotions.  Built on a high performance erlang/elixir/phoenix/postgres stack.</p>
+<p>emotext is a chat app that uses commands for textual representation of feelings or emotions.  It is built on a high performance erlang/elixir/phoenix/postgres stack.</p>
 
 
-<h3><a name="commands">Actions</a></h3>
+<h3><a name="commands">emotes</a></h3>
 
-<p>Actions can be entered using a slash character (<b>/</b>).  So to perform a smile action, you would type <b>/smile</b>.  For a full list of actions you can type <b>/?</b></p>
+<p>emotes can be entered using a slash character (<b>/</b>).  To emote a smile, you would type <b>/smile</b>.  
 
-<p>Actions can be used with other people in the app.  For example if you want to smile at a user named 'Fred' you would type <b>/smile fred</b>.</p>
+<p>emotes can be used with other people in the app.  For example if you want to smile at a user named 'Fred' you would type <b>/smile fred</b>.</p>
 
-<p>Assuming your username is 'Bob', the result would be: <br/>
+<p>assuming your username is 'Bob', the result would be: <br/>
 	<ul>
-		<li>You would see <b>You smile happily at Fred.</b></li>
-		<li>Fred would see <b>Bob smiles happily at you.</b></li>
-		<li>Anyone else in the app would see <b>Bob smiles happily at Fred.</b></li>
+		<li>you would see <b>You smile happily at Fred.</b></li>
+		<li>fred would see <b>Bob smiles happily at you.</b></li>
+		<li>anyone else in the app would see <b>Bob smiles happily at Fred.</b></li>
 	</ul>
 </p>
 
-<p>You can also click to performan an action (and optionally a user name) in the sidebars.</p>
+<p>you can also click to perform an emote in the sidebars.</p>
 

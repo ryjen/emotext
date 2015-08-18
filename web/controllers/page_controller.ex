@@ -8,8 +8,8 @@ defmodule Emotext.PageController do
 
   plug PlugRedirectHttps
 
-  plug Guardian.Plug.EnsureSession, %{ on_failure: { SessionController, :new } } when not action in [:new, :create]
-  	
+  plug Guardian.Plug.EnsureSession, %{ on_failure: { SessionController, :new } } when not action in [:help]
+
   def index(conn, _params) do
     # paginator = Action
     # |> Action.order_by_name
