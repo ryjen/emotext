@@ -57,39 +57,67 @@ defmodule Emotext.RoomChannel do
     Guardian.Channel.current_resource(socket)
   end
 
-  def sys_msg(socket, msg) do
+  def handle_invalid_action(socket, user) do
+    push socket, "msg:sys", %{ body: "I don't know how to do that.", user: user.id }
+  end
+
+  def sys_msg(socket, user, msg) do
     if msg do
-      push socket, "msg:sys", %{ body: msg, user: get_user(socket).id }
+      push socket, "msg:sys", %{ body: msg, user: user.id }
+      true
+    else
+      handle_invalid_action(socket, user)
+      false
     end
   end
 
   def action_user(socket, msg, user) do
     if msg do
       broadcast! socket, "action:user", %{action: action_str(msg, user), user: user.id}
+      true
+    else
+      handle_invalid_action(socket, user)
+      false
     end
   end
 
   def action_user(socket, msg, user, vict) do
     if msg do
       broadcast! socket, "action:user", %{action: action_str(msg, user, vict), user: user.id, ignore: [vict.id]}
+      true
+    else
+      handle_invalid_action(socket, user)
+      false
     end
   end
 
   def action_vict(socket, msg, user, vict) do
     if msg do
       broadcast! socket, "action:user", %{action: action_str(msg, user, vict), user: vict.id, ignore: [user.id]}
+      true
+    else
+      handle_invalid_action(socket, user)
+      false
     end
   end
 
   def action_others(socket, msg, user, vict) do
     if msg do
       broadcast! socket, "action:others", %{action: action_str(msg, user, vict), ignore: [user.id, vict.id] }
+      true
+    else
+      handle_invalid_action(socket, user)
+      false
     end
   end
 
   def action_others(socket, msg, user) do
     if msg do
       broadcast! socket, "action:others", %{action: action_str(msg, user), ignore: [user.id] }
+      true
+    else
+      handle_invalid_action(socket, user)
+      false
     end
   end
 
@@ -97,11 +125,11 @@ defmodule Emotext.RoomChannel do
     if body == "/?" do
           actions = Repo.all(Action)
           Enum.each(Enum.chunk(actions, 5), fn(a) ->
-            sys_msg socket, Enum.reduce(a, "", fn(x, acc) -> 
+            sys_msg socket, user, Enum.reduce(a, "", fn(x, acc) -> 
               acc <> String.ljust(x.name, 15)
             end)
           end)
-          sys_msg socket, "\nExample: <b>/smile</b> will issue: <i>#{user.username} smiles happily.</i>"
+          sys_msg socket, user, "\nExample: <b>/smile</b> will issue: <i>#{user.username} smiles happily.</i>"
         else
           parts = String.split(body, ~r{\s+});
           command = Enum.at(parts, 0);
@@ -109,24 +137,24 @@ defmodule Emotext.RoomChannel do
           action = Repo.one(ActionQuery.by_name(command))
           cond do
             action == nil ->
-              sys_msg socket, "Huh? I don't understand."
+              sys_msg socket, user, "Huh? I don't understand."
             Enum.count(parts) == 1 ->
-              action_user socket, action.self_no_arg, user
-              action_others socket, action.others_no_arg, user
+              action_user(socket, action.self_no_arg, user) and
+              action_others(socket, action.others_no_arg, user)
             true ->
               vict_name = Enum.at(parts, 1)
               vict = Repo.one(UserQuery.by_username(vict_name))
               if vict != nil do
                   if vict.id == user.id do
-                      action_user socket, action.self_auto, user
-                      action_others socket, action.others_auto, user
+                      action_user(socket, action.self_auto, user) and
+                      action_others(socket, action.others_auto, user)
                   else
-                      action_user socket, action.self_found, user, vict
-                      action_vict socket, action.vict_found, user, vict
-                      action_others socket, action.others_found, user, vict
+                      action_user(socket, action.self_found, user, vict) and
+                      action_vict(socket, action.vict_found, user, vict) and
+                      action_others(socket, action.others_found, user, vict)
                   end
               else if action.self_not_found do
-                  sys_msg socket, action_str(action.self_not_found, user)
+                  sys_msg socket, user, action_str(action.self_not_found, user)
                 else
                   IO.puts("Wierd input #{vict_name}")
                 end

@@ -12,7 +12,6 @@ sub print_line {
 	}
 
 	$line =~ s/'/''/g;
-	$line =~ s/"/\\"/g;
 
 	if ($line =~ /^\s*\$\s*$/) {
 		print $ofh ", NULL";

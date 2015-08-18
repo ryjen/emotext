@@ -39,13 +39,17 @@ class App {
 		}
 	});
 
-	$("div[data-input-action]").click(function() {
+	$('body').on('click', "div[data-input-action]", function() {
 		chatInput.val("/" + $(this).text() + " ")
 	})
 
-	$("li[data-input-user]").click(function() {
+	$('body').on('click', "li[data-input-user]", function() {
 		var data = chatInput.val()
-		chatInput.val(data + " " + $(this).text())
+		if (data) {
+			chatInput.val(data + " " + $(this).text())
+		} else {
+			chatInput.val($(this).text())
+		} 
 	})
 
 	var collapser = function(a, b, c) {
@@ -121,7 +125,7 @@ class App {
 		if ($("#" + payload.username).length) {
 			return;
 		}
-		chatUsers.children("ul").append($("<li id=\"" + payload.username + "\" data-input-user=\"" + payload.username + "\">" + payload.username + "</li>"))
+		chatUsers.children("ul").append($("<li id=\"" + payload.username + "\" data-input-user=\"" + payload.user + "\">" + payload.username + "</li>"))
 	})
 
 	chan.on("info:room", payload => {
