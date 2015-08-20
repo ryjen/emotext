@@ -96,7 +96,6 @@ defmodule Emotext.RoomChannel do
       broadcast! socket, "action:user", %{action: action_str(msg, user, vict), user: vict.id, ignore: [user.id]}
       true
     else
-      handle_invalid_action(socket, user)
       false
     end
   end
@@ -106,7 +105,6 @@ defmodule Emotext.RoomChannel do
       broadcast! socket, "action:others", %{action: action_str(msg, user, vict), ignore: [user.id, vict.id] }
       true
     else
-      handle_invalid_action(socket, user)
       false
     end
   end
@@ -116,7 +114,6 @@ defmodule Emotext.RoomChannel do
       broadcast! socket, "action:others", %{action: action_str(msg, user), ignore: [user.id] }
       true
     else
-      handle_invalid_action(socket, user)
       false
     end
   end
@@ -139,18 +136,18 @@ defmodule Emotext.RoomChannel do
             action == nil ->
               sys_msg socket, user, "Huh? I don't understand."
             Enum.count(parts) == 1 ->
-              action_user(socket, action.self_no_arg, user) and
+              action_user(socket, action.self_no_arg, user)
               action_others(socket, action.others_no_arg, user)
             true ->
               vict_name = Enum.at(parts, 1)
               vict = Repo.one(UserQuery.by_username(vict_name))
               if vict != nil do
                   if vict.id == user.id do
-                      action_user(socket, action.self_auto, user) and
+                      action_user(socket, action.self_auto, user)
                       action_others(socket, action.others_auto, user)
                   else
-                      action_user(socket, action.self_found, user, vict) and
-                      action_vict(socket, action.vict_found, user, vict) and
+                      action_user(socket, action.self_found, user, vict)
+                      action_vict(socket, action.vict_found, user, vict)
                       action_others(socket, action.others_found, user, vict)
                   end
               else if action.self_not_found do

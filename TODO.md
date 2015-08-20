@@ -20,3 +20,6 @@ TODO
 	- :) = /smile
 	- <3 = /love
 - i18n
+- preferences
+	- color scheme
+	- layout position

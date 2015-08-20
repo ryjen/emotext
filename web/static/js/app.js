@@ -33,11 +33,11 @@ class App {
 		}
 	})
 
-	$('#chat-window').resizable({
-		handles: {
-			"se": '#segrip'
-		}
-	});
+	// $('#chat-window').resizable({
+	// 	handles: {
+	// 		"se": '#segrip'
+	// 	}
+	// });
 
 	$('body').on('click', "div[data-input-action]", function() {
 		chatInput.val("/" + $(this).text() + " ")
@@ -52,38 +52,39 @@ class App {
 		} 
 	})
 
-	var collapser = function(a, b, c) {
-		a.click(function(){
-			a.text() == "⇥" ? a.text("⇤") : a.text("⇥")
+	var collapser = function(a, b, c, d) {
+		var f = function(){
 		    if(b.hasClass('open'))	
 		    {
-		    	b.parent().switchClass('col-md-2', 'col-md-1', 300)
-		        a.addClass(b == chatUsers ? "blue-well" : "orange-well", 300)
+		    	b.parent().switchClass('col-md-2', 'col-sidebar', 300)
+		    	d.switchClass('hidden', 'open', 300)
 		        b.switchClass('open', 'hidden', 300)
 		        if (c.hasClass('open')) {
-		        	messages.parent().switchClass('col-md-8', 'col-md-9', 300)
+		        	messages.parent().switchClass('col-md-8', 'col-fill-one', 300)
 		    	} else {
-		    		messages.parent().switchClass('col-md-9', 'col-md-10', 300)
+		    		messages.parent().switchClass('col-fill-one', 'col-fill', 300)
 		    	}
 		    }
 		    else
 		    {
 		        if (c.hasClass('open')) {
-		        	messages.parent().switchClass('col-md-9', 'col-md-8', 300)
+		        	messages.parent().switchClass('col-fill-one', 'col-md-8', 300)
 		   		} else {
-		   			messages.parent().switchClass('col-md-10', 'col-md-9', 300)
+		   			messages.parent().switchClass('col-fill', 'col-fill-one', 300)
 		   		}
 
 		        b.switchClass('hidden', 'open', 300)
-		        b.parent().switchClass('col-md-1', 'col-md-2', 300)
-		    	a.removeClass(b == chatUsers ? "blue-well" : "orange-well", 300)
+		        d.switchClass('open', 'hidden', 300)
+		        b.parent().switchClass('col-sidebar', 'col-md-2', 300)
 		    }
-		})
+		}
+		a.click(f)
+		d.click(f)
 	}
 	
-	collapser($('#action-collapser'), chatActions, chatUsers)
+	collapser($('.action-collapser'), chatActions, chatUsers, $('#action-bar'))
 
-	collapser($('#users-collapser'), chatUsers, chatActions)
+	collapser($('.users-collapser'), chatUsers, chatActions, $('#user-bar'))
 
 	var appendMessage = function(x) {
 
