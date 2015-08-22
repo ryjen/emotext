@@ -15,20 +15,6 @@ defmodule Emotext.ActionController do
     render(conn, "new.html", changeset: changeset)
   end
 
-  def import(conn, _params) do
-    render(conn, "import.html")
-  end
-
-  def import_file(conn, %{"import" => import}) do
-    stream = File.stream!(import["file"].path) 
-    |> Enum.chunk_by(fn(x) -> x == "\n" end )
-    |> Enum.each(fn(x) -> IO.inspect Action.create_changeset(%Action{}, Enum.zip(
-        [:name, :self_no_arg, :others_no_arg, :self_found, 
-        :others_found, :vict_found, :self_not_found, 
-        :self_auto, :others_auto], x))
-       end)
-  end
-
   def create(conn, %{"action" => action_params}) do
     changeset = Action.changeset(%Action{}, action_params)
 

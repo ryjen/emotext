@@ -358,3 +358,17 @@ div[data-input-action], li[data-input-user] {
       width: 78.333333%;
     }
 }
+
+.alias-table {
+  .title {
+    font-weight: bold;
+  }
+  td {
+    span {
+      margin-right: 10px;
+      margin-left: 10px;
+    }
+  }
+}
+
+

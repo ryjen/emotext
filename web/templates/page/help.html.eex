@@ -4,6 +4,7 @@
 <ol>
 	<li><a href="#about">about</a></li>
 	<li><a href="#actions">emotes</a></li>
+	<li><a href="#aliases">aliases</a></li>
 </ol>
 
 
@@ -27,4 +28,28 @@
 </p>
 
 <p>you can also click to perform an emote in the sidebars.</p>
+
+
+<h3><a name="aliases">aliases</a></h3>
+
+<p>The following aliases are supported for emoting:</p>
+
+<table class="alias-table table table-bordered table-striped">
+<tr>
+<th>emotext</th><th>aliases</th>
+</tr>
+<%= for key <- Map.keys(@aliases) do %>
+  <tr>
+  <td class="title"><%= key %></td><td>
+  <%= for a <- Map.get(@aliases, key) do %>
+    <span><%= a.alias_name %></span>
+  <% end %>
+  </td>
+  </tr>
+<% end %>
+
+</table>
+
+<br/><br/>
+
 

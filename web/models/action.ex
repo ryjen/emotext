@@ -12,6 +12,8 @@ defmodule Emotext.Action do
     field :self_auto, :string
     field :others_auto, :string
 
+    has_many :aliases, Emotext.Alias
+
     timestamps
   end
 

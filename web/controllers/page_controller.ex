@@ -5,17 +5,20 @@ defmodule Emotext.PageController do
   alias Emotext.Action
   alias Emotext.ActionQuery
   alias Emotext.Paginator
+  alias Emotext.AliasQuery
+  alias Prelude.Map
 
   plug PlugRedirectHttps
 
   plug Guardian.Plug.EnsureSession, %{ on_failure: { SessionController, :new } } when not action in [:help]
 
   def index(conn, _params) do
-    # paginator = Action
-    # |> Action.order_by_name
-    # |> Paginator.new(_params)
+    # _params = Dict.put(_params, "page_size", 14)
+    #  paginator = Action
+    #  |> Action.order_by_name
+    #  |> Paginator.new(_params)
 
-    # render conn, :index, 
+    #  render conn, :index, 
     #     current_user: Guardian.Plug.current_resource(conn),
     #     actions: paginator.entries,
     #     page_number: paginator.page_number,
@@ -26,12 +29,11 @@ defmodule Emotext.PageController do
           actions: Repo.all(ActionQuery.sorted())
   end
 
-  def import(conn, _params) do
-  	render(conn, "import.html")
-  end
-
   def help(conn, _params) do
-    render(conn, "help.html")
+    aliases = Repo.all(AliasQuery.with_action_names())
+      |> Enum.group_by(fn(x) -> x.action_name end)
+
+    render(conn, "help.html", aliases: aliases)
   end
 
 end

@@ -22,6 +22,7 @@
   "poison": {:hex, :poison, "1.4.0"},
   "poolboy": {:hex, :poolboy, "1.5.1"},
   "postgrex": {:hex, :postgrex, "0.9.1"},
+  "prelude": {:git, "https://github.com/houshuang/elixir-prelude.git", "c8436f809d980fc5a815362be0476c0f4ef52956", []},
   "ranch": {:hex, :ranch, "1.1.0"},
   "ssl_verify_hostname": {:hex, :ssl_verify_hostname, "1.0.5"},
   "tzdata": {:hex, :tzdata, "0.1.7"}}

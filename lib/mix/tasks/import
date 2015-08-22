@@ -1,0 +1,16 @@
+defmodule Mix.Tasks.Emotext do
+  defmodule Import do
+    use Mix.Task
+    use Emotext.Repo
+
+    @shortdoc "For model code generation."
+
+    @moduledoc """ 
+      A task for importing sql scripts into the database.
+    """
+
+    def run(args) do
+      Ecto.Adapters.SQL.query(Repo, line)
+    end
+  end
+end

@@ -32,8 +32,8 @@ defmodule Emotext.Router do
 
     resources "/users", UserController
 
-    get "/actions/import", ActionController, :import, as: :import
-    post "/actions/import", ActionController, :import_file, as: :import_file
+    get "/admin/import", AdminController, :import, as: :import
+    post "/admin/import", AdminController, :import_file, as: :import_file
     
     resources "/actions", ActionController
 

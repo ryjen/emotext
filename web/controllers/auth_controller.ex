@@ -37,7 +37,6 @@ defmodule Emotext.AuthController do
     |> put_session(:access_token, token.access_token)
 
     apply(__MODULE__, :login, [conn, userinfo])
-
   end
 
   def login(conn, userinfo) do
@@ -57,7 +56,6 @@ defmodule Emotext.AuthController do
       changeset = User.login_changeset(%User{}) |> Ecto.Changeset.add_error(:login, "not found")
       redirect(conn, to: "/users/new", changeset: changeset)
     end
-
   end
 
   def facebook_callback(conn, code) do

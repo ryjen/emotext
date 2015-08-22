@@ -33,20 +33,14 @@ class App {
 		}
 	})
 
-	// $('#chat-window').resizable({
-	// 	handles: {
-	// 		"se": '#segrip'
-	// 	}
-	// });
-
-	$('body').on('click', "div[data-input-action]", function() {
-		chatInput.val("/" + $(this).text() + " ")
+	$('body').on('click', "[data-input-action]", function() {
+		chatInput.val("/" + $(this).text().trim() + " ")
 	})
 
-	$('body').on('click', "li[data-input-user]", function() {
+	$('body').on('click', "[data-input-user]", function() {
 		var data = chatInput.val()
 		if (data) {
-			chatInput.val(data + " " + $(this).text())
+			chatInput.val(data.trim() + " " + $(this).text())
 		} else {
 			chatInput.val($(this).text())
 		} 
