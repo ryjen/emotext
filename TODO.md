@@ -16,10 +16,26 @@ TODO
 - hook into other chat apps?
 	- irc networks
 	- inter-mud communication
-- aliases for standard emoticons/emojis
-	- :) = /smile
-	- <3 = /love
+- ~aliases for standard emoticons/emojis~
+	- ~:) = /smile~
+	- ~<3 = /love~
 - i18n
 - preferences
 	- color scheme
 	- layout position
+
+
+
+i18n
+====
+
+lang: iso code
+region: iso code
+
+translation
+===========
+
+i18n_id: for what lang/region
+key: the system key to identify the translation
+value: the translation
+

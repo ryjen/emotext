@@ -2,6 +2,7 @@ DELETE FROM aliases;
 
 INSERT INTO aliases(name, action_id, inserted_at, updated_at) VALUES
 (':-)', (SELECT id FROM actions a WHERE a.name = 'smile' LIMIT 1), current_timestamp, current_timestamp ),
+(':)', (SELECT id FROM actions a WHERE a.name = 'smile' LIMIT 1), current_timestamp, current_timestamp ),
 (':D', (SELECT id FROM actions a WHERE a.name = 'smile' LIMIT 1), current_timestamp, current_timestamp),
 (':o)', (SELECT id FROM actions a WHERE a.name = 'smile' LIMIT 1), current_timestamp, current_timestamp),
 (':]', (SELECT id FROM actions a WHERE a.name = 'smile' LIMIT 1), current_timestamp, current_timestamp),
@@ -86,9 +87,11 @@ INSERT INTO aliases(name, action_id, inserted_at, updated_at) VALUES
 ('>_>^', (SELECT id FROM actions a WHERE a.name = 'highfive' LIMIT 1), current_timestamp, current_timestamp),
 ('^<_<', (SELECT id FROM actions a WHERE a.name = 'highfive' LIMIT 1), current_timestamp, current_timestamp),
 
-('\o/', (SELECT id FROM actions a WHERE a.name = 'highfive' LIMIT 1), current_timestamp, current_timestamp),
+('\o/', (SELECT id FROM actions a WHERE a.name = 'cheer' LIMIT 1), current_timestamp, current_timestamp),
 
-('@}-;-''---', (SELECT id FROM actions a WHERE a.name = 'highfive' LIMIT 1), current_timestamp, current_timestamp),
-('@>-->--', (SELECT id FROM actions a WHERE a.name = 'highfive' LIMIT 1), current_timestamp, current_timestamp);
+('@}-;-''---', (SELECT id FROM actions a WHERE a.name = 'rose' LIMIT 1), current_timestamp, current_timestamp),
+('@>-->--', (SELECT id FROM actions a WHERE a.name = 'rose' LIMIT 1), current_timestamp, current_timestamp),
+
+('\o/', (SELECT id FROM actions a WHERE a.name = 'cheer' LIMIT 1), current_timestamp, current_timestamp);
 
 

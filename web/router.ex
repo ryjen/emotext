@@ -7,6 +7,7 @@ defmodule Emotext.Router do
     plug :fetch_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    #plug PhoenixLinguist.Plug
   end
 
   pipeline :browser_session do
@@ -33,7 +34,7 @@ defmodule Emotext.Router do
     resources "/users", UserController
 
     get "/admin/import", AdminController, :import, as: :import
-    post "/admin/import", AdminController, :import_file, as: :import_file
+    post "/admin/import", AdminController, :import_file, as: :import
     
     resources "/actions", ActionController
 

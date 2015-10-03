@@ -12,7 +12,8 @@ config :emotext, Emotext.Endpoint,
   secret_key_base: "OsiFH81B7fpw7o/Q94ye6S4NqfdeZLmAS1OEyyWXGoeWpIzlrgyUXplv6HcOuEBP",
   render_errors: [default_format: "html"],
   pubsub: [name: Emotext.PubSub,
-           adapter: Phoenix.PubSub.PG2]
+           adapter: Phoenix.PubSub.PG2],
+  i18n: Emotext.I18n
 
 # Configures Elixir's Logger
 config :logger, :console,

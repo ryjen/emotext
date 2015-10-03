@@ -38,7 +38,7 @@ defmodule Emotext.Mixfile do
      {:cowboy, "~> 1.0"},
      {:oauth2, "~> 0.1.1"},
      {:ecto_enum, "~> 0.2.3"},
-     {:prelude, git: "https://github.com/houshuang/elixir-prelude.git"},
+     {:phoenix_linguist, "~> 0.0.1"},
      {:comeonin, "~> 1.1"}]
   end
 end
