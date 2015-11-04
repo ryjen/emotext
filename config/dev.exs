@@ -29,7 +29,7 @@ config :logger, :console, format: "[$level] $message\n"
 # Configure your database
 config :emotext, Emotext.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
-  database: "emotext_dev",
+  username: "emotext",
+  password: "emotext",
+  database: "emotext_development",
   pool_size: 10 # The amount of database connections in the pool
