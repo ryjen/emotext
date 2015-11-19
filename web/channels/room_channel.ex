@@ -25,12 +25,15 @@ defmodule Emotext.RoomChannel do
         true ->
           str = String.replace(str, "$s", "its");
           str = String.replace(str, "$m", "it");
+          str = String.replace(str, "$e", "it");
         user.gender == :male ->
           str = String.replace(str, "$s", "his");
           str = String.replace(str, "$m", "him");
+          str = String.replace(str, "$e", "he");
         user.gender == :female ->
           str = String.replace(str, "$s", "her");
           str = String.replace(str, "$m", "her");
+          str = String.replace(str, "$e", "she");
       end
     end
   end
@@ -43,12 +46,15 @@ defmodule Emotext.RoomChannel do
         true ->
           str = String.replace(str, "$S", "its");
           str = String.replace(str, "$M", "it");
+          str = String.replace(str, "$E", "it");
         vict.gender == :male ->
           str = String.replace(str, "$S", "his");
           str = String.replace(str, "$M", "him");
+          str = String.replace(str, "$E", "he");
         vict.gender == :female ->
           str = String.replace(str, "$S", "her");
           str = String.replace(str, "$M", "her");
+          str = String.replace(str, "$E", "she");
       end
     end
   end
@@ -162,7 +168,7 @@ defmodule Emotext.RoomChannel do
     if body == "/?" do
       actions = Repo.all(Action)
       Enum.each(Enum.chunk(actions, 5), fn(a) ->
-        sys_msg socket, user, Enum.reduce(a, "", fn(x, acc) -> 
+        sys_msg socket, user, Enum.reduce(a, "", fn(x, acc) ->
           acc <> "<span data-input-action=\"#{x.id}\">" <> String.ljust(x.name, 15) <> "</span>"
         end)
       end)
@@ -220,7 +226,7 @@ defmodule Emotext.RoomChannel do
   end
 
   def handle_out("action:user", msg, socket) do
-    user = get_user(socket) 
+    user = get_user(socket)
     if msg.user == user.id do
         push socket, "msg:action", msg
     end
