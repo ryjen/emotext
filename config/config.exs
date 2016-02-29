@@ -10,17 +10,14 @@ config :emotext, Emotext.Endpoint,
   url: [host: "localhost"],
   root: Path.dirname(__DIR__),
   secret_key_base: "OsiFH81B7fpw7o/Q94ye6S4NqfdeZLmAS1OEyyWXGoeWpIzlrgyUXplv6HcOuEBP",
-  render_errors: [default_format: "html"],
+  render_errors: [accepts: ~w(html json)],
   pubsub: [name: Emotext.PubSub,
-           adapter: Phoenix.PubSub.PG2],
-  i18n: Emotext.I18n
+           adapter: Phoenix.PubSub.PG2]
 
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
-
-config :joken, config_module: Guardian.JWT
 
 config :guardian, Guardian,
       issuer: "Emotext",
@@ -33,6 +30,10 @@ config :guardian, Guardian,
         default: [:read_profile, :write_profile]
       }
 
+config :phoenix, :generators,
+  migration: false,
+  binary_id: true
+  
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env}.exs"

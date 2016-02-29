@@ -28,7 +28,7 @@ config :logger, :console, format: "[$level] $message\n"
 
 # Configure your database
 config :emotext, Emotext.Repo,
-  adapter: Ecto.Adapters.Postgres,
+  adapter: Mongo.Ecto,
   username: "emotext",
   password: "emotext",
   database: "emotext_development",

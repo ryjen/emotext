@@ -1,5 +1,6 @@
 defmodule Emotext.UserSocket do
   use Phoenix.Socket
+  use Guardian.Phoenix.Socket
 
   ## Channels
   channel "rooms:*", Emotext.RoomChannel

@@ -7,7 +7,6 @@ defmodule Emotext.Router do
     plug :fetch_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
-    #plug PhoenixLinguist.Plug
   end
 
   pipeline :browser_session do

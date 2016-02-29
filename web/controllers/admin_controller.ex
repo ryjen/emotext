@@ -6,7 +6,7 @@ defmodule Emotext.AdminController do
 
   plug PlugRedirectHttps
 
-  plug Guardian.Plug.EnsureSession, %{ on_failure: { SessionController, :new } }
+  plug Guardian.Plug.EnsureAuthenticated, %{ on_failure: { SessionController, :new } }
 
   def import(conn, _params) do
   	render(conn, "import.html")

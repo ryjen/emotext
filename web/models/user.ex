@@ -1,7 +1,7 @@
 defmodule Emotext.User do
   use Emotext.Web, :model
 
-  alias Emotext.Repo
+  use Ecto.Model.Callbacks
 
   schema "users" do
     field :username, :string
@@ -9,6 +9,7 @@ defmodule Emotext.User do
     field :encrypted_password, :string
     field :password, :string, virtual: true
     field :gender, GenderEnum
+    has_many :history, Emotext.History
     timestamps
   end
 

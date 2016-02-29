@@ -1,6 +1,5 @@
 defmodule Emotext.RoomChannel do
   use Phoenix.Channel
-  use Guardian.Channel
 
   alias Emotext.ActionQuery
   alias Emotext.AliasQuery
@@ -60,7 +59,7 @@ defmodule Emotext.RoomChannel do
   end
 
   def get_user(socket) do
-    Guardian.Channel.current_resource(socket)
+    Guardian.Phoenix.Socket.current_resource(socket)
   end
 
   def handle_invalid_action(socket, user) do

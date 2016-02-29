@@ -10,7 +10,7 @@ defmodule Emotext.PageController do
 
   plug PlugRedirectHttps
 
-  plug Guardian.Plug.EnsureSession, %{ on_failure: { SessionController, :new } } when not action in [:help]
+  plug Guardian.Plug.EnsureAuthenticated, %{ on_failure: { SessionController, :new } } when not action in [:help]
 
   def index(conn, _params) do
     # _params = Dict.put(_params, "page_size", 14)

@@ -1,6 +1,8 @@
 defmodule Emotext.Alias do
   use Emotext.Web, :model
 
+  @primary_key {:id, :binary_id, autogenerate: true}
+
   schema "aliases" do
     field :name, :string
 

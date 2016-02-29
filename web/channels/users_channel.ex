@@ -1,8 +1,7 @@
 defmodule Emotext.UsersChannel do
   use Phoenix.Channel
-  use Guardian.Channel
 
-  def join(_room, %{ claims: claims, resource: resource }, socket) do
+  def join(_room, %{"guardian_token" => token}, socket) do
     { :ok, %{ message: "Joined" }, socket }
   end
 

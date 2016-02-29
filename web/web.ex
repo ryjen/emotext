@@ -18,7 +18,13 @@ defmodule Emotext.Web do
 
   def model do
     quote do
-      use Ecto.Model
+      use Ecto.Schema
+      import Ecto
+      import Ecto.Changeset
+      import Ecto.Query, only: [from: 1, from: 2]
+
+      @primary_key {:id, :binary_id, autogenerate: true}
+      @foreign_key_attribute :binary_id
     end
   end
 
@@ -27,10 +33,11 @@ defmodule Emotext.Web do
       use Phoenix.Controller
 
       alias Emotext.Repo
-      import Ecto.Model
-      import Ecto.Query, only: [from: 2]
+      import Ecto
+      import Ecto.Query, only: [from: 1, from: 2]
 
       import Emotext.Router.Helpers
+      import Emotext.Gettext
     end
   end
 
@@ -44,7 +51,9 @@ defmodule Emotext.Web do
       # Use all HTML functionality (forms, tags, etc)
       use Phoenix.HTML
 
+      import Emotext.ErrorHelpers
       import Emotext.Router.Helpers
+      import Emotext.Gettext
     end
   end
 
@@ -59,9 +68,9 @@ defmodule Emotext.Web do
       use Phoenix.Channel
 
       alias Emotext.Repo
-      import Ecto.Model
-      import Ecto.Query, only: [from: 2]
-
+      import Ecto
+      import Ecto.Query, only: [from: 1, from: 2]
+      import Emotext.Gettext
     end
   end
 

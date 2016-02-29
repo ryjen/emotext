@@ -11,8 +11,8 @@ config :logger, level: :warn
 
 # Configure your database
 config :emotext, Emotext.Repo,
-  adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
+  adapter: Mongo.Ecto,
+  username: "emotext",
+  password: "emotext",
   database: "emotext_test",
   pool: Ecto.Adapters.SQL.Sandbox

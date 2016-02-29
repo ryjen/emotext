@@ -1,6 +1,8 @@
 defmodule Emotext.Action do
   use Emotext.Web, :model
 
+  @primary_key {:id, :binary_id, autogenerate: true}
+
   schema "actions" do
     field :name, :string
     field :self_no_arg, :string
