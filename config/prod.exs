@@ -48,6 +48,6 @@ config :logger, level: :info
 #
 
 config :emotext, Emotext.Repo,
-  adapter: Mongo.ecto,
+  adapter: Mongo.Ecto,
   url: System.get_env("DATABASE_URL"),
   pool_size: 20 # The amount of database connections in the pool
