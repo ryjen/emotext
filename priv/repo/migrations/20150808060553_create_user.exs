@@ -6,7 +6,7 @@ defmodule Emotext.Repo.Migrations.CreateUser do
       add :username, :string
       add :email, :string
       add :encrypted_password, :string
-      
+  	  add :gender, :integer
       timestamps
     end
 
