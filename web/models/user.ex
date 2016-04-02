@@ -8,6 +8,7 @@ defmodule Emotext.User do
     field :email, :string
     field :encrypted_password, :string
     field :password, :string, virtual: true
+    field :password_confirmation, :string, virtual: true
     field :gender, GenderEnum
     has_many :history, Emotext.History
     timestamps
@@ -28,12 +29,24 @@ defmodule Emotext.User do
 
   def create_changeset(model, params \\ :empty) do
     model
-    |> cast(params, ~w(username email password gender))
+    |> cast(params, ~w(username email password password_confirmation gender))
+    |> unique_constraint(:username, on: Repo, downcase: true)
+    |> unique_constraint(:email, on: Repo, downcase: true)
+    |> validate_format(:email, ~r/@/)
+    |> validate_length(:password, min: 6)
+    |> validate_length(:password_confirmation, min: 6)
+    |> validate_confirmation(:password)
   end
 
   def update_changeset(model, params \\ :empty) do
     model
-    |> cast(params, ~w(), ~w(username email password gender))
+    |> cast(params, ~w(), ~w(username email password password_confirmation gender))
+    |> unique_constraint(:username, on: Repo, downcase: true)
+    |> unique_constraint(:email, on: Repo, downcase: true)
+    |> validate_format(:email, ~r/@/)
+    |> validate_length(:password, min: 6)
+    |> validate_length(:password_confirmation, min: 6)
+    |> validate_confirmation(:password)
   end
 
   def login_changeset(model), do: model |> cast(%{}, ~w(), ~w(email password))
