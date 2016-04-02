@@ -19,7 +19,7 @@ sub print_line {
 		return;
 	} 
 
-  print $ofh ",\n\t";
+  print $ofh ", ";
 
   switch($i) {
     case 0 { print $ofh "\"self_no_arg\""; }
@@ -31,7 +31,6 @@ sub print_line {
     case 6 { print $ofh "\"self_auto\""; }
     case 7 { print $ofh "\"others_auto\""; }
   }
-
 
   print $ofh ": \"$line\"";
 
@@ -59,8 +58,8 @@ sub main
 
   my $db_name = $ARGV[2] || "emotext_development";
 
-  print $ofh "use ${db_name}\n";
-	
+  print $ofh "alias Emotext.Repo\nalias Emotext.Action\n";
+  
 	while($line = <$fh>) {
 
 		$line =~ s/^\s+|\s+$//g;
@@ -72,9 +71,7 @@ sub main
 		# must have a name
 		$line =~ s/^([A-Za-z0-9]+)\s[0-9]+\s[0-9]+/$1/;
 
-    print $ofh "db.actions.insert({\n";
-
-		print $ofh "\t\"name\": \"$line\"";
+		print $ofh "Repo.insert! %Action{ \"name\": \"$line\"";
 
 		$i = 0;
 
@@ -82,7 +79,7 @@ sub main
 			$i++;
 		}
 		
-    print $ofh "\n})\n";
+    print $ofh "}\n";
 	}
 
 	print "Ok.\n";

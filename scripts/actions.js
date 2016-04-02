@@ -1,4 +1,4 @@
-use emotext_development
+use emotext
 db.actions.insert({
 	"name": "gack",
 	"self_no_arg": "Gaaack!",
