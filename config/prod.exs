@@ -13,9 +13,10 @@ use Mix.Config
 # which you typically run after static files are built.
 config :emotext, Emotext.Endpoint,
   http: [port: System.get_env("PORT")],
-  url: [host: System.get_env("HOST"), port: 80]
-
-# cache_static_manifest: "priv/static/manifest.json"
+  url: [scheme: "https", host: System.get_env("HOST"), port: 443],
+  force_ssl: [rewrite_on: [:x_forwarded_proto]],
+  secret_key_base: System.get_env("SECRET_KEY_BASE"),
+  cache_static_manifest: "priv/static/manifest.json"
 
 # ## SSL Support
 #
