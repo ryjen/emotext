@@ -15,8 +15,8 @@ config :emotext, Emotext.Endpoint,
   http: [port: System.get_env("PORT")],
   url: [scheme: "https", host: System.get_env("HOST"), port: 443],
   force_ssl: [rewrite_on: [:x_forwarded_proto]],
-  secret_key_base: System.get_env("SECRET_KEY_BASE"),
-  cache_static_manifest: "priv/static/manifest.json"
+  secret_key_base: System.get_env("SECRET_KEY_BASE")
+ # cache_static_manifest: "priv/static/manifest.json"
 
 # ## SSL Support
 #
