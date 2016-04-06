@@ -16,6 +16,10 @@ defmodule Emotext.SessionController do
     if !user do
       user = Repo.insert! %User{username: "guest", email: "guest@email.com", gender: :unknown }
     end
+    guest_name = "guest-#{Randomize.random(9999)}"
+    changeset = Ecto.Changeset.change(user, %{screen_name: guest_name})
+    user = Ecto.Changeset.apply_changes(changeset)
+    Logger.debug "Created #{user.screen_name}"
     conn
     |> put_flash(:info, "Using guest account, create an account to have your own username.")
     |> Guardian.Plug.sign_in(user, :token, perms: %{ default: Guardian.Permissions.max })

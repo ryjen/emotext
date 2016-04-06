@@ -1,6 +1,5 @@
 defmodule Emotext.User do
   use Emotext.Web, :model
-  require Logger
 
   use Ecto.Model.Callbacks
 
@@ -33,6 +32,20 @@ defmodule Emotext.User do
   def from_username(nil), do: { :error, :not_found }
   def from_username(username) do
     Repo.one(Emotext.User, username: username)
+  end
+
+  def deserialize(nil), do: { :error, :not_found }
+  def deserialize(data) do
+    info = :erlang.binary_to_term(Base.url_decode64!(data))
+    user = Repo.get(Emotext.User, info.id)
+    changeset = change(user, %{ screen_name: info.screen_name })
+    apply_changes(changeset)
+  end
+
+  def serialize(nil), do: { :error, :not_found }
+  def serialize(user) do
+    info = %{id: user.id, screen_name: user.screen_name}
+    Base.url_encode64(:erlang.term_to_binary(info))
   end
 
   def create_changeset(model, params \\ :empty) do
@@ -79,19 +92,13 @@ defmodule Emotext.User do
   end
 
   defp maybe_update_screen_name(user) do
-    if user.username <> "guest" do
-      Logger.debug "Updating guest screen name"
-      guest_name = "guest-#{Randomize.random(9999)}"
-      changeset = change(user, %{screen_name: guest_name})
-      user = apply_changes(changeset)
-      Logger.debug "Screen name is #{user.screen_name}"
-    else
+    if !user.screen_name do
       changeset = change(user, %{screen_name: user.username})
-      user = apply_changes(changeset)
+      apply_changes(changeset)
+    else
+      user
     end
-    user
   end
-
 
   defp validate_password(changeset) do
     case Ecto.Changeset.get_field(changeset, :encrypted_password) do
