@@ -1,6 +1,6 @@
 defmodule Emotext.SessionController do
   use Emotext.Web, :controller
-
+  require Logger
   alias Emotext.User
   alias Emotext.UserQuery
 
@@ -9,6 +9,17 @@ defmodule Emotext.SessionController do
   def new(conn, params) do
     changeset = User.login_changeset(%User{})
     render(conn, Emotext.SessionView, "new.html", changeset: changeset)
+  end
+
+  def guest(conn, params) do
+    user = User.from_username("guest");
+    if !user do
+      user = Repo.insert! %User{username: "guest", email: "guest@email.com", gender: :unknown }
+    end
+    conn
+    |> put_flash(:info, "Using guest account, create an account to have your own username.")
+    |> Guardian.Plug.sign_in(user, :token, perms: %{ default: Guardian.Permissions.max })
+    |> redirect(to: "/")
   end
 
   def create(conn, params = %{}) do

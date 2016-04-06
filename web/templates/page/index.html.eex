@@ -30,7 +30,7 @@
 		<div id="chat-room"></div>
 		<hr>
 		<ul >
-			<li id="<%= @current_user.username %>" data-input-user="<%= @current_user.id %>"><%= @current_user.username %></li>
+			<li id="<%= @current_user.screen_name %>" data-input-user="<%= @current_user.id %>"><%= @current_user.screen_name %></li>
 		</ul>
 	</div>
 

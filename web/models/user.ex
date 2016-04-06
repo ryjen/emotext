@@ -1,7 +1,10 @@
 defmodule Emotext.User do
   use Emotext.Web, :model
+  require Logger
 
   use Ecto.Model.Callbacks
+
+  alias Emotext.Repo
 
   schema "users" do
     field :username, :string
@@ -9,6 +12,7 @@ defmodule Emotext.User do
     field :encrypted_password, :string
     field :password, :string, virtual: true
     field :password_confirmation, :string, virtual: true
+    field :screen_name, :string, virtual: true
     field :gender, GenderEnum
     has_many :history, Emotext.History
     timestamps
@@ -16,20 +20,24 @@ defmodule Emotext.User do
 
   before_insert :maybe_update_password
   before_update :maybe_update_password
+  after_load :maybe_update_screen_name
+
+  @required_fields ~w(username email password password_confirmation gender)
+  @optional_fields ~w()
 
   def from_email(nil), do: { :error, :not_found }
   def from_email(email) do
-    Repo.one(User, email: email)
+    Repo.one(Emotext.User, email: email)
   end
 
   def from_username(nil), do: { :error, :not_found }
   def from_username(username) do
-    Repo.one(User, username: username)
+    Repo.one(Emotext.User, username: username)
   end
 
   def create_changeset(model, params \\ :empty) do
     model
-    |> cast(params, ~w(username email password password_confirmation gender))
+    |> cast(params, @required_fields, @optional_fields)
     |> unique_constraint(:username, on: Repo, downcase: true)
     |> unique_constraint(:email, on: Repo, downcase: true)
     |> validate_format(:email, ~r/@/)
@@ -40,7 +48,7 @@ defmodule Emotext.User do
 
   def update_changeset(model, params \\ :empty) do
     model
-    |> cast(params, ~w(), ~w(username email password password_confirmation gender))
+    |> cast(params, ~w(), @required_fields)
     |> unique_constraint(:username, on: Repo, downcase: true)
     |> unique_constraint(:email, on: Repo, downcase: true)
     |> validate_format(:email, ~r/@/)
@@ -69,6 +77,21 @@ defmodule Emotext.User do
       :error -> changeset
     end
   end
+
+  defp maybe_update_screen_name(user) do
+    if user.username <> "guest" do
+      Logger.debug "Updating guest screen name"
+      guest_name = "guest-#{Randomize.random(9999)}"
+      changeset = change(user, %{screen_name: guest_name})
+      user = apply_changes(changeset)
+      Logger.debug "Screen name is #{user.screen_name}"
+    else
+      changeset = change(user, %{screen_name: user.username})
+      user = apply_changes(changeset)
+    end
+    user
+  end
+
 
   defp validate_password(changeset) do
     case Ecto.Changeset.get_field(changeset, :encrypted_password) do

@@ -106,7 +106,7 @@ class App {
   	})
 
   	chan.on("msg:new", payload => {
-  		appendMessage(`${payload.username} says: ${payload.body}`)
+  		appendMessage(`${payload.screen_name} says: ${payload.body}`)
   	});
 
   	chan.on("msg:action", payload => {
@@ -118,10 +118,10 @@ class App {
   	})
 
   	chan.on("info:user", payload => {
-  		if ($("#" + payload.username).length) {
+  		if ($("#" + payload.screen_name).length) {
   			return;
   		}
-  		chatUsers.children("ul").append($("<li id=\"" + payload.username + "\" data-input-user=\"" + payload.user + "\">" + payload.username + "</li>"))
+  		chatUsers.children("ul").append($("<li id=\"" + payload.screen_name + "\" data-input-user=\"" + payload.user + "\">" + payload.screen_name + "</li>"))
   	})
 
   	chan.on("info:room", payload => {

@@ -26,6 +26,7 @@ defmodule Emotext.Router do
     get "/help", PageController, :help
 
     get "/login", SessionController, :new, as: :login
+    get "/guest", SessionController, :guest
     post "/login", SessionController, :create, as: :login
     delete "/logout", SessionController, :delete, as: :logout
     get "/logout", SessionController, :delete, as: :logout

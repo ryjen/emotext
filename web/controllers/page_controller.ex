@@ -1,6 +1,6 @@
 defmodule Emotext.PageController do
   use Emotext.Web, :controller
-
+  require Logger
   alias Emotext.SessionController
   alias Emotext.Action
   alias Emotext.ActionQuery
@@ -10,22 +10,12 @@ defmodule Emotext.PageController do
 
   plug PlugRedirectHttps
 
-  plug Guardian.Plug.EnsureAuthenticated, %{ on_failure: { SessionController, :new } } when not action in [:help]
+  plug Guardian.Plug.EnsureAuthenticated, %{ on_failure: { SessionController, :guest } } when not action in [:help]
 
   def index(conn, _params) do
-    # _params = Dict.put(_params, "page_size", 14)
-    #  paginator = Action
-    #  |> Action.order_by_name
-    #  |> Paginator.new(_params)
-
-    #  render conn, :index, 
-    #     current_user: Guardian.Plug.current_resource(conn),
-    #     actions: paginator.entries,
-    #     page_number: paginator.page_number,
-    #     page_size: paginator.page_size,
-    #     total_pages: paginator.total_pages
-
-    render conn, :index, current_user: Guardian.Plug.current_resource(conn),
+    user = Guardian.Plug.current_resource(conn)
+    
+    render conn, :index, current_user: user, 
           actions: Repo.all(ActionQuery.sorted())
   end
 

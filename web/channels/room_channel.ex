@@ -19,7 +19,7 @@ defmodule Emotext.RoomChannel do
 
   def action_str(str, user) do
     if (str != nil) do
-      str = String.replace(str, "$n", user.username);
+      str = String.replace(str, "$n", user.screen_name);
      cond do
         true ->
           str = String.replace(str, "$s", "its");
@@ -40,7 +40,7 @@ defmodule Emotext.RoomChannel do
   def action_str(str, user, vict) do
     str = action_str(str, user)
     if (str != nil) do
-        str = String.replace(str, "$N", vict.username);
+        str = String.replace(str, "$N", vict.screen_name);
       cond do
         true ->
           str = String.replace(str, "$S", "its");
@@ -128,7 +128,7 @@ defmodule Emotext.RoomChannel do
         action_user(socket, action.self_no_arg, user)
         action_others(socket, action.others_no_arg, user)
      else
-        vict = Repo.one(UserQuery.by_username(vict_name))
+        vict = Repo.one(UserQuery.by_screen_name(vict_name))
         if vict != nil do
           if vict.id == user.id do
               action_user(socket, action.self_auto, user)
@@ -171,7 +171,7 @@ defmodule Emotext.RoomChannel do
           acc <> "<span data-input-action=\"#{x.id}\">" <> String.ljust(x.name, 15) <> "</span>"
         end)
       end)
-      sys_msg socket, user, "\nExample: <b>/smile</b> will issue: <i>#{user.username} smiles happily.</i>"
+      sys_msg socket, user, "\nExample: <b>/smile</b> will issue: <i>#{user.screen_name} smiles happily.</i>"
     else
       parts = String.split(body, ~r{\s+});
       command = Enum.at(parts, 0);
@@ -192,7 +192,7 @@ defmodule Emotext.RoomChannel do
 
   def handle_in("info:ping", %{}, socket) do
     user = get_user(socket)
-    broadcast! socket, "info:pong", %{ socket: socket, user: user.id, username: user.username  }
+    broadcast! socket, "info:pong", %{ socket: socket, user: user.id, screen_name: user.screen_name  }
     push socket, "info:room", %{room: String.slice(socket.topic, 6, String.length(socket.topic))}
     {:noreply, socket}
   end
@@ -203,7 +203,7 @@ defmodule Emotext.RoomChannel do
         handle_command(socket, body, user)
     else
       if not handle_alias(socket, body, user) do
-        broadcast! socket, "msg:output", %{body: body, user: user.id, username: user.username }
+        broadcast! socket, "msg:output", %{body: body, user: user.id, screen_name: user.screen_name }
       end
     end
     {:noreply, socket}
@@ -211,8 +211,8 @@ defmodule Emotext.RoomChannel do
 
   def handle_out("info:pong", msg, socket) do
     user = get_user(socket)
-    push socket, "info:user", %{ username: msg.username, user: msg.user }
-    push msg.socket, "info:user", %{ username: user.username, user: user.id }
+    push socket, "info:user", %{ screen_name: msg.screen_name, user: msg.user }
+    push msg.socket, "info:user", %{ screen_name: user.screen_name, user: user.id }
     {:noreply, socket}
   end
 
