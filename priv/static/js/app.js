@@ -6735,9 +6735,9 @@ var App = function () {
       var chatUsers = $("#chat-users");
       var chatActions = $("#chat-actions");
 
-      var socket = new _phoenix.Socket("/socket");
-
       var guardianToken = $('meta[name="guardian_token"]').attr('content');
+
+      var socket = new _phoenix.Socket("/socket");
 
       socket.connect({ guardian_token: guardianToken });
 

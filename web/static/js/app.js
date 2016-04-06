@@ -9,9 +9,9 @@ class App {
   	let chatUsers		= $("#chat-users")
   	let chatActions	= $("#chat-actions")
 
-  	let socket = new Socket("/socket")
-
     let guardianToken = $('meta[name="guardian_token"]').attr('content');
+
+  	let socket = new Socket("/socket")
 
   	socket.connect({guardian_token: guardianToken})
 

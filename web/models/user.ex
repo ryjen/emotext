@@ -48,6 +48,11 @@ defmodule Emotext.User do
     Base.url_encode64(:erlang.term_to_binary(info))
   end
 
+  def change_screen_name(user, screen_name) do
+    changeset = change(user, %{screen_name: screen_name})
+    apply_changes(changeset)
+  end
+
   def create_changeset(model, params \\ :empty) do
     model
     |> cast(params, @required_fields, @optional_fields)
