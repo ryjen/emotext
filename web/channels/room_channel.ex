@@ -233,7 +233,7 @@ defmodule Emotext.RoomChannel do
 
   defp send_history_item(socket, history) do
     user = get_user(socket)
-    if history.action and history.user do
+    if history.action do
      history_user = Emotext.User.change_screen_name(history.user, history.user_screen_name)
      if history.vict == nil do
         if history.user_screen_name == user.screen_name do
