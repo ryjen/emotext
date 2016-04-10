@@ -16,7 +16,7 @@ defmodule Emotext.User do
     field :password_confirmation, :string, virtual: true
     field :screen_name, :string, virtual: true
     field :gender, GenderEnum
-    
+
     timestamps
   end
 
@@ -56,8 +56,10 @@ defmodule Emotext.User do
   end
 
   def change_screen_name(user, screen_name) do
-    changeset = change(user, %{screen_name: screen_name})
-    apply_changes(changeset)
+    if user do
+      changeset = change(user, %{screen_name: screen_name})
+      apply_changes(changeset)
+    end
   end
 
   def create_changeset(model, params \\ :empty) do
