@@ -6759,78 +6759,78 @@ button.close {
 }
 /*# sourceMappingURL=bootstrap.css.map */
 
-/* line 2, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+/* line 1, /Users/ryan/Devel/emotext/web/static/css/app.scss */
 html, body, .container {
   height: 100%; }
 
-/* line 6, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+/* line 5, /Users/ryan/Devel/emotext/web/static/css/app.scss */
 body {
   font-family: 'Source Code Pro', monospace;
   font-size: 16px; }
 
 /* Space out content a bit */
-/* line 12, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+/* line 11, /Users/ryan/Devel/emotext/web/static/css/app.scss */
 body, form, ul, table {
   margin-top: 20px;
   margin-bottom: 20px; }
 
 /* Phoenix flash messages */
-/* line 18, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+/* line 17, /Users/ryan/Devel/emotext/web/static/css/app.scss */
 .alert:empty {
   display: none; }
 
 /* Phoenix inline forms in links and buttons */
-/* line 21, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+/* line 22, /Users/ryan/Devel/emotext/web/static/css/app.scss */
 form.link, form.button {
   display: inline; }
 
-/* line 25, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+/* line 26, /Users/ryan/Devel/emotext/web/static/css/app.scss */
 .transparent {
   zoom: 1;
   filter: alpha(opacity=20);
   opacity: 0.2; }
 
-/* line 31, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+/* line 32, /Users/ryan/Devel/emotext/web/static/css/app.scss */
 .orange-well {
   background-color: rgba(255, 140, 0, 0.2);
   padding: 15px;
   border: 1px solid rgba(255, 140, 0, 0.3); }
 
-/* line 37, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+/* line 38, /Users/ryan/Devel/emotext/web/static/css/app.scss */
 .green-well {
   background-color: rgba(0, 100, 0, 0.2);
   padding: 15px;
   border: 1px solid rgba(0, 100, 0, 0.3); }
 
-/* line 43, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+/* line 44, /Users/ryan/Devel/emotext/web/static/css/app.scss */
 .blue-well {
   background-color: rgba(0, 0, 139, 0.15);
   padding: 15px;
   border: 1px solid rgba(0, 0, 139, 0.25); }
 
 /* Custom page header */
-/* line 50, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+/* line 51, /Users/ryan/Devel/emotext/web/static/css/app.scss */
 .header {
   border-bottom: 1px solid #e5e5e5; }
 
-/* line 54, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+/* line 55, /Users/ryan/Devel/emotext/web/static/css/app.scss */
 .logo {
   display: inline-block;
   font-family: 'VT323', monospace; }
-  /* line 56, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+  /* line 58, /Users/ryan/Devel/emotext/web/static/css/app.scss */
   .logo a:hover {
     text-decoration: none; }
-  /* line 58, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+  /* line 64, /Users/ryan/Devel/emotext/web/static/css/app.scss */
   .logo .icon {
     font-size: 6em;
     color: green;
     font-weight: bold; }
-  /* line 63, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+  /* line 70, /Users/ryan/Devel/emotext/web/static/css/app.scss */
   .logo .title {
     color: darkgreen;
     font-size: 4em;
     letter-spacing: 8px; }
-  /* line 68, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+  /* line 76, /Users/ryan/Devel/emotext/web/static/css/app.scss */
   .logo .subtitle {
     display: block;
     margin-left: 90px;
@@ -6839,62 +6839,62 @@ form.link, form.button {
     position: relative;
     top: -10px; }
 
-/* line 78, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+/* line 86, /Users/ryan/Devel/emotext/web/static/css/app.scss */
 div[role="main"] > div.header > ul.nav {
   margin-top: 7em; }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
-/* line 83, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+/* line 91, /Users/ryan/Devel/emotext/web/static/css/app.scss */
 .header,
 .marketing {
   padding-right: 15px;
   padding-left: 15px; }
 
 /* Customize container */
-/* line 94, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+/* line 100, /Users/ryan/Devel/emotext/web/static/css/app.scss */
 .container-narrow > hr {
   margin: 30px 0; }
 
 /* Main marketing message */
-/* line 99, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+/* line 105, /Users/ryan/Devel/emotext/web/static/css/app.scss */
 .jumbotron {
   text-align: center;
   border-bottom: 1px solid #e5e5e5; }
 
 /* Supporting marketing content */
-/* line 105, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+/* line 111, /Users/ryan/Devel/emotext/web/static/css/app.scss */
 .marketing {
   margin: 35px 0; }
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
   /* Remove the padding we set earlier */
-  /* line 112, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+  /* line 118, /Users/ryan/Devel/emotext/web/static/css/app.scss */
   .header,
   .marketing {
     padding-right: 0;
     padding-left: 0; }
   /* Space out the masthead */
-  /* line 118, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+  /* line 125, /Users/ryan/Devel/emotext/web/static/css/app.scss */
   .header {
     margin-bottom: 30px; }
   /* Remove the bottom border on the jumbotron for visual effect */
-  /* line 122, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+  /* line 130, /Users/ryan/Devel/emotext/web/static/css/app.scss */
   .jumbotron {
     border-bottom: 0; } }
 
-/* line 127, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+/* line 135, /Users/ryan/Devel/emotext/web/static/css/app.scss */
 #chat-input {
   width: 100%; }
 
-/* line 132, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+/* line 140, /Users/ryan/Devel/emotext/web/static/css/app.scss */
 #chat-window .row-fluid {
   height: 100%; }
-  /* line 134, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+  /* line 143, /Users/ryan/Devel/emotext/web/static/css/app.scss */
   #chat-window .row-fluid > div {
     height: 100%; }
 
-/* line 140, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+/* line 149, /Users/ryan/Devel/emotext/web/static/css/app.scss */
 #messages {
   text-align: left;
   font-family: 'Source Code Pro', monospace;
@@ -6902,81 +6902,81 @@ div[role="main"] > div.header > ul.nav {
   overflow-y: auto;
   margin-bottom: 10px; }
 
-/* line 148, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+/* line 157, /Users/ryan/Devel/emotext/web/static/css/app.scss */
 #chat-users {
   overflow-y: auto; }
-  /* line 150, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+  /* line 160, /Users/ryan/Devel/emotext/web/static/css/app.scss */
   #chat-users ul {
     margin: 0;
     padding: 0;
     list-style-type: none; }
-  /* line 155, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+  /* line 166, /Users/ryan/Devel/emotext/web/static/css/app.scss */
   #chat-users #chat-room {
     font-weight: bold;
     text-align: center; }
 
-/* line 161, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+/* line 172, /Users/ryan/Devel/emotext/web/static/css/app.scss */
 #chat-actions {
   overflow-y: scroll;
   color: black; }
-  /* line 164, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+  /* line 176, /Users/ryan/Devel/emotext/web/static/css/app.scss */
   #chat-actions .title {
     text-align: center;
     font-weight: bold; }
 
 @media (max-width: 990px) {
-  /* line 171, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+  /* line 183, /Users/ryan/Devel/emotext/web/static/css/app.scss */
   div[role="main"] > div.header > ul.nav {
     margin-top: 0; } }
 
 @media (max-width: 768px) {
-  /* line 179, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+  /* line 189, /Users/ryan/Devel/emotext/web/static/css/app.scss */
   #action-bar, .action-collapser {
     display: none; }
-  /* line 183, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+  /* line 193, /Users/ryan/Devel/emotext/web/static/css/app.scss */
   #user-bar, .users-collapser {
     display: none; }
-  /* line 189, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+  /* line 199, /Users/ryan/Devel/emotext/web/static/css/app.scss */
   #chat-window .row-fluid > div {
     width: 100%; }
-  /* line 195, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+  /* line 205, /Users/ryan/Devel/emotext/web/static/css/app.scss */
   .col-sm-8 {
     display: inline-block; }
-  /* line 199, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+  /* line 209, /Users/ryan/Devel/emotext/web/static/css/app.scss */
   #messages {
     height: 200px; }
-  /* line 203, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+  /* line 213, /Users/ryan/Devel/emotext/web/static/css/app.scss */
   #chat-actions {
     height: 80px;
     display: block;
     width: 100%;
     margin-bottom: 15px;
     margin-top: 15px; }
-    /* line 209, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+    /* line 220, /Users/ryan/Devel/emotext/web/static/css/app.scss */
     #chat-actions div {
       display: inline-block; }
-  /* line 214, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+  /* line 225, /Users/ryan/Devel/emotext/web/static/css/app.scss */
   #chat-users {
     display: block;
     margin-top: 15px; } }
 
 @media (min-width: 768px) {
-  /* line 221, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+  /* line 232, /Users/ryan/Devel/emotext/web/static/css/app.scss */
   #chat-window {
     height: 400px;
     min-width: 768px; }
-  /* line 226, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+  /* line 237, /Users/ryan/Devel/emotext/web/static/css/app.scss */
   #messages {
     height: 90%;
     width: 100%; }
-  /* line 231, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+  /* line 242, /Users/ryan/Devel/emotext/web/static/css/app.scss */
   #chat-users {
     height: 100%; }
-  /* line 235, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+  /* line 246, /Users/ryan/Devel/emotext/web/static/css/app.scss */
   #chat-actions {
     height: 100%; } }
 
-/* line 241, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+/* line 251, /Users/ryan/Devel/emotext/web/static/css/app.scss */
 hr {
   margin-top: 5px;
   margin-bottom: 5px;
@@ -6985,112 +6985,118 @@ hr {
   color: black;
   border: none; }
 
-/* line 250, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+/* line 260, /Users/ryan/Devel/emotext/web/static/css/app.scss */
 div[data-input-action], li[data-input-user] {
   cursor: pointer; }
 
-/* line 254, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+/* line 264, /Users/ryan/Devel/emotext/web/static/css/app.scss */
 #segrip {
   float: right; }
 
-/* line 258, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+/* line 268, /Users/ryan/Devel/emotext/web/static/css/app.scss */
 .action-collapser {
   float: right;
   cursor: pointer; }
 
-/* line 263, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+/* line 273, /Users/ryan/Devel/emotext/web/static/css/app.scss */
 .users-collapser {
   float: left;
   cursor: pointer; }
 
-/* line 268, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+/* line 278, /Users/ryan/Devel/emotext/web/static/css/app.scss */
 .show {
   display: block; }
 
-/* line 272, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+/* line 282, /Users/ryan/Devel/emotext/web/static/css/app.scss */
 .hidden {
   display: none; }
 
-/* line 276, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+/* line 286, /Users/ryan/Devel/emotext/web/static/css/app.scss */
 #action-bar, #user-bar {
   height: 100%;
   display: inline-block;
   padding: 4px;
   padding-top: 15px; }
 
-/* line 283, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+/* line 293, /Users/ryan/Devel/emotext/web/static/css/app.scss */
 .col-sidebar, .col-fill-one, .col-fill {
   position: relative;
   min-height: 1px;
   padding-right: 15px;
   padding-left: 15px; }
 
-/* line 290, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+/* line 300, /Users/ryan/Devel/emotext/web/static/css/app.scss */
 .col-sidebar, .col-fill-one, .col-fill {
   float: left; }
 
-/* line 294, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+/* line 304, /Users/ryan/Devel/emotext/web/static/css/app.scss */
 .col-sidebar {
   width: 5%; }
 
-/* line 298, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+/* line 308, /Users/ryan/Devel/emotext/web/static/css/app.scss */
 .col-fill {
   width: 90%; }
 
-/* line 302, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+/* line 312, /Users/ryan/Devel/emotext/web/static/css/app.scss */
 .col-fill-one {
   width: 78.333333%; }
 
 @media (min-width: 768px) {
-  /* line 308, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+  /* line 317, /Users/ryan/Devel/emotext/web/static/css/app.scss */
   .col-sidebar, .col-fill-one, .col-fill {
     float: left; }
-  /* line 312, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+  /* line 321, /Users/ryan/Devel/emotext/web/static/css/app.scss */
   .col-sidebar {
     width: 5%; }
-  /* line 316, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+  /* line 325, /Users/ryan/Devel/emotext/web/static/css/app.scss */
   .col-fill {
     width: 90%; }
-  /* line 320, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+  /* line 329, /Users/ryan/Devel/emotext/web/static/css/app.scss */
   .col-fill-one {
     width: 78.333333%; } }
 
 @media (min-width: 992px) {
-  /* line 326, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+  /* line 335, /Users/ryan/Devel/emotext/web/static/css/app.scss */
   .col-sidebar, .col-fill-one, .col-fill {
     float: left; }
-  /* line 330, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+  /* line 339, /Users/ryan/Devel/emotext/web/static/css/app.scss */
   .col-sidebar {
     width: 5%; }
-  /* line 334, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+  /* line 343, /Users/ryan/Devel/emotext/web/static/css/app.scss */
   .col-fill {
     width: 90%; }
-  /* line 338, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+  /* line 347, /Users/ryan/Devel/emotext/web/static/css/app.scss */
   .col-fill-one {
     width: 78.3333333%; } }
 
 @media (min-width: 1200px) {
-  /* line 345, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+  /* line 353, /Users/ryan/Devel/emotext/web/static/css/app.scss */
   .col-sidebar, .col-fill-one, .col-fill {
     float: left; }
-  /* line 349, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+  /* line 357, /Users/ryan/Devel/emotext/web/static/css/app.scss */
   .col-sidebar {
     width: 5%; }
-  /* line 353, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+  /* line 361, /Users/ryan/Devel/emotext/web/static/css/app.scss */
   .col-fill {
     width: 90%; }
-  /* line 357, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+  /* line 365, /Users/ryan/Devel/emotext/web/static/css/app.scss */
   .col-fill-one {
     width: 78.333333%; } }
 
-/* line 363, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+/* line 371, /Users/ryan/Devel/emotext/web/static/css/app.scss */
 .alias-table .title {
   font-weight: bold; }
 
-/* line 367, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+/* line 376, /Users/ryan/Devel/emotext/web/static/css/app.scss */
 .alias-table td span {
   margin-right: 10px;
   margin-left: 10px; }
+
+/* line 383, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+.container > .footer {
+  margin-top: 2em;
+  text-align: center;
+  font-size: smaller; }
 
 
 /*# sourceMappingURL=app.css.map*/

@@ -1,4 +1,3 @@
-
 html, body, .container {
   height: 100%;
 }
@@ -15,7 +14,9 @@ body, form, ul, table {
 }
 
 /* Phoenix flash messages */
-.alert:empty { display: none; }
+.alert:empty {
+  display: none;
+}
 
 /* Phoenix inline forms in links and buttons */
 form.link, form.button {
@@ -24,7 +25,7 @@ form.link, form.button {
 
 .transparent {
   zoom: 1;
-  filter: alpha(opacity=20);
+  filter: alpha(opacity = 20);
   opacity: 0.2;
 }
 
@@ -35,9 +36,9 @@ form.link, form.button {
 }
 
 .green-well {
-  background-color: rgba(0,100,0, 0.2);
+  background-color: rgba(0, 100, 0, 0.2);
   padding: 15px;
-  border: 1px solid rgba(0,100,0, 0.3);
+  border: 1px solid rgba(0, 100, 0, 0.3);
 }
 
 .blue-well {
@@ -53,30 +54,37 @@ form.link, form.button {
 
 .logo {
   display: inline-block;
-  a:hover { text-decoration: none; }
+
+  a:hover {
+    text-decoration: none;
+  }
+
   font-family: 'VT323', monospace;
+
   .icon {
-	  font-size: 6em;
-	  color: green;
-	  font-weight: bold;
+    font-size: 6em;
+    color: green;
+    font-weight: bold;
   }
+
   .title {
-  	color: darkgreen;
-  	font-size: 4em;
-  	letter-spacing: 8px;
+    color: darkgreen;
+    font-size: 4em;
+    letter-spacing: 8px;
   }
+
   .subtitle {
-  	display: block;
-  	margin-left: 90px;
-  	font-style: italic;
-  	color: darkgreen;
-  	position: relative;
-  	top: -10px;
+    display: block;
+    margin-left: 90px;
+    font-style: italic;
+    color: darkgreen;
+    position: relative;
+    top: -10px;
   }
 }
 
 div[role="main"] > div.header > ul.nav {
-	margin-top: 7em;
+  margin-top: 7em;
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
@@ -87,9 +95,7 @@ div[role="main"] > div.header > ul.nav {
 }
 
 /* Customize container */
-@media (min-width: 768px) {
-
-}
+@media (min-width: 768px) {}
 
 .container-narrow > hr {
   margin: 30px 0;
@@ -114,10 +120,12 @@ div[role="main"] > div.header > ul.nav {
     padding-right: 0;
     padding-left: 0;
   }
+
   /* Space out the masthead */
   .header {
     margin-bottom: 30px;
   }
+
   /* Remove the bottom border on the jumbotron for visual effect */
   .jumbotron {
     border-bottom: 0;
@@ -125,13 +133,14 @@ div[role="main"] > div.header > ul.nav {
 }
 
 #chat-input {
-	width: 100%;
+  width: 100%;
 }
 
 #chat-window {
-  .row-fluid{
+  .row-fluid {
     height: 100%;
-     &>div {
+
+    & > div {
       height: 100%;
     }
   }
@@ -147,11 +156,13 @@ div[role="main"] > div.header > ul.nav {
 
 #chat-users {
   overflow-y: auto;
+
   ul {
     margin: 0;
     padding: 0;
     list-style-type: none;
   }
+
   #chat-room {
     font-weight: bold;
     text-align: center;
@@ -161,11 +172,12 @@ div[role="main"] > div.header > ul.nav {
 #chat-actions {
   overflow-y: scroll;
   color: black;
+
   .title {
     text-align: center;
     font-weight: bold;
   }
-} 
+}
 
 @media (max-width: 990px) {
   div[role="main"] > div.header > ul.nav {
@@ -174,8 +186,6 @@ div[role="main"] > div.header > ul.nav {
 }
 
 @media (max-width: 768px) {
-
-
   #action-bar, .action-collapser {
     display: none;
   }
@@ -186,7 +196,7 @@ div[role="main"] > div.header > ul.nav {
 
   #chat-window {
     .row-fluid {
-      &>div {
+      & > div {
         width: 100%;
       }
     }
@@ -206,6 +216,7 @@ div[role="main"] > div.header > ul.nav {
     width: 100%;
     margin-bottom: 15px;
     margin-top: 15px;
+
     div {
       display: inline-block;
     }
@@ -235,17 +246,16 @@ div[role="main"] > div.header > ul.nav {
   #chat-actions {
     height: 100%;
   }
-
 }
 
 hr {
-    margin-top: 5px;
-    margin-bottom: 5px;
-    background-color: rgba(0,0,0,0.25);
-    height: 1px;
-    color: black;
-    border: none;
-  }
+  margin-top: 5px;
+  margin-bottom: 5px;
+  background-color: rgba(0, 0, 0, 0.25);
+  height: 1px;
+  color: black;
+  border: none;
+}
 
 div[data-input-action], li[data-input-user] {
   cursor: pointer;
@@ -288,7 +298,7 @@ div[data-input-action], li[data-input-user] {
 }
 
 .col-sidebar, .col-fill-one, .col-fill {
-    float: left;
+  float: left;
 }
 
 .col-sidebar {
@@ -303,23 +313,22 @@ div[data-input-action], li[data-input-user] {
   width: 78.333333%;
 }
 
-
 @media (min-width: 768px) {
-    .col-sidebar, .col-fill-one, .col-fill {
-        float: left;
-    }
+  .col-sidebar, .col-fill-one, .col-fill {
+    float: left;
+  }
 
-    .col-sidebar {
-      width: 5%;
-    }
+  .col-sidebar {
+    width: 5%;
+  }
 
-    .col-fill {
-      width: 90%;
-    }
+  .col-fill {
+    width: 90%;
+  }
 
-    .col-fill-one {
-      width: 78.333333%;
-    }
+  .col-fill-one {
+    width: 78.333333%;
+  }
 }
 
 @media (min-width: 992px) {
@@ -340,29 +349,29 @@ div[data-input-action], li[data-input-user] {
   }
 }
 
-
 @media (min-width: 1200px) {
- .col-sidebar, .col-fill-one, .col-fill {
-        float: left;
-    }
+  .col-sidebar, .col-fill-one, .col-fill {
+    float: left;
+  }
 
-    .col-sidebar {
-      width: 5%;
-    }
+  .col-sidebar {
+    width: 5%;
+  }
 
-    .col-fill {
-      width: 90%;
-    }
+  .col-fill {
+    width: 90%;
+  }
 
-    .col-fill-one {
-      width: 78.333333%;
-    }
+  .col-fill-one {
+    width: 78.333333%;
+  }
 }
 
 .alias-table {
   .title {
     font-weight: bold;
   }
+
   td {
     span {
       margin-right: 10px;
@@ -371,4 +380,8 @@ div[data-input-action], li[data-input-user] {
   }
 }
 
-
+.container > .footer {
+  margin-top: 2em;
+  text-align: center;
+  font-size: smaller;
+}

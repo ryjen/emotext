@@ -7,19 +7,18 @@ defmodule Emotext.ActionController do
 
   def index(conn, _params) do
     actions = Repo.all(Action)
-    render(conn, "index.html", actions: actions)
+    render(conn, actions: actions)
   end
 
   def new(conn, _params) do
     changeset = Action.changeset(%Action{})
-    render(conn, "new.html", changeset: changeset)
+    render(conn, changeset: changeset)
   end
 
   def create(conn, %{"action" => action_params}) do
     changeset = Action.changeset(%Action{}, action_params)
-
     case Repo.insert(changeset) do
-      {:ok, _action} ->
+      {:ok, _action} -> 
         conn
         |> put_flash(:info, "Action created successfully.")
         |> redirect(to: action_path(conn, :index))
@@ -28,15 +27,31 @@ defmodule Emotext.ActionController do
     end
   end
 
+  def create(conn, %{"action" => action_params, "format" => "json" } ) do
+    changeset = Action.changeset(%Action{}, action_params)
+    case Repo.insert(changeset) do
+      {:ok, action} ->
+        conn
+        |> put_status(:created)
+        |> put_resp_header("location", action_path(conn, :show, action))
+        |> render(:show, action: action)
+      {:error, changeset} ->
+        conn
+        |> put_status(:unprocessable_entity)
+        |> render(Emotext.ChangesetView, :error, changeset: changeset)
+    end
+
+  end
+
   def show(conn, %{"id" => id}) do
     action = Repo.get!(Action, id)
-    render(conn, "show.html", action: action)
+    render(conn, action: action)
   end
 
   def edit(conn, %{"id" => id}) do
     action = Repo.get!(Action, id)
     changeset = Action.changeset(action)
-    render(conn, "edit.html", action: action, changeset: changeset)
+    render(conn, action: action, changeset: changeset)
   end
 
   def update(conn, %{"id" => id, "action" => action_params}) do
@@ -53,6 +68,23 @@ defmodule Emotext.ActionController do
     end
   end
 
+  def update(conn, %{"id" => id, "action" => action_params, "format" => "json"}) do
+    action = Repo.get!(Action, id)
+    changeset = Action.changeset(action, action_params)
+
+    case Repo.update(changeset) do
+      {:ok, action} ->
+        conn
+        |> put_status(:updated)
+        |> put_resp_header("location", action_path(conn, :show, action))
+        |> render(:show, action: action)
+      {:error, changeset} ->
+        conn
+        |> put_status(:unprocessable_entity)
+        |> render(Emotext.ChangesetView, :error, changeset: changeset)
+    end
+  end
+
   def delete(conn, %{"id" => id}) do
     action = Repo.get!(Action, id)
 
@@ -64,4 +96,9 @@ defmodule Emotext.ActionController do
     |> put_flash(:info, "Action deleted successfully.")
     |> redirect(to: action_path(conn, :index))
   end
+
+  defp put_format_param(conn, _) do
+    put_in conn.params["_format"], Phoenix.Controller.get_format(conn)
+  end
+
 end

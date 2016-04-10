@@ -1,0 +1,119 @@
+
+<h2>API</h2>
+
+<p>Still a work in progress....</p>
+
+<h3>Authentication</h3>
+
+<p>An application API token is required for access to the API.  It should supplied with the X-API-Application header:</p>
+
+        <code>
+          X-API-Application: &lt;api-verification-token&gt;
+        </code>
+
+<h3>Errors</h3>
+
+<p>Errors in the api will return the following format:</p>
+      <code>
+        {
+           &quot;error&quot;: &lt;string&gt;,
+           &quot;code&quot;: &lt;integer&gt;
+        }
+      </code>
+
+<h3>Messages</h3>
+
+  <dl class="api-resource well">
+    <dt>POST /api/v1/messages</dt>
+    <dd>
+      Posts a message as a user.
+
+      <h5>Input:</h5>
+        <code>
+          {  
+             &quot;user_id&quot;: &lt;string&gt;,
+             &quot;message&quot;: &lt;string&gt; 
+          }
+        </code>
+      <h5>Output:</h5>
+        <code> 200 (OK) / 422 (Unprocessable Entity) </code>
+    </dd>
+  </dl>
+
+<h3>Actions</h3>
+  
+  <dl class="api-resource well">
+    <dt>GET /api/v1/actions</dt>
+    <dd>  
+        Lists the available actions.
+        <h5>Input:</h5>
+        No Params
+        <h5>Output:</h5>
+        <code>
+          { 
+             &quot;data&quot;: [ 
+                { &lt;action-key-values&gt; } 
+             ] 
+          }
+        </code>
+      </dl>
+    </dd>
+  </dl>
+
+  <dl class="api-resource well">
+  <dt>POST /api/v1/actions</dt>
+  <dd>
+    Creates a new action for a user.
+    <h5>Input:</h5>
+    <code>
+    {
+      &lt;action&gt; 
+    }
+    </code>
+    <h5>Output:</h5>
+      <code> 200 (OK) / 422 (Unprocessable Entity) </code>
+      <br><br>
+      <code>
+      {
+        &quot;id&quot;: &lt;string&gt;
+      }
+      </code>
+  </dd>
+  </dl>
+
+  <dl class="api-resource well">
+  <dt>GET /api/v1/actions/&lt;action-id&gt;</dt>
+  <dd>
+    Displays the data for the provided &lt;action-id&gt;.
+    <h5>Output:</h5>
+      <code> 200 (OK) / 422 (Unprocessable Entity) </code>
+      <br><br>
+      <code>
+      {
+        &lt;action-key-values&gt;
+      }
+      </code>
+  </dd>
+  </dl>
+<h3>Aliases</h3>
+
+  <dl class="api-resource well">
+    <dt>GET /api/v1/aliases</dt>
+    <dd>
+      Lists the available aliases for actions.
+      <h5>Input:</h5>
+      No Params
+      <h5>Output:</h5>
+      <code>
+        { 
+           &quot;data&quot;: [ 
+              { &lt;alias-key-values&gt; } 
+           ]
+        }
+      </code>
+    </dd>
+  </dl>
+
+<h3>Channels</h3>
+
+<p>None yet.</p>

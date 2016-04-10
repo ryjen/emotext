@@ -25,6 +25,8 @@ defmodule Emotext.Router do
 
     get "/help", PageController, :help
 
+    get "/api", PageController, :api
+
     get "/login", SessionController, :new, as: :login
     get "/guest", SessionController, :guest
     post "/login", SessionController, :create, as: :login
@@ -47,8 +49,11 @@ defmodule Emotext.Router do
     get "/callback/:provider", AuthController, :callback
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", Emotext do
-  #   pipe_through :api
-  # end
+  scope "/api", Emotext do
+    pipe_through :api
+    scope "/v1", as: :v1 do
+      resources "/actions", ActionController, except: [:new, :edit]
+      resources "/aliases", AliasController, except: [:new, :edit]
+    end
+  end
 end

@@ -26,4 +26,8 @@ defmodule Emotext.PageController do
     render(conn, "help.html", aliases: aliases)
   end
 
+  def api(conn, _params) do
+      render(conn, "api.html")
+  end
+
 end
