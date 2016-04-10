@@ -18,7 +18,7 @@ defmodule Emotext.SessionController do
     end
     guest_name = "guest-#{Randomize.random(9999)}"
     user = User.change_screen_name(user, guest_name)
-    Logger.debug "Created #{user.screen_name}"
+    Logger.info "Created #{user.screen_name}"
     conn
     |> put_flash(:info, "Using guest account, create an account to have your own username.")
     |> Guardian.Plug.sign_in(user, :token, perms: %{ default: Guardian.Permissions.max })

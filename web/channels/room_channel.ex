@@ -1,11 +1,15 @@
 defmodule Emotext.RoomChannel do
   use Phoenix.Channel
 
+  require Logger
+
   alias Emotext.ActionQuery
   alias Emotext.AliasQuery
   alias Emotext.UserQuery
+  alias Emotext.History
   alias Emotext.Action
   alias Emotext.Repo
+  import Ecto.Query, only: [from: 2]
 
   intercept ["action:user", "action:others", "msg:output", "info:pong"]
 
@@ -63,12 +67,12 @@ defmodule Emotext.RoomChannel do
   end
 
   def handle_invalid_action(socket, user) do
-    push socket, "msg:sys", %{ body: "I don't know how to do that.", user: user.id }
+    push socket, "msg:sys", %{ body: "I don't know how to do that.", user: user.screen_name }
   end
 
   def sys_msg(socket, user, msg) do
     if msg do
-      push socket, "msg:sys", %{ body: msg, user: user.id }
+      push socket, "msg:sys", %{ body: msg, user: user.screen_name }
       true
     else
       handle_invalid_action(socket, user)
@@ -78,59 +82,85 @@ defmodule Emotext.RoomChannel do
 
   def action_user(socket, msg, user) do
     if msg do
-      broadcast! socket, "action:user", %{action: action_str(msg, user), user: user.id}
-      true
+      value = action_str(msg, user)
+      broadcast! socket, "action:user", %{action: value, screen_name: user.screen_name}
+      value
     else
       handle_invalid_action(socket, user)
-      false
+      nil
     end
   end
 
   def action_user(socket, msg, user, vict) do
     if msg do
-      broadcast! socket, "action:user", %{action: action_str(msg, user, vict), user: user.id, ignore: [vict.id]}
-      true
+      value = action_str(msg, user, vict)
+      broadcast! socket, "action:user", %{action: value, screen_name: user.screen_name, ignore: [vict.screen_name]}
+      value
     else
       handle_invalid_action(socket, user)
-      false
+      nil
     end
   end
 
   def action_vict(socket, msg, user, vict) do
     if msg do
-      broadcast! socket, "action:user", %{action: action_str(msg, user, vict), user: vict.id, ignore: [user.id]}
-      true
+      value = action_str(msg, user, vict)
+      broadcast! socket, "action:user", %{action: value, screen_name: vict.screen_name, ignore: [user.screen_name]}
+      value
     else
-      false
+      nil
     end
   end
 
   def action_others(socket, msg, user, vict) do
     if msg do
-      broadcast! socket, "action:others", %{action: action_str(msg, user, vict), ignore: [user.id, vict.id] }
-      true
+      value = action_str(msg, user, vict)
+      broadcast! socket, "action:others", %{action: value, ignore: [user.screen_name, vict.screen_name] }
+      value
     else
-      false
+      nil
     end
   end
 
   def action_others(socket, msg, user) do
     if msg do
-      broadcast! socket, "action:others", %{action: action_str(msg, user), ignore: [user.id] }
-      true
+      value = action_str(msg, user)
+      broadcast! socket, "action:others", %{action: value, ignore: [user.screen_name] }
+      value
     else
-      false
+      nil
     end
+  end
+
+  defp save_action(action, user, vict \\ nil) do
+
+      history = %History{ }
+      changeset = Ecto.Changeset.change(history, %{ action_id: action.id, user_id: user.id, user_screen_name: user.screen_name })
+      if vict do
+        changeset = Ecto.Changeset.change(changeset, %{ vict_id: vict.id, vict_screen_name: vict.screen_name })
+      end
+      Repo.insert! changeset
+    
+  end
+
+  defp save_message(message, user) do
+      Logger.debug "Saving message #{message} from #{user.screen_name}"
+      history = %History{ message: message, user_screen_name: user.screen_name}
+
+      Repo.insert! Ecto.Changeset.change(history, user_id: user.id)
+    
   end
 
   def perform_action(socket, user, action, vict_name \\ nil) do
     if vict_name == nil do
         action_user(socket, action.self_no_arg, user)
         action_others(socket, action.others_no_arg, user)
+        save_action(action, user)
      else
         vict = Repo.one(UserQuery.by_screen_name(vict_name))
+        vict = Emotext.User.change_screen_name(vict, vict_name)
         if vict != nil do
-          if vict.id == user.id do
+          if vict.screen_name == user.screen_name do
               action_user(socket, action.self_auto, user)
               action_others(socket, action.others_auto, user)
           else
@@ -138,6 +168,7 @@ defmodule Emotext.RoomChannel do
               action_vict(socket, action.vict_found, user, vict)
               action_others(socket, action.others_found, user, vict)
           end
+          save_action(action, user, vict)
         else if action.self_not_found do
             sys_msg socket, user, action_str(action.self_not_found, user)
           else
@@ -190,10 +221,75 @@ defmodule Emotext.RoomChannel do
     end
   end
 
+  defp send_action(socket, user, action, action_user) do
+    value = action_str(action, action_user)
+    push socket, "msg:action", %{ action: value, screen_name: user.screen_name }
+  end
+
+  defp send_action(socket, user, action, action_user, action_vict) do
+    value = action_str(action, action_user, action_vict)
+    push socket, "msg:action", %{ action: value, screen_name: user.screen_name }
+  end
+
+  defp send_history_item(socket, history) do
+    user = get_user(socket)
+    if history.action do
+     history_user = Emotext.User.change_screen_name(history.user, history.user_screen_name)
+     if history.vict == nil do
+        if history.user_screen_name == user.screen_name do
+          send_action(socket, user, history.action.self_no_arg, history_user)
+        else
+          send_action(socket, user, history.action.others_no_arg, history_user)
+        end  
+     else 
+          if history.vict_screen_name == history.user_screen_name do
+            if user.screen_name == history.user_screen_name do
+              send_action(socket, user, history.action.self_auto, history_user)
+            else
+              send_action(socket, user, history.action.others_auto, history_user)
+            end
+          else
+            vict = Emotext.User.change_screen_name(history.vict, history.vict_screen_name)
+            if user.screen_name == history.user_screen_name do         
+                send_action(socket, user, history.action.self_found, history_user, vict)
+              else 
+                if user.screen_name == history.vict_screen_name do
+                  send_action(socket, user, history.action.vict_found, history_user, vict)
+              else
+                send_action(socket, user, history.action.others_found, history_user, vict)
+              end
+            end
+          end
+      end
+    else 
+      if history.user_id do
+        Logger.info "Restoring history message from #{history.user_screen_name}"
+        user = get_user(socket)
+        msg = %{body: history.message, screen_name: history.user_screen_name }
+        if msg.screen_name == user.screen_name do            
+            push socket, "msg:self", msg
+        else
+            push socket, "msg:new", msg
+        end
+      else
+        Logger.error "No user loaded for history item #{history.id}"
+      end
+    end
+  end
+
+  defp send_history(socket) do
+
+    history = Repo.all from h in Emotext.History, order_by: [asc: h.inserted_at], preload: [:action, :user, :vict]
+
+    Enum.all?(history, fn(x) -> send_history_item(socket, x) end)
+
+  end
+
   def handle_in("info:ping", %{}, socket) do
     user = get_user(socket)
-    broadcast! socket, "info:pong", %{ socket: socket, user: user.id, screen_name: user.screen_name  }
+    broadcast! socket, "info:pong", %{ socket: socket, screen_name: user.screen_name  }
     push socket, "info:room", %{room: String.slice(socket.topic, 6, String.length(socket.topic))}
+    send_history socket
     {:noreply, socket}
   end
 
@@ -203,7 +299,8 @@ defmodule Emotext.RoomChannel do
         handle_command(socket, body, user)
     else
       if not handle_alias(socket, body, user) do
-        broadcast! socket, "msg:output", %{body: body, user: user.id, screen_name: user.screen_name }
+        broadcast! socket, "msg:output", %{body: body, screen_name: user.screen_name }
+        save_message(body, user)
       end
     end
     {:noreply, socket}
@@ -211,14 +308,14 @@ defmodule Emotext.RoomChannel do
 
   def handle_out("info:pong", msg, socket) do
     user = get_user(socket)
-    push socket, "info:user", %{ screen_name: msg.screen_name, user: msg.user }
-    push msg.socket, "info:user", %{ screen_name: user.screen_name, user: user.id }
+    push socket, "info:user", %{ screen_name: msg.screen_name }
+    push msg.socket, "info:user", %{ screen_name: user.screen_name }
     {:noreply, socket}
   end
 
   def handle_out("action:others", msg, socket) do
     user = get_user(socket)
-    if !Enum.any?(msg.ignore, fn(x) -> x == user.id end) do
+    if !Enum.any?(msg.ignore, fn(x) -> x == user.screen_name end) do
         push socket, "msg:action", msg
     end
     {:noreply, socket}
@@ -226,7 +323,7 @@ defmodule Emotext.RoomChannel do
 
   def handle_out("action:user", msg, socket) do
     user = get_user(socket)
-    if msg.user == user.id do
+    if msg.screen_name == user.screen_name do
         push socket, "msg:action", msg
     end
     {:noreply, socket}
@@ -234,7 +331,7 @@ defmodule Emotext.RoomChannel do
 
   def handle_out("msg:output", msg, socket) do
     user = get_user(socket)
-    if msg.user == user.id do
+    if msg.screen_name == user.screen_name do
         push socket, "msg:self", msg
     else
         push socket, "msg:new", msg

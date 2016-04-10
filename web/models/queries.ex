@@ -2,6 +2,7 @@ defmodule Emotext.UserQuery do
   import Ecto.Query
   alias Emotext.User
   alias Emotext.Action
+  alias Emotext.Repo
 
   def by_email(email) do
     from u in User, where: u.email == ^email
@@ -13,6 +14,14 @@ defmodule Emotext.UserQuery do
 
   def by_username(name) do
   	from u in User, where: u.username == ^name
+  end
+
+  def by_screen_name(name) do
+    if String.starts_with?(name, "guest") do
+      by_username("guest")
+    else
+      by_username(name)
+    end
   end
 
 end

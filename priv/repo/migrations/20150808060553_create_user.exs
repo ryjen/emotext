@@ -2,7 +2,7 @@ defmodule Emotext.Repo.Migrations.CreateUser do
   use Ecto.Migration
 
   def change do
-    create table(:users) do
+    create_if_not_exists table(:users) do
       add :username, :string
       add :email, :string
       add :encrypted_password, :string

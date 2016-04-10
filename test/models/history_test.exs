@@ -3,7 +3,7 @@ defmodule Emotext.HistoryTest do
 
   alias Emotext.History
 
-  @valid_attrs %{text: "some content"}
+  @valid_attrs %{user_id: "some content", value: "some content"}
   @invalid_attrs %{}
 
   test "changeset with valid attributes" do

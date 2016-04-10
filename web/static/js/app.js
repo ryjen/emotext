@@ -11,9 +11,11 @@ class App {
 
     let guardianToken = $('meta[name="guardian_token"]').attr('content');
 
-  	let socket = new Socket("/socket")
+  	let socket = new Socket("/socket", {
+      params: {guardian_token: guardianToken}
+    })
 
-  	socket.connect({guardian_token: guardianToken})
+  	socket.connect()
 
   	let chan = socket.channel("rooms:lobby")
 
@@ -79,25 +81,26 @@ class App {
 
   	collapser($('.users-collapser'), chatUsers, chatActions, $('#user-bar'))
 
-    let history = []
+    // TODO: put in settings
+    let buffer = []
 
   	var appendMessage = function(x) {
 
-        if (history.length > 500) {
-          history.shift();
+        if (buffer.length > 500) {
+          buffer.shift();
         }
 
-    		history.push(x);
+    		buffer.push(x);
 
-  	  	messages.html(history.join("\n"))
+  	  	messages.html(buffer.join("\n"))
 
   	  	var height = messages[0].scrollHeight;
 
     		messages.scrollTop(height);
 
-        if(typeof(Storage) !== "undefined") {
-            localStorage.setItem("history", JSON.stringify(history));
-        }
+        // if(typeof(Storage) !== "undefined") {
+        //     localStorage.setItem("history", JSON.stringify(history));
+        // }
 
   	}
 
@@ -129,15 +132,15 @@ class App {
   	})
 
   	chan.join().receive("ok", resp => {
-      if(typeof(Storage) !== "undefined") {
-            history = JSON.parse(localStorage.getItem("history")) || [];
-      }
-      if (history.length == 0) {
+      // if(typeof(Storage) !== "undefined") {
+      //       history = JSON.parse(localStorage.getItem("history")) || [];
+      // }
+      // if (history.length == 0) {
   		  appendMessage(`Welcome to <a href="/help">emotext</a>!`)
-      } else {
-        messages.html(history.join("\n"));
-        messages.scrollTop(messages[0].scrollHeight);
-      }
+      // } else {
+      //   messages.html(history.join("\n"));
+      //  messages.scrollTop(messages[0].scrollHeight);
+      // }
   		chan.push("info:ping" )
   	})
   }

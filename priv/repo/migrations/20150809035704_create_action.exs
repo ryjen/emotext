@@ -2,7 +2,7 @@ defmodule Emotext.Repo.Migrations.CreateAction do
   use Ecto.Migration
 
   def change do
-    create table(:actions) do
+    create_if_not_exists table(:actions) do
       add :name, :string
       add :self_no_arg, :string
       add :others_no_arg, :string
@@ -15,6 +15,8 @@ defmodule Emotext.Repo.Migrations.CreateAction do
 
       timestamps
     end
+
+    create unique_index(:actions, [:name])
 
   end
 end

@@ -2,6 +2,7 @@ defmodule Emotext.Action do
   use Emotext.Web, :model
 
   @primary_key {:id, :binary_id, autogenerate: true}
+  @foreign_key_type :binary_id # For associations
 
   schema "actions" do
     field :name, :string

@@ -12,39 +12,40 @@
 alias Emotext.Repo
 alias Emotext.Action
 alias Emotext.Alias
+alias Ecto.Changeset
 Repo.insert! %Action{ "name": "gack", "self_no_arg": "Gaaack!", "others_no_arg": "$n gacks with dismay!", "self_found": "Appalled, you gack at $N.", "others_found": "$n gacks expressively, shooting $N a dismayed look.", "vict_found": "$n gacks, and looks your way, dismayed.", "self_not_found": "That person isn't here.", "self_auto": "*GACK!*", "others_auto": "Appalled, $n gacks at $mself!"}
 Repo.insert! %Action{ "name": "kiss", "self_no_arg": "Isn't there someone you want to kiss?", "self_found": "You kiss $M.", "others_found": "$n kisses $N.", "vict_found": "$n kisses you.", "self_not_found": "Never around when required.", "self_auto": "All the lonely people :("}
 Repo.insert! %Action{ "name": "bounce", "self_no_arg": "BOIINNNNNNGG!", "others_no_arg": "$n bounces around with a happy smile.", "self_found": "You bounce onto $S lap and wiggle about.", "others_found": "$n bounces onto $N's lap and wiggles about.", "vict_found": "$n bounces onto your lap and wiggles about.", "self_not_found": "You don't see your plaything.", "self_auto": "You bounce your head like a basketball.", "others_auto": "$n plays basketball with $s head."}
 smile = Repo.insert! %Action{ "name": "smile", "self_no_arg": "You smile happily.", "others_no_arg": "$n smiles happily.", "self_found": "You smile at $M.", "others_found": "$n beams a smile at $N.", "vict_found": "$n smiles at you.", "self_not_found": "There's no one by that name around.", "self_auto": "You smile at yourself.", "others_auto": "$n smiles at $mself."}
-Repo.insert! %Alias{ action: smile, name: ":-)"}
-Repo.insert! %Alias{ action: smile, name: ":)" }
-Repo.insert! %Alias{ action: smile, name: ":D" }
-Repo.insert! %Alias{ action: smile, name: ":o)" }
-Repo.insert! %Alias{ action: smile, name: ":]" }
-Repo.insert! %Alias{ action: smile, name: ":3" }
-Repo.insert! %Alias{ action: smile, name: ":c)" }
-Repo.insert! %Alias{ action: smile, name: ":>" }
-Repo.insert! %Alias{ action: smile, name: "=]" }
-Repo.insert! %Alias{ action: smile, name: "8)" }
-Repo.insert! %Alias{ action: smile, name: "=)" }
-Repo.insert! %Alias{ action: smile, name: ":}" }
-Repo.insert! %Alias{ action: smile, name: ":^)" }
-Repo.insert! %Alias{ action: smile, name: ":っ)" }
+Repo.insert! Changeset.change(%Alias{}, %{ action_id: smile.id, name: ":-)" })
+Repo.insert! Changeset.change(%Alias{}, %{ action_id: smile.id, name: ":)" })
+Repo.insert! Changeset.change(%Alias{}, %{ action_id: smile.id, name: ":D" })
+Repo.insert! Changeset.change(%Alias{}, %{ action_id: smile.id, name: ":o)" })
+Repo.insert! Changeset.change(%Alias{}, %{ action_id: smile.id, name: ":]" })
+Repo.insert! Changeset.change(%Alias{}, %{ action_id: smile.id, name: ":3" })
+Repo.insert! Changeset.change(%Alias{}, %{ action_id: smile.id, name: ":c)" })
+Repo.insert! Changeset.change(%Alias{}, %{ action_id: smile.id, name: ":>" })
+Repo.insert! Changeset.change(%Alias{}, %{ action_id: smile.id, name: "=]" })
+Repo.insert! Changeset.change(%Alias{}, %{ action_id: smile.id, name: "8)" })
+Repo.insert! Changeset.change(%Alias{}, %{ action_id: smile.id, name: "=)" })
+Repo.insert! Changeset.change(%Alias{}, %{ action_id: smile.id, name: ":}" })
+Repo.insert! Changeset.change(%Alias{}, %{ action_id: smile.id, name: ":^)" })
+Repo.insert! Changeset.change(%Alias{}, %{ action_id: smile.id, name: ":っ)" })
 Repo.insert! %Action{ "name": "dance", "self_no_arg": "Feels silly, doesn't it?", "others_no_arg": "$n dances wildly before you!", "self_found": "You lead $M to the dancefloor.", "others_found": "$n sends $N across the dancefloor.", "vict_found": "$n sends you across the dancefloor.", "self_not_found": "Eh, WHO?", "self_auto": "You skip and dance around by yourself.", "others_auto": "$n skips a light Fandango."}
 Repo.insert! %Action{ "name": "cackle", "self_no_arg": "You cackle gleefully.", "others_no_arg": "$n throws back $s head and cackles with insane glee!", "self_found": "You cackle gleefully at $N", "others_found": "$n cackles gleefully at $N.", "vict_found": "$n cackles gleefully at you.  Better keep your distance from $m.", "self_not_found": "You can't find a friend to cackle with.", "self_auto": "You cackle at yourself.  Now, THAT'S strange!", "others_auto": "$n is really crazy now!  $e cackles at $mself."}
 laugh = Repo.insert! %Action{ "name": "laugh", "self_no_arg": "You fall down laughing.", "others_no_arg": "$n falls down laughing.", "self_found": "You laugh at $N mercilessly.", "others_found": "$n laughs at $N mercilessly.", "vict_found": "$n laughs at you mercilessly.  Hmmmmph.", "self_not_found": "You can't find the butt of your joke.", "self_auto": "You laugh at yourself.  I would, too.", "others_auto": "$n laughs at $mself.  Let's all join in!!!"}        
-Repo.insert! %Alias{ action: laugh, name: ":-D" }
-Repo.insert! %Alias{ action: laugh, name: "8-D" }
-Repo.insert! %Alias{ action: laugh, name: "8D" }
-Repo.insert! %Alias{ action: laugh, name: "x-D" }
-Repo.insert! %Alias{ action: laugh, name: "xD" }
-Repo.insert! %Alias{ action: laugh, name: "X-D" }
-Repo.insert! %Alias{ action: laugh, name: "XD" }
-Repo.insert! %Alias{ action: laugh, name: "=-D" }
-Repo.insert! %Alias{ action: laugh, name: "=D" }
-Repo.insert! %Alias{ action: laugh, name: "=-3" }
-Repo.insert! %Alias{ action: laugh, name: "=3" }
-Repo.insert! %Alias{ action: laugh, name: "B^D" }
+Repo.insert! Changeset.change(%Alias{}, %{ action_id: laugh.id, name: ":-D" })
+Repo.insert! Changeset.change(%Alias{}, %{ action_id: laugh.id, name: "8-D" })
+Repo.insert! Changeset.change(%Alias{}, %{ action_id: laugh.id, name: "8D" })
+Repo.insert! Changeset.change(%Alias{}, %{ action_id: laugh.id, name: "x-D" })
+Repo.insert! Changeset.change(%Alias{}, %{ action_id: laugh.id, name: "xD" })
+Repo.insert! Changeset.change(%Alias{}, %{ action_id: laugh.id, name: "X-D" })
+Repo.insert! Changeset.change(%Alias{}, %{ action_id: laugh.id, name: "XD" })
+Repo.insert! Changeset.change(%Alias{}, %{ action_id: laugh.id, name: "=-D" })
+Repo.insert! Changeset.change(%Alias{}, %{ action_id: laugh.id, name: "=D" })
+Repo.insert! Changeset.change(%Alias{}, %{ action_id: laugh.id, name: "=-3" })
+Repo.insert! Changeset.change(%Alias{}, %{ action_id: laugh.id, name: "=3" })
+Repo.insert! Changeset.change(%Alias{}, %{ action_id: laugh.id, name: "B^D" })
 Repo.insert! %Action{ "name": "giggle", "self_no_arg": "You giggle.", "others_no_arg": "$n giggles.", "self_found": "You giggle in $S presence.", "others_found": "$n giggles at $N's actions.", "vict_found": "$n giggles at you.  Hope it's not contagious!", "self_not_found": "You giggle by yourself, since you can't find a partner to giggle with.", "self_auto": "You giggle at yourself, which makes you giggle at yourself, which makes you ...", "others_auto": "$n giggles at $mself.  $e must be nervous or something."}
 Repo.insert! %Action{ "name": "shake", "self_no_arg": "You shake your head.", "others_no_arg": "$n shakes $s head.", "self_found": "You shake $S hand.", "others_found": "$n shakes $N's hand.", "vict_found": "$n shakes your hand.", "self_not_found": "Sorry good buddy, but that person doesn't seem to be here.", "self_auto": "You are shaken by yourself.", "others_auto": "$n shakes and quivers like a bowl full of jelly."}
 Repo.insert! %Action{ "name": "puke", "self_no_arg": "You puke...chunks everywhere!!! YUK!", "others_no_arg": "$n pukes.", "self_found": "You puke on $M.", "others_found": "$n pukes on $N.", "vict_found": "$n spews vomit and pukes all over your clothing!", "self_not_found": "Once again?", "self_auto": "You puke on yourself.", "others_auto": "$n pukes on $s clothes."}
@@ -64,7 +65,7 @@ Repo.insert! %Action{ "name": "grin", "self_no_arg": "You grin evilly.", "others
 Repo.insert! %Action{ "name": "bow", "self_no_arg": "You bow deeply.", "others_no_arg": "$n bows deeply.", "self_found": "You bow before $M.", "others_found": "$n bows before $N.", "vict_found": "$n bows before you.", "self_not_found": "Who's that?", "self_auto": "You kiss your toes.", "others_auto": "$n folds up like a jacknife and kisses $s own toes."}
 Repo.insert! %Action{ "name": "applaud", "self_no_arg": "Clap, clap, clap.", "others_no_arg": "$n gives a round of applause.", "self_found": "You clap at $N's actions.", "others_found": "$n claps at $N's actions.", "vict_found": "$n gives you a round of applause.  You MUST'VE done something good!", "self_not_found": "You give your imaginary round of applause to your imaginary friend.", "self_auto": "You applaud at yourself.  Boy, are we conceited!", "others_auto": "$n applauds at $mself.  Boy, are we conceited!"}
 blush = Repo.insert! %Action{ "name": "blush", "self_no_arg": "Your cheeks are burning.", "others_no_arg": "$n blushes.", "self_found": "You get all flustered up seeing $M.", "others_found": "$n blushes as $e sees $N here.", "vict_found": "$n blushes as $e sees you here.  Such an effect on people!", "self_not_found": "You blush as you notice that person isn't here.", "self_auto": "You blush at your own folly.", "others_auto": "$n blushes as $e notices $s boo-boo."}
-Repo.insert! %Alias{ action: blush, name: ":$" }
+Repo.insert! Changeset.change(%Alias{}, %{ action_id: blush.id, name: ":$" })
 Repo.insert! %Action{ "name": "burp", "self_no_arg": "You burp loudly.", "others_no_arg": "$n burps loudly.", "self_found": "You burp loudly to $M in response.", "others_found": "$n burps loudly in response to $N's remark.", "vict_found": "$n burps loudly in response to your remark.", "self_not_found": "You can't find your victim.", "self_auto": "You burp at yourself.", "others_auto": "$n burps at $mself.  What a sick sight."}
 Repo.insert! %Action{ "name": "chuckle", "self_no_arg": "You chuckle politely.", "others_no_arg": "$n chuckles politely.", "self_found": "You chuckle at $S joke.", "others_found": "$n chuckles at $N's joke.", "vict_found": "$n chuckles at your joke.", "self_not_found": "You can't find a friend to chuckle with.", "self_auto": "You chuckle at your own joke, since no one else would.", "others_auto": "$n chuckles at $s own joke, since none of you would."}
 Repo.insert! %Action{ "name": "clap", "self_no_arg": "You clap your hands together.", "others_no_arg": "$n shows $s approval by clapping $s hands together.", "self_found": "You clap at $S performance.", "others_found": "$n claps at $N's performance.", "vict_found": "$n claps at your performance.", "self_not_found": "You clap for nothing.", "self_auto": "You clap at your own performance.", "others_auto": "$n claps at $s own performance."}
@@ -74,17 +75,17 @@ Repo.insert! %Action{ "name": "fart", "self_no_arg": "Where are your manners ?",
 Repo.insert! %Action{ "name": "flip", "self_no_arg": "You flip head over heels.", "others_no_arg": "$n flips head over heels.", "self_found": "You flip $M over your shoulder.", "others_found": "$n flips $N over $s shoulder.", "vict_found": "$n flips you over $s shoulder.  Hmmmm.", "self_not_found": "You can't find the person.", "self_auto": "You tumble all over the room.", "others_auto": "$n does some nice tumbling and gymnastics."}
 Repo.insert! %Action{ "name": "fondle", "self_no_arg": "Who needs to be fondled ?", "self_found": "You fondly fondle $M.", "others_found": "$n fondly fondles $N.", "vict_found": "$n fondly fondles you.", "self_not_found": "You fondly try to fondle someone not in the room, but who cares.", "self_auto": "You fondly fondle yourself, feels funny doesn't it?", "others_auto": "$n fondly fondles $mself - this is going too far!!"}
 frown = Repo.insert! %Action{ "name": "frown", "self_no_arg": "You frown disapprovingly.", "others_no_arg": "$n frowns.", "self_found": "You frown at what $E did.", "others_found": "$n frowns at what $N did.", "vict_found": "$n frowns at what you did.", "self_not_found": "You don't see any reason to frown.", "self_auto": "You frown at yourself.  Poor baby.", "others_auto": "$n frowns at $mself.  What a sad puppy...."}
-Repo.insert! %Alias{ action: frown, name: ">:[" }
-Repo.insert! %Alias{ action: frown, name: ":-(" }
-Repo.insert! %Alias{ action: frown, name: ":(" }
-Repo.insert! %Alias{ action: frown, name: ":-c" }
-Repo.insert! %Alias{ action: frown, name: ":c" }
-Repo.insert! %Alias{ action: frown, name: ":-<" }
-Repo.insert! %Alias{ action: frown, name: ":っC" }
-Repo.insert! %Alias{ action: frown, name: ":<" }
-Repo.insert! %Alias{ action: frown, name: ":-[" }
-Repo.insert! %Alias{ action: frown, name: ":[" }
-Repo.insert! %Alias{ action: frown, name: ":{" }
+Repo.insert! Changeset.change(%Alias{}, %{ action_id: frown.id, name: ">:[" })
+Repo.insert! Changeset.change(%Alias{}, %{ action_id: frown.id, name: ":-(" })
+Repo.insert! Changeset.change(%Alias{}, %{ action_id: frown.id, name: ":(" })
+Repo.insert! Changeset.change(%Alias{}, %{ action_id: frown.id, name: ":-c" })
+Repo.insert! Changeset.change(%Alias{}, %{ action_id: frown.id, name: ":c" })
+Repo.insert! Changeset.change(%Alias{}, %{ action_id: frown.id, name: ":-<" })
+Repo.insert! Changeset.change(%Alias{}, %{ action_id: frown.id, name: ":っC" })
+Repo.insert! Changeset.change(%Alias{}, %{ action_id: frown.id, name: ":<" })
+Repo.insert! Changeset.change(%Alias{}, %{ action_id: frown.id, name: ":-[" })
+Repo.insert! Changeset.change(%Alias{}, %{ action_id: frown.id, name: ":[" })
+Repo.insert! Changeset.change(%Alias{}, %{ action_id: frown.id, name: ":{" })
 Repo.insert! %Action{ "name": "gasp", "self_no_arg": "You gasp in astonishment.", "others_no_arg": "$n gasps in astonishment.", "self_found": "You gasp as you realize what $E did.", "others_found": "$n gasps as $e realizes what $N did.", "vict_found": "$n gasps as $e realizes what you did.", "self_not_found": "You need to panic.", "self_auto": "You look at yourself and gasp!", "others_auto": "$n takes one look at $mself and gasps in astonisment!"}
 Repo.insert! %Action{ "name": "glare", "self_no_arg": "You glare at nothing in particular.", "others_no_arg": "$n glares around $m.", "self_found": "You glare icily at $M.", "others_found": "$n glares at $N.", "vict_found": "$n glares icily at you, you feel cold to your bones.", "self_not_found": "You try to glare at somebody who is not present.", "self_auto": "You glare icily at your feet, they are suddenly very cold.", "others_auto": "$n glares at $s feet, what is bothering $m?"}
 Repo.insert! %Action{ "name": "groan", "self_no_arg": "You groan loudly.", "others_no_arg": "$n groans loudly.", "self_found": "You groan at the sight of $M.", "others_found": "$n groans at the sight of $N.", "vict_found": "$n groans at the sight of you.", "self_not_found": "You see no reason to groan.", "self_auto": "You groan as you realize what you have done.", "others_auto": "$n groans as $e realizes what $e has done."}
@@ -115,15 +116,15 @@ Repo.insert! %Action{ "name": "wave", "self_no_arg": "You wave.", "others_no_arg
 Repo.insert! %Action{ "name": "whistle", "self_no_arg": "You whistle appreciatively.", "others_no_arg": "$n whistles appreciatively.", "self_found": "You whistle at the sight of $M.", "others_found": "$n whistles at the sight of $N.", "vict_found": "$n whistles at the sight of you.", "self_not_found": "You don't see nothing special to whistle at.", "self_auto": "You whistle a little tune to yourself.", "others_auto": "$n whistles a little tune to $mself."}
 Repo.insert! %Action{ "name": "wiggle", "self_no_arg": "Your wiggle your bottom.", "others_no_arg": "$n wiggles $s bottom.", "self_found": "You wiggle your bottom toward $M.", "others_found": "$n wiggles $s bottom toward $N.", "vict_found": "$n wiggles $s bottom toward you.", "self_not_found": "You must be alone.", "self_auto": "You wiggle about like a fish.", "others_auto": "$n wiggles about like a fish."}
 wink = Repo.insert! %Action{ "name": "wink", "self_no_arg": "Have you got something in your eye?", "others_no_arg": "$n winks suggestively.", "self_found": "You wink suggestively at $N.", "others_found": "$n winks at $N.", "vict_found": "$n winks suggestively at you.", "self_not_found": "No one with that name is present.", "self_auto": "You wink at yourself ?? - what are you up to?", "others_auto": "$n winks at $mself - something strange is going on..."}
-Repo.insert! %Alias{ action: wink, name: ";-)" }
-Repo.insert! %Alias{ action: wink, name: ";)" }
-Repo.insert! %Alias{ action: wink, name: "*-)" }
-Repo.insert! %Alias{ action: wink, name: "*)" }
-Repo.insert! %Alias{ action: wink, name: ";-]" }
-Repo.insert! %Alias{ action: wink, name: ";]" }
-Repo.insert! %Alias{ action: wink, name: ";D" }
-Repo.insert! %Alias{ action: wink, name: ";^)" }
-Repo.insert! %Alias{ action: wink, name: ":-," }
+Repo.insert! Changeset.change(%Alias{}, %{ action_id: wink.id, name: ";-)" })
+Repo.insert! Changeset.change(%Alias{}, %{ action_id: wink.id, name: ";)" })
+Repo.insert! Changeset.change(%Alias{}, %{ action_id: wink.id, name: "*-)" })
+Repo.insert! Changeset.change(%Alias{}, %{ action_id: wink.id, name: "*)" })
+Repo.insert! Changeset.change(%Alias{}, %{ action_id: wink.id, name: ";-]" })
+Repo.insert! Changeset.change(%Alias{}, %{ action_id: wink.id, name: ";]" })
+Repo.insert! Changeset.change(%Alias{}, %{ action_id: wink.id, name: ";D" })
+Repo.insert! Changeset.change(%Alias{}, %{ action_id: wink.id, name: ";^)" })
+Repo.insert! Changeset.change(%Alias{}, %{ action_id: wink.id, name: ":-," })
 Repo.insert! %Action{ "name": "yawn", "self_no_arg": "You must be tired.", "others_no_arg": "$n yawns."}
 Repo.insert! %Action{ "name": "snowball", "self_no_arg": "Who do you want to throw a snowball at?", "self_found": "You throw a snowball in $N's face.", "others_found": "$n conjures a snowball from the thin air and throws it at $N.", "vict_found": "$n conjures a snowball from the thin air and throws it at you.", "self_not_found": "You stand with the snowball in your hand because your victim is not here.", "self_auto": "You conjure a snowball from the thin air and throw it at yourself.", "others_auto": "$n conjures a snowball out of the thin air and throws it at $mself."}
 Repo.insert! %Action{ "name": "french", "self_no_arg": "Kiss whom?", "self_found": "You give $N a long and passionate kiss, it seems to last forever...", "others_found": "$n kisses $N passionately.", "vict_found": "$n gives you a long and passionate kiss, it seems to last forever...", "self_not_found": "Your heart is filled with despair as that person is not here.", "self_auto": "You gather yourself in your arms and try to kiss yourself.", "others_auto": "$n makes an attempt at kissing $mself."}
@@ -137,9 +138,9 @@ Repo.insert! %Action{ "name": "beg", "self_no_arg": "You beg the gods for mercy.
 Repo.insert! %Action{ "name": "cringe", "self_no_arg": "You cringe in terror.", "others_no_arg": "$n cringes in terror!", "self_found": "You cringe away from $M.", "others_found": "$n cringes away from $N in mortal terror.", "vict_found": "$n cringes away from you.", "self_not_found": "I don't see anyone by that name here.. what are you afraid of?", "self_auto": "I beg your pardon?"}
 Repo.insert! %Action{ "name": "daydream", "self_no_arg": "You dream of better times.", "others_no_arg": "$n looks absent-minded, his eyes staring into space."}
 fume = Repo.insert! %Action{ "name": "fume", "self_no_arg": "Take it easy now! count to ten, very slowly.", "others_no_arg": "$n grits $s teeth and fumes with rage.", "self_found": "You stare at $M, fuming.", "others_found": "$n stares at $N, fuming with rage.", "vict_found": "$n stares at you, fuming with rage!", "self_not_found": "Fume away... they ain't here.", "self_auto": "That's right - hate yourself!", "others_auto": "$n clenches $s fists and stomps his feet, fuming with anger."}
-Repo.insert! %Alias{ action: fume, name: ":-||" }
-Repo.insert! %Alias{ action: fume, name: ":@" }
-Repo.insert! %Alias{ action: fume, name: ">:(" }
+Repo.insert! Changeset.change(%Alias{}, %{ action_id: fume.id, name: ":-||" })
+Repo.insert! Changeset.change(%Alias{}, %{ action_id: fume.id, name: ":@" })
+Repo.insert! Changeset.change(%Alias{}, %{ action_id: fume.id, name: ">:(" })
 Repo.insert! %Action{ "name": "grovel", "self_no_arg": "You grovel in the dirt.", "others_no_arg": "$n grovels in the dirt.", "self_found": "You grovel before $M", "others_found": "$n grovels in the dirt before $N.", "vict_found": "$n grovels in the dirt before you.", "self_not_found": "Who?", "self_auto": "That seems a little silly to me."}
 Repo.insert! %Action{ "name": "hop", "self_no_arg": "You hop around like a little kid.", "others_no_arg": "$n hops around like a little kid."}
 Repo.insert! %Action{ "name": "nudge", "self_no_arg": "Nudge whom?", "self_found": "You nudge $M.", "others_found": "$n nudges $N.", "vict_found": "$n nudges you.", "self_not_found": "Who?", "self_auto": "You nudge yourself, for some strange reason.", "others_auto": "$n nudges $mself, to keep $mself awake."}
@@ -187,16 +188,16 @@ Repo.insert! %Action{ "name": "point", "self_no_arg": "You point in every direct
 Repo.insert! %Action{ "name": "rub", "self_no_arg": "You rub your hands together in greedy anticipation.", "others_no_arg": "$n rubs $s hands together in greedy anticipation.", "self_found": "You give $N a nice, long, kinky rubdown.", "others_found": "$n gives $N a nice long rubdown.", "vict_found": "$n gives you a rubdown, running $s hands over your tense shoulders...Mmmm...", "self_not_found": "Shame to waste those talented hands, but they've already left.", "self_auto": "You rub yourself...lingering a little too long in some places.", "others_auto": "$n rubs $mself...what a creep!"}
 Repo.insert! %Action{ "name": "bleed", "self_no_arg": "You bleed profusely -- making a horrible mess!", "others_no_arg": "$n weakly bleeds all over the floor.", "self_found": "You bleed on $N -- ewww!", "others_found": "$n bleeds on $N.  Watch out, YOU might be next!", "vict_found": "$n bleeds on you -- ewww!  Get away!!", "self_not_found": "Bleed on whom?", "self_auto": "You bleed all over yourself.", "others_auto": "$n bleeds profusely all over $mself."}
 highf = Repo.insert! %Action{ "name": "highfive", "self_no_arg": "You jump in the air and give a BIG high five to...umm...absolutely nothing.", "others_no_arg": "$n wildly high fives the air, looking very foolish -- very foolish indeed.", "self_found": "You jump in the air and give a BIG high five to $N!", "others_found": "$n enthusiastically high-five's $N!", "vict_found": "$n gives you a BIG high five!  Way to go!!", "self_not_found": "Sorry, they have already left.", "self_auto": "You try to give yourself a high five.  What ARE you thinking?", "others_auto": "$n tries to high five $mself, but ends up looking foolish instead."}
-Repo.insert! %Alias{ action: highf, name: "o/\o" }
-Repo.insert! %Alias{ action: highf, name: "^5" }
-Repo.insert! %Alias{ action: highf, name: ">_>^" }
-Repo.insert! %Alias{ action: highf, name: "^<_<" }
+Repo.insert! Changeset.change(%Alias{}, %{ action_id: highf.id, name: "o/\o" })
+Repo.insert! Changeset.change(%Alias{}, %{ action_id: highf.id, name: "^5" })
+Repo.insert! Changeset.change(%Alias{}, %{ action_id: highf.id, name: ">_>^" })
+Repo.insert! Changeset.change(%Alias{}, %{ action_id: highf.id, name: "^<_<" })
 Repo.insert! %Action{ "name": "propose", "self_no_arg": "You propose to everyone in the room.", "others_no_arg": "$n proposes to everyone in the room.  Very odd.", "self_found": "You kneel and romantically propose to $N.", "others_found": "$n gets on one knee and proposes to $N.", "vict_found": "$n gets down on one knee and romantically proposes to you.", "self_not_found": "You must be lonely.  They aren't here.", "self_auto": "You are SO full of yourself!", "others_auto": "$n proposes to $mself -- how narcissistic!"}
 Repo.insert! %Action{ "name": "peer", "self_no_arg": "You peer around yourself intently.", "others_no_arg": "$n peers around $mself intently.", "self_found": "You peer intently at $N.", "others_found": "$n peers intently at $N.", "vict_found": "$n peers at you intently.", "self_not_found": "They aren't here.", "self_auto": "You get a little cross-eyed with your attempts to stare yourself down.", "others_auto": "$n peers at $mself, crossing $s eyes in the process."}
 Repo.insert! %Action{ "name": "worship", "self_no_arg": "You prostrate yourself and worship the gods!", "others_no_arg": "$n prostrates $mself and worships the gods!", "self_found": "You fall on your knees and worship $N.", "others_found": "$n falls on $s knees and worships $N.", "vict_found": "$n falls to the ground and worships you.", "self_not_found": "You can't worship someone who isn't here.", "self_auto": "You worship yourself.", "others_auto": "$n worships $mself."}
 Repo.insert! %Action{ "name": "bearhug", "self_no_arg": "Whom do you wish to bearhug?", "self_found": "You overwhelm $N with a great, big, hulking bearhug.", "others_found": "$n encompasses $N in an ENORMOUS bearhug!", "vict_found": "$n clutches you tightly in an overwhelming bearhug!", "self_not_found": "Perhaps you should shower your affections on someone who is here?", "self_auto": "You vainly clutch yourself in a bearhug for consolation.", "others_auto": "$n hugs $mself as tightly as possible.  Looks like $e could use a hand."}
 inno = Repo.insert! %Action{ "name": "innocent", "self_no_arg": "You innocently whistle a tune.", "others_no_arg": "$n looks around and whistles innocently.", "self_found": "You look at $N and bat your eyelashes -- the picture of innocence!", "others_found": "$n bats $s eyelashes innocently at $N.", "vict_found": "$n looks at you and innocently bats $s eyelashes.", "self_not_found": "Don't even TRY -- they've already left."}
-Repo.insert! %Alias{ action: inno, name: "O:-)" }
+Repo.insert! Changeset.change(%Alias{}, %{ action_id: inno.id, name: "O:-)" })
 Repo.insert! %Action{ "name": "collapse", "self_no_arg": "You collapse on the floor from exhaustion.", "others_no_arg": "$n dramatically collapses to the floor from exhaustion.", "self_found": "You collapse right into $N's arms.", "others_found": "$n collapses right into $N's arms.", "vict_found": "Suddenly, $n collapses into your arms from exhaustion.", "self_not_found": "They've already left, just collapse on the floor."}
 Repo.insert! %Action{ "name": "stretch", "self_no_arg": "You lean back and streeeeeettch your arms and legs.", "others_no_arg": "$n stretches luxuriously.  Kinda makes you want to doesn't it?"}
 Repo.insert! %Action{ "name": "spam", "self_no_arg": "You mutter, 'spam' quietly to yourself again and again.", "others_no_arg": "$n rests in a corner and mutters 'spam' quietly to $mself.", "self_found": "You SPAM $N mercilessly!", "others_found": "$n spams $N!", "vict_found": "You've been SPAMMED by $n!", "self_not_found": "Spam away -- they've left."}
@@ -228,23 +229,23 @@ Repo.insert! %Action{ "name": "tweak", "self_no_arg": "Tweak who?", "self_found"
 Repo.insert! %Action{ "name": "peck", "self_no_arg": "Wouldn't you like to do that to a person, or do you prefer air?", "self_found": "Risking a slap to the face, you give $N a peck on the cheek.", "others_found": "$n smiles and gives $N a chaste peck on the cheek.", "vict_found": "$n pecks you on the cheek, how sweet!", "self_not_found": "I guess you scared them away...", "self_auto": "You must REALLY like yourself.", "others_auto": "$n tries in vain to wrap $s lips around $s cheeks."}
 Repo.insert! %Action{ "name": "explode", "self_no_arg": "You feel the blood boiling in your veins!", "others_no_arg": "$n turns a deep red, fighting to contain $s temper...", "self_found": "You feel your rage explode deep in the pit of your stomach...", "others_found": "$n burns holes through $N with his explosive anger!", "vict_found": "$n is ANGRY with you... I'd run if I were you!!!", "self_not_found": "Temper Temper... they left.", "self_auto": "Your soul burns brightly then fades to nothing.", "others_auto": "$n implodes!!!  Only a grease spot remains where $e once stood."}
 raspb = Repo.insert! %Action{ "name": "raspberry", "self_no_arg": "You stick your tongue out at ... well, no one.", "others_no_arg": "$n sticks $s tongue out, catching a few flies in the process.", "self_found": "You give $N the raspberry... and spit all over yourself.", "others_found": "$n gives $N the raspberry... PHBT!  What a mess... Spit EVERYWHERE!", "vict_found": "You are splattered with saliva as $n gives you the raspberry... HOW RUDE!", "self_not_found": "Hang your tongue out if you like, $e isn't here.", "self_auto": "You try to stick your tongue out at yourself... somehow, it isn't the same."}
-Repo.insert! %Alias{ action: raspb, name: ">:P" }
-Repo.insert! %Alias{ action: raspb, name: ":-P" }
-Repo.insert! %Alias{ action: raspb, name: ":P" }
-Repo.insert! %Alias{ action: raspb, name: "X-P" }
-Repo.insert! %Alias{ action: raspb, name: "x-p" }
-Repo.insert! %Alias{ action: raspb, name: "xp" }
-Repo.insert! %Alias{ action: raspb, name: "XP" }
-Repo.insert! %Alias{ action: raspb, name: ":-p" }
-Repo.insert! %Alias{ action: raspb, name: ":p" }
-Repo.insert! %Alias{ action: raspb, name: "=p" }
-Repo.insert! %Alias{ action: raspb, name: ":-Þ" }
-Repo.insert! %Alias{ action: raspb, name: ":Þ" }
-Repo.insert! %Alias{ action: raspb, name: ":þ" }
-Repo.insert! %Alias{ action: raspb, name: ":-þ" }
-Repo.insert! %Alias{ action: raspb, name: ":-b" }
-Repo.insert! %Alias{ action: raspb, name: ":b" }
-Repo.insert! %Alias{ action: raspb, name: "d:" }
+Repo.insert! Changeset.change(%Alias{}, %{ action_id: raspb.id, name: ">:P" })
+Repo.insert! Changeset.change(%Alias{}, %{ action_id: raspb.id, name: ":-P" })
+Repo.insert! Changeset.change(%Alias{}, %{ action_id: raspb.id, name: ":P" })
+Repo.insert! Changeset.change(%Alias{}, %{ action_id: raspb.id, name: "X-P" })
+Repo.insert! Changeset.change(%Alias{}, %{ action_id: raspb.id, name: "x-p" })
+Repo.insert! Changeset.change(%Alias{}, %{ action_id: raspb.id, name: "xp" })
+Repo.insert! Changeset.change(%Alias{}, %{ action_id: raspb.id, name: "XP" })
+Repo.insert! Changeset.change(%Alias{}, %{ action_id: raspb.id, name: ":-p" })
+Repo.insert! Changeset.change(%Alias{}, %{ action_id: raspb.id, name: ":p" })
+Repo.insert! Changeset.change(%Alias{}, %{ action_id: raspb.id, name: "=p" })
+Repo.insert! Changeset.change(%Alias{}, %{ action_id: raspb.id, name: ":-Þ" })
+Repo.insert! Changeset.change(%Alias{}, %{ action_id: raspb.id, name: ":Þ" })
+Repo.insert! Changeset.change(%Alias{}, %{ action_id: raspb.id, name: ":þ" })
+Repo.insert! Changeset.change(%Alias{}, %{ action_id: raspb.id, name: ":-þ" })
+Repo.insert! Changeset.change(%Alias{}, %{ action_id: raspb.id, name: ":-b" })
+Repo.insert! Changeset.change(%Alias{}, %{ action_id: raspb.id, name: ":b" })
+Repo.insert! Changeset.change(%Alias{}, %{ action_id: raspb.id, name: "d:" })
 Repo.insert! %Action{ "name": "flash", "self_no_arg": "You grin and strut as you open your coat and show what you've got!", "others_no_arg": "$n rips $s clothes off and parades naked around the room!", "self_found": "Swiftly you jerk open your jacket, trying to get $M to notice you.", "others_found": "Cover your eyes, $n is exposing $mself to $n!  EWWWW!", "vict_found": "You gasp!  $n has just revealed $s \"equipment\" to you!", "self_not_found": "Exhibitionist, that person isn't here!", "self_auto": "That's sick.", "others_auto": "PERVERT PRESENT!  $n is trying to flash $mself"}
 Repo.insert! %Action{ "name": "strip", "self_no_arg": "You do a slow strip tease for the people...", "others_no_arg": "$n begins a slow, erotic strip-tease act...", "self_found": "You start to undress $N ... one piece of clothing at a time...", "others_found": "$n runs $s hands over $Ns body, slowly stripping away the clothing...", "vict_found": "$n has started to strip you... woah BABY!", "self_not_found": "Your toy doesn't seem to be here...", "self_auto": "You can't DO that in public!"}
 Repo.insert! %Action{ "name": "undress", "self_no_arg": "You start to undress in the shadows, waiting for someone to notice.", "others_no_arg": "$n begins to undress... $e is VERY sexy... *Pant*", "self_found": "You undress $M with your eyes... Kinky.", "others_found": "You feel the temperature of the room rise as $n lusts on $N...", "vict_found": "Feeling exposed, you sense $n undressing you with $s eyes...", "self_not_found": "They are not here...", "self_auto": "A mirror would work better..."}
@@ -252,7 +253,7 @@ Repo.insert! %Action{ "name": "tongue", "self_no_arg": "You slowly give your ton
 Repo.insert! %Action{ "name": "view", "self_no_arg": "You sit back and watch the world go by.", "others_no_arg": "$n kicks back and enjoys the view."}
 Repo.insert! %Action{ "name": "grumble", "self_no_arg": "You grumble distractedly to yourself", "others_no_arg": "$n grumbles and growls. You wonder what's wrong...", "self_found": "You grumble at $N, disgusted with their presence.", "others_found": "$n seems to be a grumpy bear... $e is grumbling at poor $N.", "vict_found": "$n is grumbling at you... what'd you do?", "self_not_found": "That person is presently AWOL.", "self_auto": "Why bother?"}
 cheer = Repo.insert! %Action{ "name": "cheer", "self_no_arg": "You cheer and dance as the joy within you bursts forth!", "others_no_arg": "$n cheers and sings... $e is just BURSTING with joy!", "self_found": "You cheer $N on and wish $M good luck!", "others_found": "*Yay!*  Go $N!!!  $n cheers $M on.", "vict_found": "You are cheered on by $n... you feel so loved!", "self_not_found": "Who? Huh? Where?  They're not here, that's for sure", "self_auto": "You cheer silently for yourself since nobody else will", "others_auto": "$n resorts to cheering for $mself... how sad."}
-Repo.insert! %Alias{ action: cheer, name: "\o/" }
+Repo.insert! Changeset.change(%Alias{}, %{ action_id: cheer.id, name: "\o/" })
 Repo.insert! %Action{ "name": "plead", "self_no_arg": "You beg and plead to anyone who will listen.", "others_no_arg": "$n pleads $s case to anyone who will listen... You ALMOST feel sorry for $s."}
 Repo.insert! %Action{ "name": "charge", "self_no_arg": "You charge into the fray!", "others_no_arg": "$n charges into the fray!  All guts, no brains.", "self_found": "With surprising dexterity, you head-butt $N!", "others_found": "$n ducks down low, charges forward, and head-butts $N!", "vict_found": "OOF!  $n rammed $s head into your stomach!  That HURT.", "self_not_found": "Nobody 'round with that name, Mister!", "self_auto": "You run your head into a brick wall.  OUCH!"}
 Repo.insert! %Action{ "name": "criticize", "self_no_arg": "Yes, but who?", "self_found": "You criticize $M with all the warmth of a snake.", "others_found": "With a nasty grin, $n rips apart $Ns efforts.", "vict_found": "$n informs you that your attempts need some MAJOR adjustments.", "self_not_found": "Where oh where has my victim gone, oh where oh where...", "self_auto": "You criticize yourself profusely.", "others_auto": "$n tears $mself apart, cursing $s own stupidity."}
@@ -276,8 +277,8 @@ Repo.insert! %Action{ "name": "beer", "self_no_arg": "You pull out a six-pack.",
 Repo.insert! %Action{ "name": "bcatch", "self_no_arg": "You reach out and rescue the bottle from its flight.", "others_no_arg": "$n reaches out and grabs the bottle of beer tossed to $m."}
 Repo.insert! %Action{ "name": "claw", "self_no_arg": "You tighten your hands into a fist.", "others_no_arg": "$n clenches $s fists until blood drips from them...", "self_found": "You claw $S eyes out... GROSS!", "others_found": "$n buries $s nails in $N's eyes ... OH GOD, THE BLOOD!", "vict_found": "$n buries $s nails in your eyes and you are blinded by your own blood!", "self_not_found": "They aren't here to claw.", "self_auto": "You claw yourself to shreds!", "others_auto": "$n rips $mself to shreds with $s fingernails!"}
 rose = Repo.insert! %Action{ "name": "rose", "self_no_arg": "Who would you like to give it to?", "self_found": "You give $M a pretty rose.", "others_found": "$n hands $N a beautiful rose.", "vict_found": "$n hands you a beautiful ---'---,--{@", "self_not_found": "They seem to have left.", "self_auto": "You give yourself a rose and feel a little sad...", "others_auto": "$n gives $mself a rose, dont you feel sorry for $m?"}
-Repo.insert! %Alias{ action: rose, name: "@}-;-''---" }
-Repo.insert! %Alias{ action: rose, name: "@>-->--" }
+Repo.insert! Changeset.change(%Alias{}, %{ action_id: rose.id, name: "@}-;-''---" })
+Repo.insert! Changeset.change(%Alias{}, %{ action_id: rose.id, name: "@>-->--" })
 Repo.insert! %Action{ "name": "laces", "self_no_arg": "Whose laces?", "self_found": "With the greatest of stealth, you tie $S shoelaces together.", "others_found": "$n sneaks up to $N and ties $S shoelaces together.", "vict_found": "You try to take a step, and you hit the world facedown!  Someone must have tied your shoelaces together!", "self_not_found": "Whose laces?", "self_auto": "You tie your own shoelaces together, try to walk, and promptly fall.", "others_auto": "$n cleverly ties $s own shoelaces together, tries to walk, and sprawls flat on the floor."}
 Repo.insert! %Action{ "name": "tag", "self_no_arg": "Tag whom?", "others_no_arg": "$n casts about for someone to tag.", "self_found": ">From nowhere, you pounce on $N and TAG $M remorselessly!  BWAHAHA!!!", "others_found": "$n dives from the shadows and TAGS $N.  $N IS IT!", "vict_found": "$n pounces on you and >>> TAGS <<< you!  You're IT!", "self_not_found": "Who were you going to tag, then?", "self_auto": "Unable to catch anyone else, you do the intelligent thing and tag yourself. You're still IT!", "others_auto": "Unable to catch anyone else, $n tags $mself.  Are you impressed?"}
 Repo.insert! %Action{ "name": "tank", "self_no_arg": "You boldly offer to tank for your everyone else.  Are you sure you know what you're getting into?", "others_no_arg": "$n offers to tank!", "self_found": "You offer to tank for $N.", "others_found": "$n offers to tank for $N.", "vict_found": "$n offers to tank for you!", "self_not_found": "Tank for whom?", "self_auto": "No one will tank for you, eh?!? WELL, YOU'LL SHOW THEM!  (right?)", "others_auto": "In dazzling chivalry, $n offers to tank-- for $mself!"}
@@ -291,7 +292,7 @@ Repo.insert! %Action{ "name": "voodoo", "self_no_arg": "Bad juju like this has t
 Repo.insert! %Action{ "name": "ogg", "self_no_arg": "Ogg who?", "self_found": "Engage!", "others_found": "$n oggs $N's head with photon torpedos!  $N reels.", "vict_found": "$n oggs your head with photon torpedos!  You are reeling.", "self_not_found": "You can't find your target.", "self_auto": "If you do that, the universe will explode.", "others_auto": "$n almost oggs $mself, but wisely reconsiders."}
 Repo.insert! %Action{ "name": "confused", "self_no_arg": "Your confusion is showing.", "others_no_arg": "$n blinks slowly...", "self_found": "You blink slowly, trying to decipher $S comment.", "others_found": "$n blinks slowly.  Maybe $N left a word out of $S sentence...", "vict_found": "$n blinks slowly.  Maybe you left a word out of your sentence?", "self_not_found": "No wonder you're confused."}
 beam = Repo.insert! %Action{ "name": "beam", "self_no_arg": "You beam delightedly at nothing in particular.", "others_no_arg": "$n beams broadly at nothing in particular.", "self_found": "You dazzle $N with your smile.", "others_found": "$n must like $N a great deal to beam at $M so broadly!", "vict_found": "$n must like you a great deal to beam at you so broadly!", "self_not_found": "You look pretty silly beaming at imaginary friends...", "self_auto": "Well, aren't you special?", "others_auto": "$n beams at $mself, obviously pleased."}
-Repo.insert! %Alias{ action: beam, name: ":-))" }
+Repo.insert! Changeset.change(%Alias{}, %{ action_id: beam.id, name: ":-))" })
 Repo.insert! %Action{ "name": "bite", "self_no_arg": "You glare around, muttering \"Bite me...\" under your breath.", "others_no_arg": "$n glares around, muttering \"Bite me...\" under $s breath.", "self_found": "You bite $N on the neck.", "others_found": "$n bites $N on the neck!", "vict_found": "$n bites you on the neck.", "self_not_found": "Hungry?  No such luck.", "self_auto": "You bite your knuckle in anguish.", "others_auto": "$n bites $s knuckle in anguish...the tragedy!"}
 Repo.insert! %Action{ "name": "discodance", "self_no_arg": "Groovy!", "others_no_arg": "$n discos wildly!", "self_found": "You grab $N and disco wildly!  Groovy!", "others_found": "$n grabs $N and does $m best Travolta!", "vict_found": "$n grabs you and does $m best Travolta!", "self_not_found": "It's okay, you can disco solo too."}
 Repo.insert! %Action{ "name": "scuff", "self_no_arg": "You scuff your foot sheepishly.", "others_no_arg": "$n scuffs $s foot in the dirt, looking very sheepish.", "self_found": "You scuff your foot, avoiding $N's gaze.", "others_found": "$n scuffs $s foot and shyly avoids $N's gaze.", "vict_found": "$n scuffs $s foot and shyly avoids your gaze.", "self_not_found": "They aren't here."}

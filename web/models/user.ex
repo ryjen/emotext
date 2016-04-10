@@ -5,6 +5,9 @@ defmodule Emotext.User do
 
   alias Emotext.Repo
 
+  @primary_key {:id, :binary_id, autogenerate: true}
+  @foreign_key_type :binary_id # For associations
+  
   schema "users" do
     field :username, :string
     field :email, :string
@@ -13,7 +16,7 @@ defmodule Emotext.User do
     field :password_confirmation, :string, virtual: true
     field :screen_name, :string, virtual: true
     field :gender, GenderEnum
-    has_many :history, Emotext.History
+    
     timestamps
   end
 
@@ -38,8 +41,12 @@ defmodule Emotext.User do
   def deserialize(data) do
     info = :erlang.binary_to_term(Base.url_decode64!(data))
     user = Repo.get(Emotext.User, info.id)
-    changeset = change(user, %{ screen_name: info.screen_name })
-    apply_changes(changeset)
+    if user do
+      change_screen_name(user, info.screen_name)
+    else
+      changeset = change(%Emotext.User{}, %{ id: info.id, screen_name: info.screen_name})
+      apply_changes(changeset)
+    end
   end
 
   def serialize(nil), do: { :error, :not_found }
@@ -62,6 +69,7 @@ defmodule Emotext.User do
     |> validate_length(:password, min: 6)
     |> validate_length(:password_confirmation, min: 6)
     |> validate_confirmation(:password)
+    |> validate_username
   end
 
   def update_changeset(model, params \\ :empty) do
@@ -73,13 +81,14 @@ defmodule Emotext.User do
     |> validate_length(:password, min: 6)
     |> validate_length(:password_confirmation, min: 6)
     |> validate_confirmation(:password)
+    |> validate_username
   end
 
-  def login_changeset(model), do: model |> cast(%{}, ~w(), ~w(email password))
+  def login_changeset(model), do: model |> cast(%{}, ~w(), ~w(email username password))
 
   def login_changeset(model, params) do
     model
-    |> cast(params, ~w(email password), ~w())
+    |> cast(params, ~w(email username password), ~w())
     |> validate_password
   end
 
@@ -110,6 +119,14 @@ defmodule Emotext.User do
       nil -> password_incorrect_error(changeset)
       crypted -> validate_password(changeset, crypted)
     end
+  end
+
+  defp validate_username(changeset) do
+    uname = get_change(changeset, :username)
+    if String.starts_with?(uname, "guest") do
+      add_error(changeset, :username, "Cannot start with the word guest")
+    end
+    changeset
   end
 
   defp validate_password(changeset, crypted) do
