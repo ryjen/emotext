@@ -1,6 +1,13 @@
+<br>
+
+  <div class="green-well card">
+
 <div class="row">
-<h2 class="col-sm-offset-2 col-sm-10">New Action</h2>
+<h3 class="col-sm-offset-2">New Alias</h3>
 </div>
+
 
 <%= render "form.html", changeset: @changeset, actions: @actions, exists: false,
                         alias: user_alias_path(@conn, :create, current_user(@conn)), conn: @conn%>
+
+</div>

@@ -1,8 +1,7 @@
-<div class="panel panel-primary">
-  <div class="panel-heading">
-    <h3 class="panel-title"><%= @user.screen_name %></h3>
-  </div>
-  <div class="panel-body">
+
+<div class="green-well card">
+
+        <h3><%= @user.screen_name %></h3>
 
 <div class="row">
     <div class="col-md-2"><strong>Email</strong>:</div>
@@ -13,11 +12,10 @@
     <div><%= gender_name(@user) %></div>
 </div>
 
-</div>
-
-<div class="panel-footer">
+<div class="footer">
 <%= link to: user_path(@conn, :edit, @user), class: "btn btn-default" do %>
       <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit
 <% end %>
 </div>
+
 </div>

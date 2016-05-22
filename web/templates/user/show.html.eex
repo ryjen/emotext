@@ -1,12 +1,10 @@
 
 <!-- Nav tabs -->
-  <ul class="nav nav-pills" role="tablist">
+  <ul class="nav nav-minimal" role="tablist">
     <li role="presentation" class="active"><a href="#profile" aria-controls="profile" role="tab" data-toggle="pill">Profile</a></li>
     <li role="presentation"><a href="#actions" aria-controls="actions" role="tab" data-toggle="pill">Actions <span class="badge"><%= Enum.count(@actions) %></span></a></li>
     <li role="presentation"><a href="#aliases" aria-controls="aliases" role="tab" data-toggle="pill">Aliases <span class="badge"><%= Enum.count(@aliases) %></span></a></li>
   </ul>
-
-  <br>
 
   <!-- Tab panes -->
   <div class="tab-content">

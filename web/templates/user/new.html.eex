@@ -1,4 +1,11 @@
-<h2>New user</h2>
 
-<%= render "form.html", changeset: @changeset,
+<br>
+
+  <div class="card green-well">
+
+<h3>New Account</h3>
+
+<%= render "form.html", changeset: @changeset, user_del_path: false,
                         action: user_path(@conn, :create) %>
+
+</div>

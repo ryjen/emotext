@@ -1,4 +1,9 @@
-<h2>Login</h2>
+
+<br>
+
+<div class="green-well card">
+    
+<h3>Login</h3>
 
 <%= render "form.html", changeset: @changeset,
                         action: login_path(@conn, :create) %>
@@ -6,3 +11,5 @@
 <p>
 Don't have an account? It will take a few keystrokes to <%= link("create one", to: user_path(@conn, :new)) %>.
 </p>
+
+</div>

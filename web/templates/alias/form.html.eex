@@ -13,12 +13,12 @@
   <div class="form-group">
     <%= label f, :name, "Name:", class: "col-sm-2 control-label" %>
     <div class="col-sm-10">
-        <%= text_input f, :name, class: "form-control", placeholder: "test" %>
+        <%= text_input f, :name, class: "form-control", placeholder: "alternative name or symbol" %>
     </div>
   </div>
 
   <div class="form-group">
-    <%= label f, :self_no_arg, "Self no arg:", class: "col-sm-2 control-label" %>
+    <%= label f, :action_id, "Action:", class: "col-sm-2 control-label" %>
     <div class="col-sm-10"><%= select f, :action_id, @actions, class: "form-control", prompt: "Select an action" %>
     </div>
   </div>
@@ -32,4 +32,5 @@
     <% end %>
     </div>
   </div>
+
 <% end %>
