@@ -12,4 +12,8 @@ defmodule Emotext.AliasView do
   def render("alias.json", %{alias: alias}) do
     %{id: alias.id}
   end
+
+  def current_user(conn) do
+      Guardian.Plug.current_resource(conn)
+  end
 end

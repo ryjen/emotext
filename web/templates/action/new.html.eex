@@ -1,6 +1,6 @@
-<h2>New action</h2>
+<div class="row">
+<h2 class="col-sm-offset-2 col-sm-10">New Action</h2>
+</div>
 
-<%= render "form.html", changeset: @changeset,
-                        action: action_path(@conn, :create) %>
-
-<%= link "Back", to: action_path(@conn, :index) %>
+<%= render "form.html", changeset: @changeset, exists: false,
+                        action: user_action_path(@conn, :create, current_user(@conn)), conn: @conn %>

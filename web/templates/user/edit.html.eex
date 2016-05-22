@@ -2,3 +2,6 @@
 
 <%= render "form.html", changeset: @changeset,
                         action: user_path(@conn, :update, @user) %>
+
+
+<%= button("Delete", to: user_path(@conn, :delete, @user), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger") %>

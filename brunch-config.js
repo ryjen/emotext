@@ -52,7 +52,7 @@ exports.config = {
     sass: {
         allowCache: true,
         includePaths: [
-            
+
         ]
     },
     uglify: {
@@ -62,7 +62,11 @@ exports.config = {
     cleancss: {
         keepSpecialComments: 0,
         removeEmpty: true
-    }
+    },
+    afterBrunch: [
+      'mkdir -p priv/static/fonts',
+      'rsync -h -v -r -P -t bower_components/font-awesome/fonts/ priv/static/fonts'
+    ]
   },
   modules: {
     autoRequire: {

@@ -3,7 +3,17 @@ defmodule Emotext.ActionController do
 
   alias Emotext.Action
 
+  plug PlugRedirectHttps
+
+  plug Guardian.Plug.EnsureAuthenticated, %{ on_failure: { SessionController, :new } }
+
+  plug Guardian.Plug.EnsurePermissions, %{ on_failure: { __MODULE__, :forbidden }, default: [:write_profile] } when action in [:new, :edit, :update, :delete]
+
   plug :scrub_params, "action" when action in [:create, :update]
+
+  plug :authorize_user_action
+
+  require Logger
 
   def index(conn, _params) do
     actions = Repo.all(Action)
@@ -18,10 +28,10 @@ defmodule Emotext.ActionController do
   def create(conn, %{"action" => action_params}) do
     changeset = Action.changeset(%Action{}, action_params)
     case Repo.insert(changeset) do
-      {:ok, _action} -> 
+      {:ok, _action} ->
         conn
         |> put_flash(:info, "Action created successfully.")
-        |> redirect(to: action_path(conn, :index))
+        |> redirect(to: user_path(conn, :show, current_user(conn)))
       {:error, changeset} ->
         render(conn, "new.html", changeset: changeset)
     end
@@ -33,7 +43,7 @@ defmodule Emotext.ActionController do
       {:ok, action} ->
         conn
         |> put_status(:created)
-        |> put_resp_header("location", action_path(conn, :show, action))
+        |> put_resp_header("location", user_path(conn, :show, current_user(conn)))
         |> render(:show, action: action)
       {:error, changeset} ->
         conn
@@ -62,7 +72,7 @@ defmodule Emotext.ActionController do
       {:ok, action} ->
         conn
         |> put_flash(:info, "Action updated successfully.")
-        |> redirect(to: action_path(conn, :show, action))
+        |> redirect(to: user_path(conn, :show, current_user(conn)))
       {:error, changeset} ->
         render(conn, "edit.html", action: action, changeset: changeset)
     end
@@ -76,7 +86,7 @@ defmodule Emotext.ActionController do
       {:ok, action} ->
         conn
         |> put_status(:updated)
-        |> put_resp_header("location", action_path(conn, :show, action))
+        |> put_resp_header("location", user_path(conn, :show, current_user(conn)))
         |> render(:show, action: action)
       {:error, changeset} ->
         conn
@@ -94,11 +104,24 @@ defmodule Emotext.ActionController do
 
     conn
     |> put_flash(:info, "Action deleted successfully.")
-    |> redirect(to: action_path(conn, :index))
+    |> redirect(to: user_path(conn, :show, current_user(conn)))
   end
 
   defp put_format_param(conn, _) do
     put_in conn.params["_format"], Phoenix.Controller.get_format(conn)
   end
+
+   defp current_user(conn) do
+       Guardian.Plug.current_resource(conn)
+   end
+
+  defp authorize_user_action(conn, _) do
+   Logger.info conn.params["user_id"]
+   if conn.params["user_id"] && conn.params["user_id"] == Guardian.Plug.current_resource(conn).id do
+     conn
+   else
+     conn |> put_flash(:info, "You can't access that action") |> redirect(to: "/") |> halt
+   end
+ end
 
 end

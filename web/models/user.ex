@@ -5,9 +5,11 @@ defmodule Emotext.User do
 
   alias Emotext.Repo
 
+  require Logger
+
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id # For associations
-  
+
   schema "users" do
     field :username, :string
     field :email, :string
@@ -29,12 +31,12 @@ defmodule Emotext.User do
 
   def from_email(nil), do: { :error, :not_found }
   def from_email(email) do
-    Repo.one(Emotext.User, email: email)
+    Repo.one(from u in Emotext.User, where: u.email == ^email)
   end
 
   def from_username(nil), do: { :error, :not_found }
   def from_username(username) do
-    Repo.one(Emotext.User, username: username)
+    Repo.one(from u in Emotext.User, where: u.username == ^username)
   end
 
   def deserialize(nil), do: { :error, :not_found }
@@ -91,6 +93,7 @@ defmodule Emotext.User do
   def login_changeset(model, params) do
     model
     |> cast(params, ~w(email username password), ~w())
+    |> maybe_update_password
     |> validate_password
   end
 
@@ -107,7 +110,7 @@ defmodule Emotext.User do
     end
   end
 
-  defp maybe_update_screen_name(user) do
+  def maybe_update_screen_name(user) do
     if !user.screen_name do
       changeset = change(user, %{screen_name: user.username})
       apply_changes(changeset)
@@ -125,7 +128,7 @@ defmodule Emotext.User do
 
   defp validate_username(changeset) do
     uname = get_change(changeset, :username)
-    if String.starts_with?(uname, "guest") do
+    if uname && String.starts_with?(uname, "guest") do
       add_error(changeset, :username, "Cannot start with the word guest")
     end
     changeset

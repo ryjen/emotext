@@ -1,23 +1,22 @@
-<h2>Show user</h2>
 
-<ul>
+<!-- Nav tabs -->
+  <ul class="nav nav-pills" role="tablist">
+    <li role="presentation" class="active"><a href="#profile" aria-controls="profile" role="tab" data-toggle="pill">Profile</a></li>
+    <li role="presentation"><a href="#actions" aria-controls="actions" role="tab" data-toggle="pill">Actions <span class="badge"><%= Enum.count(@actions) %></span></a></li>
+    <li role="presentation"><a href="#aliases" aria-controls="aliases" role="tab" data-toggle="pill">Aliases <span class="badge"><%= Enum.count(@aliases) %></span></a></li>
+  </ul>
 
-  <li>
-    <strong>Email:</strong>
-    <%= @user.email %>
-  </li>
+  <br>
 
-  <li>
-    <strong>Username:</strong>
-    <%= @user.username %>
-  </li>
-
-  <li>
-  	<strong>Gender:</strong>
-  	<%= gender_name(@user) %>
-  </li>
-
-</ul>
-
-
-<%= link "Edit", to: user_path(@conn, :edit, @user) %>
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane fade in active" id="profile">
+        <%= render "profile.html", conn: @conn, user: @user %>
+    </div>
+    <div role="tabpanel" class="tab-pane fade" id="actions">
+        <%= render "actions.html", conn: @conn, user: @user, actions: @actions %>
+    </div>
+    <div role="tabpanel" class="tab-pane fade" id="aliases">
+        <%= render "aliases.html", conn: @conn, user: @user, aliases: @aliases %>
+    </div>
+  </div>

@@ -7,7 +7,8 @@ class App {
     let chatInput   = $("#chat-input")
   	let messages 		= $("#messages")
   	let chatUsers		= $("#chat-users")
-  	let chatActions	= $("#chat-actions")
+    let chatMenu    = $("#chat-menu")
+    let output      = $("#chat-window .output")
 
     let guardianToken = $('meta[name="guardian_token"]').attr('content');
 
@@ -20,7 +21,7 @@ class App {
   	let chan = socket.channel("rooms:lobby")
 
    	$(document).keydown(function(event){
-          if(event.keyCode == 13){  
+          if(event.keyCode == 13){
           	var data = chatInput.val().trim()
           	if (data.length) {
     		    	chan.push("msg:input", { body: data })
@@ -39,6 +40,7 @@ class App {
 
   	$('body').on('click', "[data-input-action]", function() {
   		chatInput.val("/" + $(this).text().trim() + " ")
+        $('#action-modal').modal('toggle');
   	})
 
   	$('body').on('click', "[data-input-user]", function() {
@@ -47,39 +49,39 @@ class App {
   			chatInput.val(data.trim() + " " + $(this).text())
   		} else {
   			chatInput.val($(this).text())
-  		} 
+  		}
   	})
 
-  	var collapser = function(a, b, c, d) {
-  		var f = function(){
-  		    if(b.hasClass('open')) {
-  		    	b.parent().switchClass('col-md-2', 'col-sidebar', 300)
-  		    	d.switchClass('hidden', 'open', 300)
-  		        b.switchClass('open', 'hidden', 300)
-  		        if (c.hasClass('open')) {
-  		        	messages.parent().switchClass('col-md-8', 'col-fill-one', 300)
-  		    	} else {
-  		    		messages.parent().switchClass('col-fill-one', 'col-fill', 300)
-  		    	}
-  		    } else {
-		        if (c.hasClass('open')) {
-		        	messages.parent().switchClass('col-fill-one', 'col-md-8', 300)
-  		   		} else {
-  		   			messages.parent().switchClass('col-fill', 'col-fill-one', 300)
-  		   		}
+    $(window).resize(function() {
+        if ($(window).width() >= 990) {
+            if (chatUsers.hasClass('open')) {
+                output.css('margin-right', '195px')
+            } else {
+                output.css('margin-right', 'auto')
+            }
+        } else {
+            output.css('margin-right', 'auto')
+        }
+    })
 
-		        b.switchClass('hidden', 'open', 300)
-		        d.switchClass('open', 'hidden', 300)
-		        b.parent().switchClass('col-sidebar', 'col-md-2', 300)
-  		    }
-  		}
-  		a.click(f)
-  		d.click(f)
-  	}
-  	
-  	collapser($('.action-collapser'), chatActions, chatUsers, $('#action-bar'))
+    $('.users-collapser').click(function() {
+        if (chatUsers.hasClass('open')) {
+            chatUsers.removeClass('open')
+            chatUsers.addClass('hidden')
+            chatMenu.removeClass('hidden')
+            chatMenu.addClass('open')
+            output.css('margin-right', 'auto')
+        } else {
+            chatUsers.removeClass('hidden')
+            chatUsers.addClass('open')
+            chatMenu.removeClass('open')
+            chatMenu.addClass('hidden')
+            if ($(window).width() >= 990) {
+                output.css('margin-right', '195px')
+            }
+        }
+    })
 
-  	collapser($('.users-collapser'), chatUsers, chatActions, $('#user-bar'))
 
     // TODO: put in settings
     let buffer = []
@@ -90,18 +92,15 @@ class App {
           buffer.shift();
         }
 
-    		buffer.push(x);
+    	buffer.push(x);
 
   	  	messages.html(buffer.join("\n"))
 
-  	  	var height = messages[0].scrollHeight;
+        if (messages && messages[0]) {
+  	  	    var height = messages[0].scrollHeight;
 
     		messages.scrollTop(height);
-
-        // if(typeof(Storage) !== "undefined") {
-        //     localStorage.setItem("history", JSON.stringify(history));
-        // }
-
+        }
   	}
 
   	chan.on("msg:self", payload => {

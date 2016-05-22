@@ -4,7 +4,7 @@ defmodule Emotext.ActionView do
   def render("index.json", %{actions: actions}) do
     %{data: render_many(actions, Emotext.ActionView, "action.json")}
   end
-  
+
   def render("show.json", %{action: action}) do
     %{data: render_one(action, Emotext.ActionView, "action.json")}
   end
@@ -20,5 +20,7 @@ defmodule Emotext.ActionView do
     self_auto: action.self_auto,
     others_auto: action.others_auto}
   end
-
+  def current_user(conn) do
+      Guardian.Plug.current_resource(conn)
+  end
 end

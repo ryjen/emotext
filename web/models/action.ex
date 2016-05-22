@@ -17,12 +17,14 @@ defmodule Emotext.Action do
 
     has_many :aliases, Emotext.Alias
 
+    belongs_to :user, Emotext.User
+
     timestamps
   end
 
   def create_changeset(model, params \\ :empty) do
     model
-    |> cast(params, ~w(:name, :self_no_arg, :others_no_arg, :self_found, :others_found, :vict_found, :self_not_found, :self_auto, :others_auto))
+    |> cast(params, ~w(:name, :self_no_arg, :others_no_arg, :self_found, :others_found, :vict_found, :self_not_found, :self_auto, :others_auto, :user_id))
   end
 
   def order_by_name(query) do
@@ -31,7 +33,7 @@ defmodule Emotext.Action do
   end
 
   @required_fields ~w(name self_no_arg others_no_arg self_found others_found vict_found self_not_found self_auto others_auto)
-  @optional_fields ~w()
+  @optional_fields ~w(user_id)
 
   @doc """
   Creates a changeset based on the `model` and `params`.

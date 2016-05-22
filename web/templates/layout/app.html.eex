@@ -19,27 +19,32 @@
   <body>
     <div class="container" role="main">
       <div class="header">
-        <ul class="nav nav-pills pull-right">
-          <li><%= link("help", to: "/help") %></li>
-          <%= if Guardian.Plug.current_resource(@conn) do %>
-            <%= if is_guest?(Guardian.Plug.current_resource(@conn)) do %>            
-            <li><%= link("signup", to: user_path(@conn, :new)) %></li>
-            <% else %>
-            <li><%= link(Guardian.Plug.current_resource(@conn).screen_name, to: user_path(@conn, :edit, Guardian.Plug.current_resource(@conn))) %></li>
-            <% end %>
-            <li><%= link("logout", to: logout_path(@conn, :delete)) %></li>
-          <% else %>
-            <li><%= link("signup", to: user_path(@conn, :new)) %></li>
-            <li><%= link("login", to: login_path(@conn, :create)) %></li>
-          <% end %>
-        </ul>
+
         <span class="logo">
         <a href="/">
-          <span class="icon">ツ</span> 
-          <span class="title">emotext</span> 
+          <span class="icon">ツ</span>
+          <span class="title">emotext</span>
           <span class="subtitle"><u>emote</u>: verb. To show or pretend emotion.</span>
           </a>
         </span>
+
+        <ul class="nav nav-pills">
+          <li><%= link to: "/help" do %>
+                <i class="fa fa-question-circle" aria-hidden="true"></i>help<% end %></li>
+          <%= if current_user(@conn) do %>
+            <%= if is_guest?(current_user(@conn)) do %>
+                <li><%= link to: user_path(@conn, :new) do %><i class="fa fa-user-plus" aria-hidden="true"></i>register<% end %></li>
+                <li><%= link to: login_path(@conn, :create) do %><i class="fa fa-sign-in" aria-hidden="true"></i>login<% end %></li>
+            <% else %>
+                <li><%= link to: user_path(@conn, :show, current_user(@conn)) do %>
+                <i class="fa fa-user" aria-hidden="true"></i><%= current_user(@conn).screen_name %><% end %></li>
+                <li><%= link to: logout_path(@conn, :delete) do %><i class="fa fa-sign-out" aria-hidden="true"></i>logout<% end %></li>
+            <% end %>
+          <% else %>
+            <li><%= link to: user_path(@conn, :new) do %><i class="fa fa-user-plus" aria-hidden="true"></i>register<% end %></li>
+            <li><%= link to: login_path(@conn, :create) do %><i class="fa fa-sign-in" aria-hidden="true"></i>login<% end %></li>
+          <% end %>
+        </ul>
       </div>
 
       <% if (flash = get_flash(@conn, :info)) != nil do %>

@@ -38,11 +38,14 @@ defmodule Emotext.ActionQuery do
     from a in Action, order_by: a.name
   end
 
+  def for_user(user) do
+      from a in Action, where: a.user_id == ^user.id, order_by: a.name
+  end
 end
 
 defmodule Emotext.AliasQuery do
   import Ecto.Query
-  alias Emotext.Alias 
+  alias Emotext.Alias
   alias Emotext.Action
 
   def by_name(name) do
@@ -55,7 +58,10 @@ defmodule Emotext.AliasQuery do
   end
 
   def sorted() do
-    from a in Alias, join: t in Action, order_by: t.name, preload: [:action]
+    from a in Alias, order_by: a.name, preload: [:action]
   end
 
+  def for_user(user) do
+      from a in Alias, where: a.user_id == ^user.id, order_by: a.name, preload: [:action]
+  end
 end

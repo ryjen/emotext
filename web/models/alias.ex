@@ -3,17 +3,18 @@ defmodule Emotext.Alias do
 
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id # For associations
-  
+
   schema "aliases" do
     field :name, :string
 
     belongs_to :action, Emotext.Action
+    belongs_to :user, Emotext.User
 
     timestamps
   end
 
   @required_fields ~w(name action_id)
-  @optional_fields ~w()
+  @optional_fields ~w(user_id)
 
   @doc """
   Creates a changeset based on the `model` and `params`.

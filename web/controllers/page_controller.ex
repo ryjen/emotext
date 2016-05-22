@@ -13,15 +13,14 @@ defmodule Emotext.PageController do
   plug Guardian.Plug.EnsureAuthenticated, %{ on_failure: { SessionController, :guest } } when not action in [:help]
 
   def index(conn, _params) do
-    user = Guardian.Plug.current_resource(conn)
-    
-    render conn, :index, current_user: user, 
+
+    render conn, :index,
           actions: Repo.all(ActionQuery.sorted())
   end
 
   def help(conn, _params) do
-    aliases = Repo.all(AliasQuery.with_action_names())
-      |> Enum.group_by(fn(x) -> x.action_name end)
+    aliases = Repo.all(AliasQuery.sorted())
+      |> Enum.group_by(fn(x) -> x.action.name end)
 
     render(conn, "help.html", aliases: aliases)
   end

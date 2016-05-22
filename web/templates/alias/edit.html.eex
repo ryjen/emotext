@@ -1,0 +1,6 @@
+<div class="row">
+    <h2 class="col-sm-offset-2">Edit Alias</h2>
+</div>
+
+<%= render "form.html", changeset: @changeset, conn: @conn, exists: true,
+                        alias: user_alias_path(@conn, :update, current_user(@conn), @alias), actions: @actions %>

@@ -18,7 +18,7 @@ defmodule Emotext.SessionController do
     end
     guest_name = "guest-#{Randomize.random(9999)}"
     user = User.change_screen_name(user, guest_name)
-    Logger.info "Created #{user.screen_name}"
+    Logger.info "Guest #{user.screen_name}"
     conn
     |> put_flash(:info, "Using guest account, create an account to have your own username.")
     |> Guardian.Plug.sign_in(user, :token, perms: %{ default: Guardian.Permissions.max })
@@ -29,6 +29,7 @@ defmodule Emotext.SessionController do
     user = Repo.one(UserQuery.by_login_or_email(params["user"]["email"] || ""))
     if user do
       changeset = User.login_changeset(user, params["user"])
+      Logger.info "Created #{user.screen_name}"
       if changeset.valid? do
         conn
         |> Guardian.Plug.sign_in(user, :token, perms: %{ default: Guardian.Permissions.max })

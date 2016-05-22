@@ -33,12 +33,14 @@ defmodule Emotext.Router do
     delete "/logout", SessionController, :delete, as: :logout
     get "/logout", SessionController, :delete, as: :logout
 
-    resources "/users", UserController
+    resources "/users", UserController do
+        resources "/actions", ActionController
+        resources "/aliases", AliasController
+    end
+
 
     get "/admin/import", AdminController, :import, as: :import
     post "/admin/import", AdminController, :import_file, as: :import
-    
-    resources "/actions", ActionController
 
   end
 
