@@ -31,7 +31,7 @@ defmodule Emotext.AliasController do
     case Repo.insert(changeset) do
       {:ok, alias} ->
         conn
-        |> put_status(:created)
+        |> put_flash(:info, "Alias created successfully.")
         |> redirect(to: user_path(conn, :show, current_user(conn)))
       {:error, changeset} ->
         render(conn, "new.html", changeset: changeset)

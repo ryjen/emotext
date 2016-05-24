@@ -2,8 +2,10 @@
 <br>
 
   <div class="card green-well">
-
-<h3>New Account</h3>
+  
+  <div class="row">
+  <h3 class="col-sm-offset-2">New Account</h3>
+  </div>
 
 <%= render "form.html", changeset: @changeset, user_del_path: false,
                         action: user_path(@conn, :create) %>

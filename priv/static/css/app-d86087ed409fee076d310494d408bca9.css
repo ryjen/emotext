@@ -6773,7 +6773,7 @@ button.close {
   font-weight: normal;
   font-style: normal; }
 
-/* line 4, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_core.scss */
+/* line 4, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_core.scss */
 .fa {
   display: inline-block;
   font: normal normal normal 14px/1 FontAwesome;
@@ -6783,98 +6783,98 @@ button.close {
   -moz-osx-font-smoothing: grayscale; }
 
 /* makes the font 33% larger relative to the icon container */
-/* line 5, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_larger.scss */
+/* line 5, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_larger.scss */
 .fa-lg {
   font-size: 1.33333em;
   line-height: 0.75em;
   vertical-align: -15%; }
 
-/* line 10, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_larger.scss */
+/* line 10, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_larger.scss */
 .fa-2x {
   font-size: 2em; }
 
-/* line 11, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_larger.scss */
+/* line 11, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_larger.scss */
 .fa-3x {
   font-size: 3em; }
 
-/* line 12, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_larger.scss */
+/* line 12, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_larger.scss */
 .fa-4x {
   font-size: 4em; }
 
-/* line 13, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_larger.scss */
+/* line 13, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_larger.scss */
 .fa-5x {
   font-size: 5em; }
 
-/* line 3, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_fixed-width.scss */
+/* line 3, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_fixed-width.scss */
 .fa-fw {
   width: 1.28571em;
   text-align: center; }
 
-/* line 4, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_list.scss */
+/* line 4, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_list.scss */
 .fa-ul {
   padding-left: 0;
   margin-left: 2.14286em;
   list-style-type: none; }
-  /* line 8, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_list.scss */
+  /* line 8, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_list.scss */
   .fa-ul > li {
     position: relative; }
 
-/* line 10, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_list.scss */
+/* line 10, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_list.scss */
 .fa-li {
   position: absolute;
   left: -2.14286em;
   width: 2.14286em;
   top: 0.14286em;
   text-align: center; }
-  /* line 16, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_list.scss */
+  /* line 16, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_list.scss */
   .fa-li.fa-lg {
     left: -1.85714em; }
 
-/* line 4, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_bordered-pulled.scss */
+/* line 4, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_bordered-pulled.scss */
 .fa-border {
   padding: .2em .25em .15em;
   border: solid 0.08em #eee;
   border-radius: .1em; }
 
-/* line 10, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_bordered-pulled.scss */
+/* line 10, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_bordered-pulled.scss */
 .fa-pull-left {
   float: left; }
 
-/* line 11, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_bordered-pulled.scss */
+/* line 11, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_bordered-pulled.scss */
 .fa-pull-right {
   float: right; }
 
-/* line 14, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_bordered-pulled.scss */
+/* line 14, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_bordered-pulled.scss */
 .fa.fa-pull-left {
   margin-right: .3em; }
 
-/* line 15, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_bordered-pulled.scss */
+/* line 15, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_bordered-pulled.scss */
 .fa.fa-pull-right {
   margin-left: .3em; }
 
 /* Deprecated as of 4.4.0 */
-/* line 19, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_bordered-pulled.scss */
+/* line 19, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_bordered-pulled.scss */
 .pull-right {
   float: right; }
 
-/* line 20, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_bordered-pulled.scss */
+/* line 20, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_bordered-pulled.scss */
 .pull-left {
   float: left; }
 
-/* line 23, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_bordered-pulled.scss */
+/* line 23, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_bordered-pulled.scss */
 .fa.pull-left {
   margin-right: .3em; }
 
-/* line 24, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_bordered-pulled.scss */
+/* line 24, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_bordered-pulled.scss */
 .fa.pull-right {
   margin-left: .3em; }
 
-/* line 4, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_animated.scss */
+/* line 4, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_animated.scss */
 .fa-spin {
   -webkit-animation: fa-spin 2s infinite linear;
   animation: fa-spin 2s infinite linear; }
 
-/* line 9, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_animated.scss */
+/* line 9, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_animated.scss */
 .fa-pulse {
   -webkit-animation: fa-spin 1s infinite steps(8);
   animation: fa-spin 1s infinite steps(8); }
@@ -6895,42 +6895,42 @@ button.close {
     -webkit-transform: rotate(359deg);
     transform: rotate(359deg); } }
 
-/* line 4, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_rotated-flipped.scss */
+/* line 4, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_rotated-flipped.scss */
 .fa-rotate-90 {
   -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=1)";
   -webkit-transform: rotate(90deg);
   -ms-transform: rotate(90deg);
   transform: rotate(90deg); }
 
-/* line 5, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_rotated-flipped.scss */
+/* line 5, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_rotated-flipped.scss */
 .fa-rotate-180 {
   -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2)";
   -webkit-transform: rotate(180deg);
   -ms-transform: rotate(180deg);
   transform: rotate(180deg); }
 
-/* line 6, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_rotated-flipped.scss */
+/* line 6, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_rotated-flipped.scss */
 .fa-rotate-270 {
   -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=3)";
   -webkit-transform: rotate(270deg);
   -ms-transform: rotate(270deg);
   transform: rotate(270deg); }
 
-/* line 8, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_rotated-flipped.scss */
+/* line 8, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_rotated-flipped.scss */
 .fa-flip-horizontal {
   -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=0, mirror=1)";
   -webkit-transform: scale(-1, 1);
   -ms-transform: scale(-1, 1);
   transform: scale(-1, 1); }
 
-/* line 9, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_rotated-flipped.scss */
+/* line 9, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_rotated-flipped.scss */
 .fa-flip-vertical {
   -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1)";
   -webkit-transform: scale(1, -1);
   -ms-transform: scale(1, -1);
   transform: scale(1, -1); }
 
-/* line 14, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_rotated-flipped.scss */
+/* line 14, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_rotated-flipped.scss */
 :root .fa-rotate-90,
 :root .fa-rotate-180,
 :root .fa-rotate-270,
@@ -6938,7 +6938,7 @@ button.close {
 :root .fa-flip-vertical {
   filter: none; }
 
-/* line 4, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_stacked.scss */
+/* line 4, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_stacked.scss */
 .fa-stack {
   position: relative;
   display: inline-block;
@@ -6947,1765 +6947,1765 @@ button.close {
   line-height: 2em;
   vertical-align: middle; }
 
-/* line 12, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_stacked.scss */
+/* line 12, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_stacked.scss */
 .fa-stack-1x, .fa-stack-2x {
   position: absolute;
   left: 0;
   width: 100%;
   text-align: center; }
 
-/* line 18, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_stacked.scss */
+/* line 18, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_stacked.scss */
 .fa-stack-1x {
   line-height: inherit; }
 
-/* line 19, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_stacked.scss */
+/* line 19, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_stacked.scss */
 .fa-stack-2x {
   font-size: 2em; }
 
-/* line 20, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_stacked.scss */
+/* line 20, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_stacked.scss */
 .fa-inverse {
   color: #fff; }
 
 /* Font Awesome uses the Unicode Private Use Area (PUA) to ensure screen
    readers do not read off random characters that represent icons */
-/* line 4, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 4, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-glass:before {
   content: ""; }
 
-/* line 5, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 5, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-music:before {
   content: ""; }
 
-/* line 6, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 6, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-search:before {
   content: ""; }
 
-/* line 7, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 7, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-envelope-o:before {
   content: ""; }
 
-/* line 8, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 8, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-heart:before {
   content: ""; }
 
-/* line 9, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 9, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-star:before {
   content: ""; }
 
-/* line 10, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 10, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-star-o:before {
   content: ""; }
 
-/* line 11, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 11, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-user:before {
   content: ""; }
 
-/* line 12, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 12, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-film:before {
   content: ""; }
 
-/* line 13, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 13, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-th-large:before {
   content: ""; }
 
-/* line 14, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 14, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-th:before {
   content: ""; }
 
-/* line 15, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 15, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-th-list:before {
   content: ""; }
 
-/* line 16, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 16, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-check:before {
   content: ""; }
 
-/* line 17, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 17, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-remove:before,
 .fa-close:before,
 .fa-times:before {
   content: ""; }
 
-/* line 18, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 18, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-search-plus:before {
   content: ""; }
 
-/* line 19, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 19, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-search-minus:before {
   content: ""; }
 
-/* line 20, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 20, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-power-off:before {
   content: ""; }
 
-/* line 21, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 21, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-signal:before {
   content: ""; }
 
-/* line 22, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 22, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-gear:before,
 .fa-cog:before {
   content: ""; }
 
-/* line 23, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 23, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-trash-o:before {
   content: ""; }
 
-/* line 24, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 24, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-home:before {
   content: ""; }
 
-/* line 25, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 25, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-file-o:before {
   content: ""; }
 
-/* line 26, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 26, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-clock-o:before {
   content: ""; }
 
-/* line 27, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 27, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-road:before {
   content: ""; }
 
-/* line 28, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 28, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-download:before {
   content: ""; }
 
-/* line 29, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 29, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-arrow-circle-o-down:before {
   content: ""; }
 
-/* line 30, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 30, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-arrow-circle-o-up:before {
   content: ""; }
 
-/* line 31, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 31, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-inbox:before {
   content: ""; }
 
-/* line 32, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 32, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-play-circle-o:before {
   content: ""; }
 
-/* line 33, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 33, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-rotate-right:before,
 .fa-repeat:before {
   content: ""; }
 
-/* line 34, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 34, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-refresh:before {
   content: ""; }
 
-/* line 35, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 35, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-list-alt:before {
   content: ""; }
 
-/* line 36, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 36, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-lock:before {
   content: ""; }
 
-/* line 37, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 37, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-flag:before {
   content: ""; }
 
-/* line 38, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 38, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-headphones:before {
   content: ""; }
 
-/* line 39, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 39, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-volume-off:before {
   content: ""; }
 
-/* line 40, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 40, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-volume-down:before {
   content: ""; }
 
-/* line 41, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 41, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-volume-up:before {
   content: ""; }
 
-/* line 42, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 42, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-qrcode:before {
   content: ""; }
 
-/* line 43, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 43, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-barcode:before {
   content: ""; }
 
-/* line 44, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 44, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-tag:before {
   content: ""; }
 
-/* line 45, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 45, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-tags:before {
   content: ""; }
 
-/* line 46, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 46, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-book:before {
   content: ""; }
 
-/* line 47, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 47, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-bookmark:before {
   content: ""; }
 
-/* line 48, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 48, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-print:before {
   content: ""; }
 
-/* line 49, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 49, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-camera:before {
   content: ""; }
 
-/* line 50, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 50, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-font:before {
   content: ""; }
 
-/* line 51, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 51, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-bold:before {
   content: ""; }
 
-/* line 52, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 52, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-italic:before {
   content: ""; }
 
-/* line 53, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 53, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-text-height:before {
   content: ""; }
 
-/* line 54, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 54, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-text-width:before {
   content: ""; }
 
-/* line 55, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 55, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-align-left:before {
   content: ""; }
 
-/* line 56, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 56, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-align-center:before {
   content: ""; }
 
-/* line 57, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 57, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-align-right:before {
   content: ""; }
 
-/* line 58, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 58, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-align-justify:before {
   content: ""; }
 
-/* line 59, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 59, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-list:before {
   content: ""; }
 
-/* line 60, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 60, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-dedent:before,
 .fa-outdent:before {
   content: ""; }
 
-/* line 61, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 61, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-indent:before {
   content: ""; }
 
-/* line 62, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 62, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-video-camera:before {
   content: ""; }
 
-/* line 63, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 63, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-photo:before,
 .fa-image:before,
 .fa-picture-o:before {
   content: ""; }
 
-/* line 64, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 64, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-pencil:before {
   content: ""; }
 
-/* line 65, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 65, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-map-marker:before {
   content: ""; }
 
-/* line 66, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 66, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-adjust:before {
   content: ""; }
 
-/* line 67, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 67, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-tint:before {
   content: ""; }
 
-/* line 68, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 68, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-edit:before,
 .fa-pencil-square-o:before {
   content: ""; }
 
-/* line 69, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 69, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-share-square-o:before {
   content: ""; }
 
-/* line 70, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 70, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-check-square-o:before {
   content: ""; }
 
-/* line 71, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 71, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-arrows:before {
   content: ""; }
 
-/* line 72, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 72, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-step-backward:before {
   content: ""; }
 
-/* line 73, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 73, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-fast-backward:before {
   content: ""; }
 
-/* line 74, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 74, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-backward:before {
   content: ""; }
 
-/* line 75, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 75, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-play:before {
   content: ""; }
 
-/* line 76, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 76, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-pause:before {
   content: ""; }
 
-/* line 77, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 77, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-stop:before {
   content: ""; }
 
-/* line 78, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 78, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-forward:before {
   content: ""; }
 
-/* line 79, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 79, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-fast-forward:before {
   content: ""; }
 
-/* line 80, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 80, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-step-forward:before {
   content: ""; }
 
-/* line 81, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 81, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-eject:before {
   content: ""; }
 
-/* line 82, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 82, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-chevron-left:before {
   content: ""; }
 
-/* line 83, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 83, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-chevron-right:before {
   content: ""; }
 
-/* line 84, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 84, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-plus-circle:before {
   content: ""; }
 
-/* line 85, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 85, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-minus-circle:before {
   content: ""; }
 
-/* line 86, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 86, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-times-circle:before {
   content: ""; }
 
-/* line 87, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 87, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-check-circle:before {
   content: ""; }
 
-/* line 88, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 88, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-question-circle:before {
   content: ""; }
 
-/* line 89, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 89, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-info-circle:before {
   content: ""; }
 
-/* line 90, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 90, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-crosshairs:before {
   content: ""; }
 
-/* line 91, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 91, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-times-circle-o:before {
   content: ""; }
 
-/* line 92, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 92, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-check-circle-o:before {
   content: ""; }
 
-/* line 93, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 93, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-ban:before {
   content: ""; }
 
-/* line 94, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 94, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-arrow-left:before {
   content: ""; }
 
-/* line 95, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 95, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-arrow-right:before {
   content: ""; }
 
-/* line 96, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 96, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-arrow-up:before {
   content: ""; }
 
-/* line 97, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 97, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-arrow-down:before {
   content: ""; }
 
-/* line 98, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 98, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-mail-forward:before,
 .fa-share:before {
   content: ""; }
 
-/* line 99, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 99, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-expand:before {
   content: ""; }
 
-/* line 100, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 100, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-compress:before {
   content: ""; }
 
-/* line 101, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 101, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-plus:before {
   content: ""; }
 
-/* line 102, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 102, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-minus:before {
   content: ""; }
 
-/* line 103, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 103, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-asterisk:before {
   content: ""; }
 
-/* line 104, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 104, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-exclamation-circle:before {
   content: ""; }
 
-/* line 105, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 105, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-gift:before {
   content: ""; }
 
-/* line 106, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 106, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-leaf:before {
   content: ""; }
 
-/* line 107, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 107, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-fire:before {
   content: ""; }
 
-/* line 108, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 108, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-eye:before {
   content: ""; }
 
-/* line 109, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 109, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-eye-slash:before {
   content: ""; }
 
-/* line 110, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 110, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-warning:before,
 .fa-exclamation-triangle:before {
   content: ""; }
 
-/* line 111, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 111, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-plane:before {
   content: ""; }
 
-/* line 112, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 112, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-calendar:before {
   content: ""; }
 
-/* line 113, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 113, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-random:before {
   content: ""; }
 
-/* line 114, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 114, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-comment:before {
   content: ""; }
 
-/* line 115, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 115, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-magnet:before {
   content: ""; }
 
-/* line 116, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 116, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-chevron-up:before {
   content: ""; }
 
-/* line 117, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 117, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-chevron-down:before {
   content: ""; }
 
-/* line 118, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 118, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-retweet:before {
   content: ""; }
 
-/* line 119, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 119, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-shopping-cart:before {
   content: ""; }
 
-/* line 120, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 120, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-folder:before {
   content: ""; }
 
-/* line 121, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 121, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-folder-open:before {
   content: ""; }
 
-/* line 122, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 122, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-arrows-v:before {
   content: ""; }
 
-/* line 123, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 123, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-arrows-h:before {
   content: ""; }
 
-/* line 124, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 124, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-bar-chart-o:before,
 .fa-bar-chart:before {
   content: ""; }
 
-/* line 125, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 125, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-twitter-square:before {
   content: ""; }
 
-/* line 126, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 126, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-facebook-square:before {
   content: ""; }
 
-/* line 127, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 127, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-camera-retro:before {
   content: ""; }
 
-/* line 128, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 128, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-key:before {
   content: ""; }
 
-/* line 129, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 129, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-gears:before,
 .fa-cogs:before {
   content: ""; }
 
-/* line 130, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 130, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-comments:before {
   content: ""; }
 
-/* line 131, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 131, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-thumbs-o-up:before {
   content: ""; }
 
-/* line 132, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 132, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-thumbs-o-down:before {
   content: ""; }
 
-/* line 133, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 133, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-star-half:before {
   content: ""; }
 
-/* line 134, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 134, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-heart-o:before {
   content: ""; }
 
-/* line 135, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 135, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-sign-out:before {
   content: ""; }
 
-/* line 136, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 136, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-linkedin-square:before {
   content: ""; }
 
-/* line 137, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 137, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-thumb-tack:before {
   content: ""; }
 
-/* line 138, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 138, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-external-link:before {
   content: ""; }
 
-/* line 139, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 139, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-sign-in:before {
   content: ""; }
 
-/* line 140, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 140, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-trophy:before {
   content: ""; }
 
-/* line 141, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 141, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-github-square:before {
   content: ""; }
 
-/* line 142, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 142, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-upload:before {
   content: ""; }
 
-/* line 143, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 143, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-lemon-o:before {
   content: ""; }
 
-/* line 144, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 144, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-phone:before {
   content: ""; }
 
-/* line 145, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 145, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-square-o:before {
   content: ""; }
 
-/* line 146, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 146, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-bookmark-o:before {
   content: ""; }
 
-/* line 147, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 147, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-phone-square:before {
   content: ""; }
 
-/* line 148, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 148, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-twitter:before {
   content: ""; }
 
-/* line 149, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 149, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-facebook-f:before,
 .fa-facebook:before {
   content: ""; }
 
-/* line 150, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 150, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-github:before {
   content: ""; }
 
-/* line 151, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 151, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-unlock:before {
   content: ""; }
 
-/* line 152, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 152, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-credit-card:before {
   content: ""; }
 
-/* line 153, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 153, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-feed:before,
 .fa-rss:before {
   content: ""; }
 
-/* line 154, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 154, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-hdd-o:before {
   content: ""; }
 
-/* line 155, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 155, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-bullhorn:before {
   content: ""; }
 
-/* line 156, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 156, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-bell:before {
   content: ""; }
 
-/* line 157, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 157, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-certificate:before {
   content: ""; }
 
-/* line 158, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 158, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-hand-o-right:before {
   content: ""; }
 
-/* line 159, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 159, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-hand-o-left:before {
   content: ""; }
 
-/* line 160, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 160, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-hand-o-up:before {
   content: ""; }
 
-/* line 161, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 161, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-hand-o-down:before {
   content: ""; }
 
-/* line 162, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 162, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-arrow-circle-left:before {
   content: ""; }
 
-/* line 163, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 163, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-arrow-circle-right:before {
   content: ""; }
 
-/* line 164, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 164, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-arrow-circle-up:before {
   content: ""; }
 
-/* line 165, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 165, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-arrow-circle-down:before {
   content: ""; }
 
-/* line 166, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 166, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-globe:before {
   content: ""; }
 
-/* line 167, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 167, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-wrench:before {
   content: ""; }
 
-/* line 168, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 168, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-tasks:before {
   content: ""; }
 
-/* line 169, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 169, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-filter:before {
   content: ""; }
 
-/* line 170, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 170, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-briefcase:before {
   content: ""; }
 
-/* line 171, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 171, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-arrows-alt:before {
   content: ""; }
 
-/* line 172, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 172, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-group:before,
 .fa-users:before {
   content: ""; }
 
-/* line 173, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 173, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-chain:before,
 .fa-link:before {
   content: ""; }
 
-/* line 174, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 174, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-cloud:before {
   content: ""; }
 
-/* line 175, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 175, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-flask:before {
   content: ""; }
 
-/* line 176, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 176, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-cut:before,
 .fa-scissors:before {
   content: ""; }
 
-/* line 177, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 177, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-copy:before,
 .fa-files-o:before {
   content: ""; }
 
-/* line 178, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 178, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-paperclip:before {
   content: ""; }
 
-/* line 179, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 179, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-save:before,
 .fa-floppy-o:before {
   content: ""; }
 
-/* line 180, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 180, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-square:before {
   content: ""; }
 
-/* line 181, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 181, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-navicon:before,
 .fa-reorder:before,
 .fa-bars:before {
   content: ""; }
 
-/* line 182, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 182, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-list-ul:before {
   content: ""; }
 
-/* line 183, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 183, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-list-ol:before {
   content: ""; }
 
-/* line 184, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 184, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-strikethrough:before {
   content: ""; }
 
-/* line 185, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 185, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-underline:before {
   content: ""; }
 
-/* line 186, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 186, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-table:before {
   content: ""; }
 
-/* line 187, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 187, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-magic:before {
   content: ""; }
 
-/* line 188, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 188, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-truck:before {
   content: ""; }
 
-/* line 189, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 189, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-pinterest:before {
   content: ""; }
 
-/* line 190, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 190, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-pinterest-square:before {
   content: ""; }
 
-/* line 191, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 191, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-google-plus-square:before {
   content: ""; }
 
-/* line 192, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 192, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-google-plus:before {
   content: ""; }
 
-/* line 193, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 193, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-money:before {
   content: ""; }
 
-/* line 194, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 194, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-caret-down:before {
   content: ""; }
 
-/* line 195, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 195, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-caret-up:before {
   content: ""; }
 
-/* line 196, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 196, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-caret-left:before {
   content: ""; }
 
-/* line 197, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 197, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-caret-right:before {
   content: ""; }
 
-/* line 198, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 198, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-columns:before {
   content: ""; }
 
-/* line 199, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 199, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-unsorted:before,
 .fa-sort:before {
   content: ""; }
 
-/* line 200, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 200, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-sort-down:before,
 .fa-sort-desc:before {
   content: ""; }
 
-/* line 201, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 201, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-sort-up:before,
 .fa-sort-asc:before {
   content: ""; }
 
-/* line 202, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 202, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-envelope:before {
   content: ""; }
 
-/* line 203, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 203, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-linkedin:before {
   content: ""; }
 
-/* line 204, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 204, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-rotate-left:before,
 .fa-undo:before {
   content: ""; }
 
-/* line 205, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 205, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-legal:before,
 .fa-gavel:before {
   content: ""; }
 
-/* line 206, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 206, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-dashboard:before,
 .fa-tachometer:before {
   content: ""; }
 
-/* line 207, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 207, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-comment-o:before {
   content: ""; }
 
-/* line 208, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 208, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-comments-o:before {
   content: ""; }
 
-/* line 209, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 209, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-flash:before,
 .fa-bolt:before {
   content: ""; }
 
-/* line 210, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 210, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-sitemap:before {
   content: ""; }
 
-/* line 211, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 211, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-umbrella:before {
   content: ""; }
 
-/* line 212, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 212, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-paste:before,
 .fa-clipboard:before {
   content: ""; }
 
-/* line 213, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 213, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-lightbulb-o:before {
   content: ""; }
 
-/* line 214, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 214, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-exchange:before {
   content: ""; }
 
-/* line 215, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 215, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-cloud-download:before {
   content: ""; }
 
-/* line 216, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 216, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-cloud-upload:before {
   content: ""; }
 
-/* line 217, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 217, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-user-md:before {
   content: ""; }
 
-/* line 218, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 218, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-stethoscope:before {
   content: ""; }
 
-/* line 219, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 219, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-suitcase:before {
   content: ""; }
 
-/* line 220, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 220, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-bell-o:before {
   content: ""; }
 
-/* line 221, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 221, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-coffee:before {
   content: ""; }
 
-/* line 222, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 222, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-cutlery:before {
   content: ""; }
 
-/* line 223, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 223, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-file-text-o:before {
   content: ""; }
 
-/* line 224, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 224, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-building-o:before {
   content: ""; }
 
-/* line 225, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 225, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-hospital-o:before {
   content: ""; }
 
-/* line 226, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 226, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-ambulance:before {
   content: ""; }
 
-/* line 227, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 227, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-medkit:before {
   content: ""; }
 
-/* line 228, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 228, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-fighter-jet:before {
   content: ""; }
 
-/* line 229, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 229, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-beer:before {
   content: ""; }
 
-/* line 230, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 230, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-h-square:before {
   content: ""; }
 
-/* line 231, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 231, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-plus-square:before {
   content: ""; }
 
-/* line 232, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 232, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-angle-double-left:before {
   content: ""; }
 
-/* line 233, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 233, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-angle-double-right:before {
   content: ""; }
 
-/* line 234, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 234, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-angle-double-up:before {
   content: ""; }
 
-/* line 235, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 235, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-angle-double-down:before {
   content: ""; }
 
-/* line 236, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 236, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-angle-left:before {
   content: ""; }
 
-/* line 237, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 237, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-angle-right:before {
   content: ""; }
 
-/* line 238, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 238, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-angle-up:before {
   content: ""; }
 
-/* line 239, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 239, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-angle-down:before {
   content: ""; }
 
-/* line 240, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 240, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-desktop:before {
   content: ""; }
 
-/* line 241, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 241, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-laptop:before {
   content: ""; }
 
-/* line 242, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 242, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-tablet:before {
   content: ""; }
 
-/* line 243, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 243, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-mobile-phone:before,
 .fa-mobile:before {
   content: ""; }
 
-/* line 244, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 244, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-circle-o:before {
   content: ""; }
 
-/* line 245, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 245, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-quote-left:before {
   content: ""; }
 
-/* line 246, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 246, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-quote-right:before {
   content: ""; }
 
-/* line 247, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 247, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-spinner:before {
   content: ""; }
 
-/* line 248, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 248, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-circle:before {
   content: ""; }
 
-/* line 249, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 249, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-mail-reply:before,
 .fa-reply:before {
   content: ""; }
 
-/* line 250, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 250, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-github-alt:before {
   content: ""; }
 
-/* line 251, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 251, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-folder-o:before {
   content: ""; }
 
-/* line 252, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 252, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-folder-open-o:before {
   content: ""; }
 
-/* line 253, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 253, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-smile-o:before {
   content: ""; }
 
-/* line 254, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 254, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-frown-o:before {
   content: ""; }
 
-/* line 255, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 255, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-meh-o:before {
   content: ""; }
 
-/* line 256, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 256, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-gamepad:before {
   content: ""; }
 
-/* line 257, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 257, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-keyboard-o:before {
   content: ""; }
 
-/* line 258, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 258, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-flag-o:before {
   content: ""; }
 
-/* line 259, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 259, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-flag-checkered:before {
   content: ""; }
 
-/* line 260, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 260, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-terminal:before {
   content: ""; }
 
-/* line 261, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 261, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-code:before {
   content: ""; }
 
-/* line 262, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 262, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-mail-reply-all:before,
 .fa-reply-all:before {
   content: ""; }
 
-/* line 263, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 263, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-star-half-empty:before,
 .fa-star-half-full:before,
 .fa-star-half-o:before {
   content: ""; }
 
-/* line 264, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 264, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-location-arrow:before {
   content: ""; }
 
-/* line 265, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 265, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-crop:before {
   content: ""; }
 
-/* line 266, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 266, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-code-fork:before {
   content: ""; }
 
-/* line 267, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 267, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-unlink:before,
 .fa-chain-broken:before {
   content: ""; }
 
-/* line 268, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 268, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-question:before {
   content: ""; }
 
-/* line 269, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 269, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-info:before {
   content: ""; }
 
-/* line 270, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 270, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-exclamation:before {
   content: ""; }
 
-/* line 271, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 271, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-superscript:before {
   content: ""; }
 
-/* line 272, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 272, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-subscript:before {
   content: ""; }
 
-/* line 273, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 273, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-eraser:before {
   content: ""; }
 
-/* line 274, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 274, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-puzzle-piece:before {
   content: ""; }
 
-/* line 275, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 275, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-microphone:before {
   content: ""; }
 
-/* line 276, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 276, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-microphone-slash:before {
   content: ""; }
 
-/* line 277, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 277, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-shield:before {
   content: ""; }
 
-/* line 278, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 278, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-calendar-o:before {
   content: ""; }
 
-/* line 279, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 279, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-fire-extinguisher:before {
   content: ""; }
 
-/* line 280, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 280, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-rocket:before {
   content: ""; }
 
-/* line 281, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 281, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-maxcdn:before {
   content: ""; }
 
-/* line 282, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 282, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-chevron-circle-left:before {
   content: ""; }
 
-/* line 283, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 283, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-chevron-circle-right:before {
   content: ""; }
 
-/* line 284, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 284, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-chevron-circle-up:before {
   content: ""; }
 
-/* line 285, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 285, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-chevron-circle-down:before {
   content: ""; }
 
-/* line 286, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 286, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-html5:before {
   content: ""; }
 
-/* line 287, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 287, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-css3:before {
   content: ""; }
 
-/* line 288, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 288, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-anchor:before {
   content: ""; }
 
-/* line 289, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 289, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-unlock-alt:before {
   content: ""; }
 
-/* line 290, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 290, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-bullseye:before {
   content: ""; }
 
-/* line 291, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 291, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-ellipsis-h:before {
   content: ""; }
 
-/* line 292, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 292, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-ellipsis-v:before {
   content: ""; }
 
-/* line 293, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 293, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-rss-square:before {
   content: ""; }
 
-/* line 294, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 294, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-play-circle:before {
   content: ""; }
 
-/* line 295, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 295, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-ticket:before {
   content: ""; }
 
-/* line 296, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 296, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-minus-square:before {
   content: ""; }
 
-/* line 297, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 297, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-minus-square-o:before {
   content: ""; }
 
-/* line 298, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 298, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-level-up:before {
   content: ""; }
 
-/* line 299, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 299, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-level-down:before {
   content: ""; }
 
-/* line 300, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 300, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-check-square:before {
   content: ""; }
 
-/* line 301, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 301, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-pencil-square:before {
   content: ""; }
 
-/* line 302, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 302, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-external-link-square:before {
   content: ""; }
 
-/* line 303, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 303, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-share-square:before {
   content: ""; }
 
-/* line 304, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 304, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-compass:before {
   content: ""; }
 
-/* line 305, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 305, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-toggle-down:before,
 .fa-caret-square-o-down:before {
   content: ""; }
 
-/* line 306, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 306, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-toggle-up:before,
 .fa-caret-square-o-up:before {
   content: ""; }
 
-/* line 307, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 307, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-toggle-right:before,
 .fa-caret-square-o-right:before {
   content: ""; }
 
-/* line 308, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 308, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-euro:before,
 .fa-eur:before {
   content: ""; }
 
-/* line 309, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 309, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-gbp:before {
   content: ""; }
 
-/* line 310, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 310, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-dollar:before,
 .fa-usd:before {
   content: ""; }
 
-/* line 311, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 311, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-rupee:before,
 .fa-inr:before {
   content: ""; }
 
-/* line 312, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 312, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-cny:before,
 .fa-rmb:before,
 .fa-yen:before,
 .fa-jpy:before {
   content: ""; }
 
-/* line 313, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 313, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-ruble:before,
 .fa-rouble:before,
 .fa-rub:before {
   content: ""; }
 
-/* line 314, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 314, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-won:before,
 .fa-krw:before {
   content: ""; }
 
-/* line 315, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 315, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-bitcoin:before,
 .fa-btc:before {
   content: ""; }
 
-/* line 316, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 316, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-file:before {
   content: ""; }
 
-/* line 317, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 317, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-file-text:before {
   content: ""; }
 
-/* line 318, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 318, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-sort-alpha-asc:before {
   content: ""; }
 
-/* line 319, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 319, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-sort-alpha-desc:before {
   content: ""; }
 
-/* line 320, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 320, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-sort-amount-asc:before {
   content: ""; }
 
-/* line 321, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 321, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-sort-amount-desc:before {
   content: ""; }
 
-/* line 322, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 322, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-sort-numeric-asc:before {
   content: ""; }
 
-/* line 323, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 323, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-sort-numeric-desc:before {
   content: ""; }
 
-/* line 324, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 324, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-thumbs-up:before {
   content: ""; }
 
-/* line 325, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 325, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-thumbs-down:before {
   content: ""; }
 
-/* line 326, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 326, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-youtube-square:before {
   content: ""; }
 
-/* line 327, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 327, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-youtube:before {
   content: ""; }
 
-/* line 328, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 328, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-xing:before {
   content: ""; }
 
-/* line 329, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 329, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-xing-square:before {
   content: ""; }
 
-/* line 330, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 330, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-youtube-play:before {
   content: ""; }
 
-/* line 331, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 331, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-dropbox:before {
   content: ""; }
 
-/* line 332, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 332, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-stack-overflow:before {
   content: ""; }
 
-/* line 333, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 333, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-instagram:before {
   content: ""; }
 
-/* line 334, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 334, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-flickr:before {
   content: ""; }
 
-/* line 335, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 335, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-adn:before {
   content: ""; }
 
-/* line 336, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 336, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-bitbucket:before {
   content: ""; }
 
-/* line 337, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 337, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-bitbucket-square:before {
   content: ""; }
 
-/* line 338, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 338, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-tumblr:before {
   content: ""; }
 
-/* line 339, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 339, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-tumblr-square:before {
   content: ""; }
 
-/* line 340, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 340, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-long-arrow-down:before {
   content: ""; }
 
-/* line 341, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 341, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-long-arrow-up:before {
   content: ""; }
 
-/* line 342, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 342, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-long-arrow-left:before {
   content: ""; }
 
-/* line 343, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 343, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-long-arrow-right:before {
   content: ""; }
 
-/* line 344, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 344, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-apple:before {
   content: ""; }
 
-/* line 345, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 345, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-windows:before {
   content: ""; }
 
-/* line 346, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 346, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-android:before {
   content: ""; }
 
-/* line 347, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 347, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-linux:before {
   content: ""; }
 
-/* line 348, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 348, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-dribbble:before {
   content: ""; }
 
-/* line 349, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 349, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-skype:before {
   content: ""; }
 
-/* line 350, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 350, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-foursquare:before {
   content: ""; }
 
-/* line 351, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 351, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-trello:before {
   content: ""; }
 
-/* line 352, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 352, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-female:before {
   content: ""; }
 
-/* line 353, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 353, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-male:before {
   content: ""; }
 
-/* line 354, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 354, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-gittip:before,
 .fa-gratipay:before {
   content: ""; }
 
-/* line 355, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 355, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-sun-o:before {
   content: ""; }
 
-/* line 356, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 356, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-moon-o:before {
   content: ""; }
 
-/* line 357, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 357, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-archive:before {
   content: ""; }
 
-/* line 358, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 358, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-bug:before {
   content: ""; }
 
-/* line 359, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 359, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-vk:before {
   content: ""; }
 
-/* line 360, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 360, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-weibo:before {
   content: ""; }
 
-/* line 361, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 361, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-renren:before {
   content: ""; }
 
-/* line 362, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 362, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-pagelines:before {
   content: ""; }
 
-/* line 363, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 363, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-stack-exchange:before {
   content: ""; }
 
-/* line 364, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 364, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-arrow-circle-o-right:before {
   content: ""; }
 
-/* line 365, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 365, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-arrow-circle-o-left:before {
   content: ""; }
 
-/* line 366, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 366, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-toggle-left:before,
 .fa-caret-square-o-left:before {
   content: ""; }
 
-/* line 367, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 367, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-dot-circle-o:before {
   content: ""; }
 
-/* line 368, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 368, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-wheelchair:before {
   content: ""; }
 
-/* line 369, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 369, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-vimeo-square:before {
   content: ""; }
 
-/* line 370, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 370, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-turkish-lira:before,
 .fa-try:before {
   content: ""; }
 
-/* line 371, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 371, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-plus-square-o:before {
   content: ""; }
 
-/* line 372, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 372, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-space-shuttle:before {
   content: ""; }
 
-/* line 373, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 373, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-slack:before {
   content: ""; }
 
-/* line 374, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 374, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-envelope-square:before {
   content: ""; }
 
-/* line 375, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 375, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-wordpress:before {
   content: ""; }
 
-/* line 376, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 376, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-openid:before {
   content: ""; }
 
-/* line 377, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 377, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-institution:before,
 .fa-bank:before,
 .fa-university:before {
   content: ""; }
 
-/* line 378, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 378, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-mortar-board:before,
 .fa-graduation-cap:before {
   content: ""; }
 
-/* line 379, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 379, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-yahoo:before {
   content: ""; }
 
-/* line 380, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 380, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-google:before {
   content: ""; }
 
-/* line 381, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 381, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-reddit:before {
   content: ""; }
 
-/* line 382, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 382, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-reddit-square:before {
   content: ""; }
 
-/* line 383, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 383, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-stumbleupon-circle:before {
   content: ""; }
 
-/* line 384, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 384, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-stumbleupon:before {
   content: ""; }
 
-/* line 385, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 385, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-delicious:before {
   content: ""; }
 
-/* line 386, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 386, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-digg:before {
   content: ""; }
 
-/* line 387, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 387, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-pied-piper-pp:before {
   content: ""; }
 
-/* line 388, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 388, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-pied-piper-alt:before {
   content: ""; }
 
-/* line 389, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 389, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-drupal:before {
   content: ""; }
 
-/* line 390, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 390, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-joomla:before {
   content: ""; }
 
-/* line 391, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 391, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-language:before {
   content: ""; }
 
-/* line 392, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 392, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-fax:before {
   content: ""; }
 
-/* line 393, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 393, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-building:before {
   content: ""; }
 
-/* line 394, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 394, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-child:before {
   content: ""; }
 
-/* line 395, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 395, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-paw:before {
   content: ""; }
 
-/* line 396, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 396, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-spoon:before {
   content: ""; }
 
-/* line 397, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 397, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-cube:before {
   content: ""; }
 
-/* line 398, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 398, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-cubes:before {
   content: ""; }
 
-/* line 399, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 399, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-behance:before {
   content: ""; }
 
-/* line 400, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 400, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-behance-square:before {
   content: ""; }
 
-/* line 401, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 401, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-steam:before {
   content: ""; }
 
-/* line 402, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 402, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-steam-square:before {
   content: ""; }
 
-/* line 403, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 403, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-recycle:before {
   content: ""; }
 
-/* line 404, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 404, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-automobile:before,
 .fa-car:before {
   content: ""; }
 
-/* line 405, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 405, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-cab:before,
 .fa-taxi:before {
   content: ""; }
 
-/* line 406, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 406, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-tree:before {
   content: ""; }
 
-/* line 407, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 407, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-spotify:before {
   content: ""; }
 
-/* line 408, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 408, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-deviantart:before {
   content: ""; }
 
-/* line 409, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 409, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-soundcloud:before {
   content: ""; }
 
-/* line 410, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 410, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-database:before {
   content: ""; }
 
-/* line 411, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 411, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-file-pdf-o:before {
   content: ""; }
 
-/* line 412, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 412, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-file-word-o:before {
   content: ""; }
 
-/* line 413, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 413, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-file-excel-o:before {
   content: ""; }
 
-/* line 414, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 414, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-file-powerpoint-o:before {
   content: ""; }
 
-/* line 415, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 415, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-file-photo-o:before,
 .fa-file-picture-o:before,
 .fa-file-image-o:before {
   content: ""; }
 
-/* line 416, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 416, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-file-zip-o:before,
 .fa-file-archive-o:before {
   content: ""; }
 
-/* line 417, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 417, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-file-sound-o:before,
 .fa-file-audio-o:before {
   content: ""; }
 
-/* line 418, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 418, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-file-movie-o:before,
 .fa-file-video-o:before {
   content: ""; }
 
-/* line 419, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 419, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-file-code-o:before {
   content: ""; }
 
-/* line 420, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 420, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-vine:before {
   content: ""; }
 
-/* line 421, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 421, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-codepen:before {
   content: ""; }
 
-/* line 422, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 422, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-jsfiddle:before {
   content: ""; }
 
-/* line 423, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 423, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-life-bouy:before,
 .fa-life-buoy:before,
 .fa-life-saver:before,
@@ -8713,894 +8713,894 @@ button.close {
 .fa-life-ring:before {
   content: ""; }
 
-/* line 424, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 424, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-circle-o-notch:before {
   content: ""; }
 
-/* line 425, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 425, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-ra:before,
 .fa-resistance:before,
 .fa-rebel:before {
   content: ""; }
 
-/* line 426, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 426, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-ge:before,
 .fa-empire:before {
   content: ""; }
 
-/* line 427, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 427, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-git-square:before {
   content: ""; }
 
-/* line 428, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 428, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-git:before {
   content: ""; }
 
-/* line 429, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 429, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-y-combinator-square:before,
 .fa-yc-square:before,
 .fa-hacker-news:before {
   content: ""; }
 
-/* line 430, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 430, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-tencent-weibo:before {
   content: ""; }
 
-/* line 431, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 431, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-qq:before {
   content: ""; }
 
-/* line 432, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 432, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-wechat:before,
 .fa-weixin:before {
   content: ""; }
 
-/* line 433, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 433, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-send:before,
 .fa-paper-plane:before {
   content: ""; }
 
-/* line 434, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 434, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-send-o:before,
 .fa-paper-plane-o:before {
   content: ""; }
 
-/* line 435, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 435, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-history:before {
   content: ""; }
 
-/* line 436, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 436, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-circle-thin:before {
   content: ""; }
 
-/* line 437, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 437, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-header:before {
   content: ""; }
 
-/* line 438, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 438, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-paragraph:before {
   content: ""; }
 
-/* line 439, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 439, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-sliders:before {
   content: ""; }
 
-/* line 440, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 440, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-share-alt:before {
   content: ""; }
 
-/* line 441, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 441, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-share-alt-square:before {
   content: ""; }
 
-/* line 442, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 442, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-bomb:before {
   content: ""; }
 
-/* line 443, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 443, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-soccer-ball-o:before,
 .fa-futbol-o:before {
   content: ""; }
 
-/* line 444, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 444, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-tty:before {
   content: ""; }
 
-/* line 445, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 445, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-binoculars:before {
   content: ""; }
 
-/* line 446, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 446, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-plug:before {
   content: ""; }
 
-/* line 447, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 447, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-slideshare:before {
   content: ""; }
 
-/* line 448, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 448, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-twitch:before {
   content: ""; }
 
-/* line 449, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 449, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-yelp:before {
   content: ""; }
 
-/* line 450, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 450, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-newspaper-o:before {
   content: ""; }
 
-/* line 451, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 451, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-wifi:before {
   content: ""; }
 
-/* line 452, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 452, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-calculator:before {
   content: ""; }
 
-/* line 453, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 453, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-paypal:before {
   content: ""; }
 
-/* line 454, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 454, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-google-wallet:before {
   content: ""; }
 
-/* line 455, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 455, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-cc-visa:before {
   content: ""; }
 
-/* line 456, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 456, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-cc-mastercard:before {
   content: ""; }
 
-/* line 457, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 457, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-cc-discover:before {
   content: ""; }
 
-/* line 458, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 458, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-cc-amex:before {
   content: ""; }
 
-/* line 459, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 459, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-cc-paypal:before {
   content: ""; }
 
-/* line 460, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 460, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-cc-stripe:before {
   content: ""; }
 
-/* line 461, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 461, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-bell-slash:before {
   content: ""; }
 
-/* line 462, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 462, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-bell-slash-o:before {
   content: ""; }
 
-/* line 463, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 463, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-trash:before {
   content: ""; }
 
-/* line 464, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 464, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-copyright:before {
   content: ""; }
 
-/* line 465, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 465, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-at:before {
   content: ""; }
 
-/* line 466, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 466, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-eyedropper:before {
   content: ""; }
 
-/* line 467, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 467, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-paint-brush:before {
   content: ""; }
 
-/* line 468, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 468, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-birthday-cake:before {
   content: ""; }
 
-/* line 469, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 469, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-area-chart:before {
   content: ""; }
 
-/* line 470, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 470, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-pie-chart:before {
   content: ""; }
 
-/* line 471, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 471, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-line-chart:before {
   content: ""; }
 
-/* line 472, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 472, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-lastfm:before {
   content: ""; }
 
-/* line 473, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 473, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-lastfm-square:before {
   content: ""; }
 
-/* line 474, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 474, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-toggle-off:before {
   content: ""; }
 
-/* line 475, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 475, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-toggle-on:before {
   content: ""; }
 
-/* line 476, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 476, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-bicycle:before {
   content: ""; }
 
-/* line 477, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 477, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-bus:before {
   content: ""; }
 
-/* line 478, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 478, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-ioxhost:before {
   content: ""; }
 
-/* line 479, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 479, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-angellist:before {
   content: ""; }
 
-/* line 480, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 480, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-cc:before {
   content: ""; }
 
-/* line 481, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 481, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-shekel:before,
 .fa-sheqel:before,
 .fa-ils:before {
   content: ""; }
 
-/* line 482, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 482, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-meanpath:before {
   content: ""; }
 
-/* line 483, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 483, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-buysellads:before {
   content: ""; }
 
-/* line 484, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 484, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-connectdevelop:before {
   content: ""; }
 
-/* line 485, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 485, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-dashcube:before {
   content: ""; }
 
-/* line 486, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 486, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-forumbee:before {
   content: ""; }
 
-/* line 487, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 487, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-leanpub:before {
   content: ""; }
 
-/* line 488, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 488, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-sellsy:before {
   content: ""; }
 
-/* line 489, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 489, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-shirtsinbulk:before {
   content: ""; }
 
-/* line 490, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 490, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-simplybuilt:before {
   content: ""; }
 
-/* line 491, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 491, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-skyatlas:before {
   content: ""; }
 
-/* line 492, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 492, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-cart-plus:before {
   content: ""; }
 
-/* line 493, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 493, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-cart-arrow-down:before {
   content: ""; }
 
-/* line 494, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 494, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-diamond:before {
   content: ""; }
 
-/* line 495, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 495, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-ship:before {
   content: ""; }
 
-/* line 496, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 496, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-user-secret:before {
   content: ""; }
 
-/* line 497, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 497, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-motorcycle:before {
   content: ""; }
 
-/* line 498, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 498, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-street-view:before {
   content: ""; }
 
-/* line 499, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 499, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-heartbeat:before {
   content: ""; }
 
-/* line 500, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 500, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-venus:before {
   content: ""; }
 
-/* line 501, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 501, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-mars:before {
   content: ""; }
 
-/* line 502, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 502, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-mercury:before {
   content: ""; }
 
-/* line 503, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 503, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-intersex:before,
 .fa-transgender:before {
   content: ""; }
 
-/* line 504, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 504, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-transgender-alt:before {
   content: ""; }
 
-/* line 505, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 505, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-venus-double:before {
   content: ""; }
 
-/* line 506, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 506, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-mars-double:before {
   content: ""; }
 
-/* line 507, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 507, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-venus-mars:before {
   content: ""; }
 
-/* line 508, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 508, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-mars-stroke:before {
   content: ""; }
 
-/* line 509, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 509, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-mars-stroke-v:before {
   content: ""; }
 
-/* line 510, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 510, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-mars-stroke-h:before {
   content: ""; }
 
-/* line 511, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 511, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-neuter:before {
   content: ""; }
 
-/* line 512, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 512, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-genderless:before {
   content: ""; }
 
-/* line 513, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 513, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-facebook-official:before {
   content: ""; }
 
-/* line 514, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 514, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-pinterest-p:before {
   content: ""; }
 
-/* line 515, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 515, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-whatsapp:before {
   content: ""; }
 
-/* line 516, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 516, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-server:before {
   content: ""; }
 
-/* line 517, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 517, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-user-plus:before {
   content: ""; }
 
-/* line 518, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 518, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-user-times:before {
   content: ""; }
 
-/* line 519, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 519, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-hotel:before,
 .fa-bed:before {
   content: ""; }
 
-/* line 520, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 520, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-viacoin:before {
   content: ""; }
 
-/* line 521, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 521, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-train:before {
   content: ""; }
 
-/* line 522, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 522, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-subway:before {
   content: ""; }
 
-/* line 523, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 523, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-medium:before {
   content: ""; }
 
-/* line 524, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 524, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-yc:before,
 .fa-y-combinator:before {
   content: ""; }
 
-/* line 525, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 525, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-optin-monster:before {
   content: ""; }
 
-/* line 526, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 526, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-opencart:before {
   content: ""; }
 
-/* line 527, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 527, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-expeditedssl:before {
   content: ""; }
 
-/* line 528, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 528, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-battery-4:before,
 .fa-battery-full:before {
   content: ""; }
 
-/* line 529, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 529, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-battery-3:before,
 .fa-battery-three-quarters:before {
   content: ""; }
 
-/* line 530, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 530, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-battery-2:before,
 .fa-battery-half:before {
   content: ""; }
 
-/* line 531, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 531, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-battery-1:before,
 .fa-battery-quarter:before {
   content: ""; }
 
-/* line 532, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 532, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-battery-0:before,
 .fa-battery-empty:before {
   content: ""; }
 
-/* line 533, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 533, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-mouse-pointer:before {
   content: ""; }
 
-/* line 534, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 534, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-i-cursor:before {
   content: ""; }
 
-/* line 535, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 535, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-object-group:before {
   content: ""; }
 
-/* line 536, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 536, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-object-ungroup:before {
   content: ""; }
 
-/* line 537, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 537, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-sticky-note:before {
   content: ""; }
 
-/* line 538, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 538, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-sticky-note-o:before {
   content: ""; }
 
-/* line 539, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 539, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-cc-jcb:before {
   content: ""; }
 
-/* line 540, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 540, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-cc-diners-club:before {
   content: ""; }
 
-/* line 541, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 541, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-clone:before {
   content: ""; }
 
-/* line 542, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 542, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-balance-scale:before {
   content: ""; }
 
-/* line 543, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 543, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-hourglass-o:before {
   content: ""; }
 
-/* line 544, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 544, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-hourglass-1:before,
 .fa-hourglass-start:before {
   content: ""; }
 
-/* line 545, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 545, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-hourglass-2:before,
 .fa-hourglass-half:before {
   content: ""; }
 
-/* line 546, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 546, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-hourglass-3:before,
 .fa-hourglass-end:before {
   content: ""; }
 
-/* line 547, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 547, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-hourglass:before {
   content: ""; }
 
-/* line 548, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 548, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-hand-grab-o:before,
 .fa-hand-rock-o:before {
   content: ""; }
 
-/* line 549, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 549, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-hand-stop-o:before,
 .fa-hand-paper-o:before {
   content: ""; }
 
-/* line 550, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 550, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-hand-scissors-o:before {
   content: ""; }
 
-/* line 551, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 551, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-hand-lizard-o:before {
   content: ""; }
 
-/* line 552, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 552, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-hand-spock-o:before {
   content: ""; }
 
-/* line 553, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 553, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-hand-pointer-o:before {
   content: ""; }
 
-/* line 554, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 554, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-hand-peace-o:before {
   content: ""; }
 
-/* line 555, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 555, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-trademark:before {
   content: ""; }
 
-/* line 556, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 556, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-registered:before {
   content: ""; }
 
-/* line 557, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 557, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-creative-commons:before {
   content: ""; }
 
-/* line 558, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 558, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-gg:before {
   content: ""; }
 
-/* line 559, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 559, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-gg-circle:before {
   content: ""; }
 
-/* line 560, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 560, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-tripadvisor:before {
   content: ""; }
 
-/* line 561, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 561, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-odnoklassniki:before {
   content: ""; }
 
-/* line 562, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 562, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-odnoklassniki-square:before {
   content: ""; }
 
-/* line 563, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 563, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-get-pocket:before {
   content: ""; }
 
-/* line 564, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 564, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-wikipedia-w:before {
   content: ""; }
 
-/* line 565, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 565, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-safari:before {
   content: ""; }
 
-/* line 566, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 566, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-chrome:before {
   content: ""; }
 
-/* line 567, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 567, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-firefox:before {
   content: ""; }
 
-/* line 568, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 568, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-opera:before {
   content: ""; }
 
-/* line 569, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 569, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-internet-explorer:before {
   content: ""; }
 
-/* line 570, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 570, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-tv:before,
 .fa-television:before {
   content: ""; }
 
-/* line 571, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 571, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-contao:before {
   content: ""; }
 
-/* line 572, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 572, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-500px:before {
   content: ""; }
 
-/* line 573, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 573, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-amazon:before {
   content: ""; }
 
-/* line 574, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 574, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-calendar-plus-o:before {
   content: ""; }
 
-/* line 575, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 575, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-calendar-minus-o:before {
   content: ""; }
 
-/* line 576, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 576, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-calendar-times-o:before {
   content: ""; }
 
-/* line 577, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 577, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-calendar-check-o:before {
   content: ""; }
 
-/* line 578, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 578, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-industry:before {
   content: ""; }
 
-/* line 579, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 579, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-map-pin:before {
   content: ""; }
 
-/* line 580, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 580, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-map-signs:before {
   content: ""; }
 
-/* line 581, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 581, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-map-o:before {
   content: ""; }
 
-/* line 582, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 582, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-map:before {
   content: ""; }
 
-/* line 583, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 583, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-commenting:before {
   content: ""; }
 
-/* line 584, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 584, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-commenting-o:before {
   content: ""; }
 
-/* line 585, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 585, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-houzz:before {
   content: ""; }
 
-/* line 586, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 586, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-vimeo:before {
   content: ""; }
 
-/* line 587, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 587, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-black-tie:before {
   content: ""; }
 
-/* line 588, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 588, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-fonticons:before {
   content: ""; }
 
-/* line 589, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 589, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-reddit-alien:before {
   content: ""; }
 
-/* line 590, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 590, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-edge:before {
   content: ""; }
 
-/* line 591, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 591, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-credit-card-alt:before {
   content: ""; }
 
-/* line 592, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 592, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-codiepie:before {
   content: ""; }
 
-/* line 593, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 593, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-modx:before {
   content: ""; }
 
-/* line 594, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 594, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-fort-awesome:before {
   content: ""; }
 
-/* line 595, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 595, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-usb:before {
   content: ""; }
 
-/* line 596, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 596, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-product-hunt:before {
   content: ""; }
 
-/* line 597, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 597, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-mixcloud:before {
   content: ""; }
 
-/* line 598, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 598, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-scribd:before {
   content: ""; }
 
-/* line 599, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 599, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-pause-circle:before {
   content: ""; }
 
-/* line 600, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 600, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-pause-circle-o:before {
   content: ""; }
 
-/* line 601, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 601, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-stop-circle:before {
   content: ""; }
 
-/* line 602, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 602, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-stop-circle-o:before {
   content: ""; }
 
-/* line 603, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 603, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-shopping-bag:before {
   content: ""; }
 
-/* line 604, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 604, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-shopping-basket:before {
   content: ""; }
 
-/* line 605, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 605, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-hashtag:before {
   content: ""; }
 
-/* line 606, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 606, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-bluetooth:before {
   content: ""; }
 
-/* line 607, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 607, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-bluetooth-b:before {
   content: ""; }
 
-/* line 608, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 608, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-percent:before {
   content: ""; }
 
-/* line 609, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 609, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-gitlab:before {
   content: ""; }
 
-/* line 610, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 610, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-wpbeginner:before {
   content: ""; }
 
-/* line 611, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 611, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-wpforms:before {
   content: ""; }
 
-/* line 612, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 612, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-envira:before {
   content: ""; }
 
-/* line 613, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 613, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-universal-access:before {
   content: ""; }
 
-/* line 614, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 614, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-wheelchair-alt:before {
   content: ""; }
 
-/* line 615, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 615, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-question-circle-o:before {
   content: ""; }
 
-/* line 616, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 616, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-blind:before {
   content: ""; }
 
-/* line 617, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 617, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-audio-description:before {
   content: ""; }
 
-/* line 618, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 618, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-volume-control-phone:before {
   content: ""; }
 
-/* line 619, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 619, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-braille:before {
   content: ""; }
 
-/* line 620, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 620, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-assistive-listening-systems:before {
   content: ""; }
 
-/* line 621, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 621, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-asl-interpreting:before,
 .fa-american-sign-language-interpreting:before {
   content: ""; }
 
-/* line 622, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 622, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-deafness:before,
 .fa-hard-of-hearing:before,
 .fa-deaf:before {
   content: ""; }
 
-/* line 623, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 623, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-glide:before {
   content: ""; }
 
-/* line 624, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 624, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-glide-g:before {
   content: ""; }
 
-/* line 625, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 625, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-signing:before,
 .fa-sign-language:before {
   content: ""; }
 
-/* line 626, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 626, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-low-vision:before {
   content: ""; }
 
-/* line 627, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 627, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-viadeo:before {
   content: ""; }
 
-/* line 628, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 628, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-viadeo-square:before {
   content: ""; }
 
-/* line 629, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 629, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-snapchat:before {
   content: ""; }
 
-/* line 630, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 630, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-snapchat-ghost:before {
   content: ""; }
 
-/* line 631, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 631, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-snapchat-square:before {
   content: ""; }
 
-/* line 632, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 632, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-pied-piper:before {
   content: ""; }
 
-/* line 633, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 633, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-first-order:before {
   content: ""; }
 
-/* line 634, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 634, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-yoast:before {
   content: ""; }
 
-/* line 635, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 635, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-themeisle:before {
   content: ""; }
 
-/* line 636, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 636, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-google-plus-circle:before,
 .fa-google-plus-official:before {
   content: ""; }
 
-/* line 637, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
+/* line 637, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_icons.scss */
 .fa-fa:before,
 .fa-font-awesome:before {
   content: ""; }
 
-/* line 4, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_screen-reader.scss */
+/* line 4, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_screen-reader.scss */
 .sr-only {
   position: absolute;
   width: 1px;
@@ -9611,7 +9611,7 @@ button.close {
   clip: rect(0, 0, 0, 0);
   border: 0; }
 
-/* line 51, /Users/ryan/Devel/emotext/bower_components/font-awesome/scss/_mixins.scss */
+/* line 51, /Users/RyanJennings/.Devel/emotext/bower_components/font-awesome/scss/_mixins.scss */
 .sr-only-focusable:active, .sr-only-focusable:focus {
   position: static;
   width: auto;
@@ -9620,121 +9620,140 @@ button.close {
   overflow: visible;
   clip: auto; }
 
-/* line 1, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+/* line 1, /Users/RyanJennings/.Devel/emotext/web/static/css/app.scss */
 html, body, .container {
   height: 100%; }
 
-/* line 5, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+/* line 5, /Users/RyanJennings/.Devel/emotext/web/static/css/app.scss */
 body {
   font-family: 'Source Code Pro', monospace;
   font-size: 16px; }
 
 /* Space out content a bit */
-/* line 11, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+/* line 11, /Users/RyanJennings/.Devel/emotext/web/static/css/app.scss */
 body, form, ul, table {
   margin-top: 20px;
   margin-bottom: 20px; }
 
-/* Phoenix flash messages */
-/* line 17, /Users/ryan/Devel/emotext/web/static/css/app.scss */
-.alert:empty {
-  display: none; }
-
-/* Phoenix inline forms in links and buttons */
-/* line 22, /Users/ryan/Devel/emotext/web/static/css/app.scss */
-form.link, form.button {
-  display: inline; }
-
-/* line 27, /Users/ryan/Devel/emotext/web/static/css/app.scss */
-.show-resource .row > div:first-child {
-  text-align: right; }
-
-/* line 31, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+/* line 16, /Users/RyanJennings/.Devel/emotext/web/static/css/app.scss */
 .transparent {
   zoom: 1;
   filter: alpha(opacity=20);
   opacity: 0.2; }
 
-/* line 42, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+/* line 91, /Users/RyanJennings/.Devel/emotext/web/static/css/app.scss */
+a {
+  text-decoration: none;
+  color: #2196f3; }
+
+/* line 96, /Users/RyanJennings/.Devel/emotext/web/static/css/app.scss */
+a:hover {
+  text-decoration: underline;
+  color: #2196f3; }
+
+/* line 101, /Users/RyanJennings/.Devel/emotext/web/static/css/app.scss */
 .orange-well {
-  background-color: rgba(255, 140, 0, 0.2);
   padding: 15px;
-  border: 1px solid rgba(255, 140, 0, 0.3); }
+  background-color: #fff3e0;
+  border: 1px solid #ffcc80; }
 
-/* line 48, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+/* line 106, /Users/RyanJennings/.Devel/emotext/web/static/css/app.scss */
 .green-well {
-  background-color: rgba(0, 100, 0, 0.2);
   padding: 15px;
-  border: 1px solid rgba(0, 100, 0, 0.3); }
+  background-color: #e8f5e9;
+  border: 1px solid #a5d6a7; }
 
-/* line 54, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+/* line 111, /Users/RyanJennings/.Devel/emotext/web/static/css/app.scss */
 .blue-well {
   padding: 15px;
-  background-color: rgba(0, 0, 139, 0.15);
-  border: 1px solid rgba(0, 0, 139, 0.25); }
+  background-color: #e3f2fd;
+  border: 1px solid #90caf9; }
 
 /* Custom page header */
-/* line 60, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+/* line 117, /Users/RyanJennings/.Devel/emotext/web/static/css/app.scss */
 .header {
   border-bottom: 1px solid #e5e5e5; }
 
-/* line 64, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+/* line 121, /Users/RyanJennings/.Devel/emotext/web/static/css/app.scss */
 .logo {
   display: inline-block;
   font-family: 'VT323', monospace; }
-  /* line 67, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+  /* line 124, /Users/RyanJennings/.Devel/emotext/web/static/css/app.scss */
   .logo a:hover {
     text-decoration: none; }
-  /* line 73, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+  /* line 130, /Users/RyanJennings/.Devel/emotext/web/static/css/app.scss */
   .logo .icon {
     font-size: 6em;
-    color: green;
+    color: #2e7d32;
     font-weight: bold; }
-  /* line 79, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+  /* line 136, /Users/RyanJennings/.Devel/emotext/web/static/css/app.scss */
   .logo .title {
-    color: darkgreen;
+    color: #2e7d32;
     font-size: 4em;
     letter-spacing: 8px; }
-  /* line 85, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+  /* line 142, /Users/RyanJennings/.Devel/emotext/web/static/css/app.scss */
   .logo .subtitle {
     display: block;
     margin-left: 90px;
     font-style: italic;
-    color: darkgreen;
+    color: #2e7d32;
     position: relative;
     top: -10px; }
 
-/* line 95, /Users/ryan/Devel/emotext/web/static/css/app.scss */
-div[role="main"] > div.header > ul.nav {
+/* line 153, /Users/RyanJennings/.Devel/emotext/web/static/css/app.scss */
+div[role="main"] div.header > ul.nav {
   margin-top: 7em;
   float: right; }
-  /* line 99, /Users/ryan/Devel/emotext/web/static/css/app.scss */
-  div[role="main"] > div.header > ul.nav li a {
-    color: darkgreen; }
-    /* line 101, /Users/ryan/Devel/emotext/web/static/css/app.scss */
-    div[role="main"] > div.header > ul.nav li a i {
+  /* line 157, /Users/RyanJennings/.Devel/emotext/web/static/css/app.scss */
+  div[role="main"] div.header > ul.nav li a {
+    color: #2e7d32; }
+    /* line 159, /Users/RyanJennings/.Devel/emotext/web/static/css/app.scss */
+    div[role="main"] div.header > ul.nav li a i {
       margin-right: 4px; }
 
-/* line 108, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+/* line 165, /Users/RyanJennings/.Devel/emotext/web/static/css/app.scss */
+div[role="main"] .card {
+  min-height: 400px;
+  position: relative; }
+  /* line 169, /Users/RyanJennings/.Devel/emotext/web/static/css/app.scss */
+  div[role="main"] .card .footer {
+    padding: 15px;
+    position: absolute;
+    bottom: 0;
+    left: 0; }
+
+/* line 178, /Users/RyanJennings/.Devel/emotext/web/static/css/app.scss */
+div[role="main"] .nav.nav-minimal li {
+  display: inline-block;
+  margin-bottom: -1px; }
+
+/* line 182, /Users/RyanJennings/.Devel/emotext/web/static/css/app.scss */
+div[role="main"] .nav.nav-minimal li.active {
+  background-color: #e8f5e9;
+  border: 1px solid #a5d6a7;
+  border-bottom: none;
+  z-index: 2; }
+
+/* line 190, /Users/RyanJennings/.Devel/emotext/web/static/css/app.scss */
 #chat-input {
   width: 100%; }
 
-/* line 112, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+/* line 194, /Users/RyanJennings/.Devel/emotext/web/static/css/app.scss */
 #chat-window {
   position: relative;
   padding-top: 15px;
   height: 60%; }
-  /* line 117, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+  /* line 199, /Users/RyanJennings/.Devel/emotext/web/static/css/app.scss */
   #chat-window .open, #chat-window .hidden {
     transition: all 300ms; }
-  /* line 120, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+  /* line 202, /Users/RyanJennings/.Devel/emotext/web/static/css/app.scss */
   #chat-window .output {
     position: relative;
     top: 0;
     left: 0;
     height: 95%;
     margin-right: 195px; }
-    /* line 127, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+    /* line 209, /Users/RyanJennings/.Devel/emotext/web/static/css/app.scss */
     #chat-window .output #messages {
       height: 100%;
       text-align: left;
@@ -9742,7 +9761,7 @@ div[role="main"] > div.header > ul.nav {
       white-space: pre-wrap;
       overflow-y: auto;
       margin-bottom: 10px; }
-  /* line 137, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+  /* line 219, /Users/RyanJennings/.Devel/emotext/web/static/css/app.scss */
   #chat-window #chat-menu {
     height: 2em;
     width: 2em;
@@ -9753,58 +9772,58 @@ div[role="main"] > div.header > ul.nav {
     padding-top: 0.25em;
     text-align: center;
     vertical-align: middle;
-    background-color: rgba(0, 0, 139, 0.15);
-    border: 1px solid rgba(0, 0, 139, 0.25);
+    background-color: #e3f2fd;
+    border: 1px solid #90caf9;
     float: right;
     z-index: 5; }
-  /* line 152, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+  /* line 234, /Users/RyanJennings/.Devel/emotext/web/static/css/app.scss */
   #chat-window .menu {
     position: absolute;
     right: 0;
     top: 15px;
     width: 180px;
     height: 100%; }
-  /* line 160, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+  /* line 242, /Users/RyanJennings/.Devel/emotext/web/static/css/app.scss */
   #chat-window #chat-users {
     height: 100%;
     overflow-y: auto; }
-    /* line 164, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+    /* line 246, /Users/RyanJennings/.Devel/emotext/web/static/css/app.scss */
     #chat-window #chat-users ul {
       margin: 0;
       padding: 0;
       list-style-type: none; }
-    /* line 170, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+    /* line 252, /Users/RyanJennings/.Devel/emotext/web/static/css/app.scss */
     #chat-window #chat-users #chat-room {
       font-weight: bold;
       text-align: center; }
 
 @media (max-width: 990px) {
-  /* line 178, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+  /* line 260, /Users/RyanJennings/.Devel/emotext/web/static/css/app.scss */
   div[role="main"] > div.header > ul.nav {
     margin-top: auto;
     float: none; }
-  /* line 182, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+  /* line 264, /Users/RyanJennings/.Devel/emotext/web/static/css/app.scss */
   #chat-window {
     height: auto; }
-    /* line 184, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+    /* line 266, /Users/RyanJennings/.Devel/emotext/web/static/css/app.scss */
     #chat-window .output {
       margin-right: 0; }
-    /* line 187, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+    /* line 269, /Users/RyanJennings/.Devel/emotext/web/static/css/app.scss */
     #chat-window .menu {
       margin-top: 10px;
       position: static;
       width: auto; }
-      /* line 192, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+      /* line 274, /Users/RyanJennings/.Devel/emotext/web/static/css/app.scss */
       #chat-window .menu #chat-users {
         height: auto; } }
 
-/* line 199, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+/* line 281, /Users/RyanJennings/.Devel/emotext/web/static/css/app.scss */
 #chat-actions {
   overflow-y: scroll;
   color: black;
   max-height: 400px; }
 
-/* line 205, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+/* line 287, /Users/RyanJennings/.Devel/emotext/web/static/css/app.scss */
 hr {
   margin-top: 5px;
   margin-bottom: 5px;
@@ -9813,49 +9832,28 @@ hr {
   color: black;
   border: none; }
 
-/* line 214, /Users/ryan/Devel/emotext/web/static/css/app.scss */
-div[data-input-action], li[data-input-user], #chat-window .output .input-group-addon {
+/* line 296, /Users/RyanJennings/.Devel/emotext/web/static/css/app.scss */
+div[data-input-action], li[data-input-user], #chat-window .output .input-group-addon, .users-collapser {
   cursor: pointer; }
 
-/* line 218, /Users/ryan/Devel/emotext/web/static/css/app.scss */
-#segrip {
-  float: right; }
-
-/* line 222, /Users/ryan/Devel/emotext/web/static/css/app.scss */
-.action-collapser {
-  float: right;
-  cursor: pointer; }
-
-/* line 227, /Users/ryan/Devel/emotext/web/static/css/app.scss */
-.users-collapser {
-  float: left;
-  cursor: pointer; }
-
-/* line 232, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+/* line 300, /Users/RyanJennings/.Devel/emotext/web/static/css/app.scss */
 .show {
   display: block; }
 
-/* line 236, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+/* line 304, /Users/RyanJennings/.Devel/emotext/web/static/css/app.scss */
 .hidden {
   display: none; }
 
-/* line 240, /Users/ryan/Devel/emotext/web/static/css/app.scss */
-#action-bar, #user-bar {
-  height: 100%;
-  display: inline-block;
-  padding: 4px;
-  padding-top: 15px; }
-
-/* line 248, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+/* line 309, /Users/RyanJennings/.Devel/emotext/web/static/css/app.scss */
 .alias-table .title {
   font-weight: bold; }
 
-/* line 253, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+/* line 314, /Users/RyanJennings/.Devel/emotext/web/static/css/app.scss */
 .alias-table td span {
   margin-right: 10px;
   margin-left: 10px; }
 
-/* line 260, /Users/ryan/Devel/emotext/web/static/css/app.scss */
+/* line 321, /Users/RyanJennings/.Devel/emotext/web/static/css/app.scss */
 .container > .footer {
   margin-top: 2em;
   text-align: center;
