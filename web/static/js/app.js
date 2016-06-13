@@ -1,5 +1,7 @@
 import {Socket} from "phoenix"
 import "phoenix_html"
+import * as profanity from "profanity-censor"
+import * as badwords from "badwords-list"
 
 class App {
 
@@ -82,9 +84,10 @@ class App {
         }
     })
 
-
     // TODO: put in settings
     let buffer = []
+
+    profanity.use(badwords.array);
 
   	var appendMessage = function(x) {
 
@@ -92,7 +95,7 @@ class App {
           buffer.shift();
         }
 
-    	buffer.push(x);
+    	buffer.push(profanity.filter(x));
 
   	  	messages.html(buffer.join("\n"))
 
