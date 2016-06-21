@@ -263,7 +263,7 @@ defmodule Emotext.RoomChannel do
           end
       end
     else
-      if history.user_id do
+      if history.user_id && history.message do
         Logger.info "Restoring history message from #{history.user_screen_name}"
         user = get_user(socket)
         body = if history.message != nil && Expletive.profane?(history.message, @config), do: Expletive.sanitize(history.message, @config), else: history.message
@@ -301,9 +301,9 @@ defmodule Emotext.RoomChannel do
         handle_command(socket, body, user)
     else
       if not handle_alias(socket, body, user) do
-        body = if Expletive.profane?(body, @config), do: Expletive.sanitize(body, @config), else: body
-        broadcast! socket, "msg:output", %{body: body, screen_name: user.screen_name }
         save_message(body, user)
+        body = if body && Expletive.profane?(body, @config), do: Expletive.sanitize(body, @config), else: body
+        broadcast! socket, "msg:output", %{body: body, screen_name: user.screen_name }
       end
     end
     {:noreply, socket}
