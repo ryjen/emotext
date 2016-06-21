@@ -72,15 +72,15 @@
 
       <div class="footer">
           <%= if @view_module == Emotext.PageView && @view_template == "index.html" do %>
-          <%= if current_user(@conn) && !is_guest?(current_user(@conn)) do %>
-            <span class="pull-left">create an <%= link "action", to: user_action_path(@conn, :new, current_user(@conn)) %> or
-                    <%= link "alias", to: user_alias_path(@conn, :new, current_user(@conn)) %> &nbsp; | &nbsp; Press the <i class="fa fa-bolt text-warning" aria-hidden="true"></i> or use the <b>/</b> prefix to send an action
-            </span>
-          <% else %>
-            <span class="pull-left"><%= link 'login', to: login_path(@conn, :create) %> to customize</span>
+              <%= if current_user(@conn) && !is_guest?(current_user(@conn)) do %>
+                <span class="pull-left">create an <%= link "action", to: user_action_path(@conn, :new, current_user(@conn)) %> or
+                        <%= link "alias", to: user_alias_path(@conn, :new, current_user(@conn)) %>
+              <% else %>
+                <span class="pull-left"><%= link 'login', to: login_path(@conn, :create) %> to customize
+              <% end %>
           <% end %>
-          <% end %>
-          <span class="pull-right">
+          &nbsp; | &nbsp; Press the <i class="fa fa-bolt text-warning" aria-hidden="true"></i> or use the <b>/</b> prefix to send an action
+          </span> <span class="pull-right">
             &copy; <a href="mailto:c0der78@gmail.com?subject=Emotext">Ryan Jennings</a> 2015 | <a href="/api">API</a>
           </span>
       </div>
