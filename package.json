@@ -5,7 +5,6 @@
   "description": "an emotional chat app",
   "dependencies": {
     "babel-brunch": "^6.0.0",
-    "badwords-list": "^1.0.0",
     "bower": "^1.4.1",
     "brunch": "^2.1.3",
     "clean-css-brunch": "~1.8.0",
@@ -13,7 +12,6 @@
     "javascript-brunch": "~1.8.0",
     "phoenix": "file:deps/phoenix",
     "phoenix_html": "file:deps/phoenix_html",
-    "profanity-censor": "^1.0.4",
     "sass-brunch": "~2.0.0",
     "uglify-js-brunch": "~1.7.0"
   },

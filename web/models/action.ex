@@ -6,14 +6,14 @@ defmodule Emotext.Action do
 
   schema "actions" do
     field :name, :string
-    field :self_no_arg, :string
-    field :others_no_arg, :string
-    field :self_found, :string
-    field :others_found, :string
-    field :vict_found, :string
-    field :self_not_found, :string
-    field :self_auto, :string
-    field :others_auto, :string
+    field :self_no_arg, :map
+    field :others_no_arg, :map
+    field :self_found, :map
+    field :others_found, :map
+    field :vict_found, :map
+    field :self_not_found, :map
+    field :self_auto, :map
+    field :others_auto, :map
 
     has_many :aliases, Emotext.Alias
 

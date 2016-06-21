@@ -13,6 +13,8 @@ defmodule Emotext.RoomChannel do
 
   intercept ["action:user", "action:others", "msg:output", "info:pong"]
 
+  @config Expletive.configure(blacklist: Expletive.Blacklist.english)
+
   def join("rooms:lobby", auth_msg, socket) do
     {:ok, socket}
   end
@@ -21,44 +23,43 @@ defmodule Emotext.RoomChannel do
     {:error, %{reason: "unauthorized"}}
   end
 
+  def gender_str(str, user) do
+      if Map.get(str, "all") do
+          Map.get(str, "all")
+      else
+          cond do
+             true -> Map.get(str, "neutral")
+             user.gender == :male -> Map.get(str, "male")
+             user.gender == :female -> Map.get(str, "female")
+         end
+      end
+  end
   def action_str(str, user) do
     if (str != nil) do
+      str = gender_str(str, user)
       str = String.replace(str, "$n", user.screen_name);
-     cond do
-        true ->
-          str = String.replace(str, "$s", "its");
-          str = String.replace(str, "$m", "it");
-          str = String.replace(str, "$e", "it");
-        user.gender == :male ->
-          str = String.replace(str, "$s", "his");
-          str = String.replace(str, "$m", "him");
-          str = String.replace(str, "$e", "he");
-        user.gender == :female ->
-          str = String.replace(str, "$s", "her");
-          str = String.replace(str, "$m", "her");
-          str = String.replace(str, "$e", "she");
-      end
     end
   end
 
   def action_str(str, user, vict) do
-    str = action_str(str, user)
-    if (str != nil) do
+      if (str != nil) do
+        str = gender_str(str, vict)
+        str = action_str(str, user)
         str = String.replace(str, "$N", vict.screen_name);
-      cond do
-        true ->
-          str = String.replace(str, "$S", "its");
-          str = String.replace(str, "$M", "it");
-          str = String.replace(str, "$E", "it");
-        vict.gender == :male ->
-          str = String.replace(str, "$S", "his");
-          str = String.replace(str, "$M", "him");
-          str = String.replace(str, "$E", "he");
-        vict.gender == :female ->
-          str = String.replace(str, "$S", "her");
-          str = String.replace(str, "$M", "her");
-          str = String.replace(str, "$E", "she");
-      end
+    #   cond do
+    #     true ->
+    #       str = String.replace(str, "$S", "its");
+    #       str = String.replace(str, "$M", "it");
+    #       str = String.replace(str, "$E", "it");
+    #     vict.gender == :male ->
+    #       str = String.replace(str, "$S", "his");
+    #       str = String.replace(str, "$M", "him");
+    #       str = String.replace(str, "$E", "he");
+    #     vict.gender == :female ->
+    #       str = String.replace(str, "$S", "her");
+    #       str = String.replace(str, "$M", "her");
+    #       str = String.replace(str, "$E", "she");
+    #   end
     end
   end
 
@@ -140,7 +141,7 @@ defmodule Emotext.RoomChannel do
         changeset = Ecto.Changeset.change(changeset, %{ vict_id: vict.id, vict_screen_name: vict.screen_name })
       end
       Repo.insert! changeset
-    
+
   end
 
   defp save_message(message, user) do
@@ -148,7 +149,7 @@ defmodule Emotext.RoomChannel do
       history = %History{ message: message, user_screen_name: user.screen_name}
 
       Repo.insert! Ecto.Changeset.change(history, user_id: user.id)
-    
+
   end
 
   def perform_action(socket, user, action, vict_name \\ nil) do
@@ -240,8 +241,8 @@ defmodule Emotext.RoomChannel do
           send_action(socket, user, history.action.self_no_arg, history_user)
         else
           send_action(socket, user, history.action.others_no_arg, history_user)
-        end  
-     else 
+        end
+     else
           if history.vict_screen_name == history.user_screen_name do
             if user.screen_name == history.user_screen_name do
               send_action(socket, user, history.action.self_auto, history_user)
@@ -250,9 +251,9 @@ defmodule Emotext.RoomChannel do
             end
           else
             vict = Emotext.User.change_screen_name(history.vict, history.vict_screen_name)
-            if user.screen_name == history.user_screen_name do         
+            if user.screen_name == history.user_screen_name do
                 send_action(socket, user, history.action.self_found, history_user, vict)
-              else 
+              else
                 if user.screen_name == history.vict_screen_name do
                   send_action(socket, user, history.action.vict_found, history_user, vict)
               else
@@ -261,12 +262,13 @@ defmodule Emotext.RoomChannel do
             end
           end
       end
-    else 
+    else
       if history.user_id do
         Logger.info "Restoring history message from #{history.user_screen_name}"
         user = get_user(socket)
-        msg = %{body: history.message, screen_name: history.user_screen_name }
-        if msg.screen_name == user.screen_name do            
+        body = if history.message != nil && Expletive.profane?(history.message, @config), do: Expletive.sanitize(history.message, @config), else: history.message
+        msg = %{body: body, screen_name: history.user_screen_name }
+        if msg.screen_name == user.screen_name do
             push socket, "msg:self", msg
         else
             push socket, "msg:new", msg
@@ -299,6 +301,7 @@ defmodule Emotext.RoomChannel do
         handle_command(socket, body, user)
     else
       if not handle_alias(socket, body, user) do
+        body = if Expletive.profane?(body, @config), do: Expletive.sanitize(body, @config), else: body
         broadcast! socket, "msg:output", %{body: body, screen_name: user.screen_name }
         save_message(body, user)
       end

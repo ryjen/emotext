@@ -12,6 +12,7 @@
   "ecto": {:hex, :ecto, "1.1.7", "c37127248756e725eb8254b371764b40c05a90c104b2065d1d4f7e32573fdbec", [:mix], [{:sbroker, "~> 0.7", [hex: :sbroker, optional: true]}, {:postgrex, "~> 0.11.0", [hex: :postgrex, optional: true]}, {:poolboy, "~> 1.4", [hex: :poolboy, optional: false]}, {:poison, "~> 1.0 or ~> 2.0", [hex: :poison, optional: true]}, {:mariaex, "~> 0.5.0 or ~> 0.6.0", [hex: :mariaex, optional: true]}, {:decimal, "~> 1.0", [hex: :decimal, optional: false]}]},
   "ecto_enum": {:hex, :ecto_enum, "0.3.1", "28771a73c195553b32b434f926302092ba072ba2b50224b8d63081cad5e0846b", [:mix], [{:postgrex, ">= 0.8.3", [hex: :postgrex, optional: true]}, {:mariaex, ">= 0.3.0", [hex: :mariaex, optional: true]}, {:ecto, ">= 0.13.1", [hex: :ecto, optional: false]}]},
   "ex_doc": {:hex, :ex_doc, "0.11.4"},
+  "expletive": {:hex, :expletive, "0.1.4", "14a948484251d17fd613958f6ffa727bd79f79540419b123ca03519f904503a0", [:mix], []},
   "fs": {:hex, :fs, "0.9.2", "ed17036c26c3f70ac49781ed9220a50c36775c6ca2cf8182d123b6566e49ec59", [:rebar], []},
   "gettext": {:hex, :gettext, "0.11.0", "80c1dd42d270482418fa158ec5ba073d2980e3718bacad86f3d4ad71d5667679", [:mix], []},
   "guardian": {:hex, :guardian, "0.10.1", "ee1b5fe31a7ff9631d663eb20ddba352aed8dbe2d7dcd446a8fae350ba3a1561", [:mix], [{:uuid, ">=1.1.1", [hex: :uuid, optional: false]}, {:poison, "~> 1.5", [hex: :poison, optional: false]}, {:plug, "~> 1.0", [hex: :plug, optional: false]}, {:jose, "~> 1.6", [hex: :jose, optional: false]}]},

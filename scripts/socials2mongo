@@ -17,9 +17,7 @@ sub print_line {
 
 	if ($line =~ /^\s*\$\s*$/) {
 		return;
-	} 
-
-  print $ofh ", ";
+	}
 
   switch($i) {
     case 0 { print $ofh "\"self_no_arg\""; }
@@ -32,7 +30,32 @@ sub print_line {
     case 7 { print $ofh "\"others_auto\""; }
   }
 
-  print $ofh ": \"$line\"";
+	if ($line =~ /\$[eEsSmM]/) {
+		my $temp = $line;
+		$temp =~ s/\$[eE]/he/g;
+		$temp =~ s/\$[sS]/his/g;
+		$temp =~ s/\$[mM]/him/g;
+
+		print $ofh ": { \"male\": \"$temp\", ";
+
+		$temp = $line;
+		$temp =~ s/\$[eE]/she/g;
+		$temp =~ s/\$[sS]/her/g;
+		$temp =~ s/\$[mM]/her/g;
+
+		 print $ofh "\"female\": \"$temp\", ";
+
+ 		$temp = $line;
+ 		$temp =~ s/\$[eE]/it/g;
+ 		$temp =~ s/\$[sS]/it/g;
+ 		$temp =~ s/\$[mM]/it/g;
+
+		print $ofh "\"neutral\": \"$temp\"}";
+	} else {
+  		print $ofh ": { \"all\": \"$line\" }";
+	}
+
+	print $ofh ",\n";
 
 	return 0;
 }
@@ -51,15 +74,15 @@ sub main
 		usage();
 		return 1;
 	}
-	
+
 	open(my $fh, "<", $ARGV[0]) or die "cannot open < $ARGV[0]: $!";
 
 	open(my $ofh, ">", $ARGV[1] || "socials2mongo.out") or die "cannot open > $ARGV[1]: $!";
 
-  my $db_name = $ARGV[2] || "emotext_development";
+  	my $db_name = $ARGV[2] || "emotext_development";
 
-  print $ofh "alias Emotext.Repo\nalias Emotext.Action\n";
-  
+  	print $ofh "use $db_name\n";
+
 	while($line = <$fh>) {
 
 		$line =~ s/^\s+|\s+$//g;
@@ -71,15 +94,16 @@ sub main
 		# must have a name
 		$line =~ s/^([A-Za-z0-9]+)\s[0-9]+\s[0-9]+/$1/;
 
-		print $ofh "Repo.insert! %Action{ \"name\": \"$line\"";
+		print $ofh "db.actions.insert({\n\t\"name\": \"$line\",\n\t";
 
 		$i = 0;
 
 		while(!print_line($i, $fh, $ofh)) {
 			$i++;
+			print $ofh "\t";
 		}
-		
-    print $ofh "}\n";
+
+    	print $ofh "})\n";
 	}
 
 	print "Ok.\n";

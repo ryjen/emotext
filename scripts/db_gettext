@@ -1,0 +1,107 @@
+#!/usr/bin/env perl
+
+use MongoDB;
+use Getopt::Long;
+use File::Spec::Functions;
+
+sub get_actions{
+    my ($host, $db) = @_;
+
+    my $client     = MongoDB->connect($host);
+    my $collection = $client->ns("$db.actions"); # database foo, collection bar
+
+    return $collection->find;
+}
+
+
+sub usage
+{
+	print("$0 [--host <mongo host> --db <db name>] <locale folder>\n");
+}
+
+sub print_pot_string
+{
+    my ($ofh, $value) = @_;
+
+    print $ofh "msgid \"$value\"\n";
+    print $ofh "msgstr \"\"\n\n";
+}
+
+sub print_pot_gender_string
+{
+    my ($ofh, $masculine, $feminine, $neutral) = @_;
+
+    if (defined $feminine && defined $neutral) {
+        print $ofh "msgctxt \"gender-male\"\n";
+        print_pot_string $ofh, $masculine;
+        print $ofh "msgctxt \"gender-female\"\n";
+        print_pot_string $ofh, $feminine;
+        print $ofh "msgctxt \"gender-neutral\"\n";
+        print_pot_string $ofh, $neutral;
+    } else {
+        print_pot_string $ofh, $masculine;
+    }
+}
+
+sub print_action_pot
+{
+    my ($ofh, $action) = @_;
+
+    print "Generating " . $action->{'name'} . "\n";
+
+    print_pot_string $ofh, $action->{'name'};
+
+    print_pot_gender_string $ofh, $action->{'self_no_arg'};
+
+    print_pot_gender_string $ofh, $action->{'others_no_arg'};
+
+    print_pot_gender_string $ofh, $action->{'self_found'};
+
+    print_pot_gender_string $ofh, $action->{'others_found'};
+
+    print_pot_gender_string $ofh, $action->{'vict_found'};
+
+    print_pot_gender_string $ofh, $action->{'self_not_found'};
+
+    print_pot_gender_string $ofh, $action->{'self_auto'};
+
+    print_pot_gender_string $ofh, $action->{'others_auto'};
+}
+
+sub main
+{
+	if (scalar @ARGV == 0) {
+		usage();
+		return 1;
+	}
+
+    my $host = 'mongodb://localhost';
+    my $db = 'emotext';
+
+    GetOptions ("host=s"   => \$host,
+                "db=s" => \$db)   # flag
+        or die("Error in command line arguments\n");
+
+    if ( ! -d $ARGV[0] ) {
+        print("no such directory ${ARGV[0]}");
+        return 1;
+    }
+
+    my $potfile = catfile($ARGV[0], "actions.pot");
+
+    open(my $ofh, ">", $potfile) or die "cannot open > $potfile: $!";
+
+    my $actions = get_actions($host, $db);
+
+    while($actions->has_next) {
+
+        my $action = $actions->next;
+
+        print_action_pot($ofh, $action);
+    }
+
+    return 0;
+}
+
+
+exit(&main);

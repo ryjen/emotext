@@ -3,7 +3,7 @@
 
      <h3>Custom Actions</h3>
 
-<div class="row">
+  <div class="row">
       <%= for {action, index} <- Enum.with_index(@actions) do %>
             <%= if rem(index, 4) == 0 do %>
                 </div><div class="row">
