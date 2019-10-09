@@ -9,7 +9,11 @@ defmodule Emotext.Mixfile do
      compilers: [:phoenix] ++ Mix.compilers,
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
-     deps: deps]
+     deps: deps,
+     releases: [
+      emotext: [
+        include_executables_for: [:unix]
+      ]]]
   end
 
   # Configuration for the OTP application
@@ -30,7 +34,7 @@ defmodule Emotext.Mixfile do
   # Type `mix help deps` for examples and options
   defp deps do
     [{:phoenix, "~> 1.1.4"},
-     {:mongodb_ecto, ">= 0.0.0"},
+     {:mongodb_ecto, "~> 0.1"},
      {:phoenix_ecto, "~> 2.0"},
      {:phoenix_html, "~> 2.4"},
      {:phoenix_live_reload, "~> 1.0", only: :dev},

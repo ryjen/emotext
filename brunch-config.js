@@ -20,10 +20,10 @@ exports.config = {
       // }
     },
     stylesheets: {
-      joinTo: 'css/app.css'
+      joinTo: "css/app.css"
     },
     templates: {
-      joinTo: 'js/app.js'
+      joinTo: "js/app.js"
     }
   },
 
@@ -50,27 +50,25 @@ exports.config = {
       ignore: [/^(web\/static\/vendor)/]
     },
     sass: {
-        allowCache: true,
-        includePaths: [
-
-        ]
+      allowCache: true,
+      includePaths: []
     },
     uglify: {
-        magle: false,
-        compress: true
+      magle: false,
+      compress: true
     },
     cleancss: {
-        keepSpecialComments: 0,
-        removeEmpty: true
+      keepSpecialComments: 0,
+      removeEmpty: true
     },
     afterBrunch: [
-      'mkdir -p priv/static/fonts',
-      'rsync -h -v -r -P -t bower_components/font-awesome/fonts/ priv/static/fonts'
+      "mkdir -p priv/static/fonts",
+      "rsync -h -v -r -P -t bower_components/font-awesome/fonts/ priv/static/fonts"
     ]
   },
   modules: {
     autoRequire: {
-      'js/app.js': ['web/static/js/app']
+      "js/app.js": ["web/static/js/app"]
     }
   },
   npm: {
