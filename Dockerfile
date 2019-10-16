@@ -28,7 +28,7 @@ ENV PORT=$port
 
 ENV DATABASE_URL=$db_url
 
-CMD ["elixir", "-S", "mix", "do", "ecto.migrate", "phoenix.server"]
+CMD ["elixir", "-S", "mix", "phoenix.server"]
 
 #FROM elixir:1.2.3
 
