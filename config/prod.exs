@@ -51,5 +51,5 @@ config :logger, level: :info
 
 config :emotext, Emotext.Repo,
   adapter: Mongo.Ecto,
-  url: System.get_env("MONGOLAB_URI") || System.get_env("MONGO_URL"),
+  url: System.get_env("DATABASE_URL") || System.get_env("MONGOLAB_URI") || System.get_env("MONGO_URL"),
   pool_size: 20 # The amount of database connections in the pool
