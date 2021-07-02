@@ -1,0 +1,36 @@
+FROM erlang:18.3-slim
+
+ENV LANG=C.UTF-8
+
+RUN echo "deb http://deb.debian.org/debian stretch-backports main contrib non-free" >> /etc/apt/sources.list
+
+# get required tools
+RUN apt-get update -yq && apt-get install -yq build-essential wget unzip git && apt-get -t stretch-backports install -yq npm
+
+# prepare build dir
+WORKDIR /src
+
+# install elixir 1.2.3
+RUN wget https://github.com/elixir-lang/elixir/releases/download/v1.2.3/Precompiled.zip
+RUN unzip Precompiled.zip -d /usr
+
+WORKDIR /app
+
+# install elixir tools
+RUN mix local.hex --force
+RUN mix local.rebar --force
+
+# set build environment
+ENV MIX_ENV=prod
+
+COPY . .
+
+RUN mix do deps.get, deps.compile
+
+RUN mix compile
+
+ENV PORT=1337
+
+ENV DATABASE_URL=mongodb://mongo/emotex
+
+

@@ -6,7 +6,7 @@
   "keywords": ["chat", "emoticon", "emoji", "text", "texting", "social"],
   "license": "MIT",
   "homepage": "https://emotext.micrantha.com",
-  "ignore": ["**/.*", "node_modules", "bower_components", "test", "tests"],
+  "ignore": ["**/.*", "node_modules", "bower_components"],
   "dependencies": {
     "bootstrap": "~3.3.5",
     "jquery": "^2.2.4",
