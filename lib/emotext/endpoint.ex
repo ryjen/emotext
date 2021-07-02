@@ -31,6 +31,7 @@ defmodule Emotext.Endpoint do
   plug Plug.Head
 
   plug Plug.Session,
+    secret_key_base: "c03feb4dd8371035041f2b7381f87b1ab6852da1b8842641dc8ab6f08df2692748543f1061ecbaf8b79f0fb9901cfd416cdc52162afadc52438d92693b53a81b",
     store: :cookie,
     key: "_emotext_key",
     signing_salt: "c5T7siWU"

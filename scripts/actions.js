@@ -1,4 +1,3 @@
-use emotext_development
 db.actions.insert({
 	"name": "gack",
 	"self_no_arg": { "all": "Gaaack!" },

@@ -21,8 +21,9 @@ defmodule Emotext.Mixfile do
   # Type `mix help compile.app` for more information
   def application do
     [mod: {Emotext, []},
-     applications: [:phoenix, :phoenix_html, :cowboy, :logger,
-                    :phoenix_ecto, :mongodb_ecto, :comeonin, :oauth2]]
+     applications: [:phoenix, :phoenix_html, :cowboy, :logger, :guardian,
+       :phoenix_ecto, :mongodb_ecto, :comeonin, :oauth2,
+       :ecto_enum, :expletive]]
   end
 
   # Specifies which paths to compile per environment
@@ -33,16 +34,17 @@ defmodule Emotext.Mixfile do
   #
   # Type `mix help deps` for examples and options
   defp deps do
-    [{:phoenix, "~> 1.1.4"},
-     {:mongodb_ecto, "~> 0.1"},
+    [{:gettext, "~> 0.12.2"},
+     {:phoenix, "~> 1.1.4"},
      {:phoenix_ecto, "~> 2.0"},
      {:phoenix_html, "~> 2.4"},
      {:phoenix_live_reload, "~> 1.0", only: :dev},
+     {:mongodb_ecto, "~> 0.1"},
      {:guardian, "~> 0.10.1"},
      {:cowboy, "~> 1.0"},
+     {:exrm, "~> 0.19.0"},
      {:oauth2, "~> 0.5.0"},
      {:ecto_enum, "~> 0.3.0"},
-     {:gettext, "~> 0.9"},
      {:comeonin, "~> 2.1.1"},
      {:expletive, "~> 0.1.0"}]
   end

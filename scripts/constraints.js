@@ -1,4 +1,3 @@
-use emotext_development
 db.actions.ensureIndex( { "name": 1 }, { unique: true })
 db.aliases.ensureIndex( { "name": 1 }, { unique: true })
 if (db.history_items.findOne({})) {
