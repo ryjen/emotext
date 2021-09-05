@@ -5,7 +5,7 @@ ENV LANG=C.UTF-8
 RUN echo "deb http://deb.debian.org/debian stretch-backports main contrib non-free" >> /etc/apt/sources.list
 
 # get required tools
-RUN apt-get update -yq && apt-get install -yq build-essential wget unzip git && apt-get -t stretch-backports install -yq npm
+RUN apt-get update -yq && apt-get install -yq build-essential wget unzip git && apt-get -t stretch-backports install -yq npm node-gyp
 
 # prepare build dir
 WORKDIR /src
@@ -30,21 +30,20 @@ COPY mix.exs mix.lock ./
 COPY config config
 RUN mix do deps.get, deps.compile
 
+COPY priv priv
+COPY web web
+
 # build web assets
 COPY package.json bower.json brunch-config.js ./
 RUN npm i --progress=false --no-audit --loglevel=error
 RUN npx bower --allow-root install
 RUN npx brunch build --production
 
-COPY priv priv
-COPY web web
 RUN mix phoenix.digest
 
 # compile and build release
 COPY lib lib
-RUN mix compile
-
-RUN mix release
+RUN mix do compile, release
 
 # prepare release image
 FROM debian:stretch-slim
@@ -56,6 +55,7 @@ RUN apt-get update -yq && apt-get -yq install openssl libncurses5 libssl1.0.2
 WORKDIR /app
 
 COPY --from=builder /app/rel/emotext/ /app/
+COPY --from=builder /app/priv/ /app/priv/
 
 ARG db_url=mongodb://mongo/emotext
 

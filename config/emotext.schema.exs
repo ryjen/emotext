@@ -146,7 +146,7 @@
     "emotext.Elixir.Emotext.Endpoint.secret_key_base": [
       doc: "Provide documentation for emotext.Elixir.Emotext.Endpoint.secret_key_base here.",
       to: "emotext.Elixir.Emotext.Endpoint.secret_key_base",
-      datatype: :atom,
+      datatype: :binary,
       default: nil
     ],
     "emotext.Elixir.Emotext.Endpoint.cache_static_manifest": [

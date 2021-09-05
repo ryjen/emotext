@@ -2,13 +2,13 @@ exports.config = {
   // See http://brunch.io/#documentation for docs.
   files: {
     javascripts: {
-      joinTo: "../priv/static/js/app.js"
+      joinTo: "js/app.js"
       // To use a separate vendor.js bundle, specify two files path
       // https://github.com/brunch/brunch/blob/stable/docs/config.md#files
-      // joinTo: {
+      //joinTo: {
       //  'js/app.js': /^(web\/static\/js)/,
       //  'js/vendor.js': /^(web\/static\/vendor)/
-      // }
+      //}
       //
       // To change the order of concatenation of files, explictly mention here
       // https://github.com/brunch/brunch/tree/master/docs#concatenation
@@ -20,10 +20,10 @@ exports.config = {
       // }
     },
     stylesheets: {
-      joinTo: "../priv/static/css/app.css"
+      joinTo: "css/app.css"
     },
     templates: {
-      joinTo: "../priv/static/js/app.js"
+      joinTo: "js/app.js"
     }
   },
 
@@ -37,7 +37,7 @@ exports.config = {
   // Phoenix paths configuration
   paths: {
     // Which directories to watch
-    watched: ["web/static", "test/static"],
+    watched: ["web/static"],
 
     // Where to compile files to
     public: "priv/static"
@@ -66,11 +66,11 @@ exports.config = {
       "rsync -h -v -r -P -t bower_components/font-awesome/fonts/ priv/static/fonts"
     ]
   },
-  modules: {
-    autoRequire: {
-      "js/app.js": ["web/static/js/app"]
-    }
-  },
+  //modules: {
+  //  autoRequire: {
+  //    "js/app.js": ["web/static/js/app"]
+  //  }
+  //},
   npm: {
     enabled: true,
     whitelist: ["phoenix", "phoenix_html"]
