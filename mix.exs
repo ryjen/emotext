@@ -24,7 +24,7 @@ defmodule Emotext.MixProject do
   def application do
     [mod: {Emotext, []},
      applications: [:phoenix, :phoenix_html, :cowboy, :logger, :guardian,
-       :phoenix_ecto, :mongodb_ecto, :comeonin, :oauth2, :gettext, :ecto_hooks,
+       :phoenix_ecto, :comeonin, :oauth2, :gettext, :ecto_hooks,
        :ecto_enum, :expletive]]
   end
 
@@ -42,7 +42,7 @@ defmodule Emotext.MixProject do
      {:phoenix_html, "~> 2.9"},
      {:phoenix_view, "~> 2.0"},
      {:phoenix_live_reload, "~> 1.2", only: :dev},
-     #{:mongodb_ecto, "~> 0.2"},
+     {:postgrex, ">= 0.0.0"},
      {:poison, "~> 3.0"},
      {:guardian, "~> 2.3"},
      {:cowboy, "~> 2.11"},
