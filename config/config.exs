@@ -5,17 +5,51 @@
 # is restricted to this project.
 import Config
 
+config :emotext,
+  ecto_repos: [Emotext.Repo],
+  generators: [timestamp_type: :utc_datetime]
+
 # Configures the endpoint
 config :emotext, Emotext.Endpoint,
   url: [host: "localhost"],
-  root: Path.dirname(__DIR__),
   secret_key_base: "OsiFH81B7fpw7o/Q94ye6S4NqfdeZLmAS1OEyyWXGoeWpIzlrgyUXplv6HcOuEBP",
-  render_errors: [accepts: ~w(html json)]
+  adapter: Bandit.PhoenixAdapter,
+  version: Mix.Project.config[:version],
+  render_errors: [
+    formats: [html: Emotext.Web.ErrorHTML, json: Emotext.Web.ErrorJSON],
+    layout: false
+  ],
+  pubsub_server: Emotext.PubSub,
+  live_view: [signing_salt: "jCufD5N/"]
+
+config :tmp, Emotext.Mailer, adapter: Swoosh.Adapters.Local
 
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
+
+# Configure esbuild (the version is required)
+config :esbuild,
+  version: "0.17.11",
+  tmp: [
+    args:
+      ~w(js/app.js --bundle --target=es2017 --outdir=../priv/static/assets --external:/fonts/* --external:/images/*),
+    cd: Path.expand("../assets", __DIR__),
+    env: %{"NODE_PATH" => Path.expand("../deps", __DIR__)}
+  ]
+
+# Configure tailwind (the version is required)
+config :tailwind,
+  version: "3.4.0",
+  tmp: [
+    args: ~w(
+      --config=tailwind.config.js
+      --input=css/app.css
+      --output=../priv/static/assets/app.css
+    ),
+    cd: Path.expand("../assets", __DIR__)
+  ]
 
 config :guardian, Guardian,
       issuer: "Emotext",
@@ -31,9 +65,8 @@ config :guardian, Guardian,
 config :comeonin, :bcrypt_phoenix_ecto,
   log_rounds: 12
 
-config :phoenix, :generators,
-  migration: false,
-  binary_id: true
+# Use Jason for JSON parsing in Phoenix
+config :phoenix, :json_library, Jason
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
