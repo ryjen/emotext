@@ -1,4 +1,4 @@
-use Mix.Config
+import Config
 
 # For production, we configure the host to read the PORT
 # from the system environment. Therefore, you will need
@@ -53,6 +53,5 @@ config :logger, level: :info
 #
 
 config :emotext, Emotext.Repo,
-  adapter: Mongo.Ecto,
-  url: System.get_env("DATABASE_URL") || System.get_env("MONGOLAB_URI") || System.get_env("MONGO_URL") || "mongodb://mongo/emotext",
+  url: System.get_env("DATABASE_URL"),
   pool_size: 20 # The amount of database connections in the pool

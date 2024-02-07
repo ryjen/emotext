@@ -12,7 +12,7 @@ defmodule Emotext.History do
     field :user_screen_name, :string
     field :vict_screen_name, :string
 
-    timestamps
+    timestamps(type: :utc_datetime)
   end
 
   @required_fields ~w(user_id vict_id action_id user_screen_name message)

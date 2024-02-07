@@ -10,7 +10,7 @@ defmodule Emotext.Alias do
     belongs_to :action, Emotext.Action
     belongs_to :user, Emotext.User
 
-    timestamps
+    timestamps(type: :utc_datetime)
   end
 
   @required_fields ~w(name action_id)

@@ -198,9 +198,9 @@ defmodule Emotext.RoomChannel do
   def handle_command(socket, body, user) do
     if body == "/?" do
       actions = Repo.all(Action)
-      Enum.each(Enum.chunk(actions, 5), fn(a) ->
+      Enum.each(Enum.chunk_every(actions, 5), fn(a) ->
         sys_msg socket, user, Enum.reduce(a, "", fn(x, acc) ->
-          acc <> "<span data-input-action=\"#{x.id}\">" <> String.ljust(x.name, 15) <> "</span>"
+          acc <> "<span data-input-action=\"#{x.id}\">" <> String.pad_trailing(x.name, 15) <> "</span>"
         end)
       end)
       sys_msg socket, user, "\nExample: <b>/smile</b> will issue: <i>#{user.screen_name} smiles happily.</i>"

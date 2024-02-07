@@ -2,15 +2,15 @@ defmodule Emotext.PageController do
   use Emotext.Web, :controller
   require Logger
   alias Emotext.SessionController
-  alias Emotext.Action
+  #alias Emotext.Action
   alias Emotext.ActionQuery
-  alias Emotext.Paginator
+  #alias Emotext.Paginator
   alias Emotext.AliasQuery
-  alias Prelude.Map
+  #alias Prelude.Map
 
   plug PlugRedirectHttps
 
-  plug Guardian.Plug.EnsureAuthenticated, %{ on_failure: { SessionController, :guest } } when not action in [:help]
+  plug Guardian.Plug.EnsureAuthenticated, %{ on_failure: { SessionController, :guest } } when action not in [:help]
 
   def index(conn, _params) do
 

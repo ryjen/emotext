@@ -7,7 +7,8 @@ defmodule Emotext.ActionController do
 
   plug Guardian.Plug.EnsureAuthenticated, %{ on_failure: { SessionController, :new } }
 
-  plug Guardian.Plug.EnsurePermissions, %{ on_failure: { __MODULE__, :forbidden }, default: [:write_profile] } when action in [:new, :edit, :update, :delete]
+  #plug Guardian.Plug.EnsurePermissions, %{ on_failure: { __MODULE__, :forbidden }, default: [:write_profile] } when action in [:new, :edit, :update, :delete]
+  plug Guardian.Permissions, ensure: %{default: [:write_profile], user_actions: [:new, :edit, :update, :delete]}
 
   plug :scrub_params, "action" when action in [:create, :update]
 
@@ -48,7 +49,8 @@ defmodule Emotext.ActionController do
       {:error, changeset} ->
         conn
         |> put_status(:unprocessable_entity)
-        |> render(Emotext.ChangesetView, :error, changeset: changeset)
+        |> put_view(Emotext.ChangesetView)
+        |> render(:error, changeset: changeset)
     end
 
   end
@@ -69,7 +71,7 @@ defmodule Emotext.ActionController do
     changeset = Action.changeset(action, action_params)
 
     case Repo.update(changeset) do
-      {:ok, action} ->
+      {:ok, _action} ->
         conn
         |> put_flash(:info, "Action updated successfully.")
         |> redirect(to: user_path(conn, :show, current_user(conn)))
@@ -91,7 +93,8 @@ defmodule Emotext.ActionController do
       {:error, changeset} ->
         conn
         |> put_status(:unprocessable_entity)
-        |> render(Emotext.ChangesetView, :error, changeset: changeset)
+        |> put_view(Emotext.ChangesetView)
+        |> render(:error, changeset: changeset)
     end
   end
 
@@ -107,9 +110,9 @@ defmodule Emotext.ActionController do
     |> redirect(to: user_path(conn, :show, current_user(conn)))
   end
 
-  defp put_format_param(conn, _) do
-    put_in conn.params["_format"], Phoenix.Controller.get_format(conn)
-  end
+  #defp put_format_param(conn, _) do
+  #  put_in conn.params["_format"], Phoenix.Controller.get_format(conn)
+  #end
 
    defp current_user(conn) do
        Guardian.Plug.current_resource(conn)

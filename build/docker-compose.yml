@@ -1,7 +1,6 @@
 version: "3.4"
 
 services:
-
   emotext:
     build:
       context: .
@@ -9,20 +8,22 @@ services:
     image: emotext
     container_name: emotext
     environment:
-      DATABASE_URL: "mongodb://mongo/emotext"
-      HOST: "emotext.micrantha.com"
+      DATABASE_URL: "postgres://emotext:emotext@postgres/emotext"
+      HOST: "emotext.micrantha.test"
     ports:
       - "1337:80"
     networks:
       - emotext
     depends_on:
-      - mongo
+      - postgres
 
   mongo:
-    image: mongo
-    container_name: mongo
+    image: postgres
+    container_name: postgres
     environment:
-      MONGO_INITDB_DATABASE: emotext
+      POSTGRES_USER: emotext
+      POSTGRES_PASSWORD: emotext
+      POSTGRES_DB: emotext
     volumes:
       - ./scripts:/docker-entrypoint-initdb.d/
     networks:

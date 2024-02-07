@@ -19,7 +19,7 @@ defmodule Emotext.Action do
 
     belongs_to :user, Emotext.User
 
-    timestamps
+    timestamps(type: :utc_datetime)
   end
 
   def create_changeset(model, params \\ :empty) do

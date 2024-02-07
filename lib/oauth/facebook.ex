@@ -7,9 +7,9 @@ defmodule Facebook do
   alias OAuth2.Strategy.AuthCode
 
   # Public API
-  
+
   def new do
-    OAuth2.new([
+    OAuth2.Client.new([
       strategy: __MODULE__,
       client_id: "866873576728881",
       client_secret: "a5c899f51ed2bdac4ca2c91b11467349",
@@ -26,7 +26,7 @@ defmodule Facebook do
     |> OAuth2.Client.authorize_url!(params)
   end
 
-  def get_token!(params \\ [], headers \\ []) do
+  def get_token!(params \\ [], _headers \\ []) do
     OAuth2.Client.get_token!(new(), params)
   end
 

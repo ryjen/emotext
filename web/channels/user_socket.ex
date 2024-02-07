@@ -1,13 +1,12 @@
 defmodule Emotext.UserSocket do
   use Phoenix.Socket
-  use Guardian.Phoenix.Socket
 
   ## Channels
   channel "rooms:*", Emotext.RoomChannel
 
   ## Transports
   transport :websocket, Phoenix.Transports.WebSocket
-  
+
   # transport :longpoll, Phoenix.Transports.LongPoll
 
   # Socket params are passed from the client and can
@@ -18,8 +17,18 @@ defmodule Emotext.UserSocket do
   #     {:ok, assign(socket, :user_id, verified_user_id)}
   #
   #  To deny connection, return `:error`.
-  def connect(_params, socket) do
-    {:ok, socket}
+  def connect(%{"guardian_token" => token}, socket) do
+    case Guardian.Phoenix.Socket.authenticate(socket, Emotext.Guardian, token) do
+    {:ok, authed_socket} ->
+      {:ok, authed_socket}
+
+    {:error, _} ->
+      :error
+    end
+  end
+
+  def connect(_params, _socket) do
+    :error
   end
 
   # Socket id's are topics that allow you to identify all sockets for a given user:
@@ -32,5 +41,5 @@ defmodule Emotext.UserSocket do
   #     Emotext.Endpoint.broadcast("users_socket:" <> user.id, "disconnect", %{})
   #
   # Returning `nil` makes this socket anonymous.
-  def id(_socket), do: nil
+  def id(socket), do: "users_socket:#{Guardian.Plug.current_resource(socket).id}"
 end

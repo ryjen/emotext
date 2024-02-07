@@ -9,7 +9,7 @@ defmodule GitHub do
   # Public API
 
   def new do
-    OAuth2.new([
+    OAuth2.Client.new([
       strategy: __MODULE__,
       client_id: "27b4fb355833a6a46055",
       client_secret: "101a2d5c970858423eb30e19ce549c9d0252f6b2",
@@ -26,7 +26,7 @@ defmodule GitHub do
     |> OAuth2.Client.authorize_url!(params)
   end
 
-  def get_token!(params \\ [], headers \\ []) do
+  def get_token!(params \\ [], _headers \\ []) do
     OAuth2.Client.get_token!(new(), params)
   end
 

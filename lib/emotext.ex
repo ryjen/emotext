@@ -1,6 +1,7 @@
 defmodule Emotext do
   use Application
 
+  {Phoenix.PubSub, [name: Emotext.PubSub, adapter: Phoenix.PubSub.PG2]}
   # See http://elixir-lang.org/docs/stable/elixir/Application.html
   # for more information on OTP Applications
   def start(_type, _args) do
@@ -8,9 +9,12 @@ defmodule Emotext do
 
     children = [
       # Start the endpoint when the application starts
-      supervisor(Emotext.Endpoint, []),
+      Emotext.Endpoint,
       # Start the Ecto repository
-      worker(Emotext.Repo, []),
+      %{
+        id: Emotext.Repo,
+        start: {Emotext.Repo, :start_link, []}
+      }
       # Here you could define other workers and supervisors as children
       # worker(Emotext.Worker, [arg1, arg2, arg3]),
     ]
@@ -26,5 +30,9 @@ defmodule Emotext do
   def config_change(changed, _new, removed) do
     Emotext.Endpoint.config_change(changed, removed)
     :ok
+  end
+
+  def get_resource_by_id(id) do
+    Emotext.Repo.get(User, id)
   end
 end

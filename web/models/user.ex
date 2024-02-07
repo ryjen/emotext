@@ -1,7 +1,7 @@
 defmodule Emotext.User do
   use Emotext.Web, :model
 
-  use Ecto.Model.Callbacks
+  use Ecto.Schema
 
   alias Emotext.Repo
 
@@ -19,12 +19,20 @@ defmodule Emotext.User do
     field :screen_name, :string, virtual: true
     field :gender, GenderEnum
 
-    timestamps
+    timestamps(type: :utc_datetime)
   end
 
-  before_insert :maybe_update_password
-  before_update :maybe_update_password
-  after_load :maybe_update_screen_name
+  def before_insert(%Ecto.Changeset{} = changeset) do
+     maybe_update_password(changeset)
+  end
+
+  def before_update(%Ecto.Changeset{} = changeset) do
+     maybe_update_password(changeset)
+  end
+
+  def after_load(user) do
+     maybe_update_screen_name(user)
+  end
 
   @required_fields ~w(username email password password_confirmation gender)
   @optional_fields ~w()

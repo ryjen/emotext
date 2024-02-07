@@ -31,7 +31,7 @@ defmodule Emotext.AuthController do
     token = GitHub.get_token!(code: code)
 
     # Request the user's data with the access token
-    userinfo = OAuth2.AccessToken.get!(token, "/user")
+    userinfo = OAuth2.Client.get!(token, "/user")
 
     conn
     |> put_session(:access_token, token.access_token)
@@ -61,7 +61,7 @@ defmodule Emotext.AuthController do
   def facebook_callback(conn, code) do
     token = Facebook.get_token!(code: code)
 
-    userinfo = OAuth2.AccessToken.get!(token, "/user")
+    userinfo = OAuth2.Client.get!(token, "/user")
 
     conn
     |> put_session(:access_token, token.access_token)

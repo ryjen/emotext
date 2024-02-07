@@ -3,16 +3,14 @@
 #
 # This configuration file is loaded before any dependency and
 # is restricted to this project.
-use Mix.Config
+import Config
 
 # Configures the endpoint
 config :emotext, Emotext.Endpoint,
   url: [host: "localhost"],
   root: Path.dirname(__DIR__),
   secret_key_base: "OsiFH81B7fpw7o/Q94ye6S4NqfdeZLmAS1OEyyWXGoeWpIzlrgyUXplv6HcOuEBP",
-  render_errors: [accepts: ~w(html json)],
-  pubsub: [name: Emotext.PubSub,
-           adapter: Phoenix.PubSub.PG2]
+  render_errors: [accepts: ~w(html json)]
 
 # Configures Elixir's Logger
 config :logger, :console,
@@ -30,10 +28,13 @@ config :guardian, Guardian,
         default: [:read_profile, :write_profile]
       }
 
+config :comeonin, :bcrypt_phoenix_ecto,
+  log_rounds: 12
+
 config :phoenix, :generators,
   migration: false,
   binary_id: true
-  
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env}.exs"

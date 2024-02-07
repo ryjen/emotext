@@ -1,4 +1,4 @@
-use Mix.Config
+import Config
 
 # For development, we disable any cache and enable
 # debugging and code reloading.
@@ -28,8 +28,8 @@ config :logger, :console, format: "[$level] $message\n"
 
 # Configure your database
 config :emotext, Emotext.Repo,
-  adapter: Mongo.Ecto,
   username: "emotext",
   password: "emotext",
   database: "emotext_development",
+  port: "5432",
   pool_size: 10 # The amount of database connections in the pool

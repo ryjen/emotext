@@ -1,4 +1,4 @@
-FROM erlang:18.3-slim as builder
+FROM erlang:26.2-slim as builder
 
 ENV LANG=C.UTF-8
 
@@ -57,11 +57,10 @@ WORKDIR /app
 COPY --from=builder /app/rel/emotext/ /app/
 COPY --from=builder /app/priv/ /app/priv/
 
-ARG db_url=mongodb://mongo/emotext
+ARG db_url=postgres://emotext@postgres/emotext
 
 ENV PORT=$port
 
 ENV DATABASE_URL=$db_url
 
 CMD ["/app/bin/emotext", "foreground"]
-
