@@ -15,7 +15,7 @@ config :emotext, Emotext.Repo,
 # The watchers configuration can be used to run external
 # watchers to your application. For example, we can use it
 # to bundle .js and .css sources.
-config :tmp, TmpWeb.Endpoint,
+config :emotext, Emotext.Web.Endpoint,
   # Binding to loopback ipv4 address prevents access from other machines.
   # Change to `ip: {0, 0, 0, 0}` to allow access from other machines.
   http: [ip: {127, 0, 0, 1}, port: 4000],
@@ -24,8 +24,8 @@ config :tmp, TmpWeb.Endpoint,
   debug_errors: true,
   secret_key_base: "YKdVt5jYhRc9qWN6ciBd9i0XPq1sp64gL9trnRtKZCSQilFgY6c2itjkrjOrq2As",
   watchers: [
-    esbuild: {Esbuild, :install_and_run, [:tmp, ~w(--sourcemap=inline --watch)]},
-    tailwind: {Tailwind, :install_and_run, [:tmp, ~w(--watch)]}
+    esbuild: {Esbuild, :install_and_run, [:emotext, ~w(--sourcemap=inline --watch)]},
+    tailwind: {Tailwind, :install_and_run, [:emotext, ~w(--watch)]}
   ]
 
 # ## SSL Support
@@ -52,17 +52,17 @@ config :tmp, TmpWeb.Endpoint,
 # different ports.
 
 # Watch static and templates for browser reloading.
-config :tmp, TmpWeb.Endpoint,
+config :emotext, Emotext.Web.Endpoint,
   live_reload: [
     patterns: [
       ~r"priv/static/(?!uploads/).*(js|css|png|jpeg|jpg|gif|svg)$",
       ~r"priv/gettext/.*(po)$",
-      ~r"lib/tmp_web/(controllers|live|components)/.*(ex|heex)$"
+      ~r"lib/emotext_web/(controllers|live|components)/.*(ex|heex)$"
     ]
   ]
 
 # Enable dev routes for dashboard and mailbox
-config :tmp, dev_routes: true
+config :emotext, dev_routes: true
 
 # Do not include metadata nor timestamps in development logs
 config :logger, :console, format: "[$level] $message\n"

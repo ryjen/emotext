@@ -52,7 +52,7 @@ defmodule Emotext.Web do
       import Ecto.Query, only: [from: 1, from: 2]
 
       import Plug.Conn
-      import Emotext.Web.Gettext
+      import Emotext.Web.Router.Helpers
 
       unquote(verified_routes())
     end
@@ -107,9 +107,7 @@ defmodule Emotext.Web do
       # HTML escaping functionality
       import Phoenix.HTML
       # Core UI components and translation
-      #import Emotext.Web.CoreComponents
       import Emotext.Web.Gettext
-      alias Emotext.Router.Helpers
 
       # Shortcut for generating JS commands
       alias Phoenix.LiveView.JS

@@ -22,7 +22,7 @@ config :emotext, Emotext.Endpoint,
   pubsub_server: Emotext.PubSub,
   live_view: [signing_salt: "jCufD5N/"]
 
-config :tmp, Emotext.Mailer, adapter: Swoosh.Adapters.Local
+config :emotext, Emotext.Mailer, adapter: Swoosh.Adapters.Local
 
 # Configures Elixir's Logger
 config :logger, :console,
@@ -32,7 +32,7 @@ config :logger, :console,
 # Configure esbuild (the version is required)
 config :esbuild,
   version: "0.17.11",
-  tmp: [
+  emotext: [
     args:
       ~w(js/app.js --bundle --target=es2017 --outdir=../priv/static/assets --external:/fonts/* --external:/images/*),
     cd: Path.expand("../assets", __DIR__),
@@ -42,7 +42,7 @@ config :esbuild,
 # Configure tailwind (the version is required)
 config :tailwind,
   version: "3.4.0",
-  tmp: [
+  emotext: [
     args: ~w(
       --config=tailwind.config.js
       --input=css/app.css

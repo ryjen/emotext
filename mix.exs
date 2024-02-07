@@ -72,7 +72,7 @@ defmodule Emotext.MixProject do
       {:oauth2, "~> 2.1"},
       {:ecto_enum, "~> 1.4"},
       {:comeonin, "~> 5.4"},
-      {:bcrypt_elixir, "~> 1.0"},
+      {:bcrypt_elixir, "~> 3.0"},
       {:ecto_hooks, "~> 1.1"},
       {:expletive, "~> 0.1.0"}
     ]

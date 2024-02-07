@@ -64,7 +64,7 @@ defmodule Emotext.Web.RoomChannel do
   end
 
   def get_user(socket) do
-    Guardian.Phoenix.Socket.current_resource(socket)
+    Guardian.Plug.current_resource(socket)
   end
 
   def handle_invalid_action(socket, user) do

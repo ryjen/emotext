@@ -1,7 +1,8 @@
 defmodule Emotext.Paginator do
   defstruct [:entries, :page_number, :page_size, :total_pages]
 
-  #import Ecto.Query
+  import Ecto.Query
+  alias Emotext.Repo
 
   def new(query, params) do
     page_number = params |> Map.get("page", 1) |> to_int
@@ -33,9 +34,9 @@ defmodule Emotext.Paginator do
     offset = page_size * (page_number - 1)
 
     query
-    |> Ecto.Query.limit(page_size)
-    |> Ecto.Query.offset(offset)
-    |> Emotext.Repo.all
+    |> limit(^page_size)
+    |> offset(^offset)
+    |> Repo.all
   end
 
   defp to_int(i) when is_integer(i), do: i
@@ -48,12 +49,12 @@ defmodule Emotext.Paginator do
 
   defp total_pages(query, page_size) do
     count = query
-    |> Ecto.Query.exclude(:order_by)
-    |> Ecto.Query.exclude(:preload)
-    |> Ecto.Query.exclude(:select)
-    #|> Ecto.Query.select([e], Ecto.Query.count(e.id))
+    |> exclude(:order_by)
+    |> exclude(:preload)
+    |> exclude(:select)
+    #|> Query.select([e], Query.count(e.id))
     #|> Emotext.Repo.one
-    |> Emotext.Repo.aggregate(:count, :id)
+    |> Repo.aggregate(:count, :id)
 
     ceiling(count / page_size)
   end

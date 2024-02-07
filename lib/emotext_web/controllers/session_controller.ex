@@ -3,19 +3,22 @@ defmodule Emotext.Web.SessionController do
   require Logger
   alias Emotext.User
   alias Emotext.UserQuery
+  alias Emotext.Guardian
 
   plug(:scrub_params, "user" when action in [:create])
 
-  def new(conn, params) do
+  def new(conn, _params) do
     changeset = User.login_changeset(%User{})
-    render(conn, Emotext.SessionView, "new.html", changeset: changeset)
+    conn
+    |> put_view(Emotext.SessionView)
+    |> render("new.html", changeset: changeset)
   end
 
-  def guest(conn, params) do
+  def guest(conn, _params) do
     user = User.from_username("guest")
 
     if !user do
-      user = Repo.insert!(%User{username: "guest", email: "guest@email.com", gender: :unknown})
+      ^user = Repo.insert!(%User{username: "guest", email: "guest@email.com", gender: :unknown})
     end
 
     guest_name = "guest-#{Randomize.random(9999)}"
@@ -23,7 +26,7 @@ defmodule Emotext.Web.SessionController do
     Logger.info("Guest #{user.id} #{user.screen_name}")
 
     conn
-    |> Guardian.Plug.sign_in(user, :token, perms: %{default: Guardian.Permissions.max()})
+    |> Guardian.Plug.sign_in(user)
     |> put_flash(:info, "Using guest account, create an account to have your own username.")
     |> redirect(to: "/")
   end
@@ -37,7 +40,7 @@ defmodule Emotext.Web.SessionController do
 
       if changeset.valid? do
         conn
-        |> Guardian.Plug.sign_in(user, :token, perms: %{default: Guardian.Permissions.max()})
+        |> Guardian.Plug.sign_in(user)
         |> redirect(to: "/")
       else
         render(conn, "new.html", changeset: changeset)
@@ -57,7 +60,7 @@ defmodule Emotext.Web.SessionController do
   def unauthenticated_api(conn, _params) do
     the_conn = put_status(conn, 401)
 
-    case Guardian.Plug.claims(conn) do
+    case Guardian.Plug.current_claims(conn) do
       {:error, :no_session} -> json(the_conn, %{error: "Login required"})
       {:error, reason} -> json(the_conn, %{error: reason})
       _ -> json(the_conn, %{error: "Login required"})

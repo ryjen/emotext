@@ -1,14 +1,13 @@
 defmodule Emotext.Web.ErrorHelpers do
 
-  import Phoenix.HTML
-  import Phoenix.HTML.Form
+  use PhoenixHTMLHelpers
 
   @doc """
   Generates tag for inlined form input errors.
   """
   def error_tag(form, field) do
     if error = form.errors[field] do
-      Phoenix.HTML.content_tag(:span, translate_error(error), class: "help-block")
+      content_tag(:span, translate_error(error), class: "help-block")
     end
   end
 

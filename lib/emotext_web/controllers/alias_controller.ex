@@ -30,7 +30,7 @@ defmodule Emotext.Web.AliasController do
     changeset = Alias.changeset(%Alias{}, alias_params)
 
     case Repo.insert(changeset) do
-      {:ok, alias} ->
+      {:ok, _alias} ->
         conn
         |> put_flash(:info, "Alias created successfully.")
         |> redirect(to: user_path(conn, :show, current_user(conn)))
@@ -50,7 +50,8 @@ defmodule Emotext.Web.AliasController do
       {:error, changeset} ->
         conn
         |> put_status(:unprocessable_entity)
-        |> render(Emotext.ChangesetView, :error, changeset: changeset)
+        |> put_view(Emotext.ChangesetView)
+        |> render(:error, changeset: changeset)
     end
 
   end
@@ -71,10 +72,10 @@ defmodule Emotext.Web.AliasController do
     changeset = Alias.changeset(alias, alias_params)
 
     case Repo.update(changeset) do
-      {:ok, alias} ->
+      {:ok, ^alias} ->
           conn
           |> put_flash(:info, "Alias updated successfully.")
-          |> redirect(to: users_path(conn, :show, current_user(conn)))
+          |> redirect(to: user_path(conn, :show, current_user(conn)))
       {:error, changeset} ->
         render(conn, "edit.html", alias: alias, changeset: changeset)
     end
@@ -88,12 +89,13 @@ defmodule Emotext.Web.AliasController do
       {:ok, alias} ->
         conn
         |> put_status(:updated)
-        |> put_resp_header("location", users_path(conn, :show))
+        |> put_resp_header("location", user_path(conn, :show))
         |> render(:show, alias: alias)
       {:error, changeset} ->
         conn
         |> put_status(:unprocessable_entity)
-        |> render(Emotext.ChangesetView, :error, changeset: changeset)
+        |> put_view(Emotext.ChangesetView)
+        |> render(:error, changeset: changeset)
     end
   end
 
@@ -103,11 +105,11 @@ defmodule Emotext.Web.AliasController do
 
     # Here we use delete! (with a bang) because we expect
     # it to always work (and if it does not, it will raise).
-    alias = Repo.delete!(alias)
+    Repo.delete!(alias)
 
     conn
     |> put_flash(:info, "Alias deleted successfully.")
-    |> redirect(to: users_path(conn, :show, current_user(conn)))
+    |> redirect(to: user_path(conn, :show, current_user(conn)))
   end
 
   defp authorize_user_alias(conn, _) do

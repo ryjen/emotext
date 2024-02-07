@@ -48,7 +48,7 @@ defmodule Emotext.Web.AuthController do
         conn
         |> put_flash(:info, "Logged in.")
         |> Guardian.Plug.sign_in(user, :token, perms: %{ default: Guardian.Permissions.max })
-        |> redirect(to: users_path(conn, :index))
+        |> redirect(to: user_path(conn, :index))
       else
         redirect(conn, to: "/users/new", changeset: changeset)
       end
