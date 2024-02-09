@@ -1,13 +1,6 @@
 defmodule Emotext.Web.AdminController do
   use Emotext.Web, :controller
 
-  alias Emotext.SessionController
-  #alias Emotext.Action
-
-  plug PlugRedirectHttps
-
-  plug Guardian.Plug.EnsureAuthenticated, %{ on_failure: { SessionController, :new } }
-
   def import(conn, _params) do
   	render(conn, "import.html")
   end

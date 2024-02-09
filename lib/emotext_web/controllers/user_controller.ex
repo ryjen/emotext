@@ -2,18 +2,14 @@ defmodule Emotext.Web.UserController do
   use Emotext.Web, :controller
 
   alias Emotext.User
-  alias Emotext.SessionController
   alias Emotext.UserQuery
   alias Emotext.ActionQuery
   alias Emotext.AliasQuery
 
   require Logger
 
-  plug PlugRedirectHttps
+  plug Guardian.Plug.EnsureAuthenticated when action not in [:new, :create]
 
-  plug Guardian.Plug.EnsureAuthenticated, %{ on_failure: { SessionController, :new } } when action not in [:new, :create]
-
-  #plug Guardian.Plug.EnsurePermissions, %{ on_failure: { __MODULE__, :forbidden }, default: [:write_profile] } when action in [:edit, :update, :delete]
   plug Guardian.Permissions, ensure: %{default: [:write_profile], user_actions: [:edit, :update, :delete]}
 
   plug :scrub_params, "user" when action in [:create, :update]
@@ -90,7 +86,7 @@ defmodule Emotext.Web.UserController do
     user = Repo.get(User, id)
     Repo.delete(user)
 
-    Guardian.Plug.sign_out(conn)
+    Emotext.Guardian.Plug.sign_out(conn)
     |> put_flash(:info, "User deleted successfully.")
     |> redirect(to: "/")
   end

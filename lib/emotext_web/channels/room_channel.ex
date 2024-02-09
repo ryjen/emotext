@@ -15,10 +15,12 @@ defmodule Emotext.Web.RoomChannel do
 
   @config Expletive.configure(blacklist: Expletive.Blacklist.english)
 
+  @impl true
   def join("rooms:lobby", _auth_msg, socket) do
     {:ok, socket}
   end
 
+  @impl true
   def join("rooms:" <> _private_room_id, _auth_msg, _socket) do
     {:error, %{reason: "unauthorized"}}
   end
@@ -288,6 +290,7 @@ defmodule Emotext.Web.RoomChannel do
 
   end
 
+  @impl true
   def handle_in("info:ping", %{}, socket) do
     user = get_user(socket)
     broadcast! socket, "info:pong", %{ socket: socket, screen_name: user.screen_name  }
@@ -296,6 +299,7 @@ defmodule Emotext.Web.RoomChannel do
     {:noreply, socket}
   end
 
+  @impl true
   def handle_in("msg:input", %{"body" => body}, socket) do
     user = get_user(socket)
   	if String.at(body, 0) == "/" do
@@ -310,6 +314,7 @@ defmodule Emotext.Web.RoomChannel do
     {:noreply, socket}
   end
 
+  @impl true
   def handle_out("info:pong", msg, socket) do
     user = get_user(socket)
     push socket, "info:user", %{ screen_name: msg.screen_name }
@@ -317,6 +322,7 @@ defmodule Emotext.Web.RoomChannel do
     {:noreply, socket}
   end
 
+  @impl true
   def handle_out("action:others", msg, socket) do
     user = get_user(socket)
     if !Enum.any?(msg.ignore, fn(x) -> x == user.screen_name end) do
@@ -325,6 +331,7 @@ defmodule Emotext.Web.RoomChannel do
     {:noreply, socket}
   end
 
+  @impl true
   def handle_out("action:user", msg, socket) do
     user = get_user(socket)
     if msg.screen_name == user.screen_name do
@@ -333,6 +340,7 @@ defmodule Emotext.Web.RoomChannel do
     {:noreply, socket}
   end
 
+  @impl true
   def handle_out("msg:output", msg, socket) do
     user = get_user(socket)
     if msg.screen_name == user.screen_name do

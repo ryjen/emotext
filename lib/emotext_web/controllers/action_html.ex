@@ -1,4 +1,4 @@
-defmodule Emotext.Web.PageHTML do
+defmodule Emotext.Web.ActionHTML do
   use Emotext.Web, :html
 
   def current_user(conn) do

@@ -1,7 +1,6 @@
 defmodule Emotext.GuardianSerializer do
-  @behaviour Guardian.Serializer
+  #@behaviour Guardian.Serializer
 
-  alias Emotext.Repo
   alias Emotext.User
 
   def for_token(user = %User{}), do: { :ok, "User: #{User.serialize(user)}" }

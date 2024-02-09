@@ -2,10 +2,10 @@ defmodule Emotext.Action do
 
   use Ecto.Schema
   import Ecto.Changeset
-  import Ecto.Query, only: [from: 1, from: 2]
+  import Ecto.Query, only: [from: 2]
 
   @primary_key {:id, :binary_id, autogenerate: true}
-  @foreign_key_type :binary_id # For associations
+  @foreign_key_type :binary_id
 
   schema "actions" do
     field :name, :string

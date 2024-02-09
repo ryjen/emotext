@@ -1,5 +1,7 @@
-defmodule Emotext.Web.ChangesetView do
-  use Emotext.Web, :view
+defmodule Emotext.Web.ChangesetHTML do
+  use Emotext.Web, :html
+
+  import Emotext.Web.ErrorHelpers
 
   @doc """
   Traverses and translates changeset errors.

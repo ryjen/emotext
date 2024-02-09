@@ -1,3 +1,18 @@
+CREATE TABLE IF NOT EXISTS actions(
+  id uuid DEFAULT gen_random_uuid(),
+  name VARCHAR,
+  self_no_arg VARCHAR,
+  others_no_arg VARCHAR,
+  self_found VARCHAR,
+  others_found VARCHAR,
+  vict_found VARCHAR,
+  self_not_found VARCHAR,
+  self_auto VARCHAR,
+  others_auto VARCHAR,
+  inserted_at TIMESTAMP,
+  updated_at TIMESTAMP,
+  PRIMARY KEY (id)
+);
 INSERT INTO actions(name, self_no_arg, others_no_arg, self_found, others_found, vict_found, self_not_found, self_auto, others_auto, inserted_at, updated_at) VALUES
 ('gack', 'Gaaack!', '$n gacks with dismay!', 'Appalled, you gack at $N.', '$n gacks expressively, shooting $N a dismayed look.', '$n gacks, and looks your way, dismayed.', 'That person isn''t here.', '*GACK!*', 'Appalled, $n gacks at $mself!', current_timestamp, current_timestamp),
 ('kiss', 'Isn''t there someone you want to kiss?', NULL, 'You kiss $M.', '$n kisses $N.', '$n kisses you.', 'Never around when required.', 'All the lonely people :(', NULL, current_timestamp, current_timestamp),

@@ -1,5 +1,5 @@
-defmodule Emotext.Web.PageView do
-  use Emotext.Web, :view
+defmodule Emotext.Web.AliasHTML do
+  use Emotext.Web, :html
 
   def current_user(conn) do
       Guardian.Plug.current_resource(conn)

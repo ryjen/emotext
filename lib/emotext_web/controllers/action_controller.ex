@@ -3,11 +3,6 @@ defmodule Emotext.Web.ActionController do
 
   alias Emotext.Action
 
-  plug PlugRedirectHttps
-
-  plug Guardian.Plug.EnsureAuthenticated, %{ on_failure: { SessionController, :new } }
-
-  #plug Guardian.Plug.EnsurePermissions, %{ on_failure: { __MODULE__, :forbidden }, default: [:write_profile] } when action in [:new, :edit, :update, :delete]
   plug Guardian.Permissions, ensure: %{default: [:write_profile], user_actions: [:new, :edit, :update, :delete]}
 
   plug :scrub_params, "action" when action in [:create, :update]

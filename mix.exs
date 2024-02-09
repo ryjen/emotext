@@ -24,8 +24,8 @@ defmodule Emotext.MixProject do
   # Type `mix help compile.app` for more information
   def application do
     [
-      mod: {Emotext, []},
-      extra_applications: [:logger, :runtime_tools]
+      mod: {Emotext.Application, []},
+      extra_applications: [:logger, :runtime_tools, :comeonin]
     ]
   end
 

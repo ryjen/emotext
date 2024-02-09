@@ -1,0 +1,34 @@
+version: "3.4"
+
+services:
+  emotext:
+    build: .
+    image: emotext
+    container_name: emotext
+    environment:
+      DATABASE_URL: "ecto://emotext:emotext@db/emotext"
+      PHX_HOST: emotext.micrantha.test
+      PORT: "80"
+      SECRET_KEY_BASE: "d53f604743fa57a11a0adce7f048c55715717f7969806a8d34db98fda17269e7"
+    ports:
+      - "1337:80"
+    networks:
+      - emotext
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:latest
+    container_name: db
+    environment:
+      POSTGRES_USER: emotext
+      POSTGRES_PASSWORD: emotext
+      POSTGRES_DB:
+        emotext
+        #volumes:
+        #- ./scripts:/docker-entrypoint-initdb.d/
+    networks:
+      - emotext
+
+networks:
+  emotext: {}

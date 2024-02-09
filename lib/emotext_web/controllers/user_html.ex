@@ -1,5 +1,5 @@
-defmodule Emotext.Web.UserView do
-  use Emotext.Web, :view
+defmodule Emotext.Web.UserHMTL do
+  use Emotext.Web, :html
 
 
   def gender_name(model) do

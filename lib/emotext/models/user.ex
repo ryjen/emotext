@@ -8,7 +8,7 @@ defmodule Emotext.User do
   require Logger
 
   @primary_key {:id, :binary_id, autogenerate: true}
-  @foreign_key_type :binary_id # For associations
+  @foreign_key_type :binary_id
 
   schema "users" do
     field :username, :string
@@ -107,13 +107,13 @@ defmodule Emotext.User do
 
   def valid_password?(nil, _), do: false
   def valid_password?(_, nil), do: false
-  def valid_password?(password, crypted), do: Comeonin.Bcrypt.checkpw(password, crypted)
+  def valid_password?(password, crypted), do: Bcrypt.verify_pass(password, crypted)
 
   defp maybe_update_password(changeset) do
     case Ecto.Changeset.fetch_change(changeset, :password) do
       { :ok, password } ->
         changeset
-        |> Ecto.Changeset.put_change(:encrypted_password, Comeonin.Bcrypt.hashpwsalt(password))
+        |> Ecto.Changeset.put_change(:encrypted_password, Bcrypt.hash_pwd_salt(password))
       :error -> changeset
     end
   end

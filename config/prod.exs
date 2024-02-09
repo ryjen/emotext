@@ -10,10 +10,11 @@ config :emotext, Emotext.Repo,
 # which you should run after static files are built and
 # before starting your production server.
 config :emotext, Emotext.Web.Endpoint,
+  server: true,
   cache_static_manifest: "priv/static/cache_manifest.json"
 
 # Configures Swoosh API Client
-config :swoosh, api_client: Swoosh.ApiClient.Finch, finch_name: emotext.Finch
+config :swoosh, api_client: Swoosh.ApiClient.Finch, finch_name: Emotext.Finch
 
 # Disable Swoosh Local Memory Storage
 config :swoosh, local: false

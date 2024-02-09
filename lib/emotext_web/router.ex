@@ -8,19 +8,24 @@ defmodule Emotext.Web.Router do
     plug :put_root_layout, html: {Emotext.Web.Layouts, :root}
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug PlugRedirectHttps
   end
 
   pipeline :browser_session do
     plug Guardian.Plug.VerifySession
-    plug Guardian.Plug.LoadResource
+    plug Guardian.Plug.LoadResource, allow_blank: true
+  end
+
+  pipeline :ensure_auth do
+    plug Guardian.Plug.EnsureAuthenticated
   end
 
   pipeline :api do
     plug :accepts, ["json"]
   end
 
-  scope "/", Emotext do
-    pipe_through [:browser, :browser_session] # Use the default browser stack
+  scope "/", Emotext.Web do
+    pipe_through [:browser, :browser_session]
 
     get "/", PageController, :index
 
@@ -45,14 +50,14 @@ defmodule Emotext.Web.Router do
 
   end
 
-  scope "/auth", alias: Emotext do
+  scope "/auth", alias: Emotext.Web do
     pipe_through :browser
     get "/github", AuthController, :github
     get "/facebook", AuthController, :facebook
     get "/callback/:provider", AuthController, :callback
   end
 
-  scope "/api", Emotext do
+  scope "/api", Emotext.Web do
     pipe_through :api
     scope "/v1", as: :v1 do
       resources "/actions", ActionController, except: [:new, :edit]
@@ -60,7 +65,7 @@ defmodule Emotext.Web.Router do
     end
   end
 
-  if Application.compile_env(:tmp, :dev_routes) do
+  if Application.compile_env(:emotext, :dev_routes) do
     # If you want to use the LiveDashboard in production, you should put
     # it behind authentication and allow only admins to access it.
     # If your application does not have an admins-only section yet,
@@ -71,7 +76,7 @@ defmodule Emotext.Web.Router do
     scope "/dev" do
       pipe_through :browser
 
-      live_dashboard "/dashboard", metrics: TmpWeb.Telemetry
+      live_dashboard "/dashboard", metrics: Emotext.Web.Telemetry
       forward "/mailbox", Plug.Swoosh.MailboxPreview
     end
   end

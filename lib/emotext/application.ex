@@ -7,13 +7,13 @@ defmodule Emotext.Application do
       Emotext.Web.Telemetry,
       Emotext.Repo,
       {DNSCluster, query: Application.get_env(:tmp, :dns_cluster_query) || :ignore},
-      {Phoenix.PubSub, name: Emotext.PubSub},
+      {Phoenix.PubSub, name: Emotext.Web.PubSub},
       # Start the Finch HTTP client for sending emails
       {Finch, name: Emotext.Finch},
       # Start a worker by calling: Emotext.Worker.start_link(arg)
       # {Emotext.Worker, arg},
       # Start to serve requests, typically the last entry
-      Emotext.Endpoint
+      Emotext.Web.Endpoint
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

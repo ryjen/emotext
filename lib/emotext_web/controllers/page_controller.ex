@@ -1,16 +1,12 @@
 defmodule Emotext.Web.PageController do
   use Emotext.Web, :controller
   require Logger
-  alias Emotext.SessionController
-  #alias Emotext.Action
   alias Emotext.ActionQuery
-  #alias Emotext.Paginator
   alias Emotext.AliasQuery
-  #alias Prelude.Map
 
-  plug PlugRedirectHttps
-
-  plug Guardian.Plug.EnsureAuthenticated, %{ on_failure: { SessionController, :guest } } when action not in [:help]
+  @behaviour Guardian.Plug.ErrorHandler
+  plug Guardian.Plug.Pipeline, error_handler: __MODULE__
+  plug Guardian.Plug.EnsureAuthenticated  when action not in [:help]
 
   def index(conn, _params) do
 
@@ -29,4 +25,10 @@ defmodule Emotext.Web.PageController do
       render(conn, "api.html")
   end
 
+  @impl Guardian.Plug.ErrorHandler
+  def auth_error(conn, {type, reason}, _opts) do
+    Logger.info "authorization #{type} #{reason}, logging as guest"
+    conn
+    |> redirect(to: session_path(conn, :guest))
+  end
 end

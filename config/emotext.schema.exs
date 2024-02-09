@@ -84,9 +84,9 @@
       datatype: :atom,
       default: true
     ],
-    "emotext.Elixir.Emotext.Endpoint.render_errors.accepts": [
-      doc: "Provide documentation for emotext.Elixir.Emotext.Endpoint.render_errors.accepts here.",
-      to: "emotext.Elixir.Emotext.Endpoint.render_errors.accepts",
+    "emotext.Elixir.Emotext.Web.Endpoint.render_errors.accepts": [
+      doc: "Provide documentation for emotext.Elixir.Emotext.Web.Endpoint.render_errors.accepts here.",
+      to: "emotext.Elixir.Emotext.Web.Endpoint.render_errors.accepts",
       datatype: [
         list: :binary
       ],
@@ -95,63 +95,63 @@
         "json"
       ]
     ],
-    "emotext.Elixir.Emotext.Endpoint.pubsub.name": [
-      doc: "Provide documentation for emotext.Elixir.Emotext.Endpoint.pubsub.name here.",
-      to: "emotext.Elixir.Emotext.Endpoint.pubsub.name",
+    "emotext.Elixir.Emotext.Web.Endpoint.pubsub.name": [
+      doc: "Provide documentation for emotext.Elixir.Emotext.Web.Endpoint.pubsub.name here.",
+      to: "emotext.Elixir.Emotext.Web.Endpoint.pubsub.name",
       datatype: :atom,
-      default: Emotext.PubSub
+      default: Emotext.Web.PubSub
     ],
-    "emotext.Elixir.Emotext.Endpoint.pubsub.adapter": [
-      doc: "Provide documentation for emotext.Elixir.Emotext.Endpoint.pubsub.adapter here.",
-      to: "emotext.Elixir.Emotext.Endpoint.pubsub.adapter",
+    "emotext.Elixir.Emotext.Web.Endpoint.pubsub.adapter": [
+      doc: "Provide documentation for emotext.Elixir.Emotext.Web.Endpoint.pubsub.adapter here.",
+      to: "emotext.Elixir.Emotext.Web.Endpoint.pubsub.adapter",
       datatype: :atom,
       default: Phoenix.PubSub.PG2
     ],
-    "emotext.Elixir.Emotext.Endpoint.http.port": [
-      doc: "Provide documentation for emotext.Elixir.Emotext.Endpoint.http.port here.",
-      to: "emotext.Elixir.Emotext.Endpoint.http.port",
+    "emotext.Elixir.Emotext.Web.Endpoint.http.port": [
+      doc: "Provide documentation for emotext.Elixir.Emotext.Web.Endpoint.http.port here.",
+      to: "emotext.Elixir.Emotext.Web.Endpoint.http.port",
       datatype: :binary,
       default: "80"
     ],
-    "emotext.Elixir.Emotext.Endpoint.url.host": [
-      doc: "Provide documentation for emotext.Elixir.Emotext.Endpoint.url.host here.",
-      to: "emotext.Elixir.Emotext.Endpoint.url.host",
+    "emotext.Elixir.Emotext.Web.Endpoint.url.host": [
+      doc: "Provide documentation for emotext.Elixir.Emotext.Web.Endpoint.url.host here.",
+      to: "emotext.Elixir.Emotext.Web.Endpoint.url.host",
       datatype: :atom,
       default: nil
     ],
-    "emotext.Elixir.Emotext.Endpoint.url.port": [
-      doc: "Provide documentation for emotext.Elixir.Emotext.Endpoint.url.port here.",
-      to: "emotext.Elixir.Emotext.Endpoint.url.port",
+    "emotext.Elixir.Emotext.Web.Endpoint.url.port": [
+      doc: "Provide documentation for emotext.Elixir.Emotext.Web.Endpoint.url.port here.",
+      to: "emotext.Elixir.Emotext.Web.Endpoint.url.port",
       datatype: :integer,
       default: 80
     ],
-    "emotext.Elixir.Emotext.Endpoint.server": [
-      doc: "Provide documentation for emotext.Elixir.Emotext.Endpoint.server here.",
-      to: "emotext.Elixir.Emotext.Endpoint.server",
+    "emotext.Elixir.Emotext.Web.Endpoint.server": [
+      doc: "Provide documentation for emotext.Elixir.Emotext.Web.Endpoint.server here.",
+      to: "emotext.Elixir.Emotext.Web.Endpoint.server",
       datatype: :atom,
       default: true
     ],
-    "emotext.Elixir.Emotext.Endpoint.root": [
-      doc: "Provide documentation for emotext.Elixir.Emotext.Endpoint.root here.",
-      to: "emotext.Elixir.Emotext.Endpoint.root",
+    "emotext.Elixir.Emotext.Web.Endpoint.root": [
+      doc: "Provide documentation for emotext.Elixir.Emotext.Web.Endpoint.root here.",
+      to: "emotext.Elixir.Emotext.Web.Endpoint.root",
       datatype: :binary,
       default: "."
     ],
-    "emotext.Elixir.Emotext.Endpoint.version": [
-      doc: "Provide documentation for emotext.Elixir.Emotext.Endpoint.version here.",
-      to: "emotext.Elixir.Emotext.Endpoint.version",
+    "emotext.Elixir.Emotext.Web.Endpoint.version": [
+      doc: "Provide documentation for emotext.Elixir.Emotext.Web.Endpoint.version here.",
+      to: "emotext.Elixir.Emotext.Web.Endpoint.version",
       datatype: :binary,
       default: "0.0.1"
     ],
-    "emotext.Elixir.Emotext.Endpoint.secret_key_base": [
-      doc: "Provide documentation for emotext.Elixir.Emotext.Endpoint.secret_key_base here.",
-      to: "emotext.Elixir.Emotext.Endpoint.secret_key_base",
+    "emotext.Elixir.Emotext.Web.Endpoint.secret_key_base": [
+      doc: "Provide documentation for emotext.Elixir.Emotext.Web.Endpoint.secret_key_base here.",
+      to: "emotext.Elixir.Emotext.Web.Endpoint.secret_key_base",
       datatype: :binary,
       default: nil
     ],
-    "emotext.Elixir.Emotext.Endpoint.cache_static_manifest": [
-      doc: "Provide documentation for emotext.Elixir.Emotext.Endpoint.cache_static_manifest here.",
-      to: "emotext.Elixir.Emotext.Endpoint.cache_static_manifest",
+    "emotext.Elixir.Emotext.Web.Endpoint.cache_static_manifest": [
+      doc: "Provide documentation for emotext.Elixir.Emotext.Web.Endpoint.cache_static_manifest here.",
+      to: "emotext.Elixir.Emotext.Web.Endpoint.cache_static_manifest",
       datatype: :binary,
       default: "priv/static/manifest.json"
     ],

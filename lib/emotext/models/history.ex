@@ -3,7 +3,7 @@ defmodule Emotext.History do
   import Ecto.Changeset
 
   @primary_key {:id, :binary_id, autogenerate: true}
-  @foreign_key_type :binary_id # For associations
+  @foreign_key_type :binary_id
 
   schema "history_items" do
     belongs_to :user, Emotext.User

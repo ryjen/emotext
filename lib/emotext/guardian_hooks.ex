@@ -27,7 +27,7 @@ defmodule Emotext.Guardian do
   end
 
   def resource_from_claims(%{"sub" => id}) do
-    resource = Emotext.get_resource_by_id(id)
+    resource = Emotext.Application.get_resource_by_id(id)
     {:ok,  resource}
   end
   def resource_from_claims(_claims) do

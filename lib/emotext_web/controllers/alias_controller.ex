@@ -4,11 +4,6 @@ defmodule Emotext.Web.AliasController do
   alias Emotext.Alias
   alias Emotext.ActionQuery
 
-  plug PlugRedirectHttps
-
-  plug Guardian.Plug.EnsureAuthenticated, %{ on_failure: { SessionController, :new } }
-
-  #plug Guardian.Plug.EnsurePermissions, %{ on_failure: { __MODULE__, :forbidden }, default: [:write_profile] } when action in [:new, :edit, :update, :delete]
   plug Guardian.Permissions, ensure: %{default: [:write_profile], user_actions: [:new, :edit, :update, :delete]}
 
   plug :authorize_user_alias
@@ -128,4 +123,5 @@ defmodule Emotext.Web.AliasController do
  defp select_actions() do
      Repo.all(ActionQuery.sorted()) |> Enum.map(&{&1.name, &1.id})
  end
+
 end

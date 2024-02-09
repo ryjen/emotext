@@ -1,8 +1,6 @@
 defmodule Emotext.UserQuery do
   import Ecto.Query
   alias Emotext.User
-  alias Emotext.Action
-  alias Emotext.Repo
 
   def by_email(email) do
     from u in User, where: u.email == ^email
@@ -46,7 +44,6 @@ end
 defmodule Emotext.AliasQuery do
   import Ecto.Query
   alias Emotext.Alias
-  alias Emotext.Action
 
   def by_name(name) do
     from a in Alias, where: a.name == ^name, preload: [:action]

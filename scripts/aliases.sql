@@ -1,5 +1,14 @@
-DELETE FROM aliases;
-
+CREATE TABLE IF NOT EXISTS aliases(
+  id uuid DEFAULT gen_random_uuid(),
+  name VARCHAR,
+  action_id uuid,
+  inserted_at TIMESTAMP,
+  updated_at TIMESTAMP,
+  PRIMARY KEY(id),
+  CONSTRAINT fk_action
+    FOREIGN KEY(action_id)
+      REFERENCES actions(id)
+);
 INSERT INTO aliases(name, action_id, inserted_at, updated_at) VALUES
 (':-)', (SELECT id FROM actions a WHERE a.name = 'smile' LIMIT 1), current_timestamp, current_timestamp ),
 (':)', (SELECT id FROM actions a WHERE a.name = 'smile' LIMIT 1), current_timestamp, current_timestamp ),
@@ -16,7 +25,7 @@ INSERT INTO aliases(name, action_id, inserted_at, updated_at) VALUES
 (':^)', (SELECT id FROM actions a WHERE a.name = 'smile' LIMIT 1), current_timestamp, current_timestamp),
 (':っ)', (SELECT id FROM actions a WHERE a.name = 'smile' LIMIT 1), current_timestamp, current_timestamp),
 
-           
+
 (':-D', (SELECT id FROM actions a WHERE a.name = 'laugh' LIMIT 1), current_timestamp, current_timestamp),
 ('8-D', (SELECT id FROM actions a WHERE a.name = 'laugh' LIMIT 1), current_timestamp, current_timestamp),
 ('8D', (SELECT id FROM actions a WHERE a.name = 'laugh' LIMIT 1), current_timestamp, current_timestamp),
@@ -48,7 +57,7 @@ INSERT INTO aliases(name, action_id, inserted_at, updated_at) VALUES
 (':-||', (SELECT id FROM actions a WHERE a.name = 'fume' LIMIT 1), current_timestamp, current_timestamp),
 (':@', (SELECT id FROM actions a WHERE a.name = 'fume' LIMIT 1), current_timestamp, current_timestamp),
 ('>:(', (SELECT id FROM actions a WHERE a.name = 'fume' LIMIT 1), current_timestamp, current_timestamp),
-  
+
  (';-)', (SELECT id FROM actions a WHERE a.name = 'wink' LIMIT 1), current_timestamp, current_timestamp),
 (';)', (SELECT id FROM actions a WHERE a.name = 'wink' LIMIT 1), current_timestamp, current_timestamp),
 ('*-)', (SELECT id FROM actions a WHERE a.name = 'wink' LIMIT 1), current_timestamp, current_timestamp),
@@ -57,8 +66,8 @@ INSERT INTO aliases(name, action_id, inserted_at, updated_at) VALUES
 (';]', (SELECT id FROM actions a WHERE a.name = 'wink' LIMIT 1), current_timestamp, current_timestamp),
 (';D', (SELECT id FROM actions a WHERE a.name = 'wink' LIMIT 1), current_timestamp, current_timestamp),
 (';^)', (SELECT id FROM actions a WHERE a.name = 'wink' LIMIT 1), current_timestamp, current_timestamp),
-(':-,', (SELECT id FROM actions a WHERE a.name = 'wink' LIMIT 1), current_timestamp, current_timestamp), 
-        
+(':-,', (SELECT id FROM actions a WHERE a.name = 'wink' LIMIT 1), current_timestamp, current_timestamp),
+
 
 ('>:P', (SELECT id FROM actions a WHERE a.name = 'raspberry' LIMIT 1), current_timestamp, current_timestamp),
 (':-P', (SELECT id FROM actions a WHERE a.name = 'raspberry' LIMIT 1), current_timestamp, current_timestamp),
@@ -77,11 +86,11 @@ INSERT INTO aliases(name, action_id, inserted_at, updated_at) VALUES
 (':-b', (SELECT id FROM actions a WHERE a.name = 'raspberry' LIMIT 1), current_timestamp, current_timestamp),
 (':b', (SELECT id FROM actions a WHERE a.name = 'raspberry' LIMIT 1), current_timestamp, current_timestamp),
 ('d:', (SELECT id FROM actions a WHERE a.name = 'raspberry' LIMIT 1), current_timestamp, current_timestamp),
-                
+
 (':$', (SELECT id FROM actions a WHERE a.name = 'blush' LIMIT 1), current_timestamp, current_timestamp),
 
 ('O:-)', (SELECT id FROM actions a WHERE a.name = 'innocent' LIMIT 1), current_timestamp, current_timestamp),
-     
+
 ('o/\o', (SELECT id FROM actions a WHERE a.name = 'highfive' LIMIT 1), current_timestamp, current_timestamp),
 ('^5', (SELECT id FROM actions a WHERE a.name = 'highfive' LIMIT 1), current_timestamp, current_timestamp),
 ('>_>^', (SELECT id FROM actions a WHERE a.name = 'highfive' LIMIT 1), current_timestamp, current_timestamp),
@@ -93,5 +102,3 @@ INSERT INTO aliases(name, action_id, inserted_at, updated_at) VALUES
 ('@>-->--', (SELECT id FROM actions a WHERE a.name = 'rose' LIMIT 1), current_timestamp, current_timestamp),
 
 ('\o/', (SELECT id FROM actions a WHERE a.name = 'cheer' LIMIT 1), current_timestamp, current_timestamp);
-
-

@@ -1,5 +1,5 @@
-defmodule Emotext.Web.SessionView do
-  use Emotext.Web, :view
+defmodule Emotext.Web.SessionHTML do
+  use Emotext.Web, :html
 
   def render("new.json", assigns) do
     Poison.encode!(assigns.users)
