@@ -1,60 +1,82 @@
     <div class="container" role="main">
       <header class="header">
-
-        <span class="logo">
-        <a href="/">
-          <span class="icon">ツ</span>
-          <span class="title">emotext</span>
-          <span class="subtitle"><u>emote</u>: verb. To show or pretend emotion.</span>
+        <div class="logo">
+          <a href="/">
+            <span class="icon">ツ</span>
+            <span class="title">emotext</span>
+            <span class="subtitle"><u>emote</u>: verb. To show or pretend emotion.</span>
           </a>
-        </span>
+        </div>
 
         <ul class="nav nav-pills">
-          <li><a href={~p"/help"}>
-                <i class="fa fa-question-circle" aria-hidden="true"></i>help</a></li>
+          <li>
+            <a href={~p"/help"}>
+              <i class="fa fa-question-circle" aria-hidden="true"></i>
+              <span>Help</span>
+            </a>
+          </li>
           <%= if current_user(@conn) do %>
             <%= if is_guest?(current_user(@conn)) do %>
-                <li><a href={~p"/users/new"}>
-                <i class="fa fa-user-plus" aria-hidden="true"></i>register</a></li>
-                <li><a href={~p"/login"}>
-                <i class="fa fa-sign-in" aria-hidden="true"></i>login</a></li>
+              <li>
+                <a href={~p"/users/new"}>
+                  <i class="fa fa-user-plus" aria-hidden="true"></i>
+                  <span>Register</span>
+                </a>
+              </li>
+              <li>
+                <a href={~p"/login"}>
+                  <i class="fa fa-sign-in" aria-hidden="true"></i>
+                  <span>Login</span>
+                </a>
+              </li>
             <% else %>
-                <li><a href={~p"/users/#{current_user(@conn).id}"}>
-                <i class="fa fa-user" aria-hidden="true"></i><%= current_user(@conn).screen_name %></a></li>
-                <li>
+              <li>
+                <a href={~p"/users/#{current_user(@conn).id}"}>
+                  <i class="fa fa-user" aria-hidden="true"></i>
+                  <span><%= current_user(@conn).screen_name %></span>
+                </a>
+              </li>
+              <li>
                 <a href={~p"/logout"}>
-                <i class="fa fa-sign-out" aria-hidden="true"></i>logout
-                </a></li>
+                  <i class="fa fa-sign-out" aria-hidden="true"></i>
+                  <span>Logout</span>
+                </a>
+              </li>
             <% end %>
           <% else %>
             <li>
-            <a href={~p"/users/new"}>
-            <i class="fa fa-user-plus" aria-hidden="true"></i>register
-            </a></li>
+              <a href={~p"/users/new"}>
+                <i class="fa fa-user-plus" aria-hidden="true"></i>
+                <span>Register</span>
+              </a>
+            </li>
             <li>
-            <a href={~p"/login"}>
-            <i class="fa fa-sign-in" aria-hidden="true"></i>login
-            </a>
+              <a href={~p"/login"}>
+                <i class="fa fa-sign-in" aria-hidden="true"></i>
+                <span>Login</span>
+              </a>
             </li>
           <% end %>
         </ul>
       </header>
 
-      <%= @inner_content %>
+      <main>
+        <%= @inner_content %>
+      </main>
 
       <footer class="footer">
-      <span class="pull-left">
-              <%= if current_user(@conn) && !is_guest?(current_user(@conn)) do %>
-                create an <a href={~p"/users/#{current_user(@conn).id}"}>action</a> or
-                <a href={~p"/users/#{current_user(@conn).id}/aliases"}>alias</a>
-              <% else %>
-                <a href={~p"/login"}>login</a> to customize
-              <% end %>
+        <div class="pull-left">
+          <%= if current_user(@conn) && !is_guest?(current_user(@conn)) do %>
+            Create an <a href={~p"/users/#{current_user(@conn).id}"}>action</a> or
+            <a href={~p"/users/#{current_user(@conn).id}/aliases"}>alias</a>
+          <% else %>
+            <a href={~p"/login"}>Login</a> to customize
+          <% end %>
           &nbsp; | &nbsp; Press the <i class="fa fa-bolt text-warning" aria-hidden="true"></i> or use the <b>/</b> prefix to send an action
-          </span>
-          <span class="pull-right">
-            &copy; <a href="mailto:c0der78@gmail.com?subject=Emotext">Ryan Jennings</a> 2015 | <a href="/api">API</a>
-          </span>
+        </div>
+        <div class="pull-right">
+          &copy; <a href="mailto:c0der78@gmail.com?subject=Emotext">Ryan Jennings</a> 2015 | <a href="/api">API</a>
+        </div>
       </footer>
     </div> <!-- /container -->
     <script src={"#{static_path(@conn, "/assets/app.js")}"}></script>

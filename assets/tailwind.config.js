@@ -8,14 +8,55 @@ const path = require("path")
 module.exports = {
   content: [
     "./js/**/*.js",
-    "../lib/tmp_web.ex",
-    "../lib/tmp_web/**/*.*ex"
+    "../lib/emotext_web.ex",
+    "../lib/emotext_web/**/*.*ex",
+    "../lib/emotext_web/**/*.html.heex"
   ],
   theme: {
     extend: {
       colors: {
         brand: "#FD4F00",
-      }
+        'emotext-green': {
+          50: '#e8f5e9',
+          100: '#c8e6c9',
+          200: '#a5d6a7',
+          300: '#81c784',
+          400: '#66bb6a',
+          500: '#4caf50',
+          600: '#43a047',
+          700: '#388e3c',
+          800: '#2e7d32',
+          900: '#1b5e20',
+        },
+        'emotext-blue': {
+          50: '#e3f2fd',
+          100: '#bbdefb',
+          200: '#90caf9',
+          300: '#64b5f6',
+          400: '#42a5f5',
+          500: '#2196f3',
+          600: '#1e88e5',
+          700: '#1976d2',
+          800: '#1565c0',
+          900: '#0d47a1',
+        },
+        'emotext-orange': {
+          50: '#fff3e0',
+          100: '#ffe0b2',
+          200: '#ffcc80',
+          300: '#ffb74d',
+          400: '#ffa726',
+          500: '#ff9800',
+        },
+      },
+      fontFamily: {
+        'code': ['"Source Code Pro"', 'monospace'],
+        'display': ['"VT323"', 'monospace'],
+      },
+      boxShadow: {
+        'emotext': '0 2px 5px rgba(0, 0, 0, 0.05)',
+        'emotext-hover': '0 4px 10px rgba(0, 0, 0, 0.1)',
+      },
     },
   },
   plugins: [
