@@ -164,6 +164,7 @@ open doc/index.html
 
 ## 📋 Roadmap
 
+- [ ] Fix remaining issues upgrading elixir/phoenix
 - [ ] Channel bots and automation
 - [ ] Custom user commands
 - [ ] Integration with IRC networks
