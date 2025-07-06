@@ -1,13 +1,16 @@
+<br />
 
-<br>
-
-  <div class="green-well card">
-
-<div class="row">
+<div class="green-well card">
+  <div class="row">
     <h3 class="col-sm-offset-2">Edit Action</h3>
-</div>
+  </div>
 
-<%= render "form.html", changeset: @changeset, conn: @conn, exists: true,
-                        action: user_action_path(@conn, :update, current_user(@conn), @action) %>
-
+  <%= render("_form.html",
+    assigns: [
+      changeset: @changeset,
+      conn: @conn,
+      exists: true,
+      action: Routes.user_action_path(@conn, :update, current_user(@conn), @action)
+    ]
+  ) %>
 </div>

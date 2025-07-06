@@ -31,6 +31,6 @@ defmodule Emotext.Application do
   end
 
   def get_resource_by_id(id) do
-    Emotext.Repo.get(User, id)
+    Emotext.Repo.get(Emotext.User, id)
   end
 end

@@ -13,9 +13,9 @@
 </div>
 
 <div class="footer">
-<%= link to: user_path(@conn, :edit, @user), class: "btn btn-default" do %>
+    <a href={Routes.user_path(@conn, :edit, @user)} class="btn btn-default">
       <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit
-<% end %>
+    </a>
 </div>
 
 </div>

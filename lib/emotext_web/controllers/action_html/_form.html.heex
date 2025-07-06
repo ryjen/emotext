@@ -1,0 +1,195 @@
+<.form :let={f} for={@changeset} action={@action} class="form-horizontal">
+  <%= if @changeset.action do %>
+    <div class="alert alert-danger">
+      <p>Oops, something went wrong! Please check the errors below:</p>
+      <ul>
+        <%= for {attr, message} <- f.errors do %>
+          <li><%= humanize(attr) %> <%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <label for={input_id(f, :name)} class="col-sm-2 control-label">Name:</label>
+    <div class="col-sm-10">
+      <input
+        type="text"
+        name={input_name(f, :name)}
+        class="form-control"
+        id={input_id(f, :name)}
+        aria-describedby="helpBlock"
+        value={f.data.name}
+        placeholder="test"
+      />
+      <span id="helpBlock" class="help-block">
+        This will be the name to reference the action.
+      </span>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for={input_id(f, :self_no_arg)} class="col-sm-2 control-label">Self no arg:</label>
+    <div class="col-sm-10">
+      <input
+        type="text"
+        name={input_name(f, :self_no_arg)}
+        class="form-control"
+        id={input_id(f, :self_no_arg)}
+        aria-describedby="helpBlock"
+        value={f.data.self_no_arg}
+        placeholder="You test the system."
+      />
+      <span id="helpBlock" class="help-block">
+        Displayed to yourself with no other person specified.
+      </span>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for={input_id(f, :others_no_arg)} class="col-sm-2 control-label">Others no arg:</label>
+    <div class="col-sm-10">
+      <input
+        type="text"
+        name={input_name(f, :others_no_arg)}
+        id={input_id(f, :others_no_arg)}
+        aria-describedby="helpBlock"
+        value={f.data.others_no_arg}
+        class="form-control"
+        placeholder="$n tests $mself"
+      />
+      <span id="helpBlock" class="help-block">
+        Displayed to others with no other person specified.
+      </span>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for={input_id(f, :self_found)}>Self found:</label>
+    <div class="col-sm-10">
+      <input
+        type="text"
+        name={input_name(f, :self_found)}
+        id={input_id(f, :self_found)}
+        aria-describedby="helpBlock"
+        value={f.data.self_found}
+        class="form-control"
+        placeholder="You test yourself."
+      />
+      <span id="helpBlock" class="help-block">
+        Displayed to yourself when the specified person is found.
+      </span>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for={input_id(f, :others_found)} class="col-sm-2 control-label">Others found:</label>
+    <div class="col-sm-10">
+      <input
+        type="text"
+        name={input_name(f, :others_found)}
+        id={input_id(f, :others_found)}
+        aria-describedby="helpBlock"
+        value={f.data.others_found}
+        class="form-control"
+        placeholder="$n tests $mself"
+      />
+      <span id="helpBlock" class="help-block">
+        Displayed to others when the specified person is found.
+      </span>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for={input_id(f, :vict_found)} class="col-sm-2 control-label">Vict found:</label>
+    <div class="col-sm-10">
+      <input
+        type="text"
+        name={input_name(f, :vict_found)}
+        id={input_id(f, :vict_found)}
+        aria-describedby="helpBlock"
+        value={f.data.vict_found}
+        class="form-control"
+        placeholder="$n tests $mself"
+      />
+      <span id="helpBlock" class="help-block">
+        Displayed to the person you specified as an argument.
+      </span>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for={input_id(f, :self_not_found)} class="col-sm-2 control-label">
+      Self not found:
+    </label>
+    <div class="col-sm-10">
+      <input
+        type="text"
+        name={input_name(f, :self_not_found)}
+        id={input_id(f, :self_not_found)}
+        aria-describedby="helpBlock"
+        value={f.data.self_not_found}
+        class="form-control"
+        placeholder="You test the system."
+      />
+      <span id="helpBlock" class="help-block">
+        Displayed to yourself when the person you specified was not found.
+      </span>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for={input_id(f, :self_auto)} class="col-sm-2 control-label">Self auto:</label>
+    <div class="col-sm-10">
+      <input
+        type="text"
+        name={input_name(f, :self_auto)}
+        id={input_id(f, :self_auto)}
+        aria-describedby="helpBlock"
+        value={f.data.self_auto}
+        class="form-control"
+        placeholder="You test yourself."
+      />
+      <span id="helpBlock" class="help-block">
+        Displayed to yourself when the specified person is yourself.
+      </span>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for={input_id(f, :others_auto)} class="col-sm-2 control-label">Others auto:</label>
+    <div class="col-sm-10">
+      <input
+        type="text"
+        name={input_name(f, :others_auto)}
+        id={input_id(f, :others_auto)}
+        aria-describedby="helpBlock"
+        value={f.data.others_auto}
+        class="form-control"
+        placeholder="$n tests $mself"
+      />
+      <span id="helpBlock" class="help-block">
+        Displayed to others when the specified person is yourself.
+      </span>
+    </div>
+  </div>
+
+  <input type="hidden" name={input_name(f, :user_id)} value={current_user(@conn).id} />
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button class="btn btn-primary" type="submit">
+        <i class="fa fa-check" aria-hidden="true"></i> Save
+      </button>
+      <%= if @exists do %>
+        <a
+          href={Routes.user_action_path(@conn, :delete, current_user(@conn), @action)}
+          class="btn btn-default"
+          data-confirm="Are you sure?"
+        >
+          <i class="fa fa-trash" aria-hidden="true"></i> Delete
+        </a>
+      <% end %>
+    </div>
+  </div>
+</.form>

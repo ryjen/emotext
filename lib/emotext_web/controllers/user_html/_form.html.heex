@@ -1,0 +1,74 @@
+
+<.form :let={f} for={@changeset} action={@action} data-toggle="validator" role="form" class="form-horizontal">
+  <%= if f.errors != [] do %>
+    <div class="alert alert-danger">
+      <p>Oops, something went wrong! Please check the errors below:</p>
+      <ul>
+        <%= for {attr, message} <- f.errors do %>
+          <li><%= humanize(attr) %> <%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <label for={input_id(f, :username)} class="col-sm-2 control-label">Username:</label>
+    <div class="col-sm-10">
+    <input type="text" name={input_name(f, :username)} class="form-control" id={input_id(f, :username)} aria-describedby="helpBlock" value={f.data.username} placeholder="Enter user name" />
+    <span id="helpBlock" class="help-block">This will be your unique username.</span>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for={input_id(f, :email)} class="col-sm-2 control-label">Email:</label>
+    <div class="col-sm-10">
+    <input type="email" name={input_name(f, :email)} class="form-control" id={input_id(f, :email)} aria-describedby="helpBlock" value={f.data.email} placeholder="Enter email address" />
+    <span id="helpBlock" class="help-block">This will be your unique email address.</span>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for={input_id(f, :gender)} class="col-sm-2 control-label">Gender:</label>
+    <div class="col-sm-10">
+    <select name={Phoenix.HTML.Form.input_name(f, :gender)} class="form-control">
+      <option value=":unknown">Not Specified</option>
+      <option value=":male">Male</option>
+      <option value=":female">Female</option>
+    </select>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for={input_id(f, :password)} class="col-sm-2 control-label">Password:</label>
+    <div class="col-sm-10">
+    <input type="password" name={input_name(f, :password)} class="form-control" data-minlength="6" id={input_id(f, :password)} aria-describedby="helpBlock" placeholder="Enter Password" />
+        <span id="helpBlock" class="help-block">This will be your password.</span>
+        <div class="help-block">Minimum of 6 characters</div>
+        <div class="help-block with-errors"></div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for={input_id(f, :password_confirmation)} class="col-sm-2 control-label">Confirm:</label>
+    <div class="col-sm-10">
+    <input type="password" name={input_name(f, :password_confirmation)} class="form-control" data-minlength="6" id={input_id(f, :password_confirmation)} aria-describedby="helpBlock" placeholder="Confirm Password" />
+    <span id="helpBlock" class="help-block">Please confirm your password.</span>
+    <div class="help-block">Must match password</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+      <div class="col-sm-offset-2">
+        <button type="submit" class="btn btn-primary">
+          <i class="fa fa-check" aria-hidden="true"></i> Save
+        </button>
+        <%= if @user_del_path do %>          
+          <a class="btn btn-danger" href={@user_del_path} data-confirm="Are you sure?">
+          <i class="fa fa-trash" aria-hidden="true"></i>
+          Delete
+          </a>
+        <% end %>
+    </div>
+  </div>
+
+</.form>

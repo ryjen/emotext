@@ -1,0 +1,26 @@
+
+
+  <div class="green-well card">
+      <h3>Custom Aliases</h3>
+
+      <%= if Enum.count(@aliases) == 0 do %>
+        <div class="row"><div class="col-sm-12">None found.</div></div>
+       <% end %>
+
+      <%= for chunk <- Enum.chunk_every(@aliases, 4) do %>
+      <div class="row">
+      <%= for alias <- chunk do %>
+            <div class="col-sm-3">
+            <a href={Routes.user_alias_path(@conn, :edit, @user, alias)}>
+              <i class="fa fa-pencil" aria-hidden="true"></i>{alias.name}</a>
+            </div>
+      <% end %>
+      </div>
+      <% end %>
+  </div>
+
+<div class="footer">
+<a href={Routes.user_alias_path(@conn, :new, @user)} class="btn btn-default">
+      <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Add
+</a>
+</div>

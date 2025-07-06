@@ -13,7 +13,9 @@ defmodule Emotext.Web.RoomChannel do
 
   intercept ["action:user", "action:others", "msg:output", "info:pong"]
 
-  @config Expletive.configure(blacklist: Expletive.Blacklist.english)
+  defp expletive_config do 
+    Expletive.configure(blacklist: Expletive.Blacklist.english)
+  end
 
   @impl true
   def join("rooms:lobby", _auth_msg, socket) do
@@ -269,7 +271,7 @@ defmodule Emotext.Web.RoomChannel do
       if history.user_id && history.message do
         Logger.info "Restoring history message from #{history.user_screen_name}"
         user = get_user(socket)
-        body = if history.message != nil && Expletive.profane?(history.message, @config), do: Expletive.sanitize(history.message, @config), else: history.message
+        body = if history.message != nil && Expletive.profane?(history.message, expletive_config()), do: Expletive.sanitize(history.message, expletive_config()), else: history.message
         msg = %{body: body, screen_name: history.user_screen_name }
         if msg.screen_name == user.screen_name do
             push socket, "msg:self", msg
@@ -307,7 +309,7 @@ defmodule Emotext.Web.RoomChannel do
     else
       if not handle_alias(socket, body, user) do
         save_message(body, user)
-        body = if body && Expletive.profane?(body, @config), do: Expletive.sanitize(body, @config), else: body
+        body = if body && Expletive.profane?(body, expletive_config()), do: Expletive.sanitize(body, expletive_config()), else: body
         broadcast! socket, "msg:output", %{body: body, screen_name: user.screen_name }
       end
     end

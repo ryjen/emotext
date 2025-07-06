@@ -1,0 +1,31 @@
+
+ <div class="card green-well">
+
+  <h3>Custom Actions</h3>
+
+  <%= if Enum.count(@actions) == 0 do %>
+    <div class="row">
+      <div class="col-sm-12">None found.</div>
+    </div>
+  <% end %>
+
+  <%= for chunk <- Enum.chunk_every(@actions, 4) do %>
+  <div class="row">
+      <%= for action <- chunk do %>
+            <div class="col-sm-3">
+            <a href={Routes.user_action_path(@conn, :edit, @user, action)}>
+              <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+              <span class="action-name"><%= action.name %></span>
+            </a>
+            </div>
+      <% end %>
+  </div>
+  <% end %>
+
+
+<div class="footer">
+<a href={Routes.user_action_path(@conn, :new, @user)} class="btn btn-default">
+      <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Add
+</a>
+</div>
+</div>

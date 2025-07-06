@@ -44,14 +44,12 @@
 
       <footer class="footer">
       <span class="pull-left">
-          <%= if @view_module == Emotext.PageHTML && @view_template == "index.html" do %>
               <%= if current_user(@conn) && !is_guest?(current_user(@conn)) do %>
                 create an <a href={~p"/users/#{current_user(@conn).id}"}>action</a> or
                 <a href={~p"/users/#{current_user(@conn).id}/aliases"}>alias</a>
               <% else %>
                 <a href={~p"/login"}>login</a> to customize
               <% end %>
-          <% end %>
           &nbsp; | &nbsp; Press the <i class="fa fa-bolt text-warning" aria-hidden="true"></i> or use the <b>/</b> prefix to send an action
           </span>
           <span class="pull-right">
@@ -59,5 +57,4 @@
           </span>
       </footer>
     </div> <!-- /container -->
-
-    <script src={"#{static_path(@conn, '/js/app.js')}"}></script>
+    <script src={"#{static_path(@conn, "/assets/app.js")}"}></script>

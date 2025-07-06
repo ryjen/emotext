@@ -17,13 +17,18 @@
       <td><%= gender_name(user) %></td>
 
       <td class="text-right">
-        <%= link "Show", to: user_path(@conn, :show, user), class: "btn btn-default btn-xs" %>
-        <%= link "Edit", to: user_path(@conn, :edit, user), class: "btn btn-default btn-xs" %>
-        <%= button "Delete", to: user_path(@conn, :delete, user), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+        <a href={Routes.user_path(@conn, :show, user)} class="btn btn-default btn-xs">Show</a>
+        <a href={Routes.user_path(@conn, :edit, user)} class="btn btn-default btn-xs">Edit</a>
+        <button type="button" class="btn btn-default btn-xs" data-confirm="Are you sure?">
+          <i class="fa fa-trash" aria-hidden="true"></i> 
+          <a href={Routes.user_path(@conn, :delete, user)}>Delete</a>
+        </button>
       </td>
     </tr>
 <% end %>
   </tbody>
 </table>
 
-<%= link "New user", to: user_path(@conn, :new) %>
+<a href={Routes.user_path(@conn, :new)} class="btn btn-primary">
+  <i class="fa fa-plus" aria-hidden="true"></i> New User
+</a>

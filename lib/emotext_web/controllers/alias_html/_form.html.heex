@@ -1,0 +1,47 @@
+<.form :let={f} for={@changeset} action={@alias} class="form-horizontal">
+  <%= if @changeset.action do %>
+    <div class="alert alert-danger">
+      <p>Oops, something went wrong! Please check the errors below:</p>
+      <ul>
+        <%= for {attr, message} <- f.errors do %>
+          <li><%= humanize(attr) %> <%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <label for={input_id(f, :name)} class="col-sm-2 control-label">Name:</label>
+    <div class="col-sm-10">
+        <input type="text" name={input_name(f, :name)} class="form-control" id={input_id(f, :name)} aria-describedby="helpBlock" value={f.data.name} placeholder="alternative name or symbol" />
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for={input_id(f, :action_id)} class="col-sm-2 control-label">Action:</label>
+    <div class="col-sm-10">
+    <select name={input_name(f, :action_id)} id={input_id(f, :action_id)} class="form-control" aria-describedby="helpBlock">
+      <option value="">Select an action</option>
+      <%= for {action_name, action_id} <- @actions do %>
+        <option value={action_id} {if f.data.action_id == action_id, do: "selected"}><%= action_name %></option>
+      <% end %>
+    </select>
+    </div>
+  </div>
+
+  <input type="hidden" name={input_name(f, :user_id)} value={current_user(@conn).id} />
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+    <button class="btn btn-primary" type="submit">
+      <i class="fa fa-check" aria-hidden="true"></i> Save
+    </button>
+    <%= if @exists do %>
+      <a href={Routes.user_alias_path(@conn, :delete, current_user(@conn), @alias)} class="btn btn-default" data-confirm="Are you sure?">
+        <i class="fa fa-trash" aria-hidden="true"></i> Delete
+      </a>
+    <% end %>
+    </div>
+  </div>
+
+</.form>

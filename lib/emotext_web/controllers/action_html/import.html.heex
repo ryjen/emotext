@@ -1,5 +1,5 @@
 
-<%= form_for @conn, "/actions/import", [name: :import, multipart: true], fn f -> %>
+<.form :let={f} for={@conn} action="/actions/import" name="import" multipart="true">
   <%= if f.errors != [] do %>
     <div class="alert alert-danger">
       <p>Oops, something went wrong! Please check the errors below:</p>
@@ -13,10 +13,13 @@
 
   <div class="form-group">
     <label>File</label>
-    <%= file_input f, :file, class: "form-control" %>
+    <input type="file" name={input_name(f, :file)} class="form-control" id={input_id(f, :file)} aria-describedby="helpBlock">
+    <span id="helpBlock" class="help-block">Upload a file containing actions to import.</span>
   </div>
 
   <div class="form-group">
-    <%= submit "Submit", class: "btn btn-primary" %>
+    <button type="submit" class="btn btn-primary">
+      <i class="fa fa-upload" aria-hidden="true"></i> Import Actions
+    </button>
   </div>
-<% end %>
+</.form>

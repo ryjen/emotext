@@ -1,13 +1,14 @@
+<br />
 
-<br>
-
-  <div class="card green-well">
-
+<div class="card green-well">
   <div class="row">
-  <h3 class="col-sm-offset-2">New Account</h3>
+    <h3 class="col-sm-offset-2">New Account</h3>
   </div>
 
-  <%= render "form.html", changeset: @changeset, user_del_path: false,
-                        action: user_path(@conn, :create) %>
-
+  <%= render("_form.html",
+    assigns: [
+      changeset: @changeset,
+      action: Routes.user_path(@conn, :create)
+    ]
+  ) %>
 </div>

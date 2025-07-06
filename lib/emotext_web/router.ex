@@ -5,19 +5,20 @@ defmodule Emotext.Web.Router do
     plug :accepts, ["html"]
     plug :fetch_session
     plug :fetch_live_flash
-    plug :put_root_layout, html: {Emotext.Web.Layouts, :root}
+    plug :put_root_layout, {Emotext.Web.Layouts, :root}
+    plug :put_layout, html: {Emotext.Web.Layouts, :app}
     plug :protect_from_forgery
     plug :put_secure_browser_headers
     plug PlugRedirectHttps
   end
 
   pipeline :browser_session do
-    plug Guardian.Plug.VerifySession
-    plug Guardian.Plug.LoadResource, allow_blank: true
+    plug Guardian.Plug.VerifySession, module: Emotext.Guardian
+    plug Guardian.Plug.LoadResource, allow_blank: true, module: Emotext.Guardian
   end
 
   pipeline :ensure_auth do
-    plug Guardian.Plug.EnsureAuthenticated
+    plug Guardian.Plug.EnsureAuthenticated, module: Emotext.Guardian
   end
 
   pipeline :api do
@@ -40,14 +41,12 @@ defmodule Emotext.Web.Router do
     get "/logout", SessionController, :delete, as: :logout
 
     resources "/users", UserController do
-        resources "/actions", ActionController
-        resources "/aliases", AliasController
+      resources "/actions", ActionController
+      resources "/aliases", AliasController
     end
-
 
     get "/admin/import", AdminController, :import, as: :import
     post "/admin/import", AdminController, :import_file, as: :import
-
   end
 
   scope "/auth", alias: Emotext.Web do
@@ -59,6 +58,7 @@ defmodule Emotext.Web.Router do
 
   scope "/api", Emotext.Web do
     pipe_through :api
+
     scope "/v1", as: :v1 do
       resources "/actions", ActionController, except: [:new, :edit]
       resources "/aliases", AliasController, except: [:new, :edit]

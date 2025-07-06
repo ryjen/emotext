@@ -44,8 +44,8 @@ defmodule Emotext.Web do
   def controller do
     quote do
       use Phoenix.Controller,
-        formats: [:html, :json]
-        #layouts: [html: Emotext.Web.Layouts]
+        formats: [:html],
+        layouts: [html: {Emotext.Web.Layouts, :app}]
 
       alias Emotext.Repo
       import Ecto
@@ -61,7 +61,7 @@ defmodule Emotext.Web do
   def live_view do
     quote do
       use Phoenix.LiveView,
-        layout: {Emotext.Web.Layouts, :app}
+        layout: {Emotext.Web.Layouts, :root}
 
       unquote(html_helpers())
     end
@@ -79,9 +79,11 @@ defmodule Emotext.Web do
     quote do
       use Phoenix.Component
 
+      embed_templates "html/*"
+
       # Import convenience functions from controllers
       import Phoenix.Controller,
-        only: [get_csrf_token: 0, view_module: 1, view_template: 1]
+        only: [get_csrf_token: 0, view: 1, template: 1]
 
       # Include general helpers for rendering HTML
       unquote(html_helpers())

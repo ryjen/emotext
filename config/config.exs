@@ -69,6 +69,14 @@ config :comeonin, :bcrypt_phoenix_ecto,
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
+config :sass,
+  version: "1.55.0",
+  tmp: [
+    args: ~w(css/emotext.scss --no-source-map --output-style compressed --output-file ../priv/static/assets/emotext.css),
+    cd: Path.expand("../assets", __DIR__)
+  ]
+
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env}.exs"

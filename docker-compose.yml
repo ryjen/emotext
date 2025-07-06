@@ -23,10 +23,9 @@ services:
     environment:
       POSTGRES_USER: emotext
       POSTGRES_PASSWORD: emotext
-      POSTGRES_DB:
-        emotext
-        #volumes:
-        #- ./scripts:/docker-entrypoint-initdb.d/
+      POSTGRES_DB: emotext
+    #volumes:
+    #  - ./scripts:/docker-entrypoint-initdb.d/
     networks:
       - emotext
 

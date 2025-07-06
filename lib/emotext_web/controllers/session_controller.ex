@@ -18,7 +18,7 @@ defmodule Emotext.Web.SessionController do
     user = User.from_username("guest")
 
     if !user do
-      ^user = Repo.insert!(%User{username: "guest", email: "guest@email.com", gender: :unknown})
+      user = Repo.insert!(%User{username: "guest", email: "guest@email.com", gender: :unknown})
     end
 
     guest_name = "guest-#{Randomize.random(9999)}"

@@ -6,7 +6,11 @@
     <h3 class="col-sm-offset-2">Edit Alias</h3>
 </div>
 
-<%= render "form.html", changeset: @changeset, conn: @conn, exists: true,
-                        alias: user_alias_path(@conn, :update, current_user(@conn), @alias), actions: @actions %>
-
+<%= render "_form.html", assigns: [
+  changeset: @changeset,
+  conn: @conn,
+  exists: true,
+  alias: Routes.user_alias_path(@conn, :update, current_user(@conn), @alias),
+  actions: @actions
+] %>
 </div>
