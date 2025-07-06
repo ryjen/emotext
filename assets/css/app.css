@@ -2,8 +2,6 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-/* This file is for your main application CSS */
-@import "emotext";
 html, body, .container {
   height: 100%;
 }
