@@ -1,6 +1,6 @@
 # Emotext 🎭
 
-A modern chat application inspired by Multi-User Dungeons (MUDs) from the 90s, built with Elixir and Phoenix Framework.
+A modern chat application inspired by IRC + Multi-User Dungeons (MUDs) from the 90s, built with Elixir and Phoenix Framework.
 
 ## 🎯 Project Overview
 
