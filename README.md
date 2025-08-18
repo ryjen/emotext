@@ -4,7 +4,9 @@ A modern chat application inspired by IRC + Multi-User Dungeons (MUDs) from the 
 
 ## 🎯 Project Overview
 
-Emotext is an experimental project that applies Ruby on Rails knowledge to pure functional programming using Elixir on the Phoenix Framework. The application demonstrates the power of the Erlang Virtual Machine (BEAM) for building concurrent, fault-tolerant chat systems.
+Emotext is an experimental project that applies Ruby on Rails knowledge to pure functional programming using Elixir on the Phoenix Framework. The application demonstrates the power of the Erlang Virtual Machine (BEAM) for building concurrent, fault-tolerant chat systems.   
+
+The original code (check history) used MongoDB, PostgreSQL was swapped in to save VPS resources and reuse.
 
 ### Why Elixir and Phoenix?
 
