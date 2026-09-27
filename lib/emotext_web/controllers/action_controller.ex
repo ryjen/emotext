@@ -3,6 +3,7 @@ defmodule Emotext.Web.ActionController do
 
   alias Emotext.Action
 
+  plug Guardian.Plug.EnsureAuthenticated, module: Emotext.Guardian
   plug Guardian.Permissions, ensure: %{default: [:write_profile], user_actions: [:new, :edit, :update, :delete]}
 
   plug :scrub_params, "action" when action in [:create, :update]
@@ -12,7 +13,7 @@ defmodule Emotext.Web.ActionController do
   require Logger
 
   def index(conn, _params) do
-    actions = Repo.all(Action)
+    actions = Repo.all(ActionQuery.for_user(current_user(conn)))
     render(conn, actions: actions)
   end
 
@@ -22,7 +23,7 @@ defmodule Emotext.Web.ActionController do
   end
 
   def create(conn, %{"action" => action_params}) do
-    changeset = Action.changeset(%Action{}, action_params)
+    changeset = Action.changeset(%Action{}, owned_params(conn, action_params))
     case Repo.insert(changeset) do
       {:ok, _action} ->
         conn
@@ -34,7 +35,7 @@ defmodule Emotext.Web.ActionController do
   end
 
   def create(conn, %{"action" => action_params, "format" => "json" } ) do
-    changeset = Action.changeset(%Action{}, action_params)
+    changeset = Action.changeset(%Action{}, owned_params(conn, action_params))
     case Repo.insert(changeset) do
       {:ok, action} ->
         conn
@@ -51,19 +52,19 @@ defmodule Emotext.Web.ActionController do
   end
 
   def show(conn, %{"id" => id}) do
-    action = Repo.get!(Action, id)
+    action = owned_action!(conn, id)
     render(conn, action: action)
   end
 
   def edit(conn, %{"id" => id}) do
-    action = Repo.get!(Action, id)
+    action = owned_action!(conn, id)
     changeset = Action.changeset(action)
     render(conn, action: action, changeset: changeset)
   end
 
   def update(conn, %{"id" => id, "action" => action_params}) do
-    action = Repo.get!(Action, id)
-    changeset = Action.changeset(action, action_params)
+    action = owned_action!(conn, id)
+    changeset = Action.changeset(action, owned_params(conn, action_params))
 
     case Repo.update(changeset) do
       {:ok, _action} ->
@@ -76,8 +77,8 @@ defmodule Emotext.Web.ActionController do
   end
 
   def update(conn, %{"id" => id, "action" => action_params, "format" => "json"}) do
-    action = Repo.get!(Action, id)
-    changeset = Action.changeset(action, action_params)
+    action = owned_action!(conn, id)
+    changeset = Action.changeset(action, owned_params(conn, action_params))
 
     case Repo.update(changeset) do
       {:ok, action} ->
@@ -94,7 +95,7 @@ defmodule Emotext.Web.ActionController do
   end
 
   def delete(conn, %{"id" => id}) do
-    action = Repo.get!(Action, id)
+    action = owned_action!(conn, id)
 
     # Here we use delete! (with a bang) because we expect
     # it to always work (and if it does not, it will raise).
@@ -109,9 +110,17 @@ defmodule Emotext.Web.ActionController do
   #  put_in conn.params["_format"], Phoenix.Controller.get_format(conn)
   #end
 
-   defp current_user(conn) do
-       Guardian.Plug.current_resource(conn)
-   end
+  defp owned_action!(conn, id) do
+    Repo.get_by!(Action, id: id, user_id: current_user(conn).id)
+  end
+
+  defp owned_params(conn, params) do
+    Map.put(params, "user_id", current_user(conn).id)
+  end
+
+  defp current_user(conn) do
+    Guardian.Plug.current_resource(conn)
+  end
 
   defp authorize_user_action(conn, _) do
    Logger.info conn.params["user_id"]
