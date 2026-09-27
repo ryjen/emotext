@@ -24,8 +24,10 @@
               pkgs.postgresql_16
             ];
 
-            MIX_HOME = ".nix-mix";
-            HEX_HOME = ".nix-hex";
+            shellHook = ''
+              export MIX_HOME="$PWD/.nix-mix"
+              export HEX_HOME="$PWD/.nix-hex"
+            '';
           };
         });
     };
