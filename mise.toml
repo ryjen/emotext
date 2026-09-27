@@ -31,4 +31,9 @@ run = "MIX_ENV=prod mix release"
 
 [tasks.check]
 description = "Canonical local/CI validation"
-depends = ["format", "compile", "test", "assets"]
+run = """
+mise run format
+mise run compile
+mise run test
+mise run assets
+"""
