@@ -28,7 +28,7 @@ defmodule Emotext.UserControllerTest do
     conn
     |> init_test_session(%{})
     |> Guardian.Plug.Pipeline.call(pipeline)
-    |> Guardian.Plug.sign_in(user)
+    |> Emotext.Guardian.Plug.sign_in(user)
   end
 
   defp insert_user!(name) do
@@ -40,3 +40,5 @@ defmodule Emotext.UserControllerTest do
     })
   end
 end
+
+[executed on device: 76a4bdf5fc1b (a7fd9f41-8002-4c03-ac43-498109dd9775)]

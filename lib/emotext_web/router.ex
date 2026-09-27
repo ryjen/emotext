@@ -83,13 +83,20 @@ defmodule Emotext.Web.Router do
     # as long as you are also using SSL (which you should anyway).
     import Phoenix.LiveDashboard.Router
 
-    scope "/dev", Emotext.Web do
+    scope "/dev" do
       pipe_through [:browser, :browser_session, :ensure_auth]
 
       live_dashboard "/dashboard", metrics: Emotext.Web.Telemetry
       forward "/mailbox", Plug.Swoosh.MailboxPreview
+    end
+
+    scope "/dev", Emotext.Web do
+      pipe_through [:browser, :browser_session, :ensure_auth]
+
       get "/admin/import", AdminController, :import, as: :import
       post "/admin/import", AdminController, :import_file, as: :import
     end
   end
 end
+
+[executed on device: 76a4bdf5fc1b (a7fd9f41-8002-4c03-ac43-498109dd9775)]

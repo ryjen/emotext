@@ -38,7 +38,7 @@ defmodule Emotext.Web.UserController do
 
             conn
             |> put_flash(:info, "User created successfully.")
-            |> Guardian.Plug.sign_in(user)
+            |> Emotext.Guardian.Plug.sign_in(user)
             |> redirect(to: "/")
 
           {:error, changeset} ->
@@ -87,7 +87,7 @@ defmodule Emotext.Web.UserController do
     Repo.delete!(user)
 
     conn
-    |> Guardian.Plug.sign_out()
+    |> Emotext.Guardian.Plug.sign_out()
     |> put_flash(:info, "User deleted successfully.")
     |> redirect(to: "/")
   end
@@ -108,3 +108,5 @@ defmodule Emotext.Web.UserController do
     |> redirect(to: "/")
   end
 end
+
+[executed on device: 76a4bdf5fc1b (a7fd9f41-8002-4c03-ac43-498109dd9775)]

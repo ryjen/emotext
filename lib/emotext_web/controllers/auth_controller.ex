@@ -41,7 +41,7 @@ defmodule Emotext.Web.AuthController do
 
         conn
         |> put_flash(:info, "Logged in.")
-        |> Guardian.Plug.sign_in(user)
+        |> Emotext.Guardian.Plug.sign_in(user)
         |> redirect(to: user_path(conn, :index))
 
       nil ->
@@ -78,3 +78,5 @@ defmodule Emotext.Web.AuthController do
     end
   end
 end
+
+[executed on device: 76a4bdf5fc1b (a7fd9f41-8002-4c03-ac43-498109dd9775)]

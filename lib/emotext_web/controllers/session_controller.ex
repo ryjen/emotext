@@ -20,7 +20,7 @@ defmodule Emotext.Web.SessionController do
     Logger.info("Guest #{user.id} #{user.screen_name}")
 
     conn
-    |> Guardian.Plug.sign_in(user)
+    |> Emotext.Guardian.Plug.sign_in(user)
     |> put_flash(:info, "Using guest account, create an account to have your own username.")
     |> redirect(to: "/")
   end
@@ -34,7 +34,7 @@ defmodule Emotext.Web.SessionController do
 
       if changeset.valid? do
         conn
-        |> Guardian.Plug.sign_in(user)
+        |> Emotext.Guardian.Plug.sign_in(user)
         |> redirect(to: "/")
       else
         render(conn, "new.html", changeset: changeset)
@@ -46,7 +46,7 @@ defmodule Emotext.Web.SessionController do
   end
 
   def delete(conn, _params) do
-    Guardian.Plug.sign_out(conn)
+    Emotext.Guardian.Plug.sign_out(conn)
     |> put_flash(:info, "Logged out successfully.")
     |> redirect(to: "/")
   end
@@ -67,3 +67,5 @@ defmodule Emotext.Web.SessionController do
     |> json(%{error: :forbidden})
   end
 end
+
+[executed on device: 76a4bdf5fc1b (a7fd9f41-8002-4c03-ac43-498109dd9775)]

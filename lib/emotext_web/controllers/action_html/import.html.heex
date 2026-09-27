@@ -1,4 +1,4 @@
-<.form :let={f} for={@conn} action="/actions/import" name="import" multipart="true">
+<.form :let={f} for={@conn} action="/actions/import" name="import" multipart={true}>
   <%= if f.errors != [] do %>
     <div class="alert alert-danger">
       <p>Oops, something went wrong! Please check the errors below:</p>
@@ -28,3 +28,5 @@
     </button>
   </div>
 </.form>
+
+[executed on device: 76a4bdf5fc1b (a7fd9f41-8002-4c03-ac43-498109dd9775)]
