@@ -67,13 +67,13 @@
         type="password"
         name={input_name(f, :password)}
         class="form-control"
-        data-minlength="6"
+        data-minlength="8"
         id={input_id(f, :password)}
         aria-describedby="helpBlock"
         placeholder="Enter Password"
       />
       <span id="helpBlock" class="help-block">This will be your password.</span>
-      <div class="help-block">Minimum of 6 characters</div>
+      <div class="help-block">Minimum of 8 characters</div>
       <div class="help-block with-errors"></div>
     </div>
   </div>
@@ -87,7 +87,7 @@
         type="password"
         name={input_name(f, :password_confirmation)}
         class="form-control"
-        data-minlength="6"
+        data-minlength="8"
         id={input_id(f, :password_confirmation)}
         aria-describedby="helpBlock"
         placeholder="Confirm Password"
@@ -103,9 +103,14 @@
         <i class="fa fa-check" aria-hidden="true"></i> Save
       </button>
       <%= if @user_del_path do %>
-        <a class="btn btn-danger" href={@user_del_path} data-confirm="Are you sure?">
+        <.link
+          class="btn btn-danger"
+          href={@user_del_path}
+          method="delete"
+          data-confirm="Are you sure?"
+        >
           <i class="fa fa-trash" aria-hidden="true"></i> Delete
-        </a>
+        </.link>
       <% end %>
     </div>
   </div>

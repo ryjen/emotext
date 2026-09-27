@@ -5,6 +5,8 @@ defmodule Emotext.Web.UserHTML do
 
   embed_templates "user_html/*"
 
+  def current_user(conn), do: Guardian.Plug.current_resource(conn)
+
   def render(template, assigns) do
     Phoenix.View.render(__MODULE__, template, assigns)
   end

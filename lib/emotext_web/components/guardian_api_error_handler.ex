@@ -4,7 +4,7 @@ defmodule Emotext.Web.GuardianAPIErrorHandler do
   @impl Guardian.Plug.ErrorHandler
   def auth_error(conn, {type, _reason}, _opts) do
     status =
-      if type in [:unauthenticated, :invalid_token],
+      if type in [:unauthenticated, :invalid_token, :no_resource_found],
         do: :unauthorized,
         else: :forbidden
 

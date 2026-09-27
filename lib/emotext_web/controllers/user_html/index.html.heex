@@ -18,11 +18,17 @@
 
         <td class="text-right">
           <a href={Routes.user_path(@conn, :show, user)} class="btn btn-default btn-xs">Show</a>
-          <a href={Routes.user_path(@conn, :edit, user)} class="btn btn-default btn-xs">Edit</a>
-          <button type="button" class="btn btn-default btn-xs" data-confirm="Are you sure?">
-            <i class="fa fa-trash" aria-hidden="true"></i>
-            <a href={Routes.user_path(@conn, :delete, user)}>Delete</a>
-          </button>
+          <%= if current_user(@conn).id == user.id do %>
+            <a href={Routes.user_path(@conn, :edit, user)} class="btn btn-default btn-xs">Edit</a>
+            <.link
+              href={Routes.user_path(@conn, :delete, user)}
+              method="delete"
+              class="btn btn-default btn-xs"
+              data-confirm="Are you sure?"
+            >
+              <i class="fa fa-trash" aria-hidden="true"></i> Delete
+            </.link>
+          <% end %>
         </td>
       </tr>
     <% end %>
