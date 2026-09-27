@@ -22,9 +22,9 @@
                 <li><a href={~p"/users/#{current_user(@conn).id}"}>
                 <i class="fa fa-user" aria-hidden="true"></i><%= current_user(@conn).screen_name %></a></li>
                 <li>
-                <a href={~p"/logout"}>
+                <.link href={~p"/logout"} method="delete">
                 <i class="fa fa-sign-out" aria-hidden="true"></i>logout
-                </a></li>
+                </.link></li>
             <% end %>
           <% else %>
             <li>
