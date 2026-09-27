@@ -27,6 +27,27 @@ defmodule Emotext.ActionControllerTest do
     assert json_response(conn, 401)["error"]
   end
 
+  test "rejects malformed bearer tokens", %{conn: conn, owner: owner} do
+    conn =
+      conn
+      |> put_req_header("authorization", "Bearer invalid")
+      |> get("/api/v1/users/#{owner.id}/actions")
+
+    assert json_response(conn, 401)["error"] == "invalid_token"
+  end
+
+  test "rejects expired bearer tokens", %{conn: conn, owner: owner} do
+    {:ok, token, _claims} =
+      Emotext.Guardian.encode_and_sign(owner, %{"exp" => System.system_time(:second) - 60})
+
+    conn =
+      conn
+      |> put_req_header("authorization", "Bearer #{token}")
+      |> get("/api/v1/users/#{owner.id}/actions")
+
+    assert json_response(conn, 401)["error"] == "invalid_token"
+  end
+
   test "rejects a valid token scoped to another user", %{conn: conn, owner: owner, other: other} do
     conn = conn |> authenticate(other) |> get("/api/v1/users/#{owner.id}/actions")
     assert response(conn, 403)
