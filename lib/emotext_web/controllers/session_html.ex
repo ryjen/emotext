@@ -8,9 +8,4 @@ defmodule Emotext.Web.SessionHTML do
   def render(template, assigns) do
     Phoenix.View.render(__MODULE__, template, assigns)
   end
-
-  def render("new.json", assigns) do
-    %{data: assigns.users}
-    |> Jason.encode!()
-  end
 end

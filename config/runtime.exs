@@ -65,9 +65,16 @@ if config_env() == :prod do
     ],
     secret_key_base: secret_key_base
 
+  guardian_secret_key =
+    System.get_env("GUARDIAN_SECRET_KEY") ||
+      raise """
+      environment variable GUARDIAN_SECRET_KEY is missing.
+      Generate an independent high-entropy secret for Guardian token signing.
+      """
+
   config :emotext, Emotext.Guardian,
     issuer: "emotext",
-    secret_key: secret_key_base
+    secret_key: guardian_secret_key
 
   # ## SSL Support
   #

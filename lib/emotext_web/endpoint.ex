@@ -21,9 +21,7 @@ defmodule Emotext.Web.Endpoint do
   #
   # You should set gzip to true if you are running phoenix.digest
   # when deploying your static files in production.
-  plug Plug.Static,
-    at: "/", from: :emotext, gzip: false,
-    only: Emotext.Web.static_paths()
+  plug Plug.Static, at: "/", from: :emotext, gzip: false, only: Emotext.Web.static_paths()
 
   # Code reloading can be explicitly enabled under the
   # :code_reloader configuration of your endpoint.

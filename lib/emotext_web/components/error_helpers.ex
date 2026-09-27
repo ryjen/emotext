@@ -1,7 +1,5 @@
 defmodule Emotext.Web.ErrorHelpers do
-
   use PhoenixHTMLHelpers
-
 
   @doc """
   Generates tag for inlined form input errors.

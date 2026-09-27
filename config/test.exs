@@ -31,3 +31,5 @@ config :logger, level: :warning
 
 # Initialize plugs at runtime for faster test compilation
 config :phoenix, :plug_init_mode, :runtime
+
+config :emotext, Emotext.Guardian, secret_key: "test-only-not-for-production"

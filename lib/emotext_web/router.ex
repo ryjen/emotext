@@ -13,16 +13,28 @@ defmodule Emotext.Web.Router do
   end
 
   pipeline :browser_session do
-    plug Guardian.Plug.VerifySession, module: Emotext.Guardian
-    plug Guardian.Plug.LoadResource, allow_blank: true, module: Emotext.Guardian
+    plug Guardian.Plug.Pipeline,
+      module: Emotext.Guardian,
+      error_handler: Emotext.Web.GuardianErrorHandler
+
+    plug Guardian.Plug.VerifySession
+    plug Guardian.Plug.LoadResource, allow_blank: true
   end
 
   pipeline :ensure_auth do
-    plug Guardian.Plug.EnsureAuthenticated, module: Emotext.Guardian
+    plug Guardian.Plug.EnsureAuthenticated
   end
 
   pipeline :api do
     plug :accepts, ["json"]
+
+    plug Guardian.Plug.Pipeline,
+      module: Emotext.Guardian,
+      error_handler: Emotext.Web.GuardianAPIErrorHandler
+
+    plug Guardian.Plug.VerifyHeader
+    plug Guardian.Plug.LoadResource
+    plug Guardian.Plug.EnsureAuthenticated
   end
 
   scope "/", Emotext.Web do
@@ -38,15 +50,11 @@ defmodule Emotext.Web.Router do
     get "/guest", SessionController, :guest
     post "/login", SessionController, :create, as: :login
     delete "/logout", SessionController, :delete, as: :logout
-    get "/logout", SessionController, :delete, as: :logout
 
     resources "/users", UserController do
       resources "/actions", ActionController
       resources "/aliases", AliasController
     end
-
-    get "/admin/import", AdminController, :import, as: :import
-    post "/admin/import", AdminController, :import_file, as: :import
   end
 
   scope "/auth", alias: Emotext.Web do
@@ -60,8 +68,10 @@ defmodule Emotext.Web.Router do
     pipe_through :api
 
     scope "/v1", as: :v1 do
-      resources "/actions", ActionController, except: [:new, :edit]
-      resources "/aliases", AliasController, except: [:new, :edit]
+      scope "/users/:user_id" do
+        resources "/actions", ActionController, except: [:new, :edit]
+        resources "/aliases", AliasController, except: [:new, :edit]
+      end
     end
   end
 
@@ -74,10 +84,17 @@ defmodule Emotext.Web.Router do
     import Phoenix.LiveDashboard.Router
 
     scope "/dev" do
-      pipe_through :browser
+      pipe_through [:browser, :browser_session, :ensure_auth]
 
       live_dashboard "/dashboard", metrics: Emotext.Web.Telemetry
       forward "/mailbox", Plug.Swoosh.MailboxPreview
+    end
+
+    scope "/dev", Emotext.Web do
+      pipe_through [:browser, :browser_session, :ensure_auth]
+
+      get "/admin/import", AdminController, :import, as: :import
+      post "/admin/import", AdminController, :import_file, as: :import
     end
   end
 end

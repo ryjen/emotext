@@ -6,7 +6,8 @@ defmodule Emotext.Web.GuardianErrorHandler do
 
   @impl Guardian.Plug.ErrorHandler
   def auth_error(conn, {type, reason}, _opts) do
-    Logger.info "authorization #{type} #{reason}"
+    Logger.info("authorization #{type} #{reason}")
+
     conn
     |> Phoenix.Controller.redirect(to: login_path(conn, :new))
   end

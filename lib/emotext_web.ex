@@ -40,11 +40,10 @@ defmodule Emotext.Web do
     end
   end
 
-
   def controller do
     quote do
       use Phoenix.Controller,
-        formats: [:html],
+        formats: [:html, :json],
         layouts: [html: {Emotext.Web.Layouts, :app}]
 
       alias Emotext.Repo
@@ -82,8 +81,7 @@ defmodule Emotext.Web do
       embed_templates "html/*"
 
       # Import convenience functions from controllers
-      import Phoenix.Controller,
-        only: [get_csrf_token: 0, view: 1, template: 1]
+      import Phoenix.Controller, only: [get_csrf_token: 0]
 
       # Include general helpers for rendering HTML
       unquote(html_helpers())
@@ -99,6 +97,7 @@ defmodule Emotext.Web do
 
       # Shortcut for generating JS commands
       alias Phoenix.LiveView.JS
+      alias Emotext.Web.Router.Helpers, as: Routes
 
       # Routes generation with the ~p sigil
       unquote(verified_routes())

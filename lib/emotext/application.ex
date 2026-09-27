@@ -6,7 +6,7 @@ defmodule Emotext.Application do
     children = [
       Emotext.Web.Telemetry,
       Emotext.Repo,
-      {DNSCluster, query: Application.get_env(:tmp, :dns_cluster_query) || :ignore},
+      {DNSCluster, query: Application.get_env(:emotext, :dns_cluster_query) || :ignore},
       {Phoenix.PubSub, name: Emotext.Web.PubSub},
       # Start the Finch HTTP client for sending emails
       {Finch, name: Emotext.Finch},

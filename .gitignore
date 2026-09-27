@@ -16,3 +16,7 @@ erl_crash.dump
 # this depending on your deployment strategy.
 #/priv/static/
 dump
+
+/.nix-mix
+/.nix-hex
+/.mise-cache

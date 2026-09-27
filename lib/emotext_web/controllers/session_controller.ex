@@ -5,28 +5,22 @@ defmodule Emotext.Web.SessionController do
   alias Emotext.UserQuery
   alias Emotext.Guardian
 
-  plug(:scrub_params, "user" when action in [:create])
-
   def new(conn, _params) do
     changeset = User.login_changeset(%User{})
-    conn
-    |> put_view(Emotext.SessionView)
-    |> render("new.html", changeset: changeset)
+    render(conn, :new, changeset: changeset)
   end
 
   def guest(conn, _params) do
-    user = User.from_username("guest")
-
-    if !user do
-      user = Repo.insert!(%User{username: "guest", email: "guest@email.com", gender: :unknown})
-    end
+    user =
+      User.from_username("guest") ||
+        Repo.insert!(%User{username: "guest", email: "guest@email.com", gender: :unknown})
 
     guest_name = "guest-#{Randomize.random(9999)}"
     user = User.change_screen_name(user, guest_name)
     Logger.info("Guest #{user.id} #{user.screen_name}")
 
     conn
-    |> Guardian.Plug.sign_in(user)
+    |> Emotext.Guardian.Plug.sign_in(user)
     |> put_flash(:info, "Using guest account, create an account to have your own username.")
     |> redirect(to: "/")
   end
@@ -40,7 +34,7 @@ defmodule Emotext.Web.SessionController do
 
       if changeset.valid? do
         conn
-        |> Guardian.Plug.sign_in(user)
+        |> Emotext.Guardian.Plug.sign_in(user)
         |> redirect(to: "/")
       else
         render(conn, "new.html", changeset: changeset)
@@ -52,7 +46,7 @@ defmodule Emotext.Web.SessionController do
   end
 
   def delete(conn, _params) do
-    Guardian.Plug.sign_out(conn)
+    Emotext.Guardian.Plug.sign_out(conn)
     |> put_flash(:info, "Logged out successfully.")
     |> redirect(to: "/")
   end

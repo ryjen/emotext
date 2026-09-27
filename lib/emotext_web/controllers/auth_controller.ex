@@ -1,71 +1,80 @@
 defmodule Emotext.Web.AuthController do
   use Emotext.Web, :controller
 
-  alias Emotext.User
-  alias Emotext.UserQuery
+  alias Emotext.{Repo, User, UserQuery}
 
-  @doc """
-  This action is reached via `/auth` and redirects to the OAuth2 provider
-  based on the chosen strategy.
-  """
-  def github(conn, _params) do
-    redirect conn, external: GitHub.authorize_url!
-  end
+  def github(conn, _params), do: begin_oauth(conn, &GitHub.authorize_url!/1)
+  def facebook(conn, _params), do: begin_oauth(conn, &Facebook.authorize_url!/1)
 
-  def facebook(conn, _params) do
-    redirect conn, external: Facebook.authorize_url!
-  end
+  def callback(conn, %{"provider" => provider, "code" => code, "state" => state}) do
+    with :ok <- verify_oauth_state(conn, state) do
+      conn = delete_session(conn, :oauth_state)
 
-  @doc """
-  This action is reached via `/auth/callback` is the the callback URL that
-  the OAuth2 provider will redirect the user back to with a `code` that will
-  be used to request an access token. The access token will then be used to
-  access protected resources on behalf of the user.
-  """
-  def callback(conn, %{"provider" => provider, "code" => code}) do
-    apply(__MODULE__, String.to_atom("#{provider}_callback"), [conn, code])
-  end
-
-  def github_callback(conn, code) do
-    # Exchange an auth code for an access token
-    token = GitHub.get_token!(code: code)
-
-    # Request the user's data with the access token
-    userinfo = OAuth2.Client.get!(token, "/user")
-
-    conn
-    |> put_session(:access_token, token.access_token)
-
-    apply(__MODULE__, :login, [conn, userinfo])
-  end
-
-  def login(conn, userinfo) do
-    IO.puts Poison.Encoder.encode(userinfo, [])
-    user = Repo.one(UserQuery.by_login_or_email(userinfo["email"] || userinfo["login"] || ""))
-    if user do
-      changeset = User.login_changeset(user, userinfo)
-      if changeset.valid? do
-        conn
-        |> put_flash(:info, "Logged in.")
-        |> Guardian.Plug.sign_in(user, :token, perms: %{ default: Guardian.Permissions.max })
-        |> redirect(to: user_path(conn, :index))
-      else
-        redirect(conn, to: "/users/new", changeset: changeset)
+      case provider do
+        "github" -> github_callback(conn, code)
+        "facebook" -> facebook_callback(conn, code)
+        _ -> send_resp(conn, :bad_request, "Unsupported OAuth provider")
       end
     else
-      changeset = User.login_changeset(%User{}) |> Ecto.Changeset.add_error(:login, "not found")
-      redirect(conn, to: "/users/new", changeset: changeset)
+      _ -> send_resp(conn, :bad_request, "Invalid OAuth state")
     end
+  end
+
+  def callback(conn, _params), do: send_resp(conn, :bad_request, "Invalid OAuth callback")
+
+  def github_callback(conn, code) do
+    token = GitHub.get_token!(code: code)
+    userinfo = OAuth2.Client.get!(token, "/user").body
+    login(conn, userinfo)
   end
 
   def facebook_callback(conn, code) do
     token = Facebook.get_token!(code: code)
+    userinfo = OAuth2.Client.get!(token, "/me?fields=id,name,email").body
+    login(conn, userinfo)
+  end
 
-    userinfo = OAuth2.Client.get!(token, "/user")
+  def login(conn, %{"email" => email}) when is_binary(email) and email != "" do
+    case Repo.one(UserQuery.by_email(email)) do
+      %User{} = user ->
+        user = User.maybe_update_screen_name(user)
+
+        conn
+        |> put_flash(:info, "Logged in.")
+        |> Emotext.Guardian.Plug.sign_in(user)
+        |> redirect(to: user_path(conn, :index))
+
+      nil ->
+        conn
+        |> put_flash(:error, "No local account is linked to that verified email.")
+        |> redirect(to: "/users/new")
+    end
+  end
+
+  def login(conn, _userinfo) do
+    conn
+    |> put_flash(:error, "The OAuth provider did not return a usable email address.")
+    |> redirect(to: "/users/new")
+  end
+
+  defp begin_oauth(conn, authorize_url) do
+    state =
+      32
+      |> :crypto.strong_rand_bytes()
+      |> Base.url_encode64(padding: false)
 
     conn
-    |> put_session(:access_token, token.access_token)
+    |> put_session(:oauth_state, state)
+    |> redirect(external: authorize_url.(state: state))
+  end
 
-    apply(__MODULE__, :login, [conn, userinfo])
+  defp verify_oauth_state(conn, state) when is_binary(state) do
+    case get_session(conn, :oauth_state) do
+      expected when is_binary(expected) and byte_size(expected) == byte_size(state) ->
+        if Plug.Crypto.secure_compare(expected, state), do: :ok, else: :error
+
+      _ ->
+        :error
+    end
   end
 end
