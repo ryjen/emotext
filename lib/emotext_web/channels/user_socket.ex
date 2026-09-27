@@ -5,7 +5,7 @@ defmodule Emotext.Web.UserSocket do
   channel "rooms:*", Emotext.Web.RoomChannel
 
   ## Transports
-  #transport :websocket, Phoenix.Transports.WebSocket
+  # transport :websocket, Phoenix.Transports.WebSocket
 
   # transport :longpoll, Phoenix.Transports.LongPoll
 

@@ -18,7 +18,8 @@ defmodule Emotext.AliasControllerTest do
   end
 
   test "rejects cross-user alias access", %{conn: conn, owner: owner, other: other} do
-    alias_record = Repo.insert!(%Alias{name: ":wave", action_id: owner_action_id(owner), user_id: owner.id})
+    alias_record =
+      Repo.insert!(%Alias{name: ":wave", action_id: owner_action_id(owner), user_id: owner.id})
 
     conn =
       conn

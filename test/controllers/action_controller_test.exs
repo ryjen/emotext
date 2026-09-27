@@ -19,10 +19,7 @@ defmodule Emotext.ActionControllerTest do
     owner = insert_user!("owner")
     other = insert_user!("other")
 
-    {:ok,
-     conn: put_req_header(conn, "accept", "application/json"),
-     owner: owner,
-     other: other}
+    {:ok, conn: put_req_header(conn, "accept", "application/json"), owner: owner, other: other}
   end
 
   test "rejects anonymous API access", %{conn: conn, owner: owner} do
@@ -35,7 +32,11 @@ defmodule Emotext.ActionControllerTest do
     assert response(conn, 403)
   end
 
-  test "forces created actions to the authenticated owner", %{conn: conn, owner: owner, other: other} do
+  test "forces created actions to the authenticated owner", %{
+    conn: conn,
+    owner: owner,
+    other: other
+  } do
     params = Map.put(@action_attrs, "user_id", other.id)
 
     conn =

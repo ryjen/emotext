@@ -85,7 +85,8 @@
       default: true
     ],
     "emotext.Elixir.Emotext.Web.Endpoint.render_errors.accepts": [
-      doc: "Provide documentation for emotext.Elixir.Emotext.Web.Endpoint.render_errors.accepts here.",
+      doc:
+        "Provide documentation for emotext.Elixir.Emotext.Web.Endpoint.render_errors.accepts here.",
       to: "emotext.Elixir.Emotext.Web.Endpoint.render_errors.accepts",
       datatype: [
         list: :binary
@@ -150,7 +151,8 @@
       default: nil
     ],
     "emotext.Elixir.Emotext.Web.Endpoint.cache_static_manifest": [
-      doc: "Provide documentation for emotext.Elixir.Emotext.Web.Endpoint.cache_static_manifest here.",
+      doc:
+        "Provide documentation for emotext.Elixir.Emotext.Web.Endpoint.cache_static_manifest here.",
       to: "emotext.Elixir.Emotext.Web.Endpoint.cache_static_manifest",
       datatype: :binary,
       default: "priv/static/manifest.json"
@@ -174,6 +176,5 @@
       default: 20
     ]
   ],
-  translations: [
-  ]
+  translations: []
 ]

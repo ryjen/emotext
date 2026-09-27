@@ -3,18 +3,18 @@ defmodule Emotext.Web.UsersChannel do
 
   @impl true
   def join(_room, %{"guardian_token" => _token}, socket) do
-    { :ok, %{ message: "Joined" }, socket }
+    {:ok, %{message: "Joined"}, socket}
   end
 
   @impl true
   def join(_room, _, _socket) do
-    { :error,  :authentication_required }
+    {:error, :authentication_required}
   end
 
   @impl true
   def handle_in("ping", _payload, socket) do
     user = socket.assigns.current_user
-    broadcast socket, "pong", %{ message: "pong", from: user.email }
-    { :noreply, socket }
+    broadcast(socket, "pong", %{message: "pong", from: user.email})
+    {:noreply, socket}
   end
 end

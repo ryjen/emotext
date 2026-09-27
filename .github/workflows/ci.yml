@@ -46,15 +46,5 @@ jobs:
       - name: Install project dependencies
         run: nix develop --command mise run setup
 
-      - name: Capture formatter baseline
-        shell: bash
-        run: |
-          nix develop --command mix format
-          files="$(git diff --name-only)"
-          echo FORMAT_ARCHIVE_BEGIN
-          tar -czf - $files | base64 -w 76
-          echo FORMAT_ARCHIVE_END
-          git reset --hard HEAD
-
       - name: Validate
         run: nix develop --command mise run check

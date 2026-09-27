@@ -1,20 +1,27 @@
-
 <h2>Help</h2>
 
 <ol>
-	<li><a href="#about">about</a></li>
-	<li><a href="#actions">emotes</a></li>
-	<li><a href="#aliases">aliases</a></li>
+  <li><a href="#about">about</a></li>
+  <li><a href="#actions">emotes</a></li>
+  <li><a href="#aliases">aliases</a></li>
 </ol>
-
 
 <h3><a name="about">about</a></h3>
 
-<p>emotext is a chat app that uses commands for textual representation of feelings or emotions.  It is built on a high performance erlang/elixir/phoenix/mongodb stack.</p>
+<p>
+  emotext is a chat app that uses commands for textual representation of feelings or emotions.  It is built on a high performance erlang/elixir/phoenix/mongodb stack.
+</p>
 
-<p>As this is just a proof of concept I borrowed the idea and data from ROM MUD. Here is the <a data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">original license</a>.</p>
+<p>
+  As this is just a proof of concept I borrowed the idea and data from ROM MUD. Here is the <a
+    data-toggle="collapse"
+    href="#collapseExample"
+    aria-expanded="false"
+    aria-controls="collapseExample"
+  >original license</a>.
+</p>
 <div class="collapse" id="collapseExample">
-<pre>
+  <pre>
 Merc Release 2.1
 Sunday 01 August 1993
 
@@ -64,16 +71,21 @@ them, feel free to run some other software, or write your own.
 
 <h3><a name="commands">emotes</a></h3>
 
-<p>emotes can be entered using a slash character (<b>/</b>).  To emote a smile, you would type <b>/smile</b>.</p>
+<p>
+  emotes can be entered using a slash character (<b>/</b>).  To emote a smile, you would type <b>/smile</b>.
+</p>
 
-<p>emotes can be used with other people in the app.  For example if you want to smile at a user named 'Fred' you would type <b>/smile fred</b>.</p>
+<p>
+  emotes can be used with other people in the app.  For example if you want to smile at a user named 'Fred' you would type <b>/smile fred</b>.
+</p>
 
-<p>assuming your username is 'Bob', the result would be: <br/>
-	<ul>
-		<li>you would see <b>You smile happily at Fred.</b></li>
-		<li>fred would see <b>Bob smiles happily at you.</b></li>
-		<li>anyone else in the app would see <b>Bob smiles happily at Fred.</b></li>
-	</ul>
+<p>
+  assuming your username is 'Bob', the result would be: <br />
+  <ul>
+    <li>you would see <b>You smile happily at Fred.</b></li>
+    <li>fred would see <b>Bob smiles happily at you.</b></li>
+    <li>anyone else in the app would see <b>Bob smiles happily at Fred.</b></li>
+  </ul>
 </p>
 
 <p>you can also click to perform an emote in the sidebars.</p>
@@ -83,19 +95,20 @@ them, feel free to run some other software, or write your own.
 <p>The following aliases are supported for emoting:</p>
 
 <table class="alias-table table table-bordered table-striped">
-<tr>
-<th>emotext</th><th>aliases</th>
-</tr>
-<%= for key <- Map.keys(@aliases) do %>
   <tr>
-  <td class="title"><%= key %></td><td>
-  <%= for a <- Map.get(@aliases, key) do %>
-    <span><%= a.name %></span>
-  <% end %>
-  </td>
+    <th>emotext</th>
+    <th>aliases</th>
   </tr>
-<% end %>
-
+  <%= for key <- Map.keys(@aliases) do %>
+    <tr>
+      <td class="title"><%= key %></td>
+      <td>
+        <%= for a <- Map.get(@aliases, key) do %>
+          <span><%= a.name %></span>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
 </table>
 
-<br/><br/>
+<br /><br />

@@ -1,5 +1,4 @@
 defmodule Emotext.Web.AliasJSON do
-
   def index(%{aliases: aliases}) do
     %{data: for(alias <- aliases, do: data(alias))}
   end
@@ -17,7 +16,7 @@ defmodule Emotext.Web.AliasJSON do
       id: alias.id,
       name: alias.name,
       action_id: alias.action_id,
-      user_id: alias.user_id,
+      user_id: alias.user_id
     }
   end
 end

@@ -27,23 +27,25 @@ defmodule Emotext.Web.UserController do
       user = Repo.one(UserQuery.by_email(user_params["email"]))
 
       if user do
-          conn
-          |> put_flash(:error, "User already exists.")
-          |> render("new.html", changeset: changeset)
+        conn
+        |> put_flash(:error, "User already exists.")
+        |> render("new.html", changeset: changeset)
       else
-          case Repo.insert(changeset) do
-            {:ok, user} ->
-              user = User.maybe_update_screen_name(user)
-              Logger.debug "Created user #{user.screen_name}"
-              conn
-              |> put_flash(:info, "User created successfully.")
-              |> Guardian.Plug.sign_in(user)
-              |> redirect(to: "/")
-            {:error, changeset} ->
-                conn
-                |> put_flash(:error, "unable to create user.")
-                |> render("new.html", changeset: changeset)
-            end
+        case Repo.insert(changeset) do
+          {:ok, user} ->
+            user = User.maybe_update_screen_name(user)
+            Logger.debug("Created user #{user.screen_name}")
+
+            conn
+            |> put_flash(:info, "User created successfully.")
+            |> Guardian.Plug.sign_in(user)
+            |> redirect(to: "/")
+
+          {:error, changeset} ->
+            conn
+            |> put_flash(:error, "unable to create user.")
+            |> render("new.html", changeset: changeset)
+        end
       end
     else
       render(conn, "new.html", changeset: changeset)

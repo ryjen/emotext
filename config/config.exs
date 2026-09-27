@@ -14,7 +14,7 @@ config :emotext, Emotext.Web.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "OsiFH81B7fpw7o/Q94ye6S4NqfdeZLmAS1OEyyWXGoeWpIzlrgyUXplv6HcOuEBP",
   adapter: Bandit.PhoenixAdapter,
-  version: Mix.Project.config[:version],
+  version: Mix.Project.config()[:version],
   render_errors: [
     formats: [html: Emotext.Web.ErrorHTML, json: Emotext.Web.ErrorJSON],
     layout: false
@@ -57,9 +57,7 @@ config :emotext, Emotext.Guardian,
   verify_issuer: true,
   permissions: %{default: [:read_profile, :write_profile]}
 
-
-config :comeonin, :bcrypt_phoenix_ecto,
-  log_rounds: 12
+config :comeonin, :bcrypt_phoenix_ecto, log_rounds: 12
 
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
@@ -67,11 +65,11 @@ config :phoenix, :json_library, Jason
 config :sass,
   version: "1.55.0",
   tmp: [
-    args: ~w(css/emotext.scss --no-source-map --output-style compressed --output-file ../priv/static/assets/emotext.css),
+    args:
+      ~w(css/emotext.scss --no-source-map --output-style compressed --output-file ../priv/static/assets/emotext.css),
     cd: Path.expand("../assets", __DIR__)
   ]
 
-
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
-import_config "#{Mix.env}.exs"
+import_config "#{Mix.env()}.exs"

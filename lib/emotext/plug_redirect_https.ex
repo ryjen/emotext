@@ -1,4 +1,3 @@
-
 defmodule PlugRedirectHttps do
   require Logger
 
@@ -31,15 +30,19 @@ defmodule PlugRedirectHttps do
   """
   def call(conn, _opts) do
     conn
-    |> get_forwarded_protocol 
+    |> get_forwarded_protocol
     |> redirect_to_https?
     |> handle_request(conn)
   end
 
   defp handle_request(false, conn) do
-    Logger.debug("not redirecting to https proxy url. X-Forwarded-Proto is: #{get_forwarded_protocol(conn)}")
+    Logger.debug(
+      "not redirecting to https proxy url. X-Forwarded-Proto is: #{get_forwarded_protocol(conn)}"
+    )
+
     conn
   end
+
   defp handle_request(true, conn) do
     Logger.debug("redirecting to https proxy url")
     redirect_to_https(conn)
@@ -47,22 +50,22 @@ defmodule PlugRedirectHttps do
 
   defp get_forwarded_protocol(conn) do
     Plug.Conn.get_req_header(conn, @proto_header)
-    |> List.first
+    |> List.first()
   end
 
   defp get_forwarded_host(conn) do
     Plug.Conn.get_req_header(conn, @host_header)
-    |> List.first
+    |> List.first()
   end
 
-  defp redirect_to_https?("http"), do: Mix.env == :prod
+  defp redirect_to_https?("http"), do: Mix.env() == :prod
   defp redirect_to_https?(_proto), do: false
-  
+
   defp redirect_to_https(conn) do
     conn
     |> Plug.Conn.put_resp_header("location", get_current_url_as_proxied_https(conn))
     |> Plug.Conn.resp(302, "")
-    |> Plug.Conn.halt
+    |> Plug.Conn.halt()
   end
 
   defp get_current_url_as_proxied_https(conn) do
@@ -75,5 +78,4 @@ defmodule PlugRedirectHttps do
 
   defp https_url_with_path(host, path, ""), do: "https://#{host}#{path}"
   defp https_url_with_path(host, path, query), do: "https://#{host}#{path}?#{query}"
-
 end

@@ -10,22 +10,22 @@
     </tr>
   </thead>
   <tbody>
-<%= for user <- @users do %>
-    <tr>
-      <td><%= user.email %></td>
-      <td><%= user.username %></td>
-      <td><%= gender_name(user) %></td>
+    <%= for user <- @users do %>
+      <tr>
+        <td><%= user.email %></td>
+        <td><%= user.username %></td>
+        <td><%= gender_name(user) %></td>
 
-      <td class="text-right">
-        <a href={Routes.user_path(@conn, :show, user)} class="btn btn-default btn-xs">Show</a>
-        <a href={Routes.user_path(@conn, :edit, user)} class="btn btn-default btn-xs">Edit</a>
-        <button type="button" class="btn btn-default btn-xs" data-confirm="Are you sure?">
-          <i class="fa fa-trash" aria-hidden="true"></i> 
-          <a href={Routes.user_path(@conn, :delete, user)}>Delete</a>
-        </button>
-      </td>
-    </tr>
-<% end %>
+        <td class="text-right">
+          <a href={Routes.user_path(@conn, :show, user)} class="btn btn-default btn-xs">Show</a>
+          <a href={Routes.user_path(@conn, :edit, user)} class="btn btn-default btn-xs">Edit</a>
+          <button type="button" class="btn btn-default btn-xs" data-confirm="Are you sure?">
+            <i class="fa fa-trash" aria-hidden="true"></i>
+            <a href={Routes.user_path(@conn, :delete, user)}>Delete</a>
+          </button>
+        </td>
+      </tr>
+    <% end %>
   </tbody>
 </table>
 

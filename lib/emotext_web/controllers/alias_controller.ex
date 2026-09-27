@@ -88,7 +88,9 @@ defmodule Emotext.Web.AliasController do
     if get_format(conn) == "json" do
       conn |> put_status(:unprocessable_entity) |> json(%{errors: errors(changeset)})
     else
-      render(conn, template,
+      render(
+        conn,
+        template,
         Keyword.merge(assigns,
           changeset: changeset,
           actions: select_actions(current_user(conn))
