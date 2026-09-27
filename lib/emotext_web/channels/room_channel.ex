@@ -7,7 +7,6 @@ defmodule Emotext.Web.RoomChannel do
   alias Emotext.AliasQuery
   alias Emotext.UserQuery
   alias Emotext.History
-  alias Emotext.Action
   alias Emotext.Repo
   import Ecto.Query, only: [from: 2]
 
@@ -229,7 +228,7 @@ defmodule Emotext.Web.RoomChannel do
 
   def handle_command(socket, body, user) do
     if body == "/?" do
-      actions = Repo.all(Action)
+      actions = Repo.all(ActionQuery.available_to_user(user))
 
       Enum.each(Enum.chunk_every(actions, 5), fn a ->
         sys_msg(

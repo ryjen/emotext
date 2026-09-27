@@ -12,7 +12,6 @@ config :emotext,
 # Configures the endpoint
 config :emotext, Emotext.Web.Endpoint,
   url: [host: "localhost"],
-  secret_key_base: "OsiFH81B7fpw7o/Q94ye6S4NqfdeZLmAS1OEyyWXGoeWpIzlrgyUXplv6HcOuEBP",
   adapter: Bandit.PhoenixAdapter,
   version: Mix.Project.config()[:version],
   render_errors: [
