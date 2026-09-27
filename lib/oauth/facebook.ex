@@ -5,8 +5,8 @@ defmodule Facebook do
   def new do
     OAuth2.Client.new(strategy: __MODULE__, client_id: System.fetch_env!("FACEBOOK_CLIENT_ID"), client_secret: System.fetch_env!("FACEBOOK_CLIENT_SECRET"), redirect_uri: System.get_env("FACEBOOK_REDIRECT_URI", "http://localhost:4000/auth/callback/facebook"), site: "https://graph.facebook.com", authorize_url: "https://www.facebook.com/dialog/oauth", token_url: "https://graph.facebook.com/v2.3/oauth/access_token")
   end
-  def authorize_url!(params \ []), do: new() |> put_param(:scope, "email") |> OAuth2.Client.authorize_url!(params)
-  def get_token!(params \ [], _headers \ []), do: OAuth2.Client.get_token!(new(), params)
+  def authorize_url!(params \\ []), do: new() |> put_param(:scope, "email") |> OAuth2.Client.authorize_url!(params)
+  def get_token!(params \\ [], _headers \\ []), do: OAuth2.Client.get_token!(new(), params)
   @impl true
   def authorize_url(client, params), do: AuthCode.authorize_url(client, params)
   @impl true
