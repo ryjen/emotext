@@ -37,7 +37,10 @@ defmodule Emotext.RoomChannelTest do
     assert :error = connect(UserSocket, %{"guardian_token" => "invalid"})
   end
 
-  test "authenticated message input is persisted and echoed to the sender", %{token: token, user: user} do
+  test "authenticated message input is persisted and echoed to the sender", %{
+    token: token,
+    user: user
+  } do
     socket = join_lobby(token)
 
     push(socket, "msg:input", %{"body" => "hello lobby"})
