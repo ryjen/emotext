@@ -11,11 +11,9 @@ defmodule Emotext.Web.SessionController do
   end
 
   def guest(conn, _params) do
-    user = User.from_username("guest")
-
-    if !user do
-      user = Repo.insert!(%User{username: "guest", email: "guest@email.com", gender: :unknown})
-    end
+    user =
+      User.from_username("guest") ||
+        Repo.insert!(%User{username: "guest", email: "guest@email.com", gender: :unknown})
 
     guest_name = "guest-#{Randomize.random(9999)}"
     user = User.change_screen_name(user, guest_name)

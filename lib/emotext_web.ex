@@ -81,8 +81,7 @@ defmodule Emotext.Web do
       embed_templates "html/*"
 
       # Import convenience functions from controllers
-      import Phoenix.Controller,
-        only: [get_csrf_token: 0, view: 1, template: 1]
+      import Phoenix.Controller, only: [get_csrf_token: 0]
 
       # Include general helpers for rendering HTML
       unquote(html_helpers())

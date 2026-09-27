@@ -99,9 +99,12 @@ defmodule Emotext.Web.ActionController do
   end
 
   defp authorize_user_scope(conn, _) do
-    case current_user(conn) do
-      %{id: id} when id == conn.params["user_id"] -> conn
-      _ -> conn |> send_resp(:forbidden, "Forbidden") |> halt()
+    user = current_user(conn)
+
+    if user && user.id == conn.params["user_id"] do
+      conn
+    else
+      conn |> send_resp(:forbidden, "Forbidden") |> halt()
     end
   end
 end
