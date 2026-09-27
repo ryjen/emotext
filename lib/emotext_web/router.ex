@@ -41,7 +41,6 @@ defmodule Emotext.Web.Router do
     get "/guest", SessionController, :guest
     post "/login", SessionController, :create, as: :login
     delete "/logout", SessionController, :delete, as: :logout
-    get "/logout", SessionController, :delete, as: :logout
 
     resources "/users", UserController do
       resources "/actions", ActionController
