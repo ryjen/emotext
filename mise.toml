@@ -1,5 +1,3 @@
-[Reading 34 lines from start (total: 34 lines, 0 remaining)]
-
 [tasks.setup]
 description = "Install Hex/Rebar dependencies and project dependencies"
 run = """

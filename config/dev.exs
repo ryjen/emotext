@@ -1,5 +1,3 @@
-[Reading 83 lines from start (total: 83 lines, 0 remaining)]
-
 import Config
 
 # Configure your database

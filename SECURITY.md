@@ -1,5 +1,3 @@
-[Reading 20 lines from start (total: 20 lines, 0 remaining)]
-
 # Security
 
 Do not commit production credentials, signing keys, access tokens, or private user data.

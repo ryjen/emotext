@@ -1,5 +1,3 @@
-[Reading 124 lines from start (total: 124 lines, 0 remaining)]
-
 # Emotext
 
 Emotext is an Elixir/Phoenix chat application inspired by IRC and 1990s Multi-User Dungeons (MUDs). It began as an experiment in moving from Rails-style object-oriented application development toward functional programming and the BEAM concurrency model.

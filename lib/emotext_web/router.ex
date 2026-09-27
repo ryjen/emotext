@@ -1,5 +1,3 @@
-[Reading 87 lines from start (total: 87 lines, 0 remaining)]
-
 defmodule Emotext.Web.Router do
   use Emotext.Web, :router
 

@@ -1,5 +1,3 @@
-[Reading 32 lines from start (total: 32 lines, 0 remaining)]
-
 {
   description = "Emotext development and CI environment";
 

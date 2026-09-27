@@ -1,5 +1,3 @@
-[Reading 70 lines from start (total: 70 lines, 0 remaining)]
-
 defmodule Emotext.Web.AuthController do
   use Emotext.Web, :controller
 

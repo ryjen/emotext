@@ -1,5 +1,3 @@
-[Reading 14 lines from start (total: 14 lines, 0 remaining)]
-
 defmodule GitHub do
   @moduledoc "OAuth2 strategy for GitHub."
   use OAuth2.Strategy
