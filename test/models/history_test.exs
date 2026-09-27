@@ -1,18 +1,13 @@
 defmodule Emotext.HistoryTest do
-  use Emotext.ModelCase
+  use ExUnit.Case, async: true
 
   alias Emotext.History
 
-  @valid_attrs %{user_id: "some content", value: "some content"}
-  @invalid_attrs %{}
+  test "supports message-only and action history shapes" do
+    message = History.changeset(%History{}, %{message: "hello", user_screen_name: "tester"})
+    action = History.changeset(%History{}, %{action_id: Ecto.UUID.generate(), user_screen_name: "tester"})
 
-  test "changeset with valid attributes" do
-    changeset = History.changeset(%History{}, @valid_attrs)
-    assert changeset.valid?
-  end
-
-  test "changeset with invalid attributes" do
-    changeset = History.changeset(%History{}, @invalid_attrs)
-    refute changeset.valid?
+    assert message.valid?
+    assert action.valid?
   end
 end

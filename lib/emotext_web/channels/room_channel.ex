@@ -27,15 +27,15 @@ defmodule Emotext.Web.RoomChannel do
     {:error, %{reason: "unauthorized"}}
   end
 
-  def gender_str(str, user) do
-      if Map.get(str, "all") do
-          Map.get(str, "all")
-      else
-          cond do
-             true -> Map.get(str, "neutral")
-             user.gender == :male -> Map.get(str, "male")
-             user.gender == :female -> Map.get(str, "female")
-         end
+  def gender_str(nil, _user), do: nil
+  def gender_str(str, _user) when is_binary(str), do: str
+
+  def gender_str(str, user) when is_map(str) do
+    Map.get(str, "all") ||
+      case user.gender do
+        :male -> Map.get(str, "male") || Map.get(str, "neutral")
+        :female -> Map.get(str, "female") || Map.get(str, "neutral")
+        _ -> Map.get(str, "neutral")
       end
   end
   def action_str(str, user) do

@@ -1,18 +1,25 @@
 defmodule Emotext.ActionTest do
-  use Emotext.ModelCase
+  use ExUnit.Case, async: true
 
   alias Emotext.Action
 
-  @valid_attrs %{name: "some content", others_auto: "some content", others_found: "some content", others_no_arg: "some content", self_auto: "some content", self_found: "some content", self_no_arg: "some content", self_not_found: "some content", vict_found: "some content"}
-  @invalid_attrs %{}
+  @valid_attrs %{
+    name: "smile",
+    self_no_arg: "You smile.",
+    others_no_arg: "$n smiles.",
+    self_found: "You smile at $N.",
+    others_found: "$n smiles at $N.",
+    vict_found: "$n smiles at you.",
+    self_not_found: "They are not here.",
+    self_auto: "You smile at yourself.",
+    others_auto: "$n smiles at themself."
+  }
 
-  test "changeset with valid attributes" do
-    changeset = Action.changeset(%Action{}, @valid_attrs)
-    assert changeset.valid?
+  test "accepts the PostgreSQL-backed string action representation" do
+    assert Action.changeset(%Action{}, @valid_attrs).valid?
   end
 
-  test "changeset with invalid attributes" do
-    changeset = Action.changeset(%Action{}, @invalid_attrs)
-    refute changeset.valid?
+  test "requires the complete action contract" do
+    refute Action.changeset(%Action{}, %{name: "smile"}).valid?
   end
 end

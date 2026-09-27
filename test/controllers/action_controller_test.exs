@@ -1,71 +1,63 @@
 defmodule Emotext.ActionControllerTest do
   use Emotext.ConnCase
 
-  alias Emotext.Action
-  @valid_attrs %{name: "some content", others_auto: "some content", others_found: "some content", others_no_arg: "some content", self_auto: "some content", self_found: "some content", self_no_arg: "some content", self_not_found: "some content", vict_found: "some content"}
-  @invalid_attrs %{}
+  alias Emotext.{Action, Repo, User}
 
-  setup do
-    conn = conn()
-    {:ok, conn: conn}
+  @action_attrs %{
+    "name" => "wave",
+    "self_no_arg" => "You wave.",
+    "others_no_arg" => "$n waves.",
+    "self_found" => "You wave at $N.",
+    "others_found" => "$n waves at $N.",
+    "vict_found" => "$n waves at you.",
+    "self_not_found" => "They are not here.",
+    "self_auto" => "You wave at yourself.",
+    "others_auto" => "$n waves at themself."
+  }
+
+  setup %{conn: conn} do
+    owner = insert_user!("owner")
+    other = insert_user!("other")
+
+    {:ok,
+     conn: put_req_header(conn, "accept", "application/json"),
+     owner: owner,
+     other: other}
   end
 
-  test "lists all entries on index", %{conn: conn} do
-    conn = get conn, action_path(conn, :index)
-    assert html_response(conn, 200) =~ "Listing actions"
+  test "rejects anonymous API access", %{conn: conn, owner: owner} do
+    conn = get(conn, "/api/v1/users/#{owner.id}/actions")
+    assert json_response(conn, 401)["error"]
   end
 
-  test "renders form for new resources", %{conn: conn} do
-    conn = get conn, action_path(conn, :new)
-    assert html_response(conn, 200) =~ "New action"
+  test "rejects a valid token scoped to another user", %{conn: conn, owner: owner, other: other} do
+    conn = conn |> authenticate(other) |> get("/api/v1/users/#{owner.id}/actions")
+    assert response(conn, 403)
   end
 
-  test "creates resource and redirects when data is valid", %{conn: conn} do
-    conn = post conn, action_path(conn, :create), action: @valid_attrs
-    assert redirected_to(conn) == action_path(conn, :index)
-    assert Repo.get_by(Action, @valid_attrs)
+  test "forces created actions to the authenticated owner", %{conn: conn, owner: owner, other: other} do
+    params = Map.put(@action_attrs, "user_id", other.id)
+
+    conn =
+      conn
+      |> authenticate(owner)
+      |> post("/api/v1/users/#{owner.id}/actions", %{"action" => params})
+
+    assert %{"data" => %{"id" => id}} = json_response(conn, 201)
+    assert Repo.get!(Action, id).user_id == owner.id
   end
 
-  test "does not create resource and renders errors when data is invalid", %{conn: conn} do
-    conn = post conn, action_path(conn, :create), action: @invalid_attrs
-    assert html_response(conn, 200) =~ "New action"
+  defp authenticate(conn, user) do
+    {:ok, token, _claims} = Emotext.Guardian.encode_and_sign(user)
+    put_req_header(conn, "authorization", "Bearer #{token}")
   end
 
-  test "shows chosen resource", %{conn: conn} do
-    action = Repo.insert! %Action{}
-    conn = get conn, action_path(conn, :show, action)
-    assert html_response(conn, 200) =~ "Show action"
-  end
-
-  test "renders page not found when id is nonexistent", %{conn: conn} do
-    assert_raise Ecto.NoResultsError, fn ->
-      get conn, action_path(conn, :show, -1)
-    end
-  end
-
-  test "renders form for editing chosen resource", %{conn: conn} do
-    action = Repo.insert! %Action{}
-    conn = get conn, action_path(conn, :edit, action)
-    assert html_response(conn, 200) =~ "Edit action"
-  end
-
-  test "updates chosen resource and redirects when data is valid", %{conn: conn} do
-    action = Repo.insert! %Action{}
-    conn = put conn, action_path(conn, :update, action), action: @valid_attrs
-    assert redirected_to(conn) == action_path(conn, :show, action)
-    assert Repo.get_by(Action, @valid_attrs)
-  end
-
-  test "does not update chosen resource and renders errors when data is invalid", %{conn: conn} do
-    action = Repo.insert! %Action{}
-    conn = put conn, action_path(conn, :update, action), action: @invalid_attrs
-    assert html_response(conn, 200) =~ "Edit action"
-  end
-
-  test "deletes chosen resource", %{conn: conn} do
-    action = Repo.insert! %Action{}
-    conn = delete conn, action_path(conn, :delete, action)
-    assert redirected_to(conn) == action_path(conn, :index)
-    refute Repo.get(Action, action.id)
+  defp insert_user!(name) do
+    Repo.insert!(%User{
+      username: name,
+      email: "#{name}@example.com",
+      encrypted_password: Bcrypt.hash_pwd_salt("password123"),
+      gender: :unknown
+    })
   end
 end

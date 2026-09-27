@@ -63,7 +63,8 @@ defmodule Emotext.AliasQuery do
 
   def by_name_for_user(name, user) do
     from a in Alias,
-      where: a.name == ^name and a.user_id == ^user.id,
+      where: a.name == ^name and (is_nil(a.user_id) or a.user_id == ^user.id),
+      order_by: [asc_nulls_last: a.user_id],
       preload: [:action]
   end
 

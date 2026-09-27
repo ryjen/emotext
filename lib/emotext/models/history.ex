@@ -16,17 +16,9 @@ defmodule Emotext.History do
     timestamps(type: :utc_datetime)
   end
 
-  @required_fields ~w(user_id vict_id action_id user_screen_name message)
-  @optional_fields ~w()
+  @fields [:user_id, :vict_id, :action_id, :message, :user_screen_name, :vict_screen_name]
 
-  @doc """
-  Creates a changeset based on the `model` and `params`.
-
-  If no params are provided, an invalid changeset is returned
-  with no validation performed.
-  """
-  def changeset(model, params \\ :empty) do
-    model
-    |> cast(params, @required_fields, @optional_fields)
+  def changeset(model, params \\ %{}) do
+    cast(model, params, @fields)
   end
 end

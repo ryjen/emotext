@@ -1,18 +1,11 @@
 defmodule Emotext.AliasTest do
-  use Emotext.ModelCase
+  use ExUnit.Case, async: true
 
   alias Emotext.Alias
 
-  @valid_attrs %{action_id: 42, name: "some content"}
-  @invalid_attrs %{}
-
-  test "changeset with valid attributes" do
-    changeset = Alias.changeset(%Alias{}, @valid_attrs)
-    assert changeset.valid?
-  end
-
-  test "changeset with invalid attributes" do
-    changeset = Alias.changeset(%Alias{}, @invalid_attrs)
-    refute changeset.valid?
+  test "requires a name and action id" do
+    action_id = Ecto.UUID.generate()
+    assert Alias.changeset(%Alias{}, %{name: ":)", action_id: action_id}).valid?
+    refute Alias.changeset(%Alias{}, %{name: ":)"}).valid?
   end
 end

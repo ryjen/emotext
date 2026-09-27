@@ -5,13 +5,9 @@ defmodule Emotext.Web.SessionController do
   alias Emotext.UserQuery
   alias Emotext.Guardian
 
-  plug(:scrub_params, "user" when action in [:create])
-
   def new(conn, _params) do
     changeset = User.login_changeset(%User{})
-    conn
-    |> put_view(Emotext.SessionView)
-    |> render("new.html", changeset: changeset)
+    render(conn, :new, changeset: changeset)
   end
 
   def guest(conn, _params) do

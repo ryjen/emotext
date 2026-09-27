@@ -13,19 +13,28 @@ defmodule Emotext.Web.Router do
   end
 
   pipeline :browser_session do
-    plug Guardian.Plug.VerifySession, module: Emotext.Guardian
-    plug Guardian.Plug.LoadResource, allow_blank: true, module: Emotext.Guardian
+    plug Guardian.Plug.Pipeline,
+      module: Emotext.Guardian,
+      error_handler: Emotext.Web.GuardianErrorHandler
+
+    plug Guardian.Plug.VerifySession
+    plug Guardian.Plug.LoadResource, allow_blank: true
   end
 
   pipeline :ensure_auth do
-    plug Guardian.Plug.EnsureAuthenticated, module: Emotext.Guardian
+    plug Guardian.Plug.EnsureAuthenticated
   end
 
   pipeline :api do
     plug :accepts, ["json"]
-    plug Guardian.Plug.VerifyHeader, module: Emotext.Guardian
-    plug Guardian.Plug.LoadResource, module: Emotext.Guardian
-    plug Guardian.Plug.EnsureAuthenticated, module: Emotext.Guardian
+
+    plug Guardian.Plug.Pipeline,
+      module: Emotext.Guardian,
+      error_handler: Emotext.Web.GuardianAPIErrorHandler
+
+    plug Guardian.Plug.VerifyHeader
+    plug Guardian.Plug.LoadResource
+    plug Guardian.Plug.EnsureAuthenticated
   end
 
   scope "/", Emotext.Web do
