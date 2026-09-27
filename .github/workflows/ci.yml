@@ -47,6 +47,4 @@ jobs:
         run: nix develop --command mise run setup
 
       - name: Validate
-        env:
-          MIX_ENV: test
         run: nix develop --command mise run check
