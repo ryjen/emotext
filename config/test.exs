@@ -1,3 +1,5 @@
+[Reading 35 lines from start (total: 35 lines, 0 remaining)]
+
 import Config
 
 # Configure your database
@@ -31,3 +33,5 @@ config :logger, level: :warning
 
 # Initialize plugs at runtime for faster test compilation
 config :phoenix, :plug_init_mode, :runtime
+
+config :emotext, Emotext.Guardian, secret_key: "test-only-not-for-production"

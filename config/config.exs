@@ -1,3 +1,5 @@
+[Reading 77 lines from start (total: 77 lines, 0 remaining)]
+
 # This file is responsible for configuring your application
 # and its dependencies with the aid of the Mix.Config module.
 #
@@ -51,17 +53,12 @@ config :tailwind,
     cd: Path.expand("../assets", __DIR__)
   ]
 
-config :guardian, Guardian,
-      issuer: "emotext",
-      ttl: { 100_000, :days },
-      verify_issuer: true,
-      error_handler: Emotext.Web.GuardianErrorHandler,
-      secret_key: "EPROIUELKJSDOIUEWORIJWLEKJFSODIojwoeirjsldkfjwoerijowkjflsef",
-      serializer: Emotext.GuardianSerializer,
-      hooks: Emotext.GuardianHooks,
-      permissions: %{
-        default: [:read_profile, :write_profile]
-      }
+config :emotext, Emotext.Guardian,
+  issuer: "emotext",
+  ttl: {7, :days},
+  verify_issuer: true,
+  permissions: %{default: [:read_profile, :write_profile]}
+
 
 config :comeonin, :bcrypt_phoenix_ecto,
   log_rounds: 12

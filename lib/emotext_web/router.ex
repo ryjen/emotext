@@ -1,3 +1,5 @@
+[Reading 87 lines from start (total: 87 lines, 0 remaining)]
+
 defmodule Emotext.Web.Router do
   use Emotext.Web, :router
 
@@ -23,6 +25,9 @@ defmodule Emotext.Web.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+    plug Guardian.Plug.VerifyHeader, module: Emotext.Guardian
+    plug Guardian.Plug.LoadResource, module: Emotext.Guardian
+    plug Guardian.Plug.EnsureAuthenticated, module: Emotext.Guardian
   end
 
   scope "/", Emotext.Web do
@@ -44,9 +49,6 @@ defmodule Emotext.Web.Router do
       resources "/actions", ActionController
       resources "/aliases", AliasController
     end
-
-    get "/admin/import", AdminController, :import, as: :import
-    post "/admin/import", AdminController, :import_file, as: :import
   end
 
   scope "/auth", alias: Emotext.Web do
@@ -60,8 +62,10 @@ defmodule Emotext.Web.Router do
     pipe_through :api
 
     scope "/v1", as: :v1 do
-      resources "/actions", ActionController, except: [:new, :edit]
-      resources "/aliases", AliasController, except: [:new, :edit]
+      scope "/users/:user_id" do
+        resources "/actions", ActionController, except: [:new, :edit]
+        resources "/aliases", AliasController, except: [:new, :edit]
+      end
     end
   end
 
@@ -73,11 +77,13 @@ defmodule Emotext.Web.Router do
     # as long as you are also using SSL (which you should anyway).
     import Phoenix.LiveDashboard.Router
 
-    scope "/dev" do
-      pipe_through :browser
+    scope "/dev", Emotext.Web do
+      pipe_through [:browser, :browser_session, :ensure_auth]
 
       live_dashboard "/dashboard", metrics: Emotext.Web.Telemetry
       forward "/mailbox", Plug.Swoosh.MailboxPreview
+      get "/admin/import", AdminController, :import, as: :import
+      post "/admin/import", AdminController, :import_file, as: :import
     end
   end
 end

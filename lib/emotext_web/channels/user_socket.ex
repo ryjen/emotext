@@ -1,8 +1,10 @@
+[Reading 48 lines from start (total: 48 lines, 0 remaining)]
+
 defmodule Emotext.Web.UserSocket do
   use Phoenix.Socket
 
   ## Channels
-  channel "rooms:*", Emotext.RoomChannel
+  channel "rooms:*", Emotext.Web.RoomChannel
 
   ## Transports
   #transport :websocket, Phoenix.Transports.WebSocket

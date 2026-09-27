@@ -1,3 +1,5 @@
+[Reading 33 lines from start (total: 33 lines, 0 remaining)]
+
 version: "3.4"
 
 services:
@@ -9,7 +11,7 @@ services:
       DATABASE_URL: "ecto://emotext:emotext@db/emotext"
       PHX_HOST: emotext.micrantha.test
       PORT: "80"
-      SECRET_KEY_BASE: "d53f604743fa57a11a0adce7f048c55715717f7969806a8d34db98fda17269e7"
+      SECRET_KEY_BASE: "${SECRET_KEY_BASE:?set SECRET_KEY_BASE}"
     ports:
       - "1337:80"
     networks:

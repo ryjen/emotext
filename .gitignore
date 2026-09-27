@@ -1,3 +1,5 @@
+[Reading 22 lines from start (total: 22 lines, 0 remaining)]
+
 # App artifacts
 /_build
 /db
@@ -16,3 +18,7 @@ erl_crash.dump
 # this depending on your deployment strategy.
 #/priv/static/
 dump
+
+/.nix-mix
+/.nix-hex
+/.mise-cache

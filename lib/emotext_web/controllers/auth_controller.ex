@@ -1,3 +1,5 @@
+[Reading 70 lines from start (total: 70 lines, 0 remaining)]
+
 defmodule Emotext.Web.AuthController do
   use Emotext.Web, :controller
 
@@ -22,9 +24,9 @@ defmodule Emotext.Web.AuthController do
   be used to request an access token. The access token will then be used to
   access protected resources on behalf of the user.
   """
-  def callback(conn, %{"provider" => provider, "code" => code}) do
-    apply(__MODULE__, String.to_atom("#{provider}_callback"), [conn, code])
-  end
+  def callback(conn, %{"provider" => "github", "code" => code}), do: github_callback(conn, code)
+  def callback(conn, %{"provider" => "facebook", "code" => code}), do: facebook_callback(conn, code)
+  def callback(conn, _params), do: send_resp(conn, :bad_request, "Unsupported OAuth provider")
 
   def github_callback(conn, code) do
     # Exchange an auth code for an access token
@@ -40,7 +42,6 @@ defmodule Emotext.Web.AuthController do
   end
 
   def login(conn, userinfo) do
-    IO.puts Poison.Encoder.encode(userinfo, [])
     user = Repo.one(UserQuery.by_login_or_email(userinfo["email"] || userinfo["login"] || ""))
     if user do
       changeset = User.login_changeset(user, userinfo)

@@ -1,211 +1,126 @@
-# Emotext 🎭
+[Reading 124 lines from start (total: 124 lines, 0 remaining)]
 
-A modern chat application inspired by IRC + Multi-User Dungeons (MUDs) from the 90s, built with Elixir and Phoenix Framework.
+# Emotext
 
-## 🎯 Project Overview
+Emotext is an Elixir/Phoenix chat application inspired by IRC and 1990s Multi-User Dungeons (MUDs). It began as an experiment in moving from Rails-style object-oriented application development toward functional programming and the BEAM concurrency model.
 
-Emotext is an experimental project that applies Ruby on Rails knowledge to pure functional programming using Elixir on the Phoenix Framework. The application demonstrates the power of the Erlang Virtual Machine (BEAM) for building concurrent, fault-tolerant chat systems.   
+## Status
 
-The original code (check history) used MongoDB, PostgreSQL was swapped in to save VPS resources and reuse.
+**Modernization in progress.** The repository contains a working historical application and a partial Phoenix 1.7 migration. Current work is focused on restoring a reproducible, security-qualified baseline before adding features.
 
-### Why Elixir and Phoenix?
+The intended core remains:
 
-This project explores the transition from object-oriented programming (Ruby on Rails) to functional programming paradigms:
+- room-based real-time chat over Phoenix Channels;
+- MUD-style actions such as `/smile` and `/laugh`;
+- user-defined aliases for actions;
+- persisted chat/action history;
+- authenticated user accounts and guest sessions.
 
-- **[Functional Programming](https://en.wikipedia.org/wiki/Functional_programming)** - Emphasizes immutability, pure functions, and declarative code
-- **[Elixir](https://elixir-lang.org/)** - A dynamic, functional language designed for building maintainable and scalable applications
-- **[Phoenix Framework](https://phoenixframework.org/)** - A productive web framework that does not compromise speed or maintainability
+Features should be considered demonstrated only when covered by the repository validation pipeline.
 
-### Erlang VM Inspiration
+## Development environment
 
-The choice of the Erlang VM is inspired by WhatsApp's legendary scalability achievements. WhatsApp famously handled billions of messages with a small engineering team, largely thanks to the Erlang VM's actor model and fault-tolerance capabilities.
-
-**Learn more:** [How WhatsApp Uses Erlang VM](https://www.erlang.org/blog/20-years-of-open-source-erlang/)
-
-## 🎮 Use Case: MUD-Style Chat
-
-Emotext recreates the nostalgic experience of Multi-User Dungeons from the 1990s, where players used text commands and emojis to:
-
-- **Verbosely explain emotions** - Express complex feelings through descriptive commands
-- **Convey humor** - Share jokes and playful interactions
-- **Foster communication** - Build communities through rich text-based interaction
-- **Create immersive experiences** - Use commands like `/smile`, `/laugh`, `/dance` to bring conversations to life
-
-## ✨ Features
-
-- **Real-time Communication** - Built on Phoenix Channels and WebSockets
-- **Room-based Architecture** - Multiple chat rooms with isolated conversations
-- **Command System** - MUD-style commands for expressive communication
-- **Emoji Integration** - Rich emoji support for enhanced expression
-- **User Authentication** - Secure user management with Guardian
-- **Profanity Filtering** - Built-in content moderation
-- **Responsive Design** - Modern UI with TailwindCSS
-
-## 🚀 Quick Start
-
-### Prerequisites
-
-- Elixir 1.14+ and Erlang/OTP 26+
-- PostgreSQL 12+
-- Node.js 16+ (for asset compilation)
-
-### Installation
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/ryjen/emotext.git
-   cd emotext
-   ```
-
-2. **Install dependencies**
-   ```bash
-   mix setup
-   ```
-
-3. **Configure your database**
-   ```bash
-   # Update config/dev.exs with your PostgreSQL credentials
-   mix ecto.create
-   mix ecto.migrate
-   ```
-
-4. **Start the Phoenix server**
-   ```bash
-   mix phx.server
-   ```
-
-5. **Visit the application**
-   Open [http://localhost:4000](http://localhost:4000) in your browser
-
-## 🐳 Docker Deployment
+The repository owns its build/test environment through Nix. The runner or developer host should not need project-specific language dependencies installed globally.
 
 ```bash
-# Build and run with Docker Compose
-docker-compose up --build
-
-# Or build the Docker image manually
-docker build -t emotext .
-docker run -p 4000:4000 emotext
+nix develop
+mise run setup
+mise run check
 ```
 
-## 🎯 Usage Examples
+The pinned application baseline is Elixir 1.16 on Erlang/OTP 26. OTP 26 is EOL, so upgrading the BEAM runtime is part of the modernization backlog rather than an implicit runner dependency.
 
-### Basic Commands
+PostgreSQL is required for the test suite. The CI workflow provisions PostgreSQL 16.
 
-```
-/say Hello everyone!           # Send a message to the room
-/smile                        # Express happiness
-/laugh                        # Show amusement
-/dance                        # Celebrate with movement
-/whisper @username message    # Private message
-```
-
-### Emoji Aliases
-
-```
-:)    # Converts to /smile
-<3    # Converts to /love
-:D    # Converts to /grin
-```
-
-## 🏗️ Architecture
-
-```
-┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
-│   Phoenix       │    │   LiveView      │    │   Channels      │
-│   Controllers   │◄──►│   Components    │◄──►│   (WebSockets)  │
-└─────────────────┘    └─────────────────┘    └─────────────────┘
-         │                       │                       │
-         ▼                       ▼                       ▼
-┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
-│   Ecto          │    │   GenServer     │    │   PubSub        │
-│   (Database)    │    │   (State)       │    │   (Messaging)   │
-└─────────────────┘    └─────────────────┘    └─────────────────┘
-```
-
-## 🧪 Testing
+## Useful tasks
 
 ```bash
-# Run the test suite
-mix test
-
-# Run tests with coverage
-mix test --cover
-
-# Run specific test files
-mix test test/emotext_web/channels/room_channel_test.exs
+mise run setup     # Hex/Rebar + Mix dependencies
+mise run format    # formatting gate
+mise run compile   # warnings-as-errors compile
+mise run test      # ExUnit
+mise run assets    # Tailwind/esbuild asset build
+mise run check     # canonical validation
+mise run release   # production release build
 ```
 
-## 📚 API Documentation
+## Runtime configuration
 
-Generate documentation with ExDoc:
+Production secrets are runtime inputs and must not be committed.
+
+Required production variables include:
+
+```text
+DATABASE_URL
+SECRET_KEY_BASE
+GITHUB_CLIENT_ID
+GITHUB_CLIENT_SECRET
+FACEBOOK_CLIENT_ID
+FACEBOOK_CLIENT_SECRET
+```
+
+Optional OAuth callback overrides:
+
+```text
+GITHUB_REDIRECT_URI
+FACEBOOK_REDIRECT_URI
+```
+
+Generate `SECRET_KEY_BASE` with `mix phx.gen.secret`.
+
+## Security model
+
+- Browser sessions are verified with Guardian.
+- API routes require an authenticated Guardian bearer token.
+- API user resources are scoped beneath `/api/v1/users/:user_id` and must match the authenticated principal.
+- Historical admin import functionality is available only through development routes and requires authentication.
+- OAuth provider credentials are read from runtime environment variables.
+
+Security-sensitive changes should include tests for anonymous access, cross-user access, malformed credentials, and expired/invalid sessions.
+
+## Architecture
+
+```text
+HTTP / Phoenix Channels
+          |
+          v
+controllers / channel protocol
+          |
+          v
+domain + authorization rules
+          |
+          v
+Ecto / PostgreSQL
+          |
+          v
+Phoenix PubSub / connected clients
+```
+
+The current code predates this target separation in places. Modernization should preserve observable behavior while moving authorization and domain rules out of transport-specific controllers/channels.
+
+## Docker
+
+Docker Compose remains available as a convenience deployment path. A production secret must be supplied explicitly:
 
 ```bash
-mix docs
-open doc/index.html
+SECRET_KEY_BASE="$(mix phx.gen.secret)" docker compose up --build
 ```
 
-## 🌍 Internationalization
+Do not use committed/default production credentials.
 
-**Note:** i18n is not currently supported but is planned for future releases. The application currently supports English only.
+## Roadmap
 
-## 🤝 Contributing
+Near-term priorities:
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+1. establish a green flake-driven CI baseline;
+2. complete Phoenix/Guardian migration compatibility fixes;
+3. add authorization and channel characterization tests;
+4. upgrade from EOL OTP 26 after the current baseline is characterized;
+5. add static/security analysis;
+6. then resume bots, custom commands, inter-chat/IRC integration, i18n, preferences, and client work.
 
-### Development Guidelines
+See GitHub Issues for executable work rather than treating this README as a feature-completeness claim.
 
-- Follow Elixir style conventions
-- Write tests for new features
-- Update documentation as needed
-- Ensure all tests pass before submitting
+## License
 
-## 📋 Roadmap
-
-- [ ] Fix remaining issues upgrading elixir/phoenix
-- [ ] Channel bots and automation
-- [ ] Custom user commands
-- [ ] Integration with IRC networks
-- [ ] Internationalization (i18n)
-- [ ] User preferences and themes
-- [ ] Mobile application
-- [ ] Voice chat integration
-
-## 🛠️ Built With
-
-- **[Elixir](https://elixir-lang.org/)** - Functional programming language
-- **[Phoenix Framework](https://phoenixframework.org/)** - Web framework
-- **[Phoenix LiveView](https://hexdocs.pm/phoenix_live_view/)** - Real-time user experiences
-- **[Ecto](https://hexdocs.pm/ecto/)** - Database wrapper and query generator
-- **[PostgreSQL](https://www.postgresql.org/)** - Database
-- **[TailwindCSS](https://tailwindcss.com/)** - Utility-first CSS framework
-- **[Guardian](https://hexdocs.pm/guardian/)** - Authentication library
-
-## 📄 License
-
-This project is licensed under the GNU General Public License v3.0 - see the [LICENSE](LICENSE) file for details.
-
-## 👥 Authors
-
-- **ryjen** - *Initial work* - [ryjen](https://github.com/ryjen)
-
-## 🙏 Acknowledgments
-
-- Inspired by the classic MUD games of the 1990s
-- WhatsApp's innovative use of the Erlang VM for massive scale
-- The Elixir and Phoenix communities for excellent documentation and support
-- The functional programming community for pushing the boundaries of software design
-
-## 📞 Support
-
-- Create an [issue](https://github.com/ryjen/emotext/issues) for bug reports
-- Start a [discussion](https://github.com/ryjen/emotext/discussions) for questions
-- Check the [documentation](https://hexdocs.pm/emotext/) for detailed guides
-
----
-
-*Built with ❤️ and functional programming*
+The project is intended to be distributed under GPL-3.0. A canonical license file should be present before the next tagged release.
