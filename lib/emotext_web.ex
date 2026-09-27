@@ -120,5 +120,3 @@ defmodule Emotext.Web do
     apply(__MODULE__, which, [])
   end
 end
-
-[executed on device: 76a4bdf5fc1b (a7fd9f41-8002-4c03-ac43-498109dd9775)]
