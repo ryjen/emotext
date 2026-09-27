@@ -1,134 +1,107 @@
 defmodule Emotext.Web.ActionController do
   use Emotext.Web, :controller
 
-  alias Emotext.Action
+  alias Emotext.{Action, ActionQuery, Repo}
 
   plug Guardian.Plug.EnsureAuthenticated, module: Emotext.Guardian
-  plug Guardian.Permissions, ensure: %{default: [:write_profile], user_actions: [:new, :edit, :update, :delete]}
-
-  plug :scrub_params, "action" when action in [:create, :update]
-
-  plug :authorize_user_action
-
-  require Logger
+  plug :authorize_user_scope
 
   def index(conn, _params) do
     actions = Repo.all(ActionQuery.for_user(current_user(conn)))
-    render(conn, actions: actions)
+    render(conn, :index, actions: actions)
   end
 
   def new(conn, _params) do
-    changeset = Action.changeset(%Action{})
-    render(conn, changeset: changeset)
+    render(conn, :new, changeset: Action.changeset(%Action{}))
   end
 
-  def create(conn, %{"action" => action_params}) do
-    changeset = Action.changeset(%Action{}, owned_params(conn, action_params))
-    case Repo.insert(changeset) do
-      {:ok, _action} ->
-        conn
-        |> put_flash(:info, "Action created successfully.")
-        |> redirect(to: user_path(conn, :show, current_user(conn)))
-      {:error, changeset} ->
-        render(conn, "new.html", changeset: changeset)
-    end
-  end
+  def create(conn, %{"action" => params}) do
+    params = Map.put(params, "user_id", current_user(conn).id)
 
-  def create(conn, %{"action" => action_params, "format" => "json" } ) do
-    changeset = Action.changeset(%Action{}, owned_params(conn, action_params))
-    case Repo.insert(changeset) do
-      {:ok, action} ->
-        conn
-        |> put_status(:created)
-        |> put_resp_header("location", user_path(conn, :show, current_user(conn)))
-        |> render(:show, action: action)
-      {:error, changeset} ->
-        conn
-        |> put_status(:unprocessable_entity)
-        |> put_view(Emotext.ChangesetView)
-        |> render(:error, changeset: changeset)
+    case Repo.insert(Action.changeset(%Action{}, params)) do
+      {:ok, action} -> created(conn, action)
+      {:error, changeset} -> validation_error(conn, :new, changeset)
     end
-
   end
 
   def show(conn, %{"id" => id}) do
-    action = owned_action!(conn, id)
-    render(conn, action: action)
+    render(conn, :show, action: owned_action!(conn, id))
   end
 
   def edit(conn, %{"id" => id}) do
     action = owned_action!(conn, id)
-    changeset = Action.changeset(action)
-    render(conn, action: action, changeset: changeset)
+    render(conn, :edit, action: action, changeset: Action.changeset(action))
   end
 
-  def update(conn, %{"id" => id, "action" => action_params}) do
+  def update(conn, %{"id" => id, "action" => params}) do
     action = owned_action!(conn, id)
-    changeset = Action.changeset(action, owned_params(conn, action_params))
+    params = Map.put(params, "user_id", current_user(conn).id)
 
-    case Repo.update(changeset) do
-      {:ok, _action} ->
-        conn
-        |> put_flash(:info, "Action updated successfully.")
-        |> redirect(to: user_path(conn, :show, current_user(conn)))
-      {:error, changeset} ->
-        render(conn, "edit.html", action: action, changeset: changeset)
-    end
-  end
-
-  def update(conn, %{"id" => id, "action" => action_params, "format" => "json"}) do
-    action = owned_action!(conn, id)
-    changeset = Action.changeset(action, owned_params(conn, action_params))
-
-    case Repo.update(changeset) do
-      {:ok, action} ->
-        conn
-        |> put_status(:updated)
-        |> put_resp_header("location", user_path(conn, :show, current_user(conn)))
-        |> render(:show, action: action)
-      {:error, changeset} ->
-        conn
-        |> put_status(:unprocessable_entity)
-        |> put_view(Emotext.ChangesetView)
-        |> render(:error, changeset: changeset)
+    case Repo.update(Action.changeset(action, params)) do
+      {:ok, action} -> updated(conn, action)
+      {:error, changeset} -> validation_error(conn, :edit, changeset, action: action)
     end
   end
 
   def delete(conn, %{"id" => id}) do
     action = owned_action!(conn, id)
-
-    # Here we use delete! (with a bang) because we expect
-    # it to always work (and if it does not, it will raise).
     Repo.delete!(action)
 
-    conn
-    |> put_flash(:info, "Action deleted successfully.")
-    |> redirect(to: user_path(conn, :show, current_user(conn)))
+    if get_format(conn) == "json" do
+      send_resp(conn, :no_content, "")
+    else
+      conn
+      |> put_flash(:info, "Action deleted successfully.")
+      |> redirect(to: user_path(conn, :show, current_user(conn)))
+    end
   end
 
-  #defp put_format_param(conn, _) do
-  #  put_in conn.params["_format"], Phoenix.Controller.get_format(conn)
-  #end
+  defp created(conn, action) do
+    if get_format(conn) == "json" do
+      conn |> put_status(:created) |> render(:show, action: action)
+    else
+      conn
+      |> put_flash(:info, "Action created successfully.")
+      |> redirect(to: user_path(conn, :show, current_user(conn)))
+    end
+  end
+
+  defp updated(conn, action) do
+    if get_format(conn) == "json" do
+      render(conn, :show, action: action)
+    else
+      conn
+      |> put_flash(:info, "Action updated successfully.")
+      |> redirect(to: user_path(conn, :show, current_user(conn)))
+    end
+  end
+
+  defp validation_error(conn, template, changeset, assigns \\ []) do
+    if get_format(conn) == "json" do
+      conn |> put_status(:unprocessable_entity) |> json(%{errors: errors(changeset)})
+    else
+      render(conn, template, Keyword.merge(assigns, changeset: changeset))
+    end
+  end
+
+  defp errors(changeset) do
+    Ecto.Changeset.traverse_errors(changeset, fn {message, opts} ->
+      Enum.reduce(opts, message, fn {key, value}, acc ->
+        String.replace(acc, "%{#{key}}", to_string(value))
+      end)
+    end)
+  end
+
+  defp current_user(conn), do: Guardian.Plug.current_resource(conn)
 
   defp owned_action!(conn, id) do
     Repo.get_by!(Action, id: id, user_id: current_user(conn).id)
   end
 
-  defp owned_params(conn, params) do
-    Map.put(params, "user_id", current_user(conn).id)
+  defp authorize_user_scope(conn, _) do
+    case current_user(conn) do
+      %{id: id} when id == conn.params["user_id"] -> conn
+      _ -> conn |> send_resp(:forbidden, "Forbidden") |> halt()
+    end
   end
-
-  defp current_user(conn) do
-    Guardian.Plug.current_resource(conn)
-  end
-
-  defp authorize_user_action(conn, _) do
-   Logger.info conn.params["user_id"]
-   if conn.params["user_id"] && conn.params["user_id"] == Guardian.Plug.current_resource(conn).id do
-     conn
-   else
-     conn |> put_flash(:info, "You can't access that action") |> redirect(to: "/") |> halt
-   end
- end
-
 end

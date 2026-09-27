@@ -18,13 +18,12 @@ defmodule Emotext.Web.UserSocket do
   #
   #  To deny connection, return `:error`.
   @impl true
-  def connect(%{"guardian_token" => token}, _socket) do
-    case Emotext.Guardian.decode_and_verify(token) do
-    {:ok, authed_socket} ->
-      {:ok, authed_socket}
-
-    {:error, _} ->
-      :error
+  def connect(%{"guardian_token" => token}, socket) do
+    with {:ok, claims} <- Emotext.Guardian.decode_and_verify(token),
+         {:ok, user} <- Emotext.Guardian.resource_from_claims(claims) do
+      {:ok, assign(socket, :current_user, user)}
+    else
+      _ -> :error
     end
   end
 
@@ -44,5 +43,5 @@ defmodule Emotext.Web.UserSocket do
   #
   # Returning `nil` makes this socket anonymous.
   @impl true
-  def id(socket), do: "users_socket:#{Guardian.Plug.current_resource(socket).id}"
+  def id(socket), do: "users_socket:#{socket.assigns.current_user.id}"
 end

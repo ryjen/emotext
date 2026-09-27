@@ -51,6 +51,7 @@ Required production variables include:
 ```text
 DATABASE_URL
 SECRET_KEY_BASE
+GUARDIAN_SECRET_KEY
 GITHUB_CLIENT_ID
 GITHUB_CLIENT_SECRET
 FACEBOOK_CLIENT_ID
@@ -101,7 +102,7 @@ The current code predates this target separation in places. Modernization should
 Docker Compose remains available as a convenience deployment path. A production secret must be supplied explicitly:
 
 ```bash
-SECRET_KEY_BASE="$(mix phx.gen.secret)" docker compose up --build
+SECRET_KEY_BASE="$(mix phx.gen.secret)" GUARDIAN_SECRET_KEY="$(mix phx.gen.secret)" docker compose up --build
 ```
 
 Do not use committed/default production credentials.

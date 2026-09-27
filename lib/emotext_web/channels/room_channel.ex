@@ -67,9 +67,7 @@ defmodule Emotext.Web.RoomChannel do
     end
   end
 
-  def get_user(socket) do
-    Guardian.Plug.current_resource(socket)
-  end
+  def get_user(socket), do: socket.assigns.current_user
 
   def handle_invalid_action(socket, user) do
     push socket, "msg:sys", %{ body: "I don't know how to do that.", user: user.screen_name }
@@ -187,7 +185,7 @@ defmodule Emotext.Web.RoomChannel do
   def handle_alias(socket, body, user) do
     parts = String.split(body, ~r{\s+});
     command = Enum.at(parts, 0)
-    a = Repo.one(AliasQuery.by_name(command))
+    a = Repo.one(AliasQuery.by_name_for_user(command, user))
     if a != nil do
       if Enum.count(parts) == 1 do
         perform_action(socket, user, a.action)
@@ -213,7 +211,7 @@ defmodule Emotext.Web.RoomChannel do
       parts = String.split(body, ~r{\s+});
       command = Enum.at(parts, 0);
       command = String.slice(command, 1, String.length(command))
-      action = Repo.one(ActionQuery.by_name(command))
+      action = Repo.one(ActionQuery.by_name_for_user(command, user))
 
       if action == nil do
           sys_msg socket, user, "Huh? I don't understand."

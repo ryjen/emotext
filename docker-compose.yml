@@ -10,6 +10,7 @@ services:
       PHX_HOST: emotext.micrantha.test
       PORT: "80"
       SECRET_KEY_BASE: "${SECRET_KEY_BASE:?set SECRET_KEY_BASE}"
+      GUARDIAN_SECRET_KEY: "${GUARDIAN_SECRET_KEY:?set GUARDIAN_SECRET_KEY}"
     ports:
       - "1337:80"
     networks:

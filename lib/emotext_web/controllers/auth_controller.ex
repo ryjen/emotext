@@ -33,10 +33,7 @@ defmodule Emotext.Web.AuthController do
     # Request the user's data with the access token
     userinfo = OAuth2.Client.get!(token, "/user")
 
-    conn
-    |> put_session(:access_token, token.access_token)
-
-    apply(__MODULE__, :login, [conn, userinfo])
+    login(conn, userinfo)
   end
 
   def login(conn, userinfo) do
@@ -62,9 +59,6 @@ defmodule Emotext.Web.AuthController do
 
     userinfo = OAuth2.Client.get!(token, "/user")
 
-    conn
-    |> put_session(:access_token, token.access_token)
-
-    apply(__MODULE__, :login, [conn, userinfo])
+    login(conn, userinfo)
   end
 end

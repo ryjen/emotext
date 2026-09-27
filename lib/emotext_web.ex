@@ -44,7 +44,7 @@ defmodule Emotext.Web do
   def controller do
     quote do
       use Phoenix.Controller,
-        formats: [:html],
+        formats: [:html, :json],
         layouts: [html: {Emotext.Web.Layouts, :app}]
 
       alias Emotext.Repo

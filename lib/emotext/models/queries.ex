@@ -32,6 +32,18 @@ defmodule Emotext.ActionQuery do
     from a in Action, where: a.name == ^name
   end
 
+  def by_name_for_user(name, user) do
+    from a in Action,
+      where: a.name == ^name and (is_nil(a.user_id) or a.user_id == ^user.id),
+      order_by: [asc_nulls_last: a.user_id]
+  end
+
+  def available_to_user(user) do
+    from a in Action,
+      where: is_nil(a.user_id) or a.user_id == ^user.id,
+      order_by: a.name
+  end
+
   def sorted() do
     from a in Action, order_by: a.name
   end
@@ -47,6 +59,12 @@ defmodule Emotext.AliasQuery do
 
   def by_name(name) do
     from a in Alias, where: a.name == ^name, preload: [:action]
+  end
+
+  def by_name_for_user(name, user) do
+    from a in Alias,
+      where: a.name == ^name and a.user_id == ^user.id,
+      preload: [:action]
   end
 
   def with_action_names() do

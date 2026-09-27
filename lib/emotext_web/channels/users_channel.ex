@@ -13,7 +13,7 @@ defmodule Emotext.Web.UsersChannel do
 
   @impl true
   def handle_in("ping", _payload, socket) do
-    user = Guardian.Plug.current_resource(socket)
+    user = socket.assigns.current_user
     broadcast socket, "pong", %{ message: "pong", from: user.email }
     { :noreply, socket }
   end
