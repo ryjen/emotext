@@ -19,6 +19,7 @@
               beam.elixir_1_16
               beam.rebar3
               pkgs.git
+              pkgs.gitleaks
               pkgs.mise
               pkgs.nodejs_20
               pkgs.postgresql_16

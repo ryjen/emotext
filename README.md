@@ -36,9 +36,11 @@ PostgreSQL is required for the test suite. The CI workflow provisions PostgreSQL
 mise run setup     # Hex/Rebar + Mix dependencies
 mise run format    # formatting gate
 mise run compile   # warnings-as-errors compile
-mise run test      # ExUnit
-mise run assets    # Tailwind/esbuild asset build
-mise run check     # canonical validation
+mise run test       # ExUnit
+mise run lint       # Credo
+mise run security   # Gitleaks + Sobelow + dependency audits
+mise run assets     # Tailwind/esbuild asset build
+mise run check      # canonical validation
 mise run release   # production release build
 ```
 
@@ -122,4 +124,4 @@ See GitHub Issues for executable work rather than treating this README as a feat
 
 ## License
 
-The project is intended to be distributed under GPL-3.0. A canonical license file should be present before the next tagged release.
+Emotext is distributed under the GNU General Public License v3.0. See LICENSE.
