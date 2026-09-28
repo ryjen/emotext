@@ -34,7 +34,7 @@ MIX_ENV=test mix deps.audit
 [tasks.security]
 description = "Run source and Phoenix security gates"
 run = """
-gitleaks dir . --redact --no-banner
+gitleaks git . --redact --no-banner --verbose
 MIX_ENV=test mix sobelow --private --exit high
 mise run deps-audit
 """
