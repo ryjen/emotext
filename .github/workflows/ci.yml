@@ -43,8 +43,19 @@ jobs:
       - name: Check flake evaluation
         run: nix flake check --no-build
 
-      - name: Install project dependencies
-        run: nix develop --command mise run setup
+      - name: Verify flake lock is current
+        run: git diff --exit-code -- flake.lock
+
+      - name: Install Mix tooling
+        run: |
+          nix develop --command mix local.hex --force
+          nix develop --command mix local.rebar --force
+
+      - name: Resolve maintained dependency graph
+        run: nix develop --command mix deps.update --all
+
+      - name: Verify dependency lock is current
+        run: git diff --exit-code -- mix.lock
 
       - name: Validate
         run: nix develop --command mise run check
