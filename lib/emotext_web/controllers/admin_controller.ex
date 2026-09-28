@@ -5,7 +5,8 @@ defmodule Emotext.Web.AdminController do
     render(conn, "import.html")
   end
 
-  def import_file(conn, %{"import" => _import}) do\n    put_flash(conn, :info, "Import successful.")
+  def import_file(conn, %{"import" => _import}) do
+    put_flash(conn, :info, "Import successful.")
     render(conn, "import.html")
   end
 end
