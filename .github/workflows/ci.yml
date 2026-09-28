@@ -46,5 +46,8 @@ jobs:
       - name: Install project dependencies
         run: nix develop --command mise run setup
 
+      - name: Verify dependency lock is current
+        run: git diff --exit-code -- mix.lock
+
       - name: Validate
         run: nix develop --command mise run check
