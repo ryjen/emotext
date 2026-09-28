@@ -29,25 +29,6 @@ defmodule Emotext.User do
   def from_username(nil), do: nil
   def from_username(username), do: Repo.one(from(u in __MODULE__, where: u.username == ^username))
 
-  def deserialize(nil), do: {:error, :not_found}
-
-  def deserialize(data) do
-    info = data |> Base.url_decode64!() |> :erlang.binary_to_term([:safe])
-
-    case Repo.get(__MODULE__, info.id) do
-      nil -> {:error, :not_found}
-      user -> change_screen_name(user, info.screen_name)
-    end
-  end
-
-  def serialize(nil), do: {:error, :not_found}
-
-  def serialize(user) do
-    %{id: user.id, screen_name: user.screen_name}
-    |> :erlang.term_to_binary()
-    |> Base.url_encode64()
-  end
-
   def change_screen_name(nil, _screen_name), do: nil
 
   def change_screen_name(user, screen_name) do
