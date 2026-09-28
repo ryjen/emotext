@@ -65,13 +65,11 @@ defmodule Emotext.MixProject do
       {:dns_cluster, "~> 0.1.1"},
       {:bandit, "~> 1.12.5"},
       {:postgrex, "~> 0.22.4"},
-      {:poison, "~> 5.0"},
       {:guardian, "~> 2.4.1"},
       {:oauth2, "~> 2.1.1"},
       {:ecto_enum, "~> 1.4"},
       {:comeonin, "~> 5.4"},
       {:bcrypt_elixir, "~> 3.0"},
-      {:ecto_hooks, "~> 1.1"},
       {:expletive, "~> 0.1.0"}
     ]
   end
