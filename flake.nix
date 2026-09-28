@@ -20,7 +20,7 @@
               beam.rebar3
               pkgs.git
               pkgs.mise
-              pkgs.nodejs_20
+              pkgs.nodejs_22
               pkgs.postgresql_16
             ];
 
