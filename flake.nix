@@ -1,7 +1,7 @@
 {
   description = "Emotext development and CI environment";
 
-  inputs.nixpkgs.url = "github:NixOS/nixpkgs/b6018f87da91d19d0ab4cf979885689b469cdd41";
+  inputs.nixpkgs.url = "github:NixOS/nixpkgs/770938f1af42c1a7538cb55759a0666a653ada58";
 
   outputs = { self, nixpkgs }:
     let
@@ -11,12 +11,12 @@
       devShells = forAllSystems (system:
         let
           pkgs = import nixpkgs { inherit system; };
-          beam = pkgs.beam.packages.erlang_26;
+          beam = pkgs.beam29Packages;
         in {
           default = pkgs.mkShell {
             packages = [
               beam.erlang
-              beam.elixir_1_16
+              beam.elixir_1_20
               beam.rebar3
               pkgs.git
               pkgs.mise
