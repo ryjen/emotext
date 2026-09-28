@@ -96,8 +96,8 @@ defmodule Emotext.Web do
       import Emotext.Web.Gettext
 
       # Shortcut for generating JS commands
-      alias Phoenix.LiveView.JS
       alias Emotext.Web.Router.Helpers, as: Routes
+      alias Phoenix.LiveView.JS
 
       # Routes generation with the ~p sigil
       unquote(verified_routes())
