@@ -1,7 +1,7 @@
 {
   description = "Emotext development and CI environment";
 
-  inputs.nixpkgs.url = "github:NixOS/nixpkgs/770938f1af42c1a7538cb55759a0666a653ada58";
+  inputs.nixpkgs.url = "github:NixOS/nixpkgs/7a0f122f5090cf4c2ade2a13a0e229d4e19ba71f";
 
   outputs = { self, nixpkgs }:
     let
