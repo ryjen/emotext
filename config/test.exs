@@ -17,7 +17,7 @@ config :emotext, Emotext.Repo,
 # you can enable the server option below.
 config :emotext, Emotext.Web.Endpoint,
   http: [ip: {127, 0, 0, 1}, port: 4002],
-  secret_key_base: "s69tpapgoOQvslbnbbz27qUH8t+6R10GFONQMQXg7kHNoI1zv69JCRCwFctbnuN8",
+  secret_key_base: String.duplicate("test-only-secret-key-base-", 4),
   server: false
 
 # In test we don't send emails.

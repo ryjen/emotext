@@ -7,16 +7,18 @@ defmodule Emotext.Web.AuthController do
   def facebook(conn, _params), do: begin_oauth(conn, &Facebook.authorize_url!/1)
 
   def callback(conn, %{"provider" => provider, "code" => code, "state" => state}) do
-    with :ok <- verify_oauth_state(conn, state) do
-      conn = delete_session(conn, :oauth_state)
+    case verify_oauth_state(conn, state) do
+      :ok ->
+        conn = delete_session(conn, :oauth_state)
 
-      case provider do
-        "github" -> github_callback(conn, code)
-        "facebook" -> facebook_callback(conn, code)
-        _ -> send_resp(conn, :bad_request, "Unsupported OAuth provider")
-      end
-    else
-      _ -> send_resp(conn, :bad_request, "Invalid OAuth state")
+        case provider do
+          "github" -> github_callback(conn, code)
+          "facebook" -> facebook_callback(conn, code)
+          _ -> send_resp(conn, :bad_request, "Unsupported OAuth provider")
+        end
+
+      :error ->
+        send_resp(conn, :bad_request, "Invalid OAuth state")
     end
   end
 

@@ -43,7 +43,7 @@ defmodule Emotext.ActionQuery do
       order_by: a.name
   end
 
-  def sorted() do
+  def sorted do
     from a in Action, order_by: a.name
   end
 
@@ -67,14 +67,14 @@ defmodule Emotext.AliasQuery do
       preload: [:action]
   end
 
-  def with_action_names() do
+  def with_action_names do
     from a in Alias,
       join: t in assoc(a, :action),
       order_by: t.name,
       select: %{:alias_name => a.name, :action_name => t.name}
   end
 
-  def sorted() do
+  def sorted do
     from a in Alias, order_by: a.name, preload: [:action]
   end
 

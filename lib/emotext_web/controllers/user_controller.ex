@@ -1,10 +1,10 @@
 defmodule Emotext.Web.UserController do
   use Emotext.Web, :controller
 
-  alias Emotext.User
-  alias Emotext.UserQuery
   alias Emotext.ActionQuery
   alias Emotext.AliasQuery
+  alias Emotext.User
+  alias Emotext.UserQuery
 
   require Logger
 

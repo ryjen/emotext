@@ -18,6 +18,27 @@ run = "mix compile --warnings-as-errors"
 description = "Run the test suite"
 run = "MIX_ENV=test mix test"
 
+
+
+[tasks.lint]
+description = "Run correctness-focused Credo checks"
+run = "MIX_ENV=test mix credo --strict"
+
+[tasks.deps-audit]
+description = "Audit Hex retirements/advisories and Elixir security advisories"
+run = """
+mix hex.audit
+MIX_ENV=test mix deps.audit
+"""
+
+[tasks.security]
+description = "Run source and Phoenix security gates"
+run = """
+gitleaks git . --redact --no-banner --verbose
+MIX_ENV=test mix sobelow --private --exit high
+mise run deps-audit
+"""
+
 [tasks.assets]
 description = "Build frontend assets"
 run = """
@@ -35,5 +56,7 @@ run = """
 mise run format
 mise run compile
 mise run test
+mise run lint
+mise run security
 mise run assets
 """

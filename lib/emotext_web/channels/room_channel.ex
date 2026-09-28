@@ -5,9 +5,9 @@ defmodule Emotext.Web.RoomChannel do
 
   alias Emotext.ActionQuery
   alias Emotext.AliasQuery
-  alias Emotext.UserQuery
   alias Emotext.History
   alias Emotext.Repo
+  alias Emotext.UserQuery
   import Ecto.Query, only: [from: 2]
 
   intercept ["action:user", "action:others", "msg:output", "info:pong"]

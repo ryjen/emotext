@@ -1,9 +1,9 @@
 defmodule Emotext.Web.SessionController do
   use Emotext.Web, :controller
   require Logger
+  alias Emotext.Guardian
   alias Emotext.User
   alias Emotext.UserQuery
-  alias Emotext.Guardian
 
   def new(conn, _params) do
     changeset = User.login_changeset(%User{})
@@ -25,7 +25,7 @@ defmodule Emotext.Web.SessionController do
     |> redirect(to: "/")
   end
 
-  def create(conn, params = %{}) do
+  def create(conn, %{} = params) do
     user = Repo.one(UserQuery.by_login_or_email(params["user"]["email"] || ""))
 
     if user do
