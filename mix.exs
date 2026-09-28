@@ -68,7 +68,6 @@ defmodule Emotext.MixProject do
       {:poison, "~> 5.0"},
       {:guardian, "~> 2.3"},
       {:cowboy, "~> 2.11"},
-      {:distillery, "~> 2.1"},
       {:oauth2, "~> 2.1"},
       {:ecto_enum, "~> 1.4"},
       {:comeonin, "~> 5.4"},
