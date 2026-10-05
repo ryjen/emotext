@@ -41,7 +41,7 @@ defmodule Emotext.RuntimeSecret do
               raise "#{file_env_key} secret file exceeds #{@max_bytes} bytes"
 
             data ->
-              value = String.trim(data)
+              value = String.trim_trailing(data)
 
               if value == "" do
                 raise "#{file_env_key} points to an empty secret file"
