@@ -49,6 +49,13 @@ defmodule Emotext.RuntimeSecretTest do
     assert endpoint_config[:secret_key_base] == "runtime-file-secret"
   end
 
+  test "file secret preserves leading whitespace while trimming trailing whitespace" do
+    path = write_secret!("  leading-secret  \n")
+    System.put_env(@file_env_key, path)
+
+    assert RuntimeSecret.fetch!(@env_key, @file_env_key) == "  leading-secret"
+  end
+
   test "configured unreadable file fails closed instead of falling back" do
     System.put_env(@env_key, "environment-secret")
 
