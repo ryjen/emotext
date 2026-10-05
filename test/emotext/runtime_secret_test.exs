@@ -5,15 +5,11 @@ defmodule Emotext.RuntimeSecretTest do
 
   @env_key "SECRET_KEY_BASE"
   @file_env_key "SECRET_KEY_BASE_FILE"
+  @managed_env [@env_key, @file_env_key, "DATABASE_URL", "GUARDIAN_SECRET_KEY"]
 
   setup do
-    original = %{
-      @env_key => System.get_env(@env_key),
-      @file_env_key => System.get_env(@file_env_key)
-    }
-
-    System.delete_env(@env_key)
-    System.delete_env(@file_env_key)
+    original = Map.new(@managed_env, &{&1, System.get_env(&1)})
+    Enum.each(@managed_env, &System.delete_env/1)
 
     on_exit(fn ->
       Enum.each(original, fn
@@ -35,6 +31,22 @@ defmodule Emotext.RuntimeSecretTest do
     System.put_env(@env_key, "environment-secret")
     System.put_env(@file_env_key, path)
     assert RuntimeSecret.fetch!(@env_key, @file_env_key) == "file-secret"
+  end
+
+  test "production runtime config consumes the file-backed secret" do
+    path = write_secret!("runtime-file-secret\n")
+    System.put_env(@file_env_key, path)
+    System.put_env("DATABASE_URL", "ecto://postgres:postgres@localhost/emotext_test")
+    System.put_env("GUARDIAN_SECRET_KEY", "guardian-secret")
+
+    config = Config.Reader.read!("config/runtime.exs", env: :prod)
+
+    endpoint_config =
+      config
+      |> Keyword.fetch!(:emotext)
+      |> Keyword.fetch!(Emotext.Web.Endpoint)
+
+    assert endpoint_config[:secret_key_base] == "runtime-file-secret"
   end
 
   test "configured unreadable file fails closed instead of falling back" do
