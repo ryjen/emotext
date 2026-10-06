@@ -50,7 +50,7 @@ Required production variables include:
 
 ```text
 DATABASE_URL
-SECRET_KEY_BASE
+SECRET_KEY_BASE or SECRET_KEY_BASE_FILE
 GUARDIAN_SECRET_KEY
 GITHUB_CLIENT_ID
 GITHUB_CLIENT_SECRET
@@ -66,6 +66,8 @@ FACEBOOK_REDIRECT_URI
 ```
 
 Generate `SECRET_KEY_BASE` with `mix phx.gen.secret`.
+
+When `SECRET_KEY_BASE_FILE` is configured it takes precedence over `SECRET_KEY_BASE`. The file is read directly by the application with a 64 KiB limit; missing, unreadable, empty, or oversized files fail startup without falling back to the environment value.
 
 ## Security model
 
