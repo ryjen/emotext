@@ -29,7 +29,7 @@
         <% else %>
           <li>
             <a href={~p"/users/#{current_user(@conn).id}"}>
-              <i class="fa fa-user" aria-hidden="true"></i><%= current_user(@conn).screen_name %>
+              <i class="fa fa-user" aria-hidden="true"></i>{current_user(@conn).screen_name}
             </a>
           </li>
           <li>
@@ -53,7 +53,7 @@
     </ul>
   </header>
 
-  <%= @inner_content %>
+  {@inner_content}
 
   <footer class="footer">
     <span class="pull-left">

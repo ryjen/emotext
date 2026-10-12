@@ -3,12 +3,12 @@
 <div class="green-well card">
   <h3>Login</h3>
 
-  <%= render("_form.html",
+  {render("_form.html",
     assigns: [
       changeset: @changeset,
       action: Routes.login_path(@conn, :create)
     ]
-  ) %>
+  )}
 
   <p>
     Don't have an account? It will take a few keystrokes to <a href={

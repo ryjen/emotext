@@ -101,10 +101,10 @@ them, feel free to run some other software, or write your own.
   </tr>
   <%= for key <- Map.keys(@aliases) do %>
     <tr>
-      <td class="title"><%= key %></td>
+      <td class="title">{key}</td>
       <td>
         <%= for a <- Map.get(@aliases, key) do %>
-          <span><%= a.name %></span>
+          <span>{a.name}</span>
         <% end %>
       </td>
     </tr>
