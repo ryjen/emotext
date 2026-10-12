@@ -17,7 +17,7 @@ defmodule Emotext.Web.CoreComponents do
   use Phoenix.Component
 
   alias Phoenix.LiveView.JS
-  import Emotext.Web.Gettext
+  use Gettext, backend: Emotext.Web.Gettext
 
   @doc """
   Renders a modal.

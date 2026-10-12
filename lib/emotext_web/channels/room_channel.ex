@@ -314,7 +314,7 @@ defmodule Emotext.Web.RoomChannel do
         user = get_user(socket)
 
         body =
-          if history.message != nil && Expletive.profane?(history.message, expletive_config()),
+          if Expletive.profane?(history.message, expletive_config()),
             do: Expletive.sanitize(history.message, expletive_config()),
             else: history.message
 
@@ -362,7 +362,7 @@ defmodule Emotext.Web.RoomChannel do
         save_message(body, user)
 
         body =
-          if body && Expletive.profane?(body, expletive_config()),
+          if Expletive.profane?(body, expletive_config()),
             do: Expletive.sanitize(body, expletive_config()),
             else: body
 
