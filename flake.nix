@@ -27,6 +27,7 @@
             shellHook = ''
               export MIX_HOME="$PWD/.nix-mix"
               export HEX_HOME="$PWD/.nix-hex"
+              export MISE_DISABLE_TOOLS="erlang,elixir"
             '';
           };
         });
