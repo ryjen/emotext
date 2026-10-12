@@ -4,7 +4,7 @@
       <p>Oops, something went wrong! Please check the errors below:</p>
       <ul>
         <%= for {attr, message} <- f.errors do %>
-          <li><%= humanize(attr) %> <%= message %></li>
+          <li>{humanize(attr)} {message}</li>
         <% end %>
       </ul>
     </div>
@@ -37,7 +37,7 @@
         <option value="">Select an action</option>
         <%= for {action_name, action_id} <- @actions do %>
           <option value={action_id} {if f.data.action_id == action_id, do: "selected"}>
-            <%= action_name %>
+            {action_name}
           </option>
         <% end %>
       </select>
