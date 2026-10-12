@@ -52,7 +52,9 @@ jobs:
           nix develop --command mix local.rebar --force
 
       - name: Resolve maintained dependency graph
-        run: nix develop --command mix deps.update --all
+        run: |
+          nix develop --command mix deps.unlock --unused
+          nix develop --command mix deps.update --all
 
       - name: Upload resolved dependency lock
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
