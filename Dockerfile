@@ -71,6 +71,6 @@ COPY --from=builder --chown=nobody:root /app/_build/prod/rel/emotext ./
 USER nobody
 
 # Healthcheck (optional, adjust port if needed)
-HEALTHCHECK --interval=30s --timeout=3s CMD-SHELL curl --fail --silent --show-error "http://127.0.0.1:${PORT:-4000}/" || exit 1
+HEALTHCHECK --interval=30s --timeout=3s CMD-SHELL curl --fail --silent --show-error "http://localhost:${PORT:-4000}/" || exit 1
 
 CMD ["/app/bin/emotext", "start"]
