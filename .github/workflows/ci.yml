@@ -69,3 +69,10 @@ jobs:
 
       - name: Validate
         run: nix develop --command mise run check
+
+      - name: Build production release
+        run: |
+          nix develop --command sh -eu -c '
+            MIX_ENV=prod mix assets.deploy
+            MIX_ENV=prod mix release
+          '
