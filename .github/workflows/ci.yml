@@ -58,7 +58,8 @@ jobs:
       # Restore strict locked resolution once the generated lock is committed.
       - name: Resolve security-patched dependency candidates
         run: |
-          nix develop --command mix deps.update bandit ecto plug_crypto jose phoenix_html
+          nix develop --command mix deps.unlock --unused
+          nix develop --command mix deps.update --all
           echo EMOTEXT_LOCK_BASE64_BEGIN
           base64 -w0 mix.lock
           echo
