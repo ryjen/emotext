@@ -73,7 +73,7 @@ jobs:
             MIX_ENV=prod mix release
           '
 
-production-image-smoke:
+  production-image-smoke:
     if: github.event_name == 'pull_request'
     needs: validate
     runs-on: ubuntu-latest
