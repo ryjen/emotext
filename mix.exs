@@ -63,7 +63,7 @@ defmodule Emotext.MixProject do
       {:gettext, "~> 0.24"},
       {:jason, "~> 1.2"},
       {:dns_cluster, "~> 0.1.1"},
-      {:bandit, "~> 1.12.5"},
+      {:bandit, "~> 1.14.1"},
       {:postgrex, "~> 0.22.4"},
       {:guardian, "~> 2.4.1"},
       {:oauth2, "~> 2.1.1"},
