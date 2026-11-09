@@ -72,3 +72,96 @@ jobs:
             MIX_ENV=prod mix assets.deploy
             MIX_ENV=prod mix release
           '
+
+production-image-smoke:
+    if: github.event_name == 'pull_request'
+    needs: validate
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: emotext_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+
+    steps:
+      - name: Checkout proposed receiving merge tree
+        uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3 # v6.0.0
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+
+      - name: Bind smoke evidence to the exact PR parents
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha }}
+          EXPECTED_BASE: ${{ github.event.pull_request.base.sha }}
+        run: |
+          test "$(git rev-parse HEAD^1)" = "$EXPECTED_BASE"
+          test "$(git rev-parse HEAD^2)" = "$EXPECTED_HEAD"
+          test -f lib/emotext/runtime_secret.ex
+          grep -Fq 'Emotext.RuntimeSecret.fetch!' config/runtime.exs
+
+      - name: Build actual production image without publication
+        run: docker build --file Dockerfile --tag emotext-ci-smoke:"${{ github.event.pull_request.head.sha }}" .
+
+      - name: Prove non-root startup with PostgreSQL and read-only file secret
+        env:
+          IMAGE: emotext-ci-smoke:${{ github.event.pull_request.head.sha }}
+        run: |
+          set -eu
+          work="$(mktemp -d "$RUNNER_TEMP/emotext-oci-XXXXXXXX")"
+          name="emotext-smoke-$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT"
+          cleanup() {
+            rc=$?
+            if [ "$rc" -ne 0 ]; then docker logs "$name" 2>&1 || true; fi
+            docker rm -f "$name" >/dev/null 2>&1 || true
+            rm -rf -- "$work"
+          }
+          trap cleanup EXIT
+          openssl rand -hex 64 > "$work/secret_key_base"
+          chmod 0444 "$work/secret_key_base"
+          {
+            printf 'DATABASE_URL=ecto://postgres:postgres@host.docker.internal:5432/emotext_test\n'
+            printf 'PHX_HOST=localhost\nPORT=4000\nPHX_SERVER=true\n'
+            printf 'SECRET_KEY_BASE_FILE=/run/secrets/secret_key_base\n'
+            printf 'GUARDIAN_SECRET_KEY=%s\n' "$(openssl rand -hex 64)"
+          } > "$work/runtime.env"
+          chmod 0600 "$work/runtime.env"
+
+          docker run --rm \
+            --add-host=host.docker.internal:host-gateway \
+            --env-file "$work/runtime.env" \
+            --mount "type=bind,source=$work/secret_key_base,target=/run/secrets/secret_key_base,readonly" \
+            --entrypoint /app/bin/emotext "$IMAGE" eval \
+            'Ecto.Migrator.with_repo(Emotext.Repo, fn repo -> Ecto.Migrator.run(repo, Application.app_dir(:emotext, "priv/repo/migrations"), :up, all: true) end)'
+
+          docker run --detach --rm --name "$name" \
+            --add-host=host.docker.internal:host-gateway \
+            --publish 127.0.0.1:14000:4000 \
+            --env-file "$work/runtime.env" \
+            --mount "type=bind,source=$work/secret_key_base,target=/run/secrets/secret_key_base,readonly" \
+            "$IMAGE"
+
+          test "$(docker inspect --format '{{.Config.User}}' "$name")" = nobody
+          healthy=0
+          for attempt in $(seq 1 45); do
+            if curl --fail --silent --show-error --max-time 3 http://127.0.0.1:14000/help > /dev/null 2>&1; then
+              healthy=1
+              break
+            fi
+            if [ "$(docker inspect --format '{{.State.Running}}' "$name")" != true ]; then
+              break
+            fi
+            sleep 2
+          done
+          test "$healthy" -eq 1
+          echo "OCI_SMOKE=PASS (receiving merge tree, PostgreSQL 16, read-only file secret, unprivileged user, HTTP)"
