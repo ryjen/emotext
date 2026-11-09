@@ -54,16 +54,8 @@ jobs:
           nix develop --command mix local.hex --force
           nix develop --command mix local.rebar --force
 
-      # Temporary lock-refresh capture for the five audited packages.
-      # Restore strict locked resolution once the generated lock is committed.
-      - name: Resolve security-patched dependency candidates
-        run: |
-          nix develop --command mix deps.unlock --unused
-          nix develop --command mix deps.update --all
-          echo EMOTEXT_LOCK_BASE64_BEGIN
-          base64 -w0 mix.lock
-          echo
-          echo EMOTEXT_LOCK_BASE64_END
+      - name: Fetch exact locked dependency graph
+        run: nix develop --command mix deps.get --check-locked
 
       - name: Verify dependency lock is unchanged
         run: git diff --exit-code -- mix.lock
