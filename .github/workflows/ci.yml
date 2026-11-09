@@ -60,6 +60,9 @@ jobs:
       - name: Verify dependency lock is unchanged
         run: git diff --exit-code -- mix.lock
 
+      - name: Audit locked dependencies for advisories and retirements
+        run: nix develop --command mix hex.audit
+
       - name: Validate
         run: nix develop --command mise run check
 
