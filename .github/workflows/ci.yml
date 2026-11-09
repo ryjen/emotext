@@ -43,6 +43,9 @@ jobs:
       - name: Check flake evaluation
         run: nix flake check --no-build
 
+      - name: Validate production Dockerfile syntax
+        run: docker buildx build --check --file Dockerfile .
+
       - name: Verify flake lock is current
         run: git diff --exit-code -- flake.lock
 
