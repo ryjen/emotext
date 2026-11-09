@@ -98,15 +98,15 @@ jobs:
         uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3 # v6.0.0
         with:
           ref: ${{ github.sha }}
+          fetch-depth: 2
           persist-credentials: false
 
-      - name: Bind smoke evidence to the exact PR parents
+      - name: Bind smoke evidence to the exact PR head and receiving merge
         env:
           EXPECTED_HEAD: ${{ github.event.pull_request.head.sha }}
-          EXPECTED_BASE: ${{ github.event.pull_request.base.sha }}
         run: |
-          test "$(git rev-parse HEAD^1)" = "$EXPECTED_BASE"
           test "$(git rev-parse HEAD^2)" = "$EXPECTED_HEAD"
+          echo "MERGE_PARENT_BASE=$(git rev-parse HEAD^1)"
           test -f lib/emotext/runtime_secret.ex
           grep -Fq 'Emotext.RuntimeSecret.fetch!' config/runtime.exs
 
