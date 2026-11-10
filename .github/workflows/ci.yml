@@ -165,3 +165,18 @@ jobs:
           done
           test "$healthy" -eq 1
           echo "OCI_SMOKE=PASS (receiving merge tree, PostgreSQL 16, read-only file secret, unprivileged user, HTTP)"
+
+          # All credentials below are generated in this disposable PostgreSQL
+          # service. Do not echo or persist the short-lived Guardian token.
+          WS_TOKEN="$(docker run --rm \
+            --add-host=host.docker.internal:host-gateway \
+            --env-file "$work/runtime.env" \
+            --mount "type=bind,source=$work/secret_key_base,target=/run/secrets/secret_key_base,readonly" \
+            --entrypoint /app/bin/emotext "$IMAGE" eval \
+            'user = Emotext.Repo.insert!(%Emotext.User{username: "ws-smoke", email: "ws-smoke@example.invalid", encrypted_password: Bcrypt.hash_pwd_salt("disposable-smoke-only"), gender: :unknown}); {:ok, token, _} = Emotext.Guardian.encode_and_sign(user); IO.puts("WS_JWT=" <> token)' \
+            | sed -n 's/^WS_JWT=//p' | tail -n 1)"
+          test -n "$WS_TOKEN"
+          export WS_TOKEN
+          python3 test/runtime/websocket_smoke.py
+          unset WS_TOKEN
+
