@@ -173,7 +173,7 @@ jobs:
             --env-file "$work/runtime.env" \
             --mount "type=bind,source=$work/secret_key_base,target=/run/secrets/secret_key_base,readonly" \
             --entrypoint /app/bin/emotext "$IMAGE" eval \
-            'user = Emotext.Repo.insert!(%Emotext.User{username: "ws-smoke", email: "ws-smoke@example.invalid", encrypted_password: Bcrypt.hash_pwd_salt("disposable-smoke-only"), gender: :unknown}); {:ok, token, _} = Emotext.Guardian.encode_and_sign(user); IO.puts("WS_JWT=" <> token)' \
+            'Ecto.Migrator.with_repo(Emotext.Repo, fn repo -> user = repo.insert!(%Emotext.User{username: "ws-smoke", email: "ws-smoke@example.invalid", encrypted_password: Bcrypt.hash_pwd_salt("disposable-smoke-only"), gender: :unknown}); {:ok, token, _} = Emotext.Guardian.encode_and_sign(user); IO.puts("WS_JWT=" <> token) end)' \
             | sed -n 's/^WS_JWT=//p' | tail -n 1)"
           test -n "$WS_TOKEN"
           export WS_TOKEN
