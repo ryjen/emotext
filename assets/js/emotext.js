@@ -93,7 +93,7 @@ class App {
 
     	buffer.push(x);
 
-  	  	messages.html(buffer.join("\n"))
+  	  	messages.text(buffer.join("\n"))
 
         if (messages && messages[0]) {
   	  	    var height = messages[0].scrollHeight;
@@ -119,14 +119,18 @@ class App {
   	})
 
   	chan.on("info:user", payload => {
-  		if ($("#" + payload.screen_name).length) {
-  			return;
-  		}
-  		chatUsers.children("ul").append($("<li id=\"" + payload.screen_name + "\" data-input-user=\"" + payload.user + "\">" + payload.screen_name + "</li>"))
-  	})
+    const screenName = String(payload.screen_name ?? "")
+    if (!screenName) return
+
+    const users = chatUsers.children("ul")
+    const existing = users.children("li").filter((_, el) => $(el).text() === screenName)
+    if (existing.length) return
+
+    $("<li>").attr("data-input-user", screenName).text(screenName).appendTo(users)
+  })
 
   	chan.on("info:room", payload => {
-  		$('#chat-room').html(payload.room)
+  		$('#chat-room').text(payload.room)
   	})
 
   	chan.join().receive("ok", resp => {
@@ -134,7 +138,7 @@ class App {
       //       history = JSON.parse(localStorage.getItem("history")) || [];
       // }
       // if (history.length == 0) {
-  		  appendMessage(`Welcome to <a href="/help">emotext</a>!`)
+  		  appendMessage("Welcome to emotext! Visit /help for commands.")
       // } else {
       //   messages.html(history.join("\n"));
       //  messages.scrollTop(messages[0].scrollHeight);
