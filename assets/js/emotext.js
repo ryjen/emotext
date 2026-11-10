@@ -1,153 +1,110 @@
 import {Socket} from "phoenix"
-import "phoenix_html"
 
-class App {
-
+// The page supplies the DOM; this module owns only the lobby interaction.
+// Never interpret channel-provided content as HTML.
+export class ChatApp {
   static init() {
-    let chatInput   = $("#chat-input")
-  	let messages 		= $("#messages")
-  	let chatUsers		= $("#chat-users")
-    let chatMenu    = $("#chat-menu")
-    let output      = $("#chat-window .output")
+    const input = document.getElementById("chat-input")
+    const messages = document.getElementById("messages")
+    const users = document.querySelector("#chat-users ul")
+    const room = document.getElementById("chat-room")
+    const token = document.querySelector('meta[name="guardian_token"]')?.content
 
-    let guardianToken = $('meta[name="guardian_token"]').attr('content');
+    if (!input || !messages || !users || !token) return
 
-  	let socket = new Socket("/socket", {
-      params: {guardian_token: guardianToken}
+    const socket = new Socket("/socket", {params: {guardian_token: token}})
+    socket.connect()
+    const channel = socket.channel("rooms:lobby")
+    const buffer = []
+
+    const appendMessage = (text) => {
+      if (buffer.length >= 500) buffer.shift()
+      buffer.push(text)
+      messages.textContent = buffer.join("\n")
+      messages.scrollTop = messages.scrollHeight
+    }
+
+    const sendInput = () => {
+      const body = input.value.trim()
+      if (!body) return
+      channel.push("msg:input", {body})
+      input.value = ""
+    }
+
+    input.addEventListener("keydown", (event) => {
+      if (event.key === "Enter") {
+        event.preventDefault()
+        sendInput()
+      }
+    })
+    document.getElementById("enter-addon")?.addEventListener("click", sendInput)
+
+    document.body.addEventListener("click", (event) => {
+      const target = event.target instanceof Element ? event.target : null
+      const action = target?.closest("[data-input-action]")
+      const participant = target?.closest("[data-input-user]")
+
+      if (action) {
+        input.value = "/" + action.textContent.trim() + " "
+        input.focus()
+      } else if (participant) {
+        input.value = [input.value.trim(), participant.textContent.trim()]
+          .filter(Boolean).join(" ")
+        input.focus()
+      }
     })
 
-  	socket.connect()
+    const chatUsers = document.getElementById("chat-users")
+    const chatMenu = document.getElementById("chat-menu")
+    const output = document.querySelector("#chat-window .output")
 
-  	let chan = socket.channel("rooms:lobby")
+    const adjustOutput = () => {
+      if (output) {
+        output.style.marginRight = window.innerWidth >= 990 &&
+          chatUsers?.classList.contains("open") ? "195px" : "auto"
+      }
+    }
+    window.addEventListener("resize", adjustOutput)
 
-   	$(document).keydown(function(event){
-          if(event.keyCode == 13){
-          	var data = chatInput.val().trim()
-          	if (data.length) {
-    		    	chan.push("msg:input", { body: data })
-    		    	chatInput.val("")
-    	    	}
-          }
+    document.querySelectorAll(".users-collapser").forEach((element) => {
+      element.addEventListener("click", () => {
+        const open = chatUsers?.classList.toggle("open")
+        chatUsers?.classList.toggle("hidden", !open)
+        chatMenu?.classList.toggle("hidden", !!open)
+        chatMenu?.classList.toggle("open", !open)
+        adjustOutput()
       })
-
-  	$("#enter-addon").click(function() {
-  		var data = chatInput.val().trim()
-  		if (data.length) {
-  			chan.push("msg:input", { body: data })
-  			chatInput.val("")
-  		}
-  	})
-
-  	$('body').on('click', "[data-input-action]", function() {
-  		chatInput.val("/" + $(this).text().trim() + " ")
-        $('#action-modal').modal('toggle');
-  	})
-
-  	$('body').on('click', "[data-input-user]", function() {
-  		var data = chatInput.val()
-  		if (data) {
-  			chatInput.val(data.trim() + " " + $(this).text())
-  		} else {
-  			chatInput.val($(this).text())
-  		}
-  	})
-
-    $(window).resize(function() {
-        if ($(window).width() >= 990) {
-            if (chatUsers.hasClass('open')) {
-                output.css('margin-right', '195px')
-            } else {
-                output.css('margin-right', 'auto')
-            }
-        } else {
-            output.css('margin-right', 'auto')
-        }
     })
 
-    $('.users-collapser').click(function() {
-        if (chatUsers.hasClass('open')) {
-            chatUsers.removeClass('open')
-            chatUsers.addClass('hidden')
-            chatMenu.removeClass('hidden')
-            chatMenu.addClass('open')
-            output.css('margin-right', 'auto')
-        } else {
-            chatUsers.removeClass('hidden')
-            chatUsers.addClass('open')
-            chatMenu.removeClass('open')
-            chatMenu.addClass('hidden')
-            if ($(window).width() >= 990) {
-                output.css('margin-right', '195px')
-            }
-        }
+    channel.on("msg:self", ({body}) => appendMessage("You say: " + body))
+    channel.on("msg:new", ({screen_name, body}) =>
+      appendMessage(screen_name + " says: " + body))
+    channel.on("msg:action", ({action}) => appendMessage(action))
+    channel.on("msg:sys", ({body}) => appendMessage(body))
+
+    channel.on("info:user", ({screen_name}) => {
+      const name = String(screen_name ?? "")
+      if (!name) return
+      if (Array.from(users.children).some((el) => el.textContent.trim() === name)) return
+      const li = document.createElement("li")
+      li.dataset.inputUser = name
+      li.textContent = name
+      users.appendChild(li)
     })
 
-    // TODO: put in settings
-    let buffer = []
+    channel.on("info:room", ({room: name}) => {
+      if (room) room.textContent = name
+    })
 
-  	var appendMessage = function(x) {
-
-        if (buffer.length > 500) {
-          buffer.shift();
-        }
-
-    	buffer.push(x);
-
-  	  	messages.text(buffer.join("\n"))
-
-        if (messages && messages[0]) {
-  	  	    var height = messages[0].scrollHeight;
-
-    		messages.scrollTop(height);
-        }
-  	}
-
-  	chan.on("msg:self", payload => {
-  	  appendMessage(`You say: ${payload.body}`)
-  	})
-
-  	chan.on("msg:new", payload => {
-  		appendMessage(`${payload.screen_name} says: ${payload.body}`)
-  	});
-
-  	chan.on("msg:action", payload => {
-  		appendMessage(`${payload.action}`)
-  	})
-
-  	chan.on("msg:sys", payload => {
-  		appendMessage(`${payload.body}`);
-  	})
-
-  	chan.on("info:user", payload => {
-    const screenName = String(payload.screen_name ?? "")
-    if (!screenName) return
-
-    const users = chatUsers.children("ul")
-    const existing = users.children("li").filter((_, el) => $(el).text() === screenName)
-    if (existing.length) return
-
-    $("<li>").attr("data-input-user", screenName).text(screenName).appendTo(users)
-  })
-
-  	chan.on("info:room", payload => {
-  		$('#chat-room').text(payload.room)
-  	})
-
-  	chan.join().receive("ok", resp => {
-      // if(typeof(Storage) !== "undefined") {
-      //       history = JSON.parse(localStorage.getItem("history")) || [];
-      // }
-      // if (history.length == 0) {
-  		  appendMessage("Welcome to emotext! Visit /help for commands.")
-      // } else {
-      //   messages.html(history.join("\n"));
-      //  messages.scrollTop(messages[0].scrollHeight);
-      // }
-  		chan.push("info:ping" )
-  	})
+    channel.join().receive("ok", () => {
+      appendMessage("Welcome to emotext! Visit /help for commands.")
+      channel.push("info:ping", {})
+    })
   }
 }
 
-$( () => App.init() )
-
-export default App
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", () => ChatApp.init(), {once: true})
+} else {
+  ChatApp.init()
+}
