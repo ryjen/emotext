@@ -23,7 +23,7 @@ config :emotext, Emotext.Web.Endpoint,
   check_origin: false,
   code_reloader: true,
   debug_errors: true,
-  secret_key_base: "YKdVt5jYhRc9qWN6ciBd9i0XPq1sp64gL9trnRtKZCSQilFgY6c2itjkrjOrq2As",
+  secret_key_base: String.duplicate("dev-only-secret-key-base-", 4),
   watchers: [
     esbuild: {Esbuild, :install_and_run, [:emotext, ~w(--sourcemap=inline --watch)]},
     tailwind: {Tailwind, :install_and_run, [:emotext, ~w(--watch)]}
