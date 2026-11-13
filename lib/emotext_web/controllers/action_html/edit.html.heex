@@ -5,12 +5,12 @@
     <h3 class="col-sm-offset-2">Edit Action</h3>
   </div>
 
-  <%= render("_form.html",
+  {render("_form.html",
     assigns: [
       changeset: @changeset,
       conn: @conn,
       exists: true,
       action: Routes.user_action_path(@conn, :update, current_user(@conn), @action)
     ]
-  ) %>
+  )}
 </div>

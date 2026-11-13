@@ -34,7 +34,7 @@
     <%= if @current_user do %>
       <ul>
         <li id={@current_user.screen_name} data-input-user={@current_user.id}>
-          <b><%= @current_user.screen_name %></b>
+          <b>{@current_user.screen_name}</b>
         </li>
       </ul>
     <% end %>
@@ -65,7 +65,7 @@
           <div class="row">
             <%= for action <- chunk do %>
               <div class="col-lg-3 col-md-3 col-sm-3" data-input-action="{action.id}">
-                <%= action.name %>
+                {action.name}
               </div>
             <% end %>
           </div>

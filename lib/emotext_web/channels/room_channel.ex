@@ -12,6 +12,9 @@ defmodule Emotext.Web.RoomChannel do
 
   intercept ["action:user", "action:others", "msg:output", "info:pong"]
 
+  @history_replay_limit 500
+  @max_message_bytes 4_096
+
   defp expletive_config do
     Expletive.configure(blacklist: Expletive.Blacklist.english())
   end
@@ -314,7 +317,7 @@ defmodule Emotext.Web.RoomChannel do
         user = get_user(socket)
 
         body =
-          if history.message != nil && Expletive.profane?(history.message, expletive_config()),
+          if Expletive.profane?(history.message, expletive_config()),
             do: Expletive.sanitize(history.message, expletive_config()),
             else: history.message
 
@@ -335,11 +338,12 @@ defmodule Emotext.Web.RoomChannel do
     history =
       Repo.all(
         from h in Emotext.History,
-          order_by: [asc: h.inserted_at],
+          order_by: [desc: h.inserted_at, desc: h.id],
+          limit: ^@history_replay_limit,
           preload: [:action, :user, :vict]
       )
 
-    Enum.all?(history, fn x -> send_history_item(socket, x) end)
+    Enum.each(Enum.reverse(history), fn item -> send_history_item(socket, item) end)
   end
 
   @impl true
@@ -352,7 +356,8 @@ defmodule Emotext.Web.RoomChannel do
   end
 
   @impl true
-  def handle_in("msg:input", %{"body" => body}, socket) do
+  def handle_in("msg:input", %{"body" => body}, socket)
+      when is_binary(body) and byte_size(body) <= @max_message_bytes do
     user = get_user(socket)
 
     if String.at(body, 0) == "/" do
@@ -362,7 +367,7 @@ defmodule Emotext.Web.RoomChannel do
         save_message(body, user)
 
         body =
-          if body && Expletive.profane?(body, expletive_config()),
+          if Expletive.profane?(body, expletive_config()),
             do: Expletive.sanitize(body, expletive_config()),
             else: body
 
@@ -370,6 +375,12 @@ defmodule Emotext.Web.RoomChannel do
       end
     end
 
+    {:noreply, socket}
+  end
+
+  @impl true
+  def handle_in("msg:input", _payload, socket) do
+    push(socket, "msg:sys", %{body: "Invalid message.", user: get_user(socket).screen_name})
     {:noreply, socket}
   end
 

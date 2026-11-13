@@ -23,6 +23,10 @@ defmodule Emotext.User do
   @account_fields [:username, :email, :gender]
   @password_fields [:password, :password_confirmation]
 
+  # All anonymous chat sessions share this account. It cannot own private resources.
+  def shared_guest?(%__MODULE__{username: "guest"}), do: true
+  def shared_guest?(_), do: false
+
   def from_email(nil), do: nil
   def from_email(email), do: Repo.one(from(u in __MODULE__, where: u.email == ^email))
 

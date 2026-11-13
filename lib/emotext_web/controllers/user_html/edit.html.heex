@@ -5,11 +5,9 @@
     <h3 class="col-sm-offset-2">Your Account</h3>
   </div>
 
-  <%= render("_form.html",
-    assigns: [
-      changeset: @changeset,
-      user_del_path: Routes.user_path(@conn, :delete, @user),
-      action: Routes.user_path(@conn, :update, @user)
-    ]
-  ) %>
+  <._form
+    changeset={@changeset}
+    user_del_path={Routes.user_path(@conn, :delete, @user)}
+    action={Routes.user_path(@conn, :update, @user)}
+  />
 </div>

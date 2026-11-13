@@ -20,5 +20,5 @@ defmodule Emotext.Web.Gettext do
 
   See the [Gettext Docs](http://hexdocs.pm/gettext) for detailed usage.
   """
-  use Gettext, otp_app: :emotext
+  use Gettext.Backend, otp_app: :emotext
 end

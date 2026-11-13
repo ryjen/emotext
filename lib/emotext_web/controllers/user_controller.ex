@@ -9,6 +9,7 @@ defmodule Emotext.Web.UserController do
   require Logger
 
   plug Guardian.Plug.EnsureAuthenticated when action not in [:new, :create]
+  plug :require_named_account when action not in [:new, :create]
 
   def index(conn, _params) do
     users = Repo.all(User)
@@ -90,6 +91,14 @@ defmodule Emotext.Web.UserController do
     |> Emotext.Guardian.Plug.sign_out()
     |> put_flash(:info, "User deleted successfully.")
     |> redirect(to: "/")
+  end
+
+  defp require_named_account(conn, _) do
+    if User.shared_guest?(Guardian.Plug.current_resource(conn)) do
+      conn |> send_resp(:forbidden, "Forbidden") |> halt()
+    else
+      conn
+    end
   end
 
   defp owned_user!(conn, id) do

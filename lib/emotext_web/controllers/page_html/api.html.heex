@@ -16,10 +16,10 @@
 
 <p>Errors in the api will return the following format:</p>
 <code>
-  {
+  &#123;
   &quot;error&quot;: &lt;string&gt;,
   &quot;code&quot;: &lt;integer&gt;
-  }
+  &#125;
 </code>
 
 <h3>Messages</h3>
@@ -30,10 +30,10 @@
     Posts a message as a user.
     <h5>Input:</h5>
     <code>
-      {
+      &#123;
       &quot;user_id&quot;: &lt;string&gt;,
       &quot;message&quot;: &lt;string&gt;
-      }
+      &#125;
     </code>
     <h5>Output:</h5>
     <code> 200 (OK) / 422 (Unprocessable Entity) </code>
@@ -50,11 +50,11 @@
     No Params
     <h5>Output:</h5>
     <code>
-      {
+      &#123;
       &quot;data&quot;: [
-      { &lt;action-key-values&gt; }
+      &#123; &lt;action-key-values&gt; &#125;
       ]
-      }
+      &#125;
     </code>
   </dd>
 </dl>
@@ -65,17 +65,17 @@
     Creates a new action for a user.
     <h5>Input:</h5>
     <code>
-      {
+      &#123;
       &lt;action&gt;
-      }
+      &#125;
     </code>
     <h5>Output:</h5>
     <code> 200 (OK) / 422 (Unprocessable Entity) </code>
     <br /><br />
     <code>
-      {
+      &#123;
       &quot;id&quot;: &lt;string&gt;
-      }
+      &#125;
     </code>
   </dd>
 </dl>
@@ -88,9 +88,9 @@
     <code> 200 (OK) / 422 (Unprocessable Entity) </code>
     <br /><br />
     <code>
-      {
+      &#123;
       &lt;action-key-values&gt;
-      }
+      &#125;
     </code>
   </dd>
 </dl>
@@ -104,11 +104,11 @@
     No Params
     <h5>Output:</h5>
     <code>
-      {
+      &#123;
       &quot;data&quot;: [
-      { &lt;alias-key-values&gt; }
+      &#123; &lt;alias-key-values&gt; &#125;
       ]
-      }
+      &#125;
     </code>
   </dd>
 </dl>

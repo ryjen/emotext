@@ -5,7 +5,7 @@
     <h3 class="col-sm-offset-2">New Alias</h3>
   </div>
 
-  <%= render("_form.html",
+  {render("_form.html",
     assigns: [
       changeset: @changeset,
       actions: @actions,
@@ -13,5 +13,5 @@
       alias: Routes.user_alias_path(@conn, :create, current_user(@conn)),
       conn: @conn
     ]
-  ) %>
+  )}
 </div>
