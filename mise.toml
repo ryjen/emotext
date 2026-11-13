@@ -25,7 +25,11 @@ run = "MIX_ENV=test mix credo --min-priority high"
 [tasks.security]
 description = "Check source for embedded secrets and high-confidence Phoenix risks"
 run = """
-gitleaks dir . --redact --no-banner
+set -eu
+source_tree="$(mktemp -d)"
+trap 'rm -rf -- "$source_tree"' EXIT
+git archive HEAD | tar -x -C "$source_tree"
+gitleaks dir "$source_tree" --redact --no-banner
 MIX_ENV=test mix sobelow --private --threshold high --exit high
 """
 
