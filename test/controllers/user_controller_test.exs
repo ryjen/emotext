@@ -8,6 +8,10 @@ defmodule Emotext.UserControllerTest do
     assert redirected_to(conn) == "/login"
   end
 
+  test "the registration page remains available to anonymous visitors", %{conn: conn} do
+    assert html_response(get(conn, "/users/new"), 200) =~ "New Account"
+  end
+
   test "an authenticated user cannot edit another account", %{conn: conn} do
     owner = insert_user!("account-owner")
     other = insert_user!("account-other")
@@ -62,6 +66,9 @@ defmodule Emotext.UserControllerTest do
 
     own_profile = html_response(get(conn, "/users/#{owner.id}"), 200)
     assert own_profile =~ owner.email
+
+    own_edit = html_response(get(conn, "/users/#{owner.id}/edit"), 200)
+    assert own_edit =~ "Your Account"
   end
 
   defp authenticate_browser(conn, user) do
