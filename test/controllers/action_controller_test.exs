@@ -69,6 +69,52 @@ defmodule Emotext.ActionControllerTest do
     assert Repo.get!(Action, id).user_id == owner.id
   end
 
+  test "a shared guest token cannot read, create, update, or delete actions", %{
+    conn: conn
+  } do
+    guest = insert_user!("guest")
+    shared_action =
+      Repo.insert!(%Action{
+        name: "shared",
+        user_id: guest.id,
+        self_no_arg: "self",
+        others_no_arg: "others"
+      })
+
+    assert User.shared_guest?(guest)
+
+    assert response(
+             conn |> authenticate(guest) |> get("/api/v1/users/#{guest.id}/actions"),
+             403
+           )
+
+    assert response(
+             conn
+             |> authenticate(guest)
+             |> post("/api/v1/users/#{guest.id}/actions", %{"action" => @action_attrs}),
+             403
+           )
+
+    assert response(
+             conn
+             |> authenticate(guest)
+             |> put("/api/v1/users/#{guest.id}/actions/#{shared_action.id}", %{
+               "action" => %{"name" => "overwritten"}
+             }),
+             403
+           )
+
+    assert response(
+             conn
+             |> authenticate(guest)
+             |> delete("/api/v1/users/#{guest.id}/actions/#{shared_action.id}"),
+             403
+           )
+
+    assert Repo.get!(Action, shared_action.id).name == "shared"
+    assert Repo.aggregate(Action, :count, :id) == 1
+  end
+
   defp authenticate(conn, user) do
     {:ok, token, _claims} = Emotext.Guardian.encode_and_sign(user)
     put_req_header(conn, "authorization", "Bearer #{token}")
