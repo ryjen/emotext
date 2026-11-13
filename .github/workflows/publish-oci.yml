@@ -1,0 +1,129 @@
+name: Publish immutable OCI image
+
+# Deliberately manual: merging source code never grants registry publication.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    permissions:
+      contents: read
+      actions: read
+      packages: write
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: emotext_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    steps:
+      - name: Checkout exact default-branch SHA
+        uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3 # v6.0.0
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+
+      - name: Require exact-main successful validation before effect
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$GITHUB_REF" = refs/heads/main
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          test "$GITHUB_REPOSITORY" = "ryjen/emotext"
+          test -f test/runtime/websocket_smoke.py
+          successful="$(gh api "repos/$GITHUB_REPOSITORY/actions/workflows/ci.yml/runs?head_sha=$GITHUB_SHA&event=push&per_page=100" --jq '[.workflow_runs[] | select(.conclusion == "success")] | length')"
+          test "$successful" -ge 1
+
+      - name: Build the actual production image
+        shell: bash
+        run: |
+          set -euo pipefail
+          docker build --file Dockerfile \
+            --label "org.opencontainers.image.source=https://github.com/$GITHUB_REPOSITORY" \
+            --label "org.opencontainers.image.revision=$GITHUB_SHA" \
+            --tag emotext-release-candidate:"$GITHUB_SHA" .
+
+      - name: Smoke the exact candidate with PostgreSQL and read-only secret
+        shell: bash
+        run: |
+          set -euo pipefail
+          work="$(mktemp -d "$RUNNER_TEMP/emotext-publish-XXXXXXXX")"
+          name="emotext-release-smoke-$GITHUB_RUN_ID"
+          cleanup() {
+            rc=$?
+            if [ "$rc" -ne 0 ]; then docker logs "$name" 2>&1 || true; fi
+            docker rm -f "$name" >/dev/null 2>&1 || true
+            rm -rf -- "$work"
+          }
+          trap cleanup EXIT
+
+          openssl rand -hex 64 > "$work/secret_key_base"
+          chmod 0444 "$work/secret_key_base"
+          {
+            printf 'DATABASE_URL=ecto://postgres:postgres@host.docker.internal:5432/emotext_test\n'
+            printf 'PHX_HOST=localhost\nPORT=4000\nPHX_SERVER=true\n'
+            printf 'SECRET_KEY_BASE_FILE=/run/secrets/secret_key_base\n'
+            printf 'GUARDIAN_SECRET_KEY=%s\n' "$(openssl rand -hex 64)"
+          } > "$work/runtime.env"
+          chmod 0600 "$work/runtime.env"
+
+          image="emotext-release-candidate:$GITHUB_SHA"
+          docker run --rm \
+            --add-host=host.docker.internal:host-gateway \
+            --env-file "$work/runtime.env" \
+            --mount "type=bind,source=$work/secret_key_base,target=/run/secrets/secret_key_base,readonly" \
+            --entrypoint /app/bin/emotext "$image" eval \
+            'Ecto.Migrator.with_repo(Emotext.Repo, fn repo -> Ecto.Migrator.run(repo, Application.app_dir(:emotext, "priv/repo/migrations"), :up, all: true) end)'
+
+          docker run --detach --rm --name "$name" \
+            --add-host=host.docker.internal:host-gateway \
+            --publish 127.0.0.1:14000:4000 \
+            --env-file "$work/runtime.env" \
+            --mount "type=bind,source=$work/secret_key_base,target=/run/secrets/secret_key_base,readonly" \
+            "$image"
+          test "$(docker inspect --format '{{.Config.User}}' "$name")" = nobody
+          healthy=0
+          for attempt in $(seq 1 45); do
+            if curl --fail --silent --max-time 3 http://127.0.0.1:14000/help >/dev/null 2>&1; then
+              healthy=1
+              break
+            fi
+            if [ "$(docker inspect --format '{{.State.Running}}' "$name")" != true ]; then
+              break
+            fi
+            sleep 2
+          done
+          test "$healthy" -eq 1
+          echo "RELEASE_OCI_SMOKE=PASS"
+
+      - name: Publish only the tested image by source-SHA tag
+        env:
+          GHCR_TOKEN: ${{ github.token }}
+          GHCR_USER: ${{ github.actor }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          image="ghcr.io/ryjen/emotext:sha-$GITHUB_SHA"
+          printf '%s' "$GHCR_TOKEN" | docker login ghcr.io --username "$GHCR_USER" --password-stdin
+          docker tag "emotext-release-candidate:$GITHUB_SHA" "$image"
+          docker push "$image"
+          digest="$(docker buildx imagetools inspect "$image" | awk '$1 == "Digest:" {print $2; exit}')"
+          [[ "$digest" =~ ^sha256:[0-9a-f]{64}$ ]]
+          printf 'Published source %s as %s@%s\n' "$GITHUB_SHA" "ghcr.io/ryjen/emotext" "$digest"
+          printf '### Immutable image identity\n\n`ghcr.io/ryjen/emotext@%s`\n\nSource: `%s`\n\nHyperion pull access, digest pinning and live migration require separate approval.\n' "$digest" "$GITHUB_SHA" >> "$GITHUB_STEP_SUMMARY"
