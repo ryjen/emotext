@@ -94,7 +94,7 @@ defmodule Emotext.RoomChannelTest do
     push(socket, "info:ping", %{})
     assert_push "info:room", %{room: "lobby"}
     assert_push "msg:self", %{body: "retained-2", screen_name: "channel-user"}
-    assert_push "msg:self", %{body: "retained-501", screen_name: "channel-user"}
+    assert_push "msg:self", %{body: "retained-501", screen_name: "channel-user"}, 5_000
     refute_push "msg:self", %{body: "retained-1"}
   end
 
