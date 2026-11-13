@@ -1,18 +1,22 @@
 <div class="green-well card">
   <h3>{@user.screen_name}</h3>
 
+  <%= if current_user(@conn) && current_user(@conn).id == @user.id && @user.username != "guest" do %>
   <div class="row">
     <div class="col-md-2"><strong>Email</strong>:</div>
     <div>{@user.email}</div>
   </div>
+  <% end %>
   <div class="row">
     <div class="col-md-2"><strong>Gender</strong>:</div>
     <div>{gender_name(@user)}</div>
   </div>
 
+  <%= if current_user(@conn) && current_user(@conn).id == @user.id && @user.username != "guest" do %>
   <div class="footer">
     <a href={Routes.user_path(@conn, :edit, @user)} class="btn btn-default">
       <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit
     </a>
   </div>
+  <% end %>
 </div>
