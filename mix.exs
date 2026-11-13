@@ -70,7 +70,9 @@ defmodule Emotext.MixProject do
       {:ecto_enum, "~> 1.4"},
       {:comeonin, "~> 5.4"},
       {:bcrypt_elixir, "~> 3.0"},
-      {:expletive, "~> 0.1.0"}
+      {:expletive, "~> 0.1.0"},
+      {:credo, "== 1.7.19", only: [:dev, :test], runtime: false},
+      {:sobelow, "== 0.15.0", only: [:dev, :test], runtime: false}
     ]
   end
 
