@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en" data-browser-smoke="pending">
+<head>
+  <meta charset="utf-8">
+  <meta name="guardian_token" content="test-only-token">
+  <script type="importmap">
+    {"imports": {"phoenix": "/test/browser/phoenix-stub.js"}}
+  </script>
+</head>
+<body>
+  <div id="chat-window">
+    <div class="output">
+      <div id="messages" style="white-space:pre-wrap"></div>
+      <input id="chat-input">
+      <button id="enter-addon">Send</button>
+    </div>
+    <div id="chat-users" class="open"><ul><li data-input-user="self">self</li></ul></div>
+    <div id="chat-room"></div>
+    <div id="chat-menu" class="hidden"></div>
+  </div>
+  <pre id="result"></pre>
+  <script type="module">
+    import "/assets/js/emotext.js"
+
+    const assert = (condition, description) => {
+      if (!condition) throw new Error(description)
+    }
+    const fail = (error) => {
+      document.documentElement.dataset.browserSmoke = "fail"
+      document.getElementById("result").textContent = String(error.stack || error)
+    }
+    const run = () => {
+      try {
+        const channel = window.__testChannel
+        assert(channel && channel.topic === "rooms:lobby", "lobby client did not initialize")
+        assert(window.__testSocket.connected, "socket not connected")
+        assert(window.__testSocket.options.params.guardian_token === "test-only-token", "auth token lost")
+        assert(channel.sent.some((msg) => msg.event === "info:ping"), "initial ping missing")
+
+        const markup = '<img src=x onerror="window.__injected=true">'
+        channel.emit("msg:new", {screen_name: "<b>speaker</b>", body: markup})
+        channel.emit("msg:self", {body: markup})
+        channel.emit("msg:sys", {body: "<b>legacy rich text</b>"})
+        const messages = document.getElementById("messages")
+        assert(messages.textContent.includes(markup), "chat markup lost as text")
+        assert(messages.textContent.includes("<b>legacy rich text</b>"), "plain-text formatting contract changed")
+        assert(messages.querySelector("img, b, script") === null, "channel markup parsed as HTML")
+        assert(window.__injected !== true, "script executed through chat content")
+
+        const name = '"><img src=x onerror="window.__injected=true">'
+        channel.emit("info:user", {screen_name: name})
+        channel.emit("info:user", {screen_name: name})
+        const users = document.querySelector("#chat-users ul")
+        const matches = Array.from(users.children).filter((el) => el.textContent === name)
+        assert(matches.length === 1, "participant escaped, duplicated, or missing")
+        assert(matches[0].getAttribute("data-input-user") === name, "participant attribute lost")
+        assert(users.querySelector("img, script") === null, "participant parsed as HTML")
+
+        channel.emit("info:room", {room: markup})
+        const room = document.getElementById("chat-room")
+        assert(room.textContent === markup && room.querySelector("img") === null, "room parsed as HTML")
+
+        matches[0].click()
+        const input = document.getElementById("chat-input")
+        assert(input.value === name, "participant insertion failed")
+        input.value = "  hello world  "
+        input.dispatchEvent(new KeyboardEvent("keydown", {key: "Enter", bubbles: true, cancelable: true}))
+        assert(channel.sent.some((msg) => msg.event === "msg:input" && msg.payload.body === "hello world"),
+          "message submission failed")
+        assert(input.value === "", "sent input not cleared")
+
+        document.documentElement.dataset.browserSmoke = "pass"
+        document.getElementById("result").textContent = "BROWSER_SMOKE=PASS"
+      } catch (error) { fail(error) }
+    }
+
+    // The application initializes on DOMContentLoaded; wait for its fake transport.
+    const poll = (remaining) => {
+      if (window.__testChannel) run()
+      else if (remaining > 0) setTimeout(() => poll(remaining - 1), 10)
+      else fail(new Error("Phoenix channel was never initialized"))
+    }
+    poll(100)
+  </script>
+</body>
+</html>
