@@ -18,6 +18,17 @@ run = "mix compile --warnings-as-errors"
 description = "Run the test suite"
 run = "MIX_ENV=test mix test"
 
+[tasks.lint]
+description = "Enforce high-priority Credo correctness warnings"
+run = "MIX_ENV=test mix credo --min-priority high"
+
+[tasks.security]
+description = "Check source for embedded secrets and high-confidence Phoenix risks"
+run = """
+gitleaks dir . --redact --no-banner
+MIX_ENV=test mix sobelow --private --threshold high --exit high
+"""
+
 [tasks.assets]
 description = "Build frontend assets"
 run = """
@@ -35,5 +46,7 @@ run = """
 mise run format
 mise run compile
 mise run test
+mise run lint
+mise run security
 mise run assets
 """
