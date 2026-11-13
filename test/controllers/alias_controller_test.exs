@@ -60,6 +60,49 @@ defmodule Emotext.AliasControllerTest do
     assert Repo.get!(Alias, id).user_id == owner.id
   end
 
+  test "a shared guest token cannot read, create, update, or delete aliases", %{
+    conn: conn
+  } do
+    guest = insert_user!("guest")
+    action = insert_action!("shared-action", guest.id)
+    shared_alias = Repo.insert!(%Alias{name: ":shared", action_id: action.id, user_id: guest.id})
+
+    assert User.shared_guest?(guest)
+
+    assert response(
+             conn |> authenticate(guest) |> get("/api/v1/users/#{guest.id}/aliases"),
+             403
+           )
+
+    assert response(
+             conn
+             |> authenticate(guest)
+             |> post("/api/v1/users/#{guest.id}/aliases", %{
+               "alias" => %{"name" => ":new", "action_id" => action.id}
+             }),
+             403
+           )
+
+    assert response(
+             conn
+             |> authenticate(guest)
+             |> put("/api/v1/users/#{guest.id}/aliases/#{shared_alias.id}", %{
+               "alias" => %{"name" => ":overwritten", "action_id" => action.id}
+             }),
+             403
+           )
+
+    assert response(
+             conn
+             |> authenticate(guest)
+             |> delete("/api/v1/users/#{guest.id}/aliases/#{shared_alias.id}"),
+             403
+           )
+
+    assert Repo.get!(Alias, shared_alias.id).name == ":shared"
+    assert Repo.aggregate(Alias, :count, :id) == 1
+  end
+
   defp authenticate(conn, user) do
     {:ok, token, _claims} = Emotext.Guardian.encode_and_sign(user)
     put_req_header(conn, "authorization", "Bearer #{token}")
