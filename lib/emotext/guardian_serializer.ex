@@ -3,7 +3,7 @@ defmodule Emotext.GuardianSerializer do
 
   alias Emotext.User
 
-  def for_token(user = %User{}), do: {:ok, "User: #{User.serialize(user)}"}
+  def for_token(%User{} = user), do: {:ok, "User: #{User.serialize(user)}"}
   def for_token(_), do: {:error, "Unknown resource type"}
 
   def from_token("User: " <> data), do: {:ok, User.deserialize(data)}
