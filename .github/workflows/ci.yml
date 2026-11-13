@@ -66,6 +66,29 @@ jobs:
       - name: Validate
         run: nix develop --command mise run check
 
+      - name: Chromium chat rendering security regression
+        run: |
+          set -euo pipefail
+          python3 -m http.server 18765 --bind 127.0.0.1 >/dev/null 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+          browser="$(command -v google-chrome || command -v chromium || true)"
+          test -n "$browser"
+          for attempt in $(seq 1 20); do
+            if curl --fail --silent --output /dev/null http://127.0.0.1:18765/test/browser/chat-rendering.html; then
+              break
+            fi
+            sleep 0.2
+          done
+          html="$("$browser" --headless=new --disable-gpu --disable-dev-shm-usage \
+            --no-sandbox --virtual-time-budget=5000 --dump-dom \
+            http://127.0.0.1:18765/test/browser/chat-rendering.html 2>/dev/null)"
+          if ! grep -q 'data-browser-smoke="pass"' <<< "$html"; then
+            echo "$html" | grep -A2 'id="result"' || true
+            exit 1
+          fi
+          echo "BROWSER_SMOKE=PASS (actual module in Chromium; fake transport)"
+
       - name: Build production release
         run: |
           nix develop --command sh -eu -c '
