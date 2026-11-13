@@ -73,6 +73,7 @@ defmodule Emotext.ActionControllerTest do
     conn: conn
   } do
     guest = insert_user!("guest")
+
     shared_action =
       Repo.insert!(%Action{
         name: "shared",
