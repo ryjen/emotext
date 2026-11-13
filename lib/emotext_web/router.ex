@@ -8,8 +8,13 @@ defmodule Emotext.Web.Router do
     plug :put_root_layout, {Emotext.Web.Layouts, :root}
     plug :put_layout, html: {Emotext.Web.Layouts, :app}
     plug :protect_from_forgery
-    plug :put_secure_browser_headers
-    plug PlugRedirectHttps
+
+    plug :put_secure_browser_headers, %{
+      "content-security-policy" =>
+        "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; " <>
+          "font-src 'self' https://fonts.gstatic.com; connect-src 'self' ws: wss:; " <>
+          "img-src 'self' data:; object-src 'none'; base-uri 'self'; frame-ancestors 'none'"
+    }
   end
 
   pipeline :browser_session do

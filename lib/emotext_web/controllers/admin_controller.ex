@@ -5,29 +5,9 @@ defmodule Emotext.Web.AdminController do
     render(conn, "import.html")
   end
 
-  def import_file(conn, %{"import" => import}) do
-    File.stream!(import["file"].path)
-    |> Enum.chunk_by(fn x -> x == "\n" end)
-    |> Enum.each(fn x ->
-      IO.inspect(
-        Enum.zip(
-          [
-            :name,
-            :self_no_arg,
-            :others_no_arg,
-            :self_found,
-            :others_found,
-            :vict_found,
-            :self_not_found,
-            :self_auto,
-            :others_auto
-          ],
-          x
-        )
-      )
-    end)
-
-    put_flash(conn, :info, "Import successful.")
-    render(conn, "import.html")
+  # The historical upload handler only printed uploaded content to logs.
+  # Refuse uploads until the admin import workflow is deliberately implemented.
+  def import_file(conn, %{"import" => _import}) do
+    send_resp(conn, :not_implemented, "Legacy admin import is unavailable")
   end
 end

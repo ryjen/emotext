@@ -15,7 +15,7 @@
         </a>
       </li>
       <%= if current_user(@conn) do %>
-        <%= if is_guest?(current_user(@conn)) do %>
+        <%= if guest?(current_user(@conn)) do %>
           <li>
             <a href={~p"/users/new"}>
               <i class="fa fa-user-plus" aria-hidden="true"></i>register
@@ -57,7 +57,7 @@
 
   <footer class="footer">
     <span class="pull-left">
-      <%= if current_user(@conn) && !is_guest?(current_user(@conn)) do %>
+      <%= if current_user(@conn) && !guest?(current_user(@conn)) do %>
         create an <a href={~p"/users/#{current_user(@conn).id}"}>action</a>
         or <a href={~p"/users/#{current_user(@conn).id}/aliases"}>alias</a>
       <% else %>
