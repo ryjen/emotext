@@ -50,6 +50,29 @@ jobs:
           successful="$(gh api "repos/$GITHUB_REPOSITORY/actions/workflows/ci.yml/runs?head_sha=$GITHUB_SHA&event=push&per_page=100" --jq '[.workflow_runs[] | select(.conclusion == "success")] | length')"
           test "$successful" -ge 1
 
+      - name: Require the safe browser client before publication
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f test/browser/chat-rendering.html
+          grep -Fq 'import "./emotext.js"' assets/js/app.js
+          python3 -m http.server 18765 --bind 127.0.0.1 >/dev/null 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+          browser="$(command -v google-chrome || command -v chromium || true)"
+          test -n "$browser"
+          for attempt in $(seq 1 20); do
+            if curl --fail --silent --output /dev/null http://127.0.0.1:18765/test/browser/chat-rendering.html; then
+              break
+            fi
+            sleep 0.2
+          done
+          html="$("$browser" --headless=new --disable-gpu --disable-dev-shm-usage \
+            --no-sandbox --virtual-time-budget=5000 --dump-dom \
+            http://127.0.0.1:18765/test/browser/chat-rendering.html 2>/dev/null)"
+          grep -q 'data-browser-smoke="pass"' <<< "$html"
+          echo "BROWSER_RELEASE_SMOKE=PASS"
+
       - name: Build the actual production image
         shell: bash
         run: |
