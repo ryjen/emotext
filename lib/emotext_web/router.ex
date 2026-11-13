@@ -8,6 +8,7 @@ defmodule Emotext.Web.Router do
     plug :put_root_layout, {Emotext.Web.Layouts, :root}
     plug :put_layout, html: {Emotext.Web.Layouts, :app}
     plug :protect_from_forgery
+
     plug :put_secure_browser_headers, %{
       "content-security-policy" =>
         "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; " <>
