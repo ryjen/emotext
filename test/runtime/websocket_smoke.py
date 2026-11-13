@@ -166,5 +166,26 @@ def main():
     print("AUTHENTICATED_WEBSOCKET_SMOKE=PASS")
 
 
+def verify_replay_after_container_restart():
+    """Require the first container's message to survive a fresh BEAM process."""
+    replay = WebSocket(TOKEN)
+    try:
+        replay.send("9", "9", "rooms:lobby", "phx_join", {})
+        replay.expect("post-restart lobby join", lambda m: m[1] == "9" and
+                      m[3] == "phx_reply" and m[4].get("status") == "ok")
+        replay.send("9", "10", "rooms:lobby", "info:ping", {})
+        replay.expect("post-restart persisted message", lambda m: m[3] == "msg:self" and
+                      m[4].get("body") == "runtime-ws-persistence-proof")
+    finally:
+        replay.close()
+    print("CONTAINER_RESTART_HISTORY_SMOKE=PASS")
+
+
 if __name__ == "__main__":
-    main()
+    mode = os.environ.get("WS_SMOKE_MODE", "full")
+    if mode == "full":
+        main()
+    elif mode == "restart-replay":
+        verify_replay_after_container_restart()
+    else:
+        raise ValueError("unknown WS_SMOKE_MODE")
