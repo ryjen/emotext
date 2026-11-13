@@ -1,7 +1,7 @@
 defmodule Emotext.Web.ActionController do
   use Emotext.Web, :controller
 
-  alias Emotext.{Action, ActionQuery, Repo}
+  alias Emotext.{Action, ActionQuery, Repo, User}
 
   plug Guardian.Plug.EnsureAuthenticated, module: Emotext.Guardian
   plug :authorize_user_scope
@@ -101,7 +101,7 @@ defmodule Emotext.Web.ActionController do
   defp authorize_user_scope(conn, _) do
     user = current_user(conn)
 
-    if user && user.id == conn.params["user_id"] do
+    if user && !User.shared_guest?(user) && user.id == conn.params["user_id"] do
       conn
     else
       conn |> send_resp(:forbidden, "Forbidden") |> halt()
