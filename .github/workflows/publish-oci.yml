@@ -133,6 +133,40 @@ jobs:
             sleep 2
           done
           test "$healthy" -eq 1
+          # Exercise the exact image's authenticated Phoenix Channels before
+          # registry publication; the token and database are disposable.
+          WS_TOKEN="$(docker run --rm \
+            --add-host=host.docker.internal:host-gateway \
+            --env-file "$work/runtime.env" \
+            --mount "type=bind,source=$work/secret_key_base,target=/run/secrets/secret_key_base,readonly" \
+            --entrypoint /app/bin/emotext "$image" eval \
+            'Ecto.Migrator.with_repo(Emotext.Repo, fn repo -> user = repo.insert!(%Emotext.User{username: "release-ws-smoke", email: "release-ws-smoke@example.invalid", encrypted_password: Bcrypt.hash_pwd_salt("disposable-smoke-only"), gender: :unknown}); {:ok, token, _} = Emotext.Guardian.encode_and_sign(user); IO.puts("WS_JWT=" <> token) end)' \
+            | sed -n 's/^WS_JWT=//p' | tail -n 1)"
+          test -n "$WS_TOKEN"
+          export WS_TOKEN
+          python3 test/runtime/websocket_smoke.py
+          docker stop "$name" >/dev/null
+          docker run --detach --rm --name "$name" \
+            --add-host=host.docker.internal:host-gateway \
+            --publish 127.0.0.1:14000:4000 \
+            --env-file "$work/runtime.env" \
+            --mount "type=bind,source=$work/secret_key_base,target=/run/secrets/secret_key_base,readonly" \
+            "$image"
+          healthy=0
+          for attempt in $(seq 1 45); do
+            if curl --fail --silent --max-time 3 http://127.0.0.1:14000/help >/dev/null 2>&1; then
+              healthy=1
+              break
+            fi
+            if [ "$(docker inspect --format '{{.State.Running}}' "$name")" != true ]; then
+              break
+            fi
+            sleep 2
+          done
+          test "$healthy" -eq 1
+          WS_SMOKE_MODE=restart-replay python3 test/runtime/websocket_smoke.py
+          unset WS_TOKEN
+          echo "RELEASE_WEBSOCKET_AND_RESTART_SMOKE=PASS"
           echo "RELEASE_OCI_SMOKE=PASS"
 
       - name: Publish only the tested image by source-SHA tag
