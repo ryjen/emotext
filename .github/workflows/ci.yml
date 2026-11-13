@@ -178,5 +178,29 @@ jobs:
           test -n "$WS_TOKEN"
           export WS_TOKEN
           python3 test/runtime/websocket_smoke.py
+
+          # Prove PostgreSQL-backed channel history survives stopping the
+          # original BEAM container and starting a fresh one with the same keys.
+          # This does not claim persistence across database/host failure.
+          docker stop "$name" >/dev/null
+          docker run --detach --rm --name "$name" \
+            --add-host=host.docker.internal:host-gateway \
+            --publish 127.0.0.1:14000:4000 \
+            --env-file "$work/runtime.env" \
+            --mount "type=bind,source=$work/secret_key_base,target=/run/secrets/secret_key_base,readonly" \
+            "$IMAGE"
+          healthy=0
+          for attempt in $(seq 1 45); do
+            if curl --fail --silent --show-error --max-time 3 http://127.0.0.1:14000/help > /dev/null 2>&1; then
+              healthy=1
+              break
+            fi
+            if [ "$(docker inspect --format '{{.State.Running}}' "$name")" != true ]; then
+              break
+            fi
+            sleep 2
+          done
+          test "$healthy" -eq 1
+          WS_SMOKE_MODE=restart-replay python3 test/runtime/websocket_smoke.py
           unset WS_TOKEN
 
