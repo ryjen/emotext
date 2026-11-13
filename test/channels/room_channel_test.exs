@@ -52,6 +52,52 @@ defmodule Emotext.RoomChannelTest do
     assert history.message == "hello lobby"
   end
 
+  test "malformed and oversized messages fail without terminating the channel", %{
+    token: token,
+    user: user
+  } do
+    socket = join_lobby(token)
+
+    for body <- [nil, %{"unexpected" => true}, String.duplicate("x", 4_097)] do
+      push(socket, "msg:input", %{"body" => body})
+      assert_push "msg:sys", %{body: "Invalid message.", user: "channel-user"}
+    end
+
+    push(socket, "msg:input", %{"body" => "still working"})
+    assert_push "msg:self", %{body: "still working", screen_name: "channel-user"}
+
+    assert [%Emotext.History{user_id: user_id, message: "still working"}] =
+             Repo.all(Emotext.History)
+
+    assert user_id == user.id
+  end
+
+  test "history replay returns the latest 500 messages in chronological order", %{
+    token: token,
+    user: user
+  } do
+    initial = DateTime.utc_now() |> DateTime.truncate(:second)
+
+    Enum.each(1..501, fn n ->
+      timestamp = DateTime.add(initial, n, :second)
+
+      Repo.insert!(%Emotext.History{
+        user_id: user.id,
+        user_screen_name: user.username,
+        message: "retained-#{n}",
+        inserted_at: timestamp,
+        updated_at: timestamp
+      })
+    end)
+
+    socket = join_lobby(token)
+    push(socket, "info:ping", %{})
+    assert_push "info:room", %{room: "lobby"}
+    assert_push "msg:self", %{body: "retained-2", screen_name: "channel-user"}
+    assert_push "msg:self", %{body: "retained-501", screen_name: "channel-user"}
+    refute_push "msg:self", %{body: "retained-1"}
+  end
+
   test "another user's custom command is not visible" do
     owner = insert_user!("command-owner")
     other = insert_user!("command-other")
