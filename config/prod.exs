@@ -12,6 +12,9 @@ config :emotext, Emotext.Repo,
 # before starting your production server.
 config :emotext, Emotext.Web.Endpoint,
   server: true,
+  # TLS terminates at the trusted ingress. The ingress must strip/rewrite
+  # X-Forwarded-Proto rather than forward a client-supplied value.
+  force_ssl: [rewrite_on: [:x_forwarded_proto], hsts: true],
   cache_static_manifest: "priv/static/cache_manifest.json"
 
 # Configures Swoosh API Client
